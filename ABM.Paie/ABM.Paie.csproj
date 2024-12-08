@@ -7,19 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Resources\pdfs\ABMq_CV.pdf" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Resources\pdfs\ABMq_CV.pdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Remove="wwwroot\resources\ABMq_CV.pdf" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="9.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="9.0.0" PrivateAssets="all" />
     <PackageReference Include="MudBlazor" Version="7.15.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\resources\ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" />
+    <None Include="wwwroot\resources\ABMq_Fiche_Projet_CAFEL.pdf" />
+    <None Include="wwwroot\resources\Plaquette_CAFEL_2024-2025.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\resources\ABMq_CV.pdf">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>
