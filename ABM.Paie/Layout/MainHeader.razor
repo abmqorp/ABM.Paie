@@ -1,0 +1,56 @@
+﻿<div>
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
+		<ActivatorContent>
+			<MudButton Variant="Variant.Text" Href=""><MudText>Accueil</MudText></MudButton>
+		</ActivatorContent>
+	</MudMenu>
+	
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+		<ActivatorContent>
+			<MudButton Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Formations</MudText></MudButton>
+		</ActivatorContent>
+		<ChildContent>
+			<MudMenuItem>Initiale</MudMenuItem>
+			<MudMenuItem>Perfectionnements</MudMenuItem>
+		</ChildContent>
+	</MudMenu>
+	
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+		<ActivatorContent>
+			<MudButton Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText><b>ABM PAIE</b></MudText></MudButton>
+		</ActivatorContent>
+		<ChildContent>
+			<MudMenuItem>Référente pédagogique</MudMenuItem>
+			<MudMenuItem>Référente Handicap</MudMenuItem>
+			<MudMenuItem>Indicateurs formation</MudMenuItem>
+			<MudMenuItem>Mes valeurs</MudMenuItem>
+			<MudMenuItem>Actualités</MudMenuItem>
+		</ChildContent>
+	</MudMenu>
+	
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+		<ActivatorContent>
+			<MudButton Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Expérience</MudText></MudButton>
+		</ActivatorContent>
+		<ChildContent>
+			<MudMenuItem>Salariée Silae</MudMenuItem>
+			<MudMenuItem>Formatrice Silae en chiffres</MudMenuItem>
+			<MudMenuItem>Étudiante Cafel</MudMenuItem>
+		</ChildContent>
+	</MudMenu>
+	
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
+		<ActivatorContent>
+			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled"><MudText>Contact</MudText></MudButton>
+		</ActivatorContent>
+	</MudMenu>
+	
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+		<ActivatorContent>
+			<MudButton Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText><b>Partenariat</b></MudText></MudButton>
+		</ActivatorContent>
+		<ChildContent>
+			<MudMenuItem>Facilae Paie</MudMenuItem>
+		</ChildContent>
+	</MudMenu>
+</div>

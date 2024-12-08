@@ -1,0 +1,220 @@
+﻿@page "/"
+
+@{
+    var quotes = new List<string[]>()
+    {
+        new[] { "Rien ne prédispose plus au conformisme que le manque de formation.", "Gustave Thibon" },
+        new[] { "Le savoir est la seule matière qui s'accroit avec le partage.", "Socrate" },
+        new[] { "L'apprentissage est un trésor qui suivra son propriétaire partout.", "Proverbe chinois" },
+        new[] { "Tu me dis, j'oublie. Tu m'enseignes, je me souviens. Tu m'impliques, j'apprends.", "Benjamin Franklin" },
+        new[] { "C'est ce que nous pensons déjà connaître qui nous empêche souvent d'apprendre.", "Claude Bernard" },
+        new[] { "On commence à vieillir quand on finit d'apprendre.", "Proverbe japonais" },
+        new[] { "Qui a peur de poser des questions a honte d'apprendre.", "Proverbe danois" },
+        new[] { "Chaque difficulté rencontrée doit être l'occasion d'un nouveau progrès.", "Pierre de Coubertin" },
+        new[] { "On ne vide pas l'océan avec un coquillage.", "Proverbe japonais" },
+        new[] { "Le secret du changement, c'est de concentrer toute notre énergie non pas à lutter contre le passé mais à construire l'avenir.", "Socrate" },
+        new[] { "Un bon maçon ne rejette aucune pierre.", "Proverbe néerlandais" },
+        new[] { "Le chemin du succès se bâtit sur une série d'échecs sans perdre son enthousiasme.", "Winston Churchill" },
+        new[] { "La vérité de demain se nourrit de l'erreur d'hier.", "Antoine de Saint-Exupéry" },
+        new[] { "Les chefs-d'œuvre ne sont jamais que des tentatives heureuses.", "George Sand" },
+        new[] { "Dans la vie rien n'est à craindre tout est à comprendre.", "Marie Curie" },
+        new[] { "Ne craignez pas d'être lent, craignez seulement d'être à l'arrêt.", "Proverbe chinois" },
+        new[] { "La curiosité mène à tout : parfois à écouter aux portes, parfois à découvrir l'Amérique.", "José Maria Eça de Queiros" },
+        new[] { "Si vous pensez que la formation coûte cher, songez au prix de l'ignorance.", "Ray Kroc" },
+        new[] { "Nous nous voyons comme des oeuvres d'art inachevées. Nous passons de plus en plus de temps à corriger, à améliorer notre corps. Nous sommes toujours en formation, jamais finis.", "Jeremy Rifkin" },
+        new[] { "Le sens de la vie c'est apprendre toujours, apprendre et transmettre parce que transmettre c'est donner, donner c'est aider, aider c'est avancer, avancer c'est grandir.", "Zineve" },
+        new[] { "J'essaie toujours de faire ce que je ne sais pas faire, c'est ainsi que j'espère apprendre à le faire.", "Pablo Picasso" },
+        new[] { "Ne regrette rien, il faudra toujours continuer à apprendre et à te perfectionner, et ce n'est pas à l'école que tu pourras le faire. L'école donne des diplômes, mais c'est dans la vie qu'on se forme.", "Amadou-hampâté-bâ" },
+        new[] { "La véritable éducation, c'est d'apprendre comment penser, et non pas quoi penser.", "Jiddu-krishnamurti" },
+        new[] { "Je suis toujours prêt à apprendre, bien que je n'aime pas toujours qu'on me donne des leçons.", "Winston Churchill" },
+        new[] { "Ce que nous devons apprendre à faire, nous l'apprendrons en le faisant.", "Aristote" },
+        new[] { "Il faut apprendre pour connaître, connaître pour comprendre, comprendre pour juger.", "Narada" },
+        new[] { "Il faut apprendre, non pas pour l'amour de la connaissance, mais pour se défendre contre le mépris dans lequel le monde tient les ignorants.", "Charlie Chaplin" },
+        new[] { "Quand tu parles, tu ne fais que répéter ce que tu sais. Mais quand tu écoutes, tu peux apprendre quelque chose de nouveau.", "Dalaï-lama Tenzin-Gyatso" },
+        new[] { "Celui qui aime à apprendre est bien près du savoir.", "Confucius" },
+        new[] { "Il est impossible d'apprendre un métier tout seul. Une bougie s'allume au contact de la flamme d'une autre bougie. Si elle ne s'en approche pas elle restera éteinte.", "Sultan Valad" },
+    };
+
+    var r = new Random();
+    var n = quotes.Count;
+
+    while (n > 1) {
+        n--;
+        var k = r.Next(n + 1);
+        var temp = quotes[k];
+        quotes[k] = quotes[n];
+        quotes[n] = temp;
+    }
+    
+    var quotes1 = quotes[0..5];
+    var quotes2 = quotes[5..10];
+    var quotes3 = quotes[10..15];
+    var quotes4 = quotes[15..20];
+    var quotes5 = quotes[20..25];
+    var quotes6 = quotes[25..30];
+}
+
+<PageTitle>ABM Paie</PageTitle>
+
+<div class="center indigo lighten-4 white-text">
+    <MudText Style="padding:30px 10px" Typo="Typo.h3">
+        ABM Paie - Formations sur MySilae
+    </MudText>
+</div>
+
+<div class="center">
+	<MudText Class="indigo-text" Typo="Typo.h5">
+        <b>Faire découvrir, progresser et se perfectionner</b>
+	</MudText>
+</div>
+
+<div class="center">
+    <MudText>
+		Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
+	</MudText>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach(var quote in quotes1)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+			<div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+    <div style="margin:0px 20px">
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>+ 3300 heures formations chez Silae</b><br />
+        </MudText>
+        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+	</div>
+    <div style="margin:0px 20px">
+		<MudText Class="indigo-text" Typo="Typo.h5">
+            <b>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</b><br />
+        </MudText>
+        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </div>
+    <div style="margin:0px 20px">
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>+ 430 formations dispensées chez Silae</b><br />
+        </MudText>
+        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </div>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach (var quote in quotes2)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+    <MudText Class="indigo-text" Typo="Typo.h5">
+        <b>Découvrez l'offre de formations ABM Paie</b>
+    </MudText>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach (var quote in quotes3)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+    <MudText Class="indigo-text" Typo="Typo.h5">
+        <b>Gérez et visualisez votre apprentissage</b>
+    </MudText>
+</div>
+
+<div class="d-flex flex-row">
+    <div>Image de l'espace QD Parametre dans Digiforma</div>
+    <div class="center flex-column">
+        <MudText Typo="Typo.h5">Responsable :</MudText>
+        <MudText>
+            Retrouvez le catalogue complet de formations, vos factures de formations, les progressions de vos collaborateurs, dans un espace personnalisé dédié à la gestion de la formation.
+        </MudText>
+        <br />
+        <MudText Typo="Typo.h5">Apprenant :</MudText>
+        <MudText>
+            Visualisez votre courbe de progression, vos compétences acquises, vos temps de formation et vos scores de formation, dans un espace personnalisé dédié à votre montée en compétence.
+        </MudText>
+    </div>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach (var quote in quotes4)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+	<div>
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>ABM Paie, c'est</b>
+        </MudText>
+        <MudText Typo="Typo.h5">Satisfaction : -- % (en cours de calcul)</MudText>
+        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+        <br />
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>Mes valeurs</b>
+        </MudText>
+        <MudText Class="indigo-text text-lighten-2" Typo="Typo.h6">Animation Qualité Respect Originalité Curiosité</MudText>
+        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </div>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach (var quote in quotes5)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+    <MudText Class="indigo-text" Typo="Typo.h5">
+        <b>Mes actualités</b>
+    </MudText>
+</div>
+
+<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
+    @foreach (var quote in quotes6)
+    {
+        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
+            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+<div class="center">
+	<div>
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>Partenariat</b>
+        </MudText>
+        <MudCard>
+            <MudCardContent><b>Facilae Paie</b></MudCardContent>
+        </MudCard>
+    </div>
+</div>
