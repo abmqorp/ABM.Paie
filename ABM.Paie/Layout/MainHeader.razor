@@ -54,18 +54,20 @@
 
 	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
 		<ActivatorContent>
-			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Contact</MudText></MudButton>
+			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled" Href="Contact" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+				<MudText>Contact</MudText>
+			</MudButton>
 		</ActivatorContent>
 		<ChildContent>
-			<MudMenuItem>Prise de rendez-vous</MudMenuItem>
-			<MudMenuItem>Coordonnées (contact)</MudMenuItem>
-			<MudMenuItem>Mes pages officielles</MudMenuItem>
+			<MudMenuItem Href="Contact/Rdv">Prise de rendez-vous</MudMenuItem>
+			<MudMenuItem Href="Contact/Coordonnees">Coordonnées (contact)</MudMenuItem>
+			<MudMenuItem Href="Contact/Pages">Mes pages officielles</MudMenuItem>
 		</ChildContent>
 	</MudMenu>
 	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
 		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText><b>Partenariats</b></MudText></MudButton>
+			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"><MudText><b>Partenariats</b></MudText></MudButton>
 		</ActivatorContent>
 		<ChildContent>
 			<MudMenuItem Href="https://www.facilaepaie.com" Target="_blank">Facilae Paie</MudMenuItem>

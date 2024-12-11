@@ -5,16 +5,17 @@
 <MudPopoverProvider />
 
 <MudContainer>
-	<div class="center" style="text-align:center">
+	<div class="center" style="text-align:center;margin-top:20px;">
 		<MainHeader />
 	</div>
-	<div style="text-align:center">
-		@Body
-	</div>
-	<div class="center indigo lighten-2 white-text">
+
+	@Body
+	
+	<MudPaper class="center indigo lighten-2 white-text" Style="margin-bottom:20px;">
 		<MainFooter />
-	</div>
+	</MudPaper>
+
+	<MudScrollToTop>
+		<MudFab Class="indigo lighten-2 white-text" StartIcon="@Icons.Material.Filled.ArrowCircleUp" />
+	</MudScrollToTop>
 </MudContainer>
-<MudScrollToTop>
-	<MudFab Class="deep-purple lighten-3" StartIcon="@Icons.Material.Filled.ArrowCircleUp" />
-</MudScrollToTop>

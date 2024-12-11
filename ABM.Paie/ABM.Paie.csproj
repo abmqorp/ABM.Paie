@@ -28,4 +28,9 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\linkedin\" />
+    <Folder Include="wwwroot\archive\" />
+  </ItemGroup>
+
 </Project>

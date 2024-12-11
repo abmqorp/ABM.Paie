@@ -45,7 +45,7 @@
         quotes[k] = quotes[n];
         quotes[n] = temp;
     }
-    
+
     var quotes1 = quotes[0..5];
     var quotes2 = quotes[5..10];
     var quotes3 = quotes[10..15];
@@ -56,165 +56,175 @@
 
 <PageTitle>ABM Paie</PageTitle>
 
-<div class="center indigo lighten-4 white-text">
-    <MudText Style="padding:30px 10px" Typo="Typo.h3">
-        ABM Paie - Formations sur MySilae
-    </MudText>
-</div>
+<div style="text-align:center">
 
-<div class="center">
-	<MudText Class="indigo-text" Typo="Typo.h5">
-        <b>Faire découvrir, progresser et se perfectionner</b>
-	</MudText>
-</div>
-
-<div class="center">
-    <MudText>
-		Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
-	</MudText>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach(var quote in quotes1)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-			<div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-    <div style="margin:0px 20px">
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>+ 3300 heures formations chez Silae</b><br />
+    <div class="center indigo lighten-4 white-text" style="margin:30px 0px;">
+        <MudText Style="padding:30px 10px" Typo="Typo.h3">
+            ABM Paie - Formations sur MySilae
         </MudText>
-        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
-            en savoir plus
-        </MudButton>
-	</div>
-    <div style="margin:0px 20px">
-		<MudText Class="indigo-text" Typo="Typo.h5">
-            <b>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</b><br />
-        </MudText>
-        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
-            en savoir plus
-        </MudButton>
     </div>
-    <div style="margin:0px 20px">
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>+ 430 formations dispensées chez Silae</b><br />
-        </MudText>
-        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
-            en savoir plus
-        </MudButton>
+    
+    <div class="center">
+    	<MudText Class="indigo-text" Typo="Typo.h5">
+            <b>Faire découvrir, progresser et se perfectionner</b>
+    	</MudText>
     </div>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach (var quote in quotes2)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-    <MudText Class="indigo-text" Typo="Typo.h5">
-        <b>Découvrez l'offre de formations ABM Paie</b>
-    </MudText>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach (var quote in quotes3)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-    <MudText Class="indigo-text" Typo="Typo.h5">
-        <b>Gérez et visualisez votre apprentissage</b>
-    </MudText>
-</div>
-
-<div class="d-flex flex-row">
-    <div>Image de l'espace QD Parametre dans Digiforma</div>
-    <div class="center flex-column">
-        <MudText Typo="Typo.h5">Responsable :</MudText>
+    
+    <div class="center">
         <MudText>
-            Retrouvez le catalogue complet de formations, vos factures de formations, les progressions de vos collaborateurs, dans un espace personnalisé dédié à la gestion de la formation.
-        </MudText>
-        <br />
-        <MudText Typo="Typo.h5">Apprenant :</MudText>
-        <MudText>
-            Visualisez votre courbe de progression, vos compétences acquises, vos temps de formation et vos scores de formation, dans un espace personnalisé dédié à votre montée en compétence.
+    		Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
+    	</MudText>
+    </div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach(var quote in quotes1)
+        {
+			<MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+				<div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
+        <div style="margin:0px 20px">
+            <MudText Class="indigo-text" Typo="Typo.h5">
+                <b>+ 3300 heures de formations dispensées chez Silae</b><br />
+            </MudText>
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                en savoir plus
+            </MudButton>
+    	</div>
+        <div style="margin:0px 20px">
+    		<MudText Class="indigo-text" Typo="Typo.h5">
+                <b>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</b><br />
+            </MudText>
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                en savoir plus
+            </MudButton>
+        </div>
+        <div style="margin:0px 20px">
+            <MudText Class="indigo-text" Typo="Typo.h5">
+                <b>+ 430 formations dispensées chez Silae</b><br />
+            </MudText>
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                en savoir plus
+            </MudButton>
+        </div>
+    </div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach (var quote in quotes2)
+        {
+            <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+                <div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>Découvrez l'offre de formations ABM Paie</b>
         </MudText>
     </div>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach (var quote in quotes4)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-	<div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach (var quote in quotes3)
+        {
+            <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+                <div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
         <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>ABM Paie, c'est</b>
+            <b>Gérez et visualisez votre apprentissage</b>
         </MudText>
-        <MudText Typo="Typo.h5">Satisfaction : -- % (en cours de calcul)</MudText>
-        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
-            en savoir plus
-        </MudButton>
-        <br />
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>Mes valeurs</b>
-        </MudText>
-        <MudText Class="indigo-text text-lighten-2" Typo="Typo.h6">Animation Qualité Respect Originalité Curiosité</MudText>
-        <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="text-transform:none;">
-            en savoir plus
-        </MudButton>
     </div>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach (var quote in quotes5)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-    <MudText Class="indigo-text" Typo="Typo.h5">
-        <b>Mes actualités</b>
-    </MudText>
-</div>
-
-<MudCarousel Class="mud-width-full white-text" Style="height:60px;" ShowBullets="false" TData="object">
-    @foreach (var quote in quotes6)
-    {
-        <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade">
-            <div style="width:75%;"><i>@quote[0]</i><br />@quote[1]</div>
-        </MudCarouselItem>
-    }
-</MudCarousel>
-
-<div class="center">
-	<div>
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>Partenariat</b>
-        </MudText>
-        <MudCard>
-            <MudCardContent><b>Facilae Paie</b></MudCardContent>
-        </MudCard>
+    
+    <div class="d-flex flex-row">
+        <div>Image de l'espace QD Parametre dans Digiforma</div>
+        <div class="center flex-column">
+            <MudText Typo="Typo.h5">Responsable :</MudText>
+            <MudText>
+                Retrouvez le catalogue complet de formations, vos factures de formations, les progressions de vos collaborateurs, dans un espace personnalisé dédié à la gestion de la formation.
+            </MudText>
+            <br />
+            <MudText Typo="Typo.h5">Apprenant :</MudText>
+            <MudText>
+                Visualisez votre courbe de progression, vos compétences acquises, vos temps de formation et vos scores de formation, dans un espace personnalisé dédié à votre montée en compétence.
+            </MudText>
+        </div>
     </div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach (var quote in quotes4)
+        {
+            <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+                <div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
+    	<div>
+            <MudText Class="indigo-text" Typo="Typo.h5">
+                <b>ABM Paie, c'est</b>
+            </MudText>
+            <MudText Typo="Typo.h5">Satisfaction : -- % (en cours de calcul)</MudText>
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                en savoir plus
+            </MudButton>
+            <br />
+            <MudText Class="indigo-text" Typo="Typo.h5">
+                <b>Mes valeurs</b>
+            </MudText>
+            <MudText Class="indigo-text text-lighten-2" Typo="Typo.h6">Animation Qualité Respect Originalité Curiosité</MudText>
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                en savoir plus
+            </MudButton>
+        </div>
+    </div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach (var quote in quotes5)
+        {
+            <MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+                <div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
+        <MudText Class="indigo-text" Typo="Typo.h5">
+            <b>Mes actualités</b>
+        </MudText>
+    </div>
+    
+    <MudCarousel Class="mud-width-full white-text" Style="height:140px;" ShowBullets="false" TData="object">
+        @foreach (var quote in quotes6)
+        {
+			<MudCarouselItem Class="center indigo lighten-4 white-text" Transition="Transition.Fade" Style="margin:30px 0px;">
+                <div style="width:80%;"><i>@quote[0]</i> <span class="indigo-text" style="white-space:nowrap;">@quote[1]</span></div>
+            </MudCarouselItem>
+        }
+    </MudCarousel>
+    
+    <div class="center">
+    	<div>
+            <MudText Class="indigo-text" Typo="Typo.h5">
+                <b>Partenariats</b>
+            </MudText>
+            <MudCard Style="width:250px;margin:20px;">
+                <MudCardMedia Image="https://static.wixstatic.com/media/5bc43a_e8d3d16eefd8470ab97f4eee74f65d9e~mv2.jpg/v1/fill/w_474,h_486,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Facilae_edited.jpg" Height="220" />
+                <MudCardContent>
+					<MudText>Facilite vos migrations et vos paramétrages dans Silae...</MudText>
+					<MudButton Class="teal-text text-darken-3" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;" Href="https://www.facilaepaie.com" Target="_blank">
+						visiter Facilae Paie
+					</MudButton>
+                </MudCardContent>
+            </MudCard>
+        </div>
+    </div>
+
 </div>

@@ -1,15 +1,19 @@
-﻿<div class="d-flex flex-wrap">
-	<div style="padding:20px;">
+﻿<div class="d-flex flex-wrap justify-center" style="padding:20px 0px;max-width:1000px;">
+	<div style="padding:20px;width:400px;">
 		<MudButton Class="white-text" Variant="Variant.Text" Href="">
 			<MudText Typo="Typo.h5">
 				<b>Accueil</b>
 			</MudText>
 		</MudButton>
 
-		<MudText Typo="Typo.h5" Style="margin:20px 0px 0px 8px">
-			<b>Formations</b>
-		</MudText>
-	
+		<br />
+
+		<MudButton Class="white-text" Variant="Variant.Text" Href="" Style="margin:40px 0px 0px 0px;">
+			<MudText Typo="Typo.h5">
+				<b>Formations</b>
+			</MudText>
+		</MudButton>
+		<br />
 		<MudButton Class="white-text" Variant="Variant.Text" Href="" Style="padding:0px 8px">
 			<MudText>
 				Initiale
@@ -22,11 +26,13 @@
 			</MudText>
 		</MudButton>
 	</div>
-	<div style="padding:20px;">
-		<MudText Typo="Typo.h5" Style="margin:8px 0px 0px 8px;">
-			<b>ABM PAIE</b>
-		</MudText>
-	
+	<div style="padding:20px;width:400px;">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="">
+			<MudText Typo="Typo.h5">
+				<b>ABM Paie</b>
+			</MudText>
+		</MudButton>
+		<br />
 		<MudButton Class="white-text" Variant="Variant.Text" Href="" Style="padding:0px 8px">
 			<MudText>
 				Les indicateurs formation
@@ -47,21 +53,23 @@
 		<br />
 		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="" Style="padding:0px 8px">
 			<MudText>
-				Référente pédagogique
+				<b>Référente Assistance technique et pédagogie</b>
 			</MudText>
 		</MudButton>
 		<br />
 		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="" Style="padding:0px 8px">
 			<MudText>
-				Référente Handicap
+				<b>Référente Handicap</b>
 			</MudText>
 		</MudButton>
 	</div>
-	<div style="padding:20px;">
-		<MudText Typo="Typo.h5" Style="margin:8px 0px 0px 8px;">
-			<b>Expérience</b>
-		</MudText>
-	
+	<div style="padding:20px;width:400px;">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="">
+			<MudText Typo="Typo.h5">
+				<b>Expérience</b>
+			</MudText>
+		</MudButton>
+		<br />
 		<MudButton Class="white-text" Variant="Variant.Text" Href="" Style="padding:0px 8px">
 			<MudText>
 				Salariée Silae
@@ -79,41 +87,47 @@
 				Étudiante Cafel
 			</MudText>
 		</MudButton>
+
 		<br />
 
-		<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver" Style="margin:20px 0px 0px 0px">
+		<MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.BottomLeft" Dense="true" Style="margin:40px 0px 0px 0px;">
 			<ActivatorContent>
-				<MudButton Class="white-text" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText Typo="Typo.h5"><b>Partenariat</b></MudText></MudButton>
+				<MudButton Class="white-text" Variant="Variant.Text"><MudText Typo="Typo.h5"><b>Partenariats</b></MudText></MudButton>
 			</ActivatorContent>
 			<ChildContent>
-				<MudMenuItem>Facilae Paie</MudMenuItem>
+				<MudMenuItem Href="https://www.facilaepaie.com" Target="_blank">Facilae Paie</MudMenuItem>
 			</ChildContent>
 		</MudMenu>
 	</div>
-	<div style="padding:20px;">
-		<MudText Typo="Typo.h5" Style="margin:0px 0px 0px 8px">
-			<b>Contact</b>
-		</MudText>
-	
-		<MudButton Class="pink darken-3 white-text" Variant="Variant.Text" Href="" Style="padding:0px 8px">
+	<div style="padding:20px;width:400px;">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="/Contact">
+			<MudText Typo="Typo.h5">
+				<b>Contact</b>
+			</MudText>
+		</MudButton>
+		<br />
+		<MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="/Contact/Rdv">
 			<MudText>
 				Prise de rendez-vous
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Email" Style="padding:0px 8px" Href="mailto:paie-formation@abmq.fr">
 			<MudText>
 				paie-formation@abmq.fr
 			</MudText>
 		</MudButton>
 		<br />
-		<MudText Class="white-text" Style="margin:0px 0px 0px 8px;">
-			+33 7 48 10 65 39
-		</MudText>
-		<MudButton Class="white-text" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowDropDownCircle" Style="padding:0px 8px;text-transform:none;">
-			<MudText>
-				Page officielle
+		<div class="d-flex align-center">
+			<MudIcon Icon="@Icons.Material.TwoTone.Phone" Title="Phone" Size="Size.Small" Style="margin:0px 0px 0px 8px;" />
+			<MudIcon Icon="@Icons.Material.TwoTone.Textsms" Size="Size.Small" Style="margin:0px 0px 0px 8px;" />
+			<img src="/images/whatsapp/Digital_Glyph_White.png" alt="WhatsApp" height="18" style="margin:0px 0px 0px 8px;" />
+			<MudText Class="white-text" Style="margin:0px 0px 0px 8px;">
+				+33 7 48 10 65 39
 			</MudText>
-		</MudButton>
+		</div>
+		<div class="d-flex align-center" style="margin:10px 0px 0px 0px;">
+			<a href="/Contact/Pages" target="_blank"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="20" style="margin:8px;" /></a>
+		</div>
 	</div>
 </div>
