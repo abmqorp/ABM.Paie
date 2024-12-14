@@ -1,0 +1,241 @@
+﻿@page "/Abm-Paie"
+@page "/Abm-Paie/{Title}"
+@inject NavigationManager NavigationManager
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    private bool OrganigrammeExpanded => Title is "Organigramme";
+    private bool EquipeExpanded => Title is "Equipe";
+    private bool AssistanceExpanded => Title is "Assistance";
+    private bool HandicapExpanded => Title is "Handicap";
+    private bool IndicateursExpanded => Title is "Indicateurs";
+    private bool ValeursExpanded => Title is "Valeurs";
+
+    private void OrganigrammeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Organigramme");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void EquipeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Equipe");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void AssistanceExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Assistance");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void HandicapExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Handicap");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void IndicateursExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Indicateurs");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void ValeursExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Valeurs");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+}
+
+<PageTitle>ABM Paie</PageTitle>
+
+<div style="text-align:justify;margin-bottom:20px;">
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Expanded="@OrganigrammeExpanded" ExpandedChanged="OrganigrammeExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Organigramme
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="center">
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@EquipeExpanded" ExpandedChanged="EquipeExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Équipe pédagogique
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Typo="Typo.h6" Style="margin:10px 0 0 0;">Marine</MudText>
+                    <MudDivider />
+                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;"><b>Responsable de l'apprentissage et de la connaissance.</b></MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        J'ai la conviction profonde que l'apprentissage est une clé à la réussite, aux avancées personnelles et professionnelles, 
+                        et qu'il ne faut cesser d'apprendre !
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Ma démarche lors de la création d'ABM Paie a été d'allier mes deux passions, la paie et la formation, 
+                        en relevant le défi d'innover l'apprentissage de la paie et du logiciel de paie grâce aux nouvelles technologies actuelles 
+                        et à toute l'expérience acquise depuis plus de 8 ans 
+                        et appuyée par l'obtention du diplôme de "Chef de projet, Apprentissage et Formation en ligne".
+					</MudText>
+					<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+						en savoir plus sur mon parcours
+					</MudButton>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@AssistanceExpanded" ExpandedChanged="AssistanceExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Référente Assistance technique et pédagogique
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Style="margin:10px 0 0 0;">
+                        Pour toutes demandes relatives à une assistance technique pour pédagogique, je suis à votre écoute à l'adresse  :
+					</MudText>
+					<MudButton Variant="Variant.Text" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+						<a href="mailto:assistance-technique-pedagogique@abmq.fr">assistance-technique-pedagogique@abmq.fr</a>
+					</MudButton>
+
+                    <MudText Style="margin:20px 0 0 0;">
+                        2024-2025 : Étudiante au CAFEL, <i>Chef de projet, Formation et Apprentissage en ligne</i> (Bac+4)
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                        Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf" Target="_blank"
+                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        en savoir plus sur mon projet CAFEL
+                    </MudButton>
+                </div>
+            </ChildContent>
+		</MudExpansionPanel>
+		<MudExpansionPanel Expanded="@HandicapExpanded" ExpandedChanged="HandicapExpandedChanged">
+			<TitleContent>
+				<MudText Typo="Typo.h5">
+					Référente Handicap
+				</MudText>
+			</TitleContent>
+			<ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Style="margin:10px 0 0 0;">
+                        Pour toutes demandes relatives à un handicap, je suis à votre écoute à l'adresse  :
+                    </MudText>
+                    <MudButton Variant="Variant.Text" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        <a href="mailto:referent-handicap@abmq.fr">referent-handicap@abmq.fr</a>
+                    </MudButton>
+
+                    <MudText Style="margin:20px 0 0 0;">
+						30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i> (2h E-learning)
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                        Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="_blank"
+                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+						visualiser mon attestation de réalisation
+                    </MudButton>
+                    <MudText>
+						Cette formation se compose de deux autres modules programmés pour 2025 :
+                    </MudText>
+					<div class="d-flex flex-wrap" style="margin:10px 0 20px 0">
+                        <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
+                        <MudText>
+                            <i>Devenir Référent handicap</i>
+                            <br />
+                            <i>Troubles cognitifs</i>
+                        </MudText>
+                    </div>
+				</div>
+			</ChildContent>
+		</MudExpansionPanel>
+		<MudExpansionPanel Expanded="@IndicateursExpanded" ExpandedChanged="IndicateursExpandedChanged">
+			<TitleContent>
+				<MudText Typo="Typo.h5">
+					Les indicateurs de formation
+				</MudText>
+			</TitleContent>
+			<ChildContent>
+                <div class="center flex-column" style="margin:20px;">
+                    <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:10px 0">
+                        <b>ABM Paie, c'est</b>
+                    </MudText>
+                    <MudText Typo="Typo.h5">Satisfaction : -- % (en cours de calcul)</MudText>
+				</div>
+			</ChildContent>
+		</MudExpansionPanel>
+		<MudExpansionPanel Expanded="@ValeursExpanded" ExpandedChanged="ValeursExpandedChanged">
+			<TitleContent>
+				<MudText Typo="Typo.h5">
+					Mes valeurs
+				</MudText>
+			</TitleContent>
+			<ChildContent>
+				<div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
+                        La qualité
+                    </MudText>
+                    <MudText Style="margin:10px 0 20px 0;">
+                        Mon catalogue de formation ne reflète pas toutes mes connaissances sur le logiciel MySilae. 
+                        Ma priorité est avant tout de délivrer des formations de qualité, tant dans le contenu que dans la forme, 
+                        dans la veille technique que dans la mise à jour continue des supports. 
+                        C'est pourquoi, de nouvelles formations sont en préparation 
+                        mais pour une qualité de pédagogie ne seront visibles que lorsque tous les critères de qualité seront validés.
+                    </MudText>
+                    <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
+                        Le respect
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Je mets un point d'honneur sur cette valeur.
+                    </MudText>
+                    <MudText Style="margin:10px 0;">
+                        J'ai un grand respect pour tous mes anciens collègue Silae toujours au service des clients 
+                        et à l'amélioration continue du produit paie. 
+                        Je partage cet amour du produit à votre service par la transmission de tout mon savoir et de ma passion pour ce logiciel de paie.
+                    </MudText>
+                    <MudText Style="margin:0 0 20px 0;">
+                        Je décline également cette valeur dans mon métier et au sein d'ABM Paie. 
+                        Nos échanges ainsi que les formations doivent se faire dans l'écoute, la bienveillance et le respect mutuel.
+                    </MudText>
+                    <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
+                        L'Animation
+                    </MudText>
+                    <MudText Style="margin:10px 0 20px 0;">
+                        Animer, ou insuffler de l'âme, 
+                        j'ai à cœur que les moments passés en formation se fassent dans la joie, le plaisir et la bonne humeur, 
+                        pour une assimilation de connaissance réussie.
+                    </MudText>
+                    <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
+                        L'Originalité
+                    </MudText>
+                    <MudText Style="margin:10px 0 20px 0;">
+                        J'ai la volonté de rendre mes formations originales par leur fil conducteur, leur thème et leurs formats divers et complets 
+                        (nombreux exemples de bulletins).
+                    </MudText>
+                    <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
+                        La Curiosité
+                    </MudText>
+                    <MudText Style="margin:10px 0;">
+                        Un de mes objectifs est de vous rendre curieux sur le logiciel MySilae. 
+                        J'ai le souhait de réussir à vous transmettre le sentiment de magie que j'éprouve à découvrir toutes les facettes de la paie 
+                        grâce à la puissance du logiciel.
+                    </MudText>
+                    <MudText Style="margin:0 0 20px 0;">
+                        Cette curiosité fait partie de moi, elle nourrit mon désir de création de nouvelles formations 
+                        mais me pousse également dans mon quotidien. 
+                        Cela s'est traduit par ma volonté de retourner sur les bancs de la fac en m'étant inscrite à la formation CAFEL 
+                        pour découvrir de nouveaux logiciels de conception de digital formation.
+                    </MudText>
+				</div>
+			</ChildContent>
+		</MudExpansionPanel>
+    </MudExpansionPanels>
+</div>
+
+<style>
+    .mud-expand-panel-header {
+        color: white;
+        background-color: #C5CAE9;
+    }
+</style>

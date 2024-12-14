@@ -28,15 +28,17 @@
 	
 	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
 		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText><b>ABM Paie</b></MudText></MudButton>
+			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/ABM-Paie" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+				<MudText><b>ABM Paie</b></MudText>
+			</MudButton>
 		</ActivatorContent>
 		<ChildContent>
-			<MudMenuItem>Organigramme</MudMenuItem>
-			<MudMenuItem>Équipe pédagogique</MudMenuItem>
-			<MudMenuItem>Référente Assistance technique et pédagogique</MudMenuItem>
-			<MudMenuItem>Référente handicap</MudMenuItem>
-			<MudMenuItem>Les indicateurs formation</MudMenuItem>
-			<MudMenuItem>Mes valeurs</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Organigramme">Organigramme</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Equipe">Équipe pédagogique</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Assistance">Référente Assistance technique et pédagogique</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Handicap">Référente handicap</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Indicateurs">Les indicateurs formation</MudMenuItem>
+			<MudMenuItem Href="/ABM-Paie/Valeurs">Mes valeurs</MudMenuItem>
 		</ChildContent>
 	</MudMenu>
 	
@@ -54,14 +56,14 @@
 
 	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
 		<ActivatorContent>
-			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled" Href="Contact" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled" Href="/Contact" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
 				<MudText>Contact</MudText>
 			</MudButton>
 		</ActivatorContent>
 		<ChildContent>
-			<MudMenuItem Href="Contact/Rdv">Prise de rendez-vous</MudMenuItem>
-			<MudMenuItem Href="Contact/Coordonnees">Coordonnées (contact)</MudMenuItem>
-			<MudMenuItem Href="Contact/Pages">Mes pages officielles</MudMenuItem>
+			<MudMenuItem Href="/Contact/Rdv">Prise de rendez-vous</MudMenuItem>
+			<MudMenuItem Href="/Contact/Coordonnees">Coordonnées (contact)</MudMenuItem>
+			<MudMenuItem Href="/Contact/Pages">Mes pages officielles</MudMenuItem>
 		</ChildContent>
 	</MudMenu>
 	

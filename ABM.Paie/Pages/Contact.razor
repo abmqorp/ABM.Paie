@@ -6,9 +6,9 @@
     [Parameter]
     public string? Title { get; set; }
 
-    private bool RdvExpand => Title is "Rdv";
-    private bool CoordonneesExpand => Title is "Coordonnees";
-    private bool PagesExpand => Title is "Pages";
+    private bool RdvExpanded => Title is "Rdv";
+    private bool CoordonneesExpanded => Title is "Coordonnees";
+    private bool PagesExpanded => Title is "Pages";
 
     private void RdvExpandedChanged(bool value)
     {
@@ -27,7 +27,7 @@
     }
 }
 
-<PageTitle>Contact</PageTitle>
+<PageTitle>ABM Paie - Contact</PageTitle>
 
 <div style="text-align:justify;margin-bottom:20px;">
     <div style="margin:20px 0px;">
@@ -55,13 +55,13 @@
         <div class="d-flex flex-wrap">
             <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
             <MudText>
-                le nom de l’entreprise,
+                le nom de l'entreprise,
                 <br />
                 la personne à contacter
                 <br />
                 le numéro de téléphone,
                 <br />
-                et l'objet de l’appel.
+                et l'objet de l'appel.
             </MudText>
         </div>
 
@@ -71,7 +71,7 @@
     </div>
 
     <MudExpansionPanels MultiExpansion="true">
-        <MudExpansionPanel Expanded="@RdvExpand" ExpandedChanged="RdvExpandedChanged">
+        <MudExpansionPanel Expanded="@RdvExpanded" ExpandedChanged="RdvExpandedChanged">
             <TitleContent>
 				<MudText Typo="Typo.h5">
 					Prise de rendez-vous
@@ -83,7 +83,7 @@
                 </div>
             </ChildContent>
 		</MudExpansionPanel>
-        <MudExpansionPanel Expanded="@CoordonneesExpand" ExpandedChanged="CoordonneesExpandedChanged">
+        <MudExpansionPanel Expanded="@CoordonneesExpanded" ExpandedChanged="CoordonneesExpandedChanged">
             <TitleContent>
 				<MudText Typo="Typo.h5">
                     Coordonnées (contact)
@@ -123,13 +123,13 @@
                             <MudListItem Text="Sur le handicap" SecondaryText="referent-handicap@abmq.fr" Href="mailto:referent-handicap@abmq.fr" />
                             <MudListItem Text="Sur l'assistance technique et pédagogique" SecondaryText="assistance-technique-pedagogique@abmq.fr" Href="mailto:assistance-technique-pedagogique@abmq.fr" />
                             <MudListItem Text="Sur la facturation" SecondaryText="paie-facturation@abmq.fr" Href="mailto:paie-facturation@abmq.fr" />
-                            <MudListItem Text="Sur l’historique des versions" SecondaryText="paie-historique-versions@abmq.fr" Href="mailto:paie-historique-versions@abmq.fr" />
+                            <MudListItem Text="Sur l'historique des versions" SecondaryText="paie-historique-versions@abmq.fr" Href="mailto:paie-historique-versions@abmq.fr" />
                         </MudList>
                     </div>
                 </div>
             </ChildContent>
 		</MudExpansionPanel>
-        <MudExpansionPanel Expanded="@PagesExpand" ExpandedChanged="PagesExpandedChanged">
+        <MudExpansionPanel Expanded="@PagesExpanded" ExpandedChanged="PagesExpandedChanged">
             <TitleContent>
 				<MudText Typo="Typo.h5">
 					Mes pages officielles
