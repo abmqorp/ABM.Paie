@@ -1,0 +1,44 @@
+﻿@page "/Formations"
+@page "/Formations/{Title}"
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+}
+
+<PageTitle>ABM Paie - Formations</PageTitle>
+
+<div style="text-align:justify;margin-bottom:20px;">
+    <div style="margin:20px 0px;">
+		<MudText Class="indigo-text" Typo="Typo.h6">
+			Catalogue
+		</MudText>
+
+        <MudText style="margin:10px 0px;">
+            Découvrez le catalogue de formation ABM Paie au travers de <b>tous les programmes de formation</b>.<br />
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+               Href="https://abmformation.catalogueformpro.com" Target="_blank"
+               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                voir le catalogue en ligne
+            </MudButton>
+        </MudText>
+
+		<MudText Class="indigo-text" Typo="Typo.h6">
+			Perfectionnement
+		</MudText>
+
+        <MudText Style="margin:10px 0px;">
+	    	<b>La formation <i>Absences en heures mensualisées :</i></b>
+        </MudText>
+
+        <MudText Style="margin:10px 0px;">
+            Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae 
+            selon les méthodes réelles ou moyennes en heures ou en calendaire.<br />
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+               Href="https://abmformation.catalogueformpro.com" Target="_blank"
+               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+                découvrir le programme de formation via le catalogue en ligne
+            </MudButton>
+        </MudText>
+    </div>
+</div>

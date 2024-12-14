@@ -7,23 +7,20 @@
 	
 	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
 		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Formations</MudText></MudButton>
+			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Formations" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+				<MudText>Formations</MudText>
+			</MudButton>
 		</ActivatorContent>
 		<ChildContent>
-			<MudMenuItem>Catalogue en ligne</MudMenuItem>
-			<MudMenuItem>Initiale</MudMenuItem>
-			<MudMenuItem>Perfectionnement</MudMenuItem>
-			<MudMenuItem>Paramétrages avancés</MudMenuItem>
+			<MudMenuItem Href="https://abmformation.catalogueformpro.com" Target="_blank">Catalogue en ligne</MudMenuItem>
+			<MudMenuItem Href="/Formations/Perfectionnement">Perfectionnement</MudMenuItem>
 		</ChildContent>
 	</MudMenu>
 
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
 		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Actualités</MudText></MudButton>
+			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Actualites"><MudText>Actualités</MudText></MudButton>
 		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem>Actualités, nouveautés et mises-à-jour</MudMenuItem>
-		</ChildContent>
 	</MudMenu>
 	
 	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
@@ -42,15 +39,17 @@
 		</ChildContent>
 	</MudMenu>
 	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
+	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver" onclick="">
 		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText>Expérience</MudText></MudButton>
+			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Experience" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
+				<MudText>Expérience</MudText>
+			</MudButton>
 		</ActivatorContent>
 		<ChildContent>
 			<MudMenuItem Href="resources/ABMq_CV.pdf" Target="_blank">Curriculum vitae</MudMenuItem>
-			<MudMenuItem>Salariée Silae</MudMenuItem>
-			<MudMenuItem>Formatrice Silae en chiffres</MudMenuItem>
-			<MudMenuItem>Étudiante CAFEL</MudMenuItem>
+			<MudMenuItem Href="/Experience/Silae">Salariée Silae</MudMenuItem>
+			<MudMenuItem Href="/Experience/Chiffres">Formatrice Silae en chiffres</MudMenuItem>
+			<MudMenuItem Href="/Experience/Cafel">Étudiante CAFEL</MudMenuItem>
 		</ChildContent>
 	</MudMenu>
 

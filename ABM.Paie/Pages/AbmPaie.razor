@@ -1,5 +1,5 @@
-﻿@page "/Abm-Paie"
-@page "/Abm-Paie/{Title}"
+﻿@page "/ABM-Paie"
+@page "/ABM-Paie/{Title}"
 @inject NavigationManager NavigationManager
 
 @code {
@@ -57,6 +57,7 @@
             </TitleContent>
             <ChildContent>
                 <div class="center">
+                    <MudImage Fluid="true" Src="/images/ABMq_Organigramme.png" Alt="Organigramme" Class="rounded-1g" />
                 </div>
             </ChildContent>
         </MudExpansionPanel>
@@ -70,7 +71,7 @@
                 <div class="d-flex flex-column" style="margin-top:20px;">
                     <MudText Typo="Typo.h6" Style="margin:10px 0 0 0;">Marine</MudText>
                     <MudDivider />
-                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;"><b>Responsable de l'apprentissage et de la connaissance.</b></MudText>
+                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;"><b>Responsable de l'apprentissage et de la connaissance</b></MudText>
                     <MudText Style="margin:10px 0 0 0;">
                         J'ai la conviction profonde que l'apprentissage est une clé à la réussite, aux avancées personnelles et professionnelles, 
                         et qu'il ne faut cesser d'apprendre !
@@ -79,9 +80,11 @@
                         Ma démarche lors de la création d'ABM Paie a été d'allier mes deux passions, la paie et la formation, 
                         en relevant le défi d'innover l'apprentissage de la paie et du logiciel de paie grâce aux nouvelles technologies actuelles 
                         et à toute l'expérience acquise depuis plus de 8 ans 
-                        et appuyée par l'obtention du diplôme de "Chef de projet, Apprentissage et Formation en ligne".
+                        et appuyée par l'obtention du diplôme de <i>Chef de projet, Apprentissage et Formation en ligne</i>.
 					</MudText>
-					<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+					<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                        Href="/Experience/Silae" 
+                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
 						en savoir plus sur mon parcours
 					</MudButton>
                 </div>
@@ -106,7 +109,7 @@
                         2024-2025 : Étudiante au CAFEL, <i>Chef de projet, Formation et Apprentissage en ligne</i> (Bac+4)
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf" Target="_blank"
+                        Href="/Experience/Cafel" 
                         EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         en savoir plus sur mon projet CAFEL
                     </MudButton>
@@ -161,7 +164,7 @@
                     <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:10px 0">
                         <b>ABM Paie, c'est</b>
                     </MudText>
-                    <MudText Typo="Typo.h5">Satisfaction : -- % (en cours de calcul)</MudText>
+                    <MudText Typo="Typo.h5">Satisfaction : 95 %</MudText>
 				</div>
 			</ChildContent>
 		</MudExpansionPanel>

@@ -1,5 +1,171 @@
 ﻿@page "/Experience"
+@page "/Experience/{Title}"
+@inject NavigationManager NavigationManager
 
-@{
+@code {
+    [Parameter]
+    public string? Title { get; set; }
 
+    private bool SilaeExpanded => Title is "Silae";
+    private bool ChiffresExpanded => Title is "Chiffres";
+    private bool CafelExpanded => Title is "Cafel";
+
+    private void SilaeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Silae");
+        else NavigationManager.NavigateTo("/Experience");
+    }
+    private void ChiffresExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Chiffres");
+        else NavigationManager.NavigateTo("/Experience");
+    }
+    private void CafelExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Cafel");
+        else NavigationManager.NavigateTo("/Experience");
+    }
 }
+
+<PageTitle>ABM Paie - Expérience</PageTitle>
+
+<div style="text-align:justify;margin-bottom:20px;">
+    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+               Href="/resources/ABMq_CV.pdf" Target="_blank"
+               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+        visualiser mon curriculum vitae
+    </MudButton>
+    
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Expanded="@SilaeExpanded" ExpandedChanged="SilaeExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Salariée Silae
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Typo="Typo.h6" Style="margin:10px 0 0 0;">8 ans au sein de la société Silae</MudText>
+                    <MudDivider Style="margin:10px 0 0 0;" />
+
+					<MudText Class="indigo-text" Style="margin:20px 0 0 0;">
+						01/11/2024 - 30/11/2020 : <b>Formatrice en clientèle</b>
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Mes quatre premières années chez Silae ont été riches sur de nombreux aspects.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Le premier aura été sur l'aspect humain, j’ai eu la joie de rencontrer beaucoup d’apprenants 
+                        et d’avoir eu plaisir autant à vous former qu’à vous découvrir.
+					</MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        J’ai eu la chance d’avoir vécu des aventures humaines extraordinaires.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        J’ai beaucoup appris sur le terrain sur la pédagogie et sur l’applicatif.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Le second aspect aura été sur le logiciel directement, 
+                        être à votre contact m’a obligée à toujours me dépasser sur mes connaissances sur le produit 
+                        afin de pouvoir répondre et satisfaire toute votre soif de savoir sur le logiciel.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Et enfin, personnellement, j’ai beaucoup appris culturellement sur mon pays ! 
+                        Comme par exemple, le beurre salé et la limonade dans les restaurants ouvriers Bretons !
+                    </MudText>
+                    <MudDivider Style="margin:10px 0 0 0;" />
+
+                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
+                        01/12/2020 - 30/04/2022 : <b>Référente Formation Clients</b>
+                        <br />
+                        01/05/2022 - 31/05/2023 : <b>Responsable Silae Académie</b>
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Mon expérience en tant que responsable du Service formation a été 
+                        un des plus grands apprentissages de ma vie professionnelle jusqu’alors.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Le chantier était important et ma motivation tout autant ! 
+                        J’ai participé à la mise en place des processus de qualité 
+                        validé par l’obtention de la certification Qualiopi.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        J’ai également eu une chance immense d’avoir eu des formateurs exceptionnels 
+                        dont le savoir a été reflété par une augmentation du catalogue 
+                        avec des formations d’un niveau technique spécifique 
+                        notamment avec les formations ENIM et Spectacle.
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        L’équipe a été volontaire, brillante et forte, 
+                        avec des formateurs qui se sont beaucoup investis 
+                        et dont le nombre d’heures de formation ferait exploser le compteur !
+                    </MudText>
+                    <MudDivider Style="margin:10px 0 0 0;" />
+
+                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
+						01/06/2023 - 31/10/2024 : <b>Analyste Expert QA Paie</b>
+                    </MudText>
+                    <MudText Style="margin:10px 0 0 0;">
+                        Ma dernière année chez Silae a été plus axée sur le produit, 
+                        en tant qu’Analyste Expert QA Paie, 
+                        je me suis épanouie dans l’impact des processus de qualité pour la paie, 
+                        ce qui a renforcé ma fascination pour ce sujet complexe et interactif !
+                    </MudText>
+                    <MudText Style="margin:10px 0;">
+                        Etre au plus proche de l’équipe produit a été un véritable honneur, 
+                        mais je suis plus que convaincue que ma passion première est de vous transmettre mon amour 
+                        pour la paie et pour ce logiciel de paie.
+                    </MudText>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@ChiffresExpanded" ExpandedChanged="ChiffresExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Formatrice Silae en chiffres
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@CafelExpanded" ExpandedChanged="CafelExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Étudiante Cafel
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Style="margin:10px 0 0 0;">
+                        Dans le cadre de ma formation <i>Chef de projet, Formation et Apprentissage en ligne</i>, 
+                        j’apprends les techniques de réalisation d’un projet <span style="white-space:nowrap;">de A à Z.</span>
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+                               Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf"
+                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser le programme de formation CAFEL
+                    </MudButton>
+
+                    <MudText Style="margin:20px 0 0 0;">
+                        Je découvre également de nouveaux outils de conception de modules de formation en ligne, 
+                        comme Kumullus ou Storyline.
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+                               Href="/resources/Plaquette_CAFEL_2024-2025.pdf"
+                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser le programme de formation CAFEL
+                    </MudButton>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</div>
+
+<style>
+    .mud-expand-panel-header {
+        color: white;
+        background-color: #C5CAE9;
+    }
+</style>
