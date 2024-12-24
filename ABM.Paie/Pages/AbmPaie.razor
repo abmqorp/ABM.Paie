@@ -1,5 +1,5 @@
-﻿@page "/ABM-Paie"
-@page "/ABM-Paie/{Title}"
+﻿@page "/AbmPaie"
+@page "/AbmPaie/{Title}"
 @inject NavigationManager NavigationManager
 
 @code {
@@ -83,7 +83,7 @@
                         et appuyée par l'obtention du diplôme de <i>Chef de projet, Apprentissage et Formation en ligne</i>.
 					</MudText>
 					<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="/Experience/Silae" 
+                        Href="@($"/{nameof(Experience)}/Silae")" 
                         EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
 						en savoir plus sur mon parcours
 					</MudButton>
@@ -109,7 +109,7 @@
                         2024-2025 : Étudiante au CAFEL, <i>Chef de projet, Formation et Apprentissage en ligne</i> (Bac+4)
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="/Experience/Cafel" 
+                        Href="@($"/{nameof(Experience)}/Cafel")" 
                         EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         en savoir plus sur mon projet CAFEL
                     </MudButton>

@@ -1,4 +1,6 @@
-﻿<div class="d-flex flex-wrap justify-center" style="padding:20px 0px;max-width:1000px;">
+﻿@using ABM.Paie.Pages
+
+<div class="d-flex flex-wrap justify-center" style="padding:20px 0px;max-width:1000px;">
 	<div style="padding:20px;width:400px;">
 		<MudButton Class="white-text" Variant="Variant.Text" Href="/">
 			<MudText Typo="Typo.h5">
@@ -8,26 +10,26 @@
 
 		<br />
 
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Formations" Style="margin:40px 0px 0px 0px;">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formations)}")" Style="margin:40px 0px 0px 0px;">
 			<MudText Typo="Typo.h5">
 				<b>Formations</b>
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Formations/Catalogue" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formations)}/Catalogue")" Style="padding:0px 8px">
 			<MudText>
 				Catalogue en ligne
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Formations/Perfectionnement" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formations)}/Perfectionnement")" Style="padding:0px 8px">
 			<MudText>
 				Perfectionnement
 			</MudText>
 		</MudButton>
 	</div>
 	<div style="padding:20px;width:400px;">
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Actualites">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Actualites)}")">
 			<MudText Typo="Typo.h5">
 				<b>Actualités</b>
 			</MudText>
@@ -35,68 +37,68 @@
 
 		<br />
 
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/ABM-Paie" Style="margin:40px 0px 0px 0px;">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}")" Style="margin:40px 0px 0px 0px;">
 			<MudText Typo="Typo.h5">
 				<b>ABM Paie</b>
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/ABM-Paie/Organigramme" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Organigramme")" Style="padding:0px 8px">
 			<MudText>
 				Organigramme
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/ABM-Paie/Equipe" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Equipe")" Style="padding:0px 8px">
 			<MudText>
 				Équipe pédagogique
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/ABM-Paie/Indicateurs" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Indicateurs")" Style="padding:0px 8px">
 			<MudText>
 				Les indicateurs formation
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/ABM-Paie/Valeurs" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Valeurs")" Style="padding:0px 8px">
 			<MudText>
 				Mes valeurs
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="/ABM-Paie/Assistance" Style="padding:0px 8px">
+		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Assistance")" Style="padding:0px 8px">
 			<MudText>
 				<b>Référente Assistance technique et pédagogie</b>
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="/ABM-Paie/Handicap" Style="padding:0px 8px">
+		<MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Handicap")" Style="padding:0px 8px">
 			<MudText>
 				<b>Référente Handicap</b>
 			</MudText>
 		</MudButton>
 	</div>
 	<div style="padding:20px;width:400px;">
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Experience">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}")">
 			<MudText Typo="Typo.h5">
 				<b>Expérience</b>
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Experience/Silae" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Silae")" Style="padding:0px 8px">
 			<MudText>
 				Salariée Silae
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Experience/Chiffres" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Chiffres")" Style="padding:0px 8px">
 			<MudText>
 				Formatrice Silae en chiffres
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Experience/Cafel" Style="padding:0px 8px">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Cafel")" Style="padding:0px 8px">
 			<MudText>
 				Étudiante Cafel
 			</MudText>
@@ -106,7 +108,7 @@
 
 		<MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.BottomLeft" Dense="true" Style="margin:40px 0px 0px 0px;">
 			<ActivatorContent>
-				<MudButton Class="white-text" Variant="Variant.Text"><MudText Typo="Typo.h5"><b>Partenariats</b></MudText></MudButton>
+				<MudButton Class="white-text" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText Typo="Typo.h5"><b>Partenariats</b></MudText></MudButton>
 			</ActivatorContent>
 			<ChildContent>
 				<MudMenuItem Href="https://www.facilaepaie.com" Target="_blank">Facilae Paie</MudMenuItem>
@@ -114,13 +116,13 @@
 		</MudMenu>
 	</div>
 	<div style="padding:20px;width:400px;">
-		<MudButton Class="white-text" Variant="Variant.Text" Href="/Contact">
+		<MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Contact)}")">
 			<MudText Typo="Typo.h5">
 				<b>Contact</b>
 			</MudText>
 		</MudButton>
 		<br />
-		<MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="/Contact/Rdv">
+		<MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="@($"/{nameof(Contact)}/Rdv")">
 			<MudText>
 				Prise de rendez-vous
 			</MudText>

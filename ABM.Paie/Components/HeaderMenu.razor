@@ -1,0 +1,30 @@
+﻿@using ABM.Paie.Models
+
+<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
+	<ActivatorContent>
+		<MudButton Class="@ccsClass" Href="@Activator.Href" Target="@Activator.Target" Variant="Variant.Text" EndIcon="@Icon">
+			<MudText>@Activator.Text</MudText>
+		</MudButton>
+	</ActivatorContent>
+	<ChildContent>
+		@foreach (var item in Items)
+		{
+			<MudMenuItem Href="@item.Href" Target="@item.Target">@item.Text</MudMenuItem>
+		}
+	</ChildContent>
+</MudMenu>
+
+@code {
+	[Parameter]
+	public required MenuButton Activator { get; set; }
+
+	[Parameter]
+	public IEnumerable<MenuButton> Items { get; set; } = new MenuButton[0];
+
+	public string? Icon => Items.Any() ? Icons.Material.Filled.KeyboardArrowDown : null;
+
+	[Parameter]
+	public Variant Variant { get; set; }
+
+	public string ccsClass => Variant is Variant.Text ? "header-button" : "header-button-filled";
+}

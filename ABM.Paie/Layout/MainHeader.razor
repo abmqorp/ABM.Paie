@@ -1,77 +1,58 @@
-﻿<div>
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/"><MudText>Accueil</MudText></MudButton>
-		</ActivatorContent>
-	</MudMenu>
-	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Formations" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
-				<MudText>Formations</MudText>
-			</MudButton>
-		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem Href="https://abmformation.catalogueformpro.com" Target="_blank">Catalogue en ligne</MudMenuItem>
-			<MudMenuItem Href="/Formations/Perfectionnement">Perfectionnement</MudMenuItem>
-		</ChildContent>
-	</MudMenu>
+﻿@using ABM.Paie.Components
+@using ABM.Paie.Extensions
+@using ABM.Paie.Models
+@using ABM.Paie.Pages
 
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Actualites"><MudText>Actualités</MudText></MudButton>
-		</ActivatorContent>
-	</MudMenu>
-	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/ABM-Paie" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
-				<MudText><b>ABM Paie</b></MudText>
-			</MudButton>
-		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem Href="/ABM-Paie/Organigramme">Organigramme</MudMenuItem>
-			<MudMenuItem Href="/ABM-Paie/Equipe">Équipe pédagogique</MudMenuItem>
-			<MudMenuItem Href="/ABM-Paie/Assistance">Référente Assistance technique et pédagogique</MudMenuItem>
-			<MudMenuItem Href="/ABM-Paie/Handicap">Référente handicap</MudMenuItem>
-			<MudMenuItem Href="/ABM-Paie/Indicateurs">Les indicateurs formation</MudMenuItem>
-			<MudMenuItem Href="/ABM-Paie/Valeurs">Mes valeurs</MudMenuItem>
-		</ChildContent>
-	</MudMenu>
-	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver" onclick="">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" Href="/Experience" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
-				<MudText>Expérience</MudText>
-			</MudButton>
-		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem Href="resources/ABMq_CV.pdf" Target="_blank">Curriculum vitae</MudMenuItem>
-			<MudMenuItem Href="/Experience/Silae">Salariée Silae</MudMenuItem>
-			<MudMenuItem Href="/Experience/Chiffres">Formatrice Silae en chiffres</MudMenuItem>
-			<MudMenuItem Href="/Experience/Cafel">Étudiante CAFEL</MudMenuItem>
-		</ChildContent>
-	</MudMenu>
+@{
+	var accueilActivator = new MenuButton("Accueil", "/");
 
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true" ActivationEvent="@MouseEvent.MouseOver">
-		<ActivatorContent>
-			<MudButton Class="indigo lighten-2 white-text" Variant="Variant.Filled" Href="/Contact" EndIcon="@Icons.Material.Filled.KeyboardArrowDown">
-				<MudText>Contact</MudText>
-			</MudButton>
-		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem Href="/Contact/Rdv">Prise de rendez-vous</MudMenuItem>
-			<MudMenuItem Href="/Contact/Coordonnees">Coordonnées (contact)</MudMenuItem>
-			<MudMenuItem Href="/Contact/Pages">Mes pages officielles</MudMenuItem>
-		</ChildContent>
-	</MudMenu>
-	
-	<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
-		<ActivatorContent>
-			<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"><MudText><b>Partenariats</b></MudText></MudButton>
-		</ActivatorContent>
-		<ChildContent>
-			<MudMenuItem Href="https://www.facilaepaie.com" Target="_blank">Facilae Paie</MudMenuItem>
-		</ChildContent>
-	</MudMenu>
+	var formationActivator = new MenuButton("Formations");
+	var formationItems = new MenuButton[]
+	{
+		new("Catalogue en ligne", "https://abmformation.catalogueformpro.com", true),
+		new("Perfectionnement", $"/{nameof(Formations)}/Perfectionnement"),
+	};
+
+	var actualiteActivator = new MenuButton("Actualités", $"/{nameof(Actualites)}");
+
+	var abmPaieActivator = new MenuButton("ABM Paie".ToBold());
+	var abmPaieItems = new MenuButton[]
+	{
+		new("Organigramme", $"/{nameof(AbmPaie)}/Organigramme"),
+		new("Équipe pédagogique", $"/{nameof(AbmPaie)}/Equipe"),
+		new("Référente Assistance technique et pédagogique", $"/{nameof(AbmPaie)}/Assistance"),
+		new("Référente handicap", $"/{nameof(AbmPaie)}/Handicap"),
+		new("Les indicateurs formation", $"/{nameof(AbmPaie)}/Indicateurs"),
+		new("Mes valeurs", $"/{nameof(AbmPaie)}/Valeurs"),
+	};
+
+	var experienceActivator = new MenuButton("Expérience");
+	var experienceItems = new MenuButton[]
+	{
+		new("Curriculum vitae", "resources/ABMq_CV.pdf", true),
+		new("Salariée Silae", $"/{nameof(Experience)}/Silae"),
+		new("Formatrice Silae en chiffres", $"/{nameof(Experience)}/Chiffres"),
+		new("Étudiante CAFEL", $"/{nameof(Experience)}/Cafel"),
+	};
+
+	var contactActivator = new MenuButton("Contact");
+	var contactItems = new MenuButton[]
+	{
+		new("Prise de rendez-vous", $"/{nameof(Contact)}/Rdv"),
+		new("Coordonnées (contact)", $"/{nameof(Contact)}/Coordonnees"),
+		new("Mes pages officielles", $"/{nameof(Contact)}/Pages"),
+	};
+
+	var partenariatActivator = new MenuButton("Partenariats");
+	var partenariatItems = new MenuButton[] { new("Facilae Paie", "https://www.facilaepaie.com", true) };
+}
+
+<div>
+	<HeaderMenu Activator="accueilActivator" />
+	<HeaderMenu Activator="formationActivator" Items="formationItems" />
+	<HeaderMenu Activator="actualiteActivator" />
+	<HeaderMenu Activator="abmPaieActivator"  Items="abmPaieItems" />
+	<HeaderMenu Activator="experienceActivator" Items="experienceItems" />
+	<HeaderMenu Activator="contactActivator" Items="contactItems" Variant="Variant.Filled" />
+	<HeaderMenu Activator="partenariatActivator" Items="partenariatItems" />
 </div>

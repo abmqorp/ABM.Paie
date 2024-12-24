@@ -87,6 +87,63 @@ code {
     text-align: start;
 }
 
+/* Properties */
+
+@property --primary {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #3F51B5;
+}
+
+@property --primary-lighten-2 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #7986CB;
+}
+
+@property --primary-lighten-4 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #C5CAE9;
+}
+
+/* Header */
+
+.header-button {
+    color: var(--primary-lighten-2) !important;
+}
+
+.header-button-filled {
+    background: var(--primary-lighten-2) !important;
+    color: white !important;
+}
+
+/* QuoteCarousel */
+
+.quote-carousel {
+    height: 6rem;
+    margin: 3rem 0;
+}
+
+.quote-carousel-item {
+    align-items: center;
+    background: var(--primary-lighten-4);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+    .quote-carousel-item div {
+        width: 80%;
+    }
+
+    .quote-carousel-item span {
+        color: var(--primary);
+        white-space: nowrap;
+    }
+
+/*  */
+
 .center {
     align-items: center;
     display: flex;

@@ -1,0 +1,15 @@
+﻿@using ABM.Paie.Models
+
+<MudCarousel Class="quote-carousel" AutoCycleTime="TimeSpan.FromSeconds(10)" ShowBullets="false" TData="object">
+    @foreach (var quote in Quotes)
+    {
+        <MudCarouselItem Class="quote-carousel-item" Transition="Transition.Fade">
+            <div><i>@quote.Text</i> <span>@quote.Author</span></div>
+        </MudCarouselItem>
+    }
+</MudCarousel>
+
+@code {
+    [Parameter]
+    public required IEnumerable<Quote> Quotes { get; set; }
+}
