@@ -1,23 +1,20 @@
 ﻿@page "/Actualite"
-
-@code {
-
-}
+@using ABM.Paie.Resources
 
 <PageTitle>ABM Paie - Actualités</PageTitle>
 
 <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:50px 20px 0 20px"><b>Nouveautés</b></MudText>
 
 <MudPaper Class="indigo lighten-4 indigo-text d-flex flex-column" Style="padding:30px 20px;margin:20px 0;">
-	<MudText Class="white-text" Typo="Typo.h5" Style="margin:20px 0;">Décembre 2024 :</MudText>
-	<MudText Typo="Typo.h5">La formation <i style="white-space:nowrap;">Absences en heures mensualisées</i>.</MudText>
-	<MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
-		Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae
-		selon les méthodes réelles ou moyennes en heures ou en calendaire.<br />
-		<MudButton Class="white-text" Variant="Variant.Text"
-			Href="https://abmformation.catalogueformpro.com" Target="_blank" 
-			EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-			voir le catalogue en ligne
-		</MudButton>
-	</MudText>
+    <MudText Class="white-text" Typo="Typo.h5" Style="margin:20px 0;">Décembre 2024 :</MudText>
+    <MudText Typo="Typo.h5">La formation <i style="white-space:nowrap;">Absences en heures mensualisées</i>.</MudText>
+    <MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
+        Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae
+        selon les méthodes réelles ou moyennes en heures ou en calendaire.<br />
+        <MudButton Class="white-text" Variant="Variant.Text"
+                   Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank" 
+                   EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+            voir le catalogue en ligne
+        </MudButton>
+    </MudText>
 </MudPaper>

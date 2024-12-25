@@ -109,7 +109,7 @@ code {
 
 /* Header */
 
-.header-button {
+.header-button-text {
     color: var(--primary-lighten-2) !important;
 }
 
@@ -121,6 +121,7 @@ code {
 /* QuoteCarousel */
 
 .quote-carousel {
+    color: white;
     height: 6rem;
     margin: 3rem 0;
 }
@@ -128,7 +129,6 @@ code {
 .quote-carousel-item {
     align-items: center;
     background: var(--primary-lighten-4);
-    color: white;
     display: flex;
     justify-content: center;
 }

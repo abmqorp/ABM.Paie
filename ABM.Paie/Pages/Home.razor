@@ -1,6 +1,7 @@
 ﻿@page "/"
 @using ABM.Paie.Components
 @using ABM.Paie.Models
+@using ABM.Paie.Resources
 
 @{
     var quotes = new List<Quote>()
@@ -36,10 +37,10 @@
         new("Confucius", "Celui qui aime à apprendre est bien près du savoir."),
         new("Sultan Valad", "Il est impossible d'apprendre un métier tout seul. Une bougie s'allume au contact de la flamme d'une autre bougie. Si elle ne s'en approche pas elle restera éteinte."),
     };
-
+    
     var r = new Random();
     var n = quotes.Count;
-
+    
     while (n > 1) {
         n--;
         var k = r.Next(n + 1);
@@ -47,7 +48,7 @@
         quotes[k] = quotes[n];
         quotes[n] = temp;
     }
-
+    
     var quotes1 = quotes[0..6];
     var quotes2 = quotes[6..12];
     var quotes3 = quotes[12..18];
@@ -66,15 +67,15 @@
     </div>
     
     <div class="center" style="margin:30px 0;">
-    	<MudText Class="indigo-text" Typo="Typo.h5">
+        <MudText Class="indigo-text" Typo="Typo.h5">
             <b>Faire découvrir, progresser et se perfectionner</b>
-    	</MudText>
+        </MudText>
     </div>
     
     <div class="center" style="margin:20px 0 50px 0;">
         <MudText Typo="Typo.h6">
-    		Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
-    	</MudText>
+            Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
+        </MudText>
     </div>
 
     <QuoteCarousel Quotes="quotes1" />
@@ -89,9 +90,9 @@
                 EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
                 en savoir plus
             </MudButton>
-    	</div>
+        </div>
         <div style="margin:0px 20px">
-    		<MudText Class="indigo-text" Typo="Typo.h5">
+            <MudText Class="indigo-text" Typo="Typo.h5">
                 <b>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</b><br />
             </MudText>
             <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
@@ -115,9 +116,9 @@
     <div class="center" style="margin:80px 0 60px 0;">
         <MudText Typo="Typo.h6">
             <b>Découvrez le catalogue de formation ABM Paie au travers de tous les programmes de formation</b><br />
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                Href="https://abmformation.catalogueformpro.com" Target="_blank" 
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+                       Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank"
+                       EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
                 en savoir plus
             </MudButton>
         </MudText>
@@ -127,7 +128,7 @@
     
     <div class="center" style="margin:60px 0;">
         <MudText Class="indigo-text" Typo="Typo.h5">
-			<b>Gérez et visualisez votre apprentissage : <span class="black-text" style="font-family:'Segoe Script';white-space:nowrap;">le <span class="green-text">b.a.-b</span>Mp<span class="green-text">a</span>ie</span></b>
+            <b>Gérez et visualisez votre apprentissage : <span class="black-text" style="font-family:'Segoe Script';white-space:nowrap;">le <span class="green-text">b.a.-b</span>Mp<span class="green-text">a</span>ie</span></b>
         </MudText>
     </div>
     
@@ -144,7 +145,7 @@
     <QuoteCarousel Quotes="quotes3" />
 
     <div class="center" style="margin:60px 0;">
-    	<div style="width:stretch;">
+        <div style="width:stretch;">
             <MudText Class="indigo-text" Typo="Typo.h5">
                 <b>ABM Paie, c'est</b>
             </MudText>
@@ -160,19 +161,19 @@
             </MudText>
             <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
                 <div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Animation</MudText></div><div style="width:80px;" /><div style="width:80px;" />
-			</div>
+            </div>
             <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
                 <div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Qualité</MudText></div><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" />
-			</div>
+            </div>
             <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
                 <div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Respect</MudText></div><div style="width:80px;" />
             </div>
             <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
                 <div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Originalité</MudText></div><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" />
-			</div>
+            </div>
             <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
                 <div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Curiosité</MudText></div>
-			</div>
+            </div>
             <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
                 Href="@($"/{nameof(AbmPaie)}/Valeurs")"
                 EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
@@ -188,9 +189,9 @@
             <MudText Class="indigo-text" Typo="Typo.h5">
                 <b>Mes actualités</b>
             </MudText>
-			<MudCard Style="width:300px;margin:20px 0;">
+            <MudCard Style="width:300px;margin:20px 0;">
                 <MudCardHeader>
-					<MudText Typo="Typo.h6">
+                    <MudText Typo="Typo.h6">
                         Décembre 2024
                     </MudText>
                 </MudCardHeader>
@@ -214,20 +215,20 @@
     <QuoteCarousel Quotes="quotes5" />
 
     <div class="center" style="margin:30px 0 60px 0;">
-    	<div>
+        <div>
             <MudText Class="indigo-text" Typo="Typo.h5">
                 <b>Partenariats</b>
             </MudText>
             <MudCard Style="width:250px;margin:20px;">
                 <MudCardMedia Image="https://static.wixstatic.com/media/5bc43a_e8d3d16eefd8470ab97f4eee74f65d9e~mv2.jpg/v1/fill/w_474,h_486,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Facilae_edited.jpg" Height="220" />
                 <MudCardContent>
-					<MudText>Facilite vos migrations et vos paramétrages dans Silae...</MudText>
-					<MudButton Class="teal-text text-darken-3" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;" Href="https://www.facilaepaie.com" Target="_blank">
-						visiter Facilae Paie
-					</MudButton>
+                    <MudText>Facilite vos migrations et vos paramétrages dans Silae...</MudText>
+                    <MudButton Class="teal-text text-darken-3" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;" 
+                               Href="https://www.facilaepaie.com" Target="@Constants.Blank">
+                        visiter Facilae Paie
+                    </MudButton>
                 </MudCardContent>
             </MudCard>
         </div>
     </div>
-
 </div>

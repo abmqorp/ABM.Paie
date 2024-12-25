@@ -1,49 +1,7 @@
 ﻿@page "/AbmPaie"
 @page "/AbmPaie/{Title}"
+@using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
-
-@code {
-    [Parameter]
-    public string? Title { get; set; }
-
-    private bool OrganigrammeExpanded => Title is "Organigramme";
-    private bool EquipeExpanded => Title is "Equipe";
-    private bool AssistanceExpanded => Title is "Assistance";
-    private bool HandicapExpanded => Title is "Handicap";
-    private bool IndicateursExpanded => Title is "Indicateurs";
-    private bool ValeursExpanded => Title is "Valeurs";
-
-    private void OrganigrammeExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Organigramme");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void EquipeExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Equipe");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void AssistanceExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Assistance");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void HandicapExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Handicap");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void IndicateursExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Indicateurs");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void ValeursExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Valeurs");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-}
 
 <PageTitle>ABM Paie</PageTitle>
 
@@ -81,12 +39,12 @@
                         en relevant le défi d'innover l'apprentissage de la paie et du logiciel de paie grâce aux nouvelles technologies actuelles 
                         et à toute l'expérience acquise depuis plus de 8 ans 
                         et appuyée par l'obtention du diplôme de <i>Chef de projet, Apprentissage et Formation en ligne</i>.
-					</MudText>
-					<MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
                         Href="@($"/{nameof(Experience)}/Silae")" 
                         EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-						en savoir plus sur mon parcours
-					</MudButton>
+                        en savoir plus sur mon parcours
+                    </MudButton>
                 </div>
             </ChildContent>
         </MudExpansionPanel>
@@ -100,10 +58,10 @@
                 <div class="d-flex flex-column" style="margin-top:20px;">
                     <MudText Style="margin:10px 0 0 0;">
                         Pour toutes demandes relatives à une assistance technique pour pédagogique, je suis à votre écoute à l'adresse  :
-					</MudText>
-					<MudButton Variant="Variant.Text" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-						<a href="mailto:assistance-technique-pedagogique@abmq.fr">assistance-technique-pedagogique@abmq.fr</a>
-					</MudButton>
+                    </MudText>
+                    <MudButton Variant="Variant.Text" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        <a href="mailto:assistance-technique-pedagogique@abmq.fr">assistance-technique-pedagogique@abmq.fr</a>
+                    </MudButton>
 
                     <MudText Style="margin:20px 0 0 0;">
                         2024-2025 : Étudiante au CAFEL, <i>Chef de projet, Formation et Apprentissage en ligne</i> (Bac+4)
@@ -115,14 +73,14 @@
                     </MudButton>
                 </div>
             </ChildContent>
-		</MudExpansionPanel>
-		<MudExpansionPanel Expanded="@HandicapExpanded" ExpandedChanged="HandicapExpandedChanged">
-			<TitleContent>
-				<MudText Typo="Typo.h5">
-					Référente Handicap
-				</MudText>
-			</TitleContent>
-			<ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@HandicapExpanded" ExpandedChanged="HandicapExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Référente Handicap
+                </MudText>
+            </TitleContent>
+            <ChildContent>
                 <div class="d-flex flex-column" style="margin-top:20px;">
                     <MudText Style="margin:10px 0 0 0;">
                         Pour toutes demandes relatives à un handicap, je suis à votre écoute à l'adresse  :
@@ -132,17 +90,17 @@
                     </MudButton>
 
                     <MudText Style="margin:20px 0 0 0;">
-						30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i> (2h E-learning)
+                        30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i> (2h E-learning)
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="_blank"
-                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-						visualiser mon attestation de réalisation
+                               Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="@Constants.Blank"
+                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser mon attestation de réalisation
                     </MudButton>
                     <MudText>
-						Cette formation se compose de deux autres modules programmés pour 2025 :
+                        Cette formation se compose de deux autres modules programmés pour 2025 :
                     </MudText>
-					<div class="d-flex flex-wrap" style="margin:10px 0 20px 0">
+                    <div class="d-flex flex-wrap" style="margin:10px 0 20px 0">
                         <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
                         <MudText>
                             <i>Devenir Référent handicap</i>
@@ -150,32 +108,32 @@
                             <i>Troubles cognitifs</i>
                         </MudText>
                     </div>
-				</div>
-			</ChildContent>
-		</MudExpansionPanel>
-		<MudExpansionPanel Expanded="@IndicateursExpanded" ExpandedChanged="IndicateursExpandedChanged">
-			<TitleContent>
-				<MudText Typo="Typo.h5">
-					Les indicateurs de formation
-				</MudText>
-			</TitleContent>
-			<ChildContent>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@IndicateursExpanded" ExpandedChanged="IndicateursExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Les indicateurs de formation
+                </MudText>
+            </TitleContent>
+            <ChildContent>
                 <div class="center flex-column" style="margin:20px;">
                     <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:10px 0">
                         <b>ABM Paie, c'est</b>
                     </MudText>
                     <MudText Typo="Typo.h5">Satisfaction : 95 %</MudText>
-				</div>
-			</ChildContent>
-		</MudExpansionPanel>
-		<MudExpansionPanel Expanded="@ValeursExpanded" ExpandedChanged="ValeursExpandedChanged">
-			<TitleContent>
-				<MudText Typo="Typo.h5">
-					Mes valeurs
-				</MudText>
-			</TitleContent>
-			<ChildContent>
-				<div class="d-flex flex-column" style="margin-top:20px;">
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@ValeursExpanded" ExpandedChanged="ValeursExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Mes valeurs
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
                     <MudText Class="indigo-text" Typo="Typo.h6" Style="margin:10px 0 0 0;">
                         La qualité
                     </MudText>
@@ -230,11 +188,54 @@
                         Cela s'est traduit par ma volonté de retourner sur les bancs de la fac en m'étant inscrite à la formation CAFEL 
                         pour découvrir de nouveaux logiciels de conception de digital formation.
                     </MudText>
-				</div>
-			</ChildContent>
-		</MudExpansionPanel>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
     </MudExpansionPanels>
 </div>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    private bool OrganigrammeExpanded => Title is "Organigramme";
+    private bool EquipeExpanded => Title is "Equipe";
+    private bool AssistanceExpanded => Title is "Assistance";
+    private bool HandicapExpanded => Title is "Handicap";
+    private bool IndicateursExpanded => Title is "Indicateurs";
+    private bool ValeursExpanded => Title is "Valeurs";
+
+    private void OrganigrammeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Organigramme");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void EquipeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Equipe");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void AssistanceExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Assistance");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void HandicapExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Handicap");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void IndicateursExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Indicateurs");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+    private void ValeursExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/ABM-Paie/Valeurs");
+        else NavigationManager.NavigateTo("/ABM-Paie");
+    }
+}
 
 <style>
     .mud-expand-panel-header {

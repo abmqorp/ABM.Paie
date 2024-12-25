@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using ABM.Paie.Resources;
 
 namespace ABM.Paie.Models;
 
 public class MenuButton(string text, string? href = null, bool blank = false)
 {
-    public MarkupString Text { get; } = (MarkupString)text;
+    public string Text { get; } = text;
     public string? Href { get; } = href;
     public bool Blank { get; } = blank;
-    public string? Target => Blank ? "_blank" : null;
+    public string? Target => Blank ? Constants.Blank : null;
 }

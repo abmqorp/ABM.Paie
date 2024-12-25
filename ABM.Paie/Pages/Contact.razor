@@ -1,6 +1,135 @@
 ﻿@page "/Contact"
 @page "/Contact/{Title}"
+@using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
+
+<PageTitle>ABM Paie - Contact</PageTitle>
+
+<div style="text-align:justify;margin-bottom:20px;">
+    <div style="margin:20px 0px;">
+        <div class="d-flex flex-wrap align-top">
+            <a href="@($"/{nameof(Contact)}/Rdv")">
+                <MudText Class="indigo-text" Typo="Typo.h6">
+                    Réserver un créneau horaire
+                </MudText>
+            </a>
+            <a href="@($"/{nameof(Contact)}/Rdv")">
+                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
+            </a>
+        </div>
+
+        <MudText style="margin:10px 0px;">
+            Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
+        </MudText>
+
+        <div class="d-flex flex-wrap align-top">
+            <a href="@($"/{nameof(Contact)}/Coordonnees")">
+                <MudText Class="indigo-text" Typo="Typo.h6">
+                    Contact direct
+                </MudText>
+            </a>
+            <a href="@($"/{nameof(Contact)}/Coordonnees")">
+                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
+            </a>
+        </div>
+
+        <MudText Style="margin:10px 0px;">
+            Si je suis indisponible (en formation par exemple), veuillez me laisser vos coordonnées, de préférence par SMS avec :
+        </MudText>
+        <div class="d-flex flex-wrap">
+            <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
+            <MudText>
+                le nom de l'entreprise,
+                <br />
+                la personne à contacter,
+                <br />
+                le numéro de téléphone,
+                <br />
+                et l'objet de l'appel.
+            </MudText>
+        </div>
+
+        <MudText Style="margin:10px 0px;">
+            <b>Privilégiez la prise de rendez-vous en ligne,</b> nous serons sûrs de consacrer un temps dédié à notre échange (15 ou 30 minutes selon vos préférences et besoins).
+        </MudText>
+    </div>
+
+    <MudExpansionPanels MultiExpansion="true">
+        <MudExpansionPanel Expanded="@RdvExpanded" ExpandedChanged="RdvExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Prise de rendez-vous
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="center">
+                    <iframe src="https://outlook.office365.com/owa/calendar/rdv@abmq.fr/bookings/" scrolling="yes" style="background-color:white;border:0;min-height:2055px;" />
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@CoordonneesExpanded" ExpandedChanged="CoordonneesExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Coordonnées (contact)
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex justify-space-around flex-wrap" style="margin-top:20px;">
+                    <div>
+                        <MudList Class="pointer-events-none" T="string">
+                            <MudListSubheader>
+                                <MudText Typo="Typo.h6">Par téléphone : +33 7 48 10 65 39</MudText>
+                            </MudListSubheader>
+                            <MudListItem Text="SMS" Icon="@Icons.Material.TwoTone.Textsms" />
+                            <MudListItem Text="Appel" Icon="@Icons.Material.TwoTone.Phone" />
+                            <MudListItem>
+                                <img src="/images/whatsapp/Digital_Inline_Green.png" alt="WhatsApp" height="24" />
+                            </MudListItem>
+                        </MudList>
+
+                        <MudDivider Style="margin:20px 0px;" />
+                    </div>
+
+                    <div>
+                        <MudList T="string">
+                            <MudListSubheader>
+                                <MudText Typo="Typo.h6">Une question ?</MudText>
+                            </MudListSubheader>
+                            <MudListItem Text="paie-formation@abmq.fr" Href="mailto:paie-formation@abmq.fr" Icon="@Icons.Material.TwoTone.Email" />
+                        </MudList>
+
+                        <MudDivider Style="margin:20px 0px;" />
+
+                        <MudList T="string">
+                            <MudListSubheader>
+                                <MudText Typo="Typo.h6">Demandes précises :</MudText>
+                            </MudListSubheader>
+                            <MudListItem Text="Sur le handicap" SecondaryText="referent-handicap@abmq.fr" Href="mailto:referent-handicap@abmq.fr" />
+                            <MudListItem Text="Sur l'assistance technique et pédagogique" SecondaryText="assistance-technique-pedagogique@abmq.fr" Href="mailto:assistance-technique-pedagogique@abmq.fr" />
+                            <MudListItem Text="Sur la facturation" SecondaryText="paie-facturation@abmq.fr" Href="mailto:paie-facturation@abmq.fr" />
+                            <MudListItem Text="Sur l'historique des versions" SecondaryText="paie-historique-versions@abmq.fr" Href="mailto:paie-historique-versions@abmq.fr" />
+                        </MudList>
+                    </div>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@PagesExpanded" ExpandedChanged="PagesExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Mes pages officielles
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex align-bottom" style="margin:30px 0px 10px 0px;">
+                    <MudText Typo="Typo.h6">
+                        Mon réseau professionnel :
+                    </MudText>
+                    <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="@Constants.Blank" style="margin:5px 0px 0px 8px;"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="22" /></a>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+    </MudExpansionPanels>
+</div>
 
 @code {
     [Parameter]
@@ -26,134 +155,6 @@
         else NavigationManager.NavigateTo("/Contact");
     }
 }
-
-<PageTitle>ABM Paie - Contact</PageTitle>
-
-<div style="text-align:justify;margin-bottom:20px;">
-    <div style="margin:20px 0px;">
-        <div class="d-flex flex-wrap align-top">
-			<a href="@($"/{nameof(Contact)}/Rdv")">
-				<MudText Class="indigo-text" Typo="Typo.h6">
-					Réserver un créneau horaire
-				</MudText>
-			</a>
-            <a href="@($"/{nameof(Contact)}/Rdv")">
-                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
-            </a>
-        </div>
-
-        <MudText style="margin:10px 0px;">
-	    	Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
-        </MudText>
-
-        <div class="d-flex flex-wrap align-top">
-			<a href="@($"/{nameof(Contact)}/Coordonnees")">
-				<MudText Class="indigo-text" Typo="Typo.h6">
-					Contact direct
-				</MudText>
-			</a>
-			<a href="@($"/{nameof(Contact)}/Coordonnees")">
-                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
-            </a>
-        </div>
-
-        <MudText Style="margin:10px 0px;">
-	    	Si je suis indisponible (en formation par exemple), veuillez me laisser vos coordonnées, de préférence par SMS avec :
-        </MudText>
-        <div class="d-flex flex-wrap">
-            <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
-            <MudText>
-                le nom de l'entreprise,
-                <br />
-                la personne à contacter,
-                <br />
-                le numéro de téléphone,
-                <br />
-                et l'objet de l'appel.
-            </MudText>
-        </div>
-
-        <MudText Style="margin:10px 0px;">
-            <b>Privilégiez la prise de rendez-vous en ligne,</b> nous serons sûrs de consacrer un temps dédié à notre échange (15 ou 30 minutes selon vos préférences et besoins).
-        </MudText>
-    </div>
-
-    <MudExpansionPanels MultiExpansion="true">
-        <MudExpansionPanel Expanded="@RdvExpanded" ExpandedChanged="RdvExpandedChanged">
-            <TitleContent>
-				<MudText Typo="Typo.h5">
-					Prise de rendez-vous
-                </MudText>
-            </TitleContent>
-            <ChildContent>
-                <div class="center">
-                    <iframe src="https://outlook.office365.com/owa/calendar/rdv@abmq.fr/bookings/" scrolling="yes" style="background-color:white;border:0;min-height:2055px;" />
-                </div>
-            </ChildContent>
-		</MudExpansionPanel>
-        <MudExpansionPanel Expanded="@CoordonneesExpanded" ExpandedChanged="CoordonneesExpandedChanged">
-            <TitleContent>
-				<MudText Typo="Typo.h5">
-                    Coordonnées (contact)
-                </MudText>
-            </TitleContent>
-            <ChildContent>
-                <div class="d-flex justify-space-around flex-wrap" style="margin-top:20px;">
-                    <div>
-                        <MudList Class="pointer-events-none" T="string">
-                            <MudListSubheader>
-                                <MudText Typo="Typo.h6">Par téléphone : +33 7 48 10 65 39</MudText>
-                            </MudListSubheader>
-                            <MudListItem Text="SMS" Icon="@Icons.Material.TwoTone.Textsms" />
-                            <MudListItem Text="Appel" Icon="@Icons.Material.TwoTone.Phone" />
-                            <MudListItem>
-                                <img src="/images/whatsapp/Digital_Inline_Green.png" alt="WhatsApp" height="24" />
-                            </MudListItem>
-                        </MudList>
-
-                        <MudDivider Style="margin:20px 0px;" />
-                    </div>
-
-					<div>
-                        <MudList T="string">
-                            <MudListSubheader>
-                                <MudText Typo="Typo.h6">Une question ?</MudText>
-                            </MudListSubheader>
-                            <MudListItem Text="paie-formation@abmq.fr" Href="mailto:paie-formation@abmq.fr" Icon="@Icons.Material.TwoTone.Email" />
-                        </MudList>
-
-						<MudDivider Style="margin:20px 0px;" />
-
-                        <MudList T="string">
-                            <MudListSubheader>
-                                <MudText Typo="Typo.h6">Demandes précises :</MudText>
-                            </MudListSubheader>
-                            <MudListItem Text="Sur le handicap" SecondaryText="referent-handicap@abmq.fr" Href="mailto:referent-handicap@abmq.fr" />
-                            <MudListItem Text="Sur l'assistance technique et pédagogique" SecondaryText="assistance-technique-pedagogique@abmq.fr" Href="mailto:assistance-technique-pedagogique@abmq.fr" />
-                            <MudListItem Text="Sur la facturation" SecondaryText="paie-facturation@abmq.fr" Href="mailto:paie-facturation@abmq.fr" />
-                            <MudListItem Text="Sur l'historique des versions" SecondaryText="paie-historique-versions@abmq.fr" Href="mailto:paie-historique-versions@abmq.fr" />
-                        </MudList>
-                    </div>
-                </div>
-            </ChildContent>
-		</MudExpansionPanel>
-        <MudExpansionPanel Expanded="@PagesExpanded" ExpandedChanged="PagesExpandedChanged">
-            <TitleContent>
-				<MudText Typo="Typo.h5">
-					Mes pages officielles
-                </MudText>
-            </TitleContent>
-            <ChildContent>
-                <div class="d-flex align-bottom" style="margin:30px 0px 10px 0px;">
-                    <MudText Typo="Typo.h6">
-				    	Mon réseau professionnel :
-					</MudText>
-                    <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="_blank" style="margin:5px 0px 0px 8px;"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="22" /></a>
-                </div>
-            </ChildContent>
-        </MudExpansionPanel>
-    </MudExpansionPanels>
-</div>
 
 <style>
     .mud-expand-panel-header {

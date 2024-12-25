@@ -1,37 +1,13 @@
 ﻿@page "/Experience"
 @page "/Experience/{Title}"
+@using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
-
-@code {
-    [Parameter]
-    public string? Title { get; set; }
-
-    private bool SilaeExpanded => Title is "Silae";
-    private bool ChiffresExpanded => Title is "Chiffres";
-    private bool CafelExpanded => Title is "Cafel";
-
-    private void SilaeExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Experience/Silae");
-        else NavigationManager.NavigateTo("/Experience");
-    }
-    private void ChiffresExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Experience/Chiffres");
-        else NavigationManager.NavigateTo("/Experience");
-    }
-    private void CafelExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Experience/Cafel");
-        else NavigationManager.NavigateTo("/Experience");
-    }
-}
 
 <PageTitle>ABM Paie - Expérience</PageTitle>
 
 <div style="text-align:justify;margin-bottom:20px;">
     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-               Href="/resources/ABMq_CV.pdf" Target="_blank"
+               Href="/resources/ABMq_CV.pdf" Target="@Constants.Blank"
                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
         visualiser mon curriculum vitae
     </MudButton>
@@ -48,8 +24,8 @@
                     <MudText Typo="Typo.h6" Style="margin:10px 0 0 0;">8 ans au sein de la société Silae</MudText>
                     <MudDivider Style="margin:10px 0 0 0;" />
 
-					<MudText Class="indigo-text" Style="margin:20px 0 0 0;">
-						01/11/2024 - 30/11/2020 : <b>Formatrice en clientèle</b>
+                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
+                        01/11/2024 - 30/11/2020 : <b>Formatrice en clientèle</b>
                     </MudText>
                     <MudText Style="margin:10px 0 0 0;">
                         Mes quatre premières années chez Silae ont été riches sur de nombreux aspects.
@@ -57,7 +33,7 @@
                     <MudText Style="margin:10px 0 0 0;">
                         Le premier aura été sur l'aspect humain, j’ai eu la joie de rencontrer beaucoup d’apprenants 
                         et d’avoir eu plaisir autant à vous former qu’à vous découvrir.
-					</MudText>
+                    </MudText>
                     <MudText Style="margin:10px 0 0 0;">
                         J’ai eu la chance d’avoir vécu des aventures humaines extraordinaires.
                     </MudText>
@@ -103,7 +79,7 @@
                     <MudDivider Style="margin:10px 0 0 0;" />
 
                     <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
-						01/06/2023 - 31/10/2024 : <b>Analyste Expert QA Paie</b>
+                        01/06/2023 - 31/10/2024 : <b>Analyste Expert QA Paie</b>
                     </MudText>
                     <MudText Style="margin:10px 0 0 0;">
                         Ma dernière année chez Silae a été plus axée sur le produit, 
@@ -129,13 +105,13 @@
                 <div class="d-flex flex-column" style="margin-top:20px;padding:20px 10px;">
                     <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">3300+ heures de formation en 430+ formations.</MudText>
 
-					<MudText>
-						L'un de mes objectifs est de réussir à reformaliser toutes ces formations acquises dans mon champ de compétence 
+                    <MudText>
+                        L'un de mes objectifs est de réussir à reformaliser toutes ces formations acquises dans mon champ de compétence 
                         selon la norme Qualiopi pour mon enrichir mon catalogue 
                         mais également de créer de nouvelles thématiques.
                     </MudText>
 
-					<MudText Style="margin:20px 0;"><b>Quelques graphiques de mon métier de formatrice chez Silae</b></MudText>
+                    <MudText Style="margin:20px 0;"><b>Quelques graphiques de mon métier de formatrice chez Silae</b></MudText>
 
                     <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">La formation <i>Initiale</i></MudText>
 
@@ -145,15 +121,15 @@
                     <MudText>82% en présentiel et 18% en distanciel</MudText>
                     <img width="450" style="margin:20px 0;" src="/images/graphs/Initiale_PresentielVsDistanciel.png" alt="Initiale : Présentiel vs Distanciel" />
 
-					<MudText>Mes déplacements selon les régions de France métropolitaine</MudText>
+                    <MudText>Mes déplacements selon les régions de France métropolitaine</MudText>
                     <img width="450" style="margin:20px 0;" src="/images/graphs/Region.png" alt="Déplacements selon les régions" />
 
-					<MudText>Mes déplacements selon les départements de France métropolitaine</MudText>
+                    <MudText>Mes déplacements selon les départements de France métropolitaine</MudText>
                     <img width="450" style="margin:20px 0;" src="/images/graphs/Departement.png" alt="Déplacements selon les départements" />
 
                     <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">En présentiel</MudText>
 
-					<MudText>84% en Intra et 16% en Inter</MudText>
+                    <MudText>84% en Intra et 16% en Inter</MudText>
                     <img width="450" style="margin:20px 0;" src="/images/graphs/Initiale_IntraVsInter.png" alt="Initiale : Intra vs Inter" />
 
                     <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">En inter</MudText>
@@ -298,7 +274,7 @@
                         j’apprends les techniques de réalisation d’un projet <span style="white-space:nowrap;">de A à Z.</span>
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                               Href="/resources/Plaquette_CAFEL_2024-2025.pdf" Target="_blank" 
+                               Href="/resources/Plaquette_CAFEL_2024-2025.pdf" Target="@Constants.Blank"
                                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         visualiser le programme de formation CAFEL
                     </MudButton>
@@ -308,7 +284,7 @@
                         comme Kumullus ou Storyline.
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                               Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf" Target="_blank" 
+                               Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf" Target="@Constants.Blank"
                                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         décrouvrir mon projet de formation dont la soutenance aura lieu fin juin 2025
                     </MudButton>
@@ -317,6 +293,31 @@
         </MudExpansionPanel>
     </MudExpansionPanels>
 </div>
+
+@code {
+    [Parameter]
+    public string? Title { get; set; }
+
+    private bool SilaeExpanded => Title is "Silae";
+    private bool ChiffresExpanded => Title is "Chiffres";
+    private bool CafelExpanded => Title is "Cafel";
+
+    private void SilaeExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Silae");
+        else NavigationManager.NavigateTo("/Experience");
+    }
+    private void ChiffresExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Chiffres");
+        else NavigationManager.NavigateTo("/Experience");
+    }
+    private void CafelExpandedChanged(bool value)
+    {
+        if (value) NavigationManager.NavigateTo("/Experience/Cafel");
+        else NavigationManager.NavigateTo("/Experience");
+    }
+}
 
 <style>
     .mud-expand-panel-header {
