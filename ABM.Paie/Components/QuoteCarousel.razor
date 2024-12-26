@@ -4,7 +4,7 @@
     @foreach (var quote in Quotes)
     {
         <MudCarouselItem Class="quote-carousel-item" Transition="Transition.Fade">
-            <div><i>@quote.Text</i> <span>@quote.Author</span></div>
+            <div><span>@quote.Text</span> <span>@quote.Author</span></div>
         </MudCarouselItem>
     }
 </MudCarousel>

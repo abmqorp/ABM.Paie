@@ -163,12 +163,20 @@ code {
         width: 80%;
     }
 
-    .quote-carousel-item span {
+    .quote-carousel-item span:first-child {
+        font-style: italic;
+    }
+
+    .quote-carousel-item span:nth-child(2) {
         color: var(--primary);
         white-space: nowrap;
     }
 
 /* Common */
+
+.bold {
+    font-weight: bold;
+}
 
 .center {
     align-items: center;

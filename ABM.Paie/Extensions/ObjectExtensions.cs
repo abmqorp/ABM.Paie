@@ -2,8 +2,5 @@
 
 public static class ObjectExtensions
 {
-    public static string? ToCss(this object obj)
-    {
-        return obj.ToString()?.ToLower();
-    }
+    public static string? ToCss(this object obj) => obj.ToString()?.ToLower().Trim();
 }

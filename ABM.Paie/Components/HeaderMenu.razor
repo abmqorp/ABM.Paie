@@ -3,10 +3,10 @@
 
 <MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
     <ActivatorContent>
-        <MudButton Class="@($"header-button {Variant.ToCss()}")" 
+        <MudButton Class="@($"header-button {Variant}".ToCss())" 
                    Href="@Activator.Href" Target="@Activator.Target"
                    Variant="@Variant" EndIcon="@Icon">
-            <MudText>@Activator.Text.ToMarkup()</MudText>
+            <MudText><span class="@Activator.Css">@Activator.Text</span></MudText>
         </MudButton>
     </ActivatorContent>
     <ChildContent>

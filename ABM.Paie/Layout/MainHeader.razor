@@ -18,7 +18,7 @@
 
 	var actualiteActivator = new MenuButton("Actualités", UriHelper.Get(Constants.Actualite));
 
-	var abmPaieActivator = new MenuButton("ABM Paie".ToBold());
+	var abmPaieActivator = new MenuButton("ABM Paie", css: "bold");
 	var abmPaieItems = new MenuButton[]
 	{
 		new("Organigramme", UriHelper.Get(Section.Organigramme)),
@@ -54,7 +54,7 @@
 	<HeaderMenu Activator="accueilActivator" />
 	<HeaderMenu Activator="formationActivator" Items="formationItems" />
 	<HeaderMenu Activator="actualiteActivator" />
-	<HeaderMenu Activator="abmPaieActivator"  Items="abmPaieItems" />
+	<HeaderMenu Activator="abmPaieActivator" Items="abmPaieItems" />
 	<HeaderMenu Activator="experienceActivator" Items="experienceItems" />
 	<HeaderMenu Activator="contactActivator" Items="contactItems" Variant="Variant.Filled" />
 	<HeaderMenu Activator="partenariatActivator" Items="partenariatItems" />
