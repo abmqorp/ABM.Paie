@@ -89,6 +89,18 @@ code {
 
 /* Properties */
 
+@property --danger-darken-3 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #AD1457;
+}
+
+@property --danger-darken-4 {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #880E4F;
+}
+
 @property --primary {
     syntax: "<color>";
     inherits: false;
@@ -107,15 +119,29 @@ code {
     initial-value: #C5CAE9;
 }
 
-/* Header */
+/* Footer */
 
-.header-button-text {
-    color: var(--primary-lighten-2) !important;
+.footer-button {
+    color: white;
 }
 
-.header-button-filled {
-    background: var(--primary-lighten-2) !important;
-    color: white !important;
+.footer-button.text.danger {
+    color: var(--danger-darken-4);
+}
+
+.footer-button.filled.danger {
+    background: var(--danger-darken-3);
+}
+
+/* Header */
+
+.header-button.text {
+    color: var(--primary-lighten-2);
+}
+
+.header-button.filled {
+    background: var(--primary-lighten-2);
+    color: white;
 }
 
 /* QuoteCarousel */
@@ -142,13 +168,17 @@ code {
         white-space: nowrap;
     }
 
-/*  */
+/* Common */
 
 .center {
     align-items: center;
     display: flex;
     justify-content: center;
     margin: 10px 0px;
+}
+
+.impact {
+    font-family: Impact;
 }
 
 /* Mud */

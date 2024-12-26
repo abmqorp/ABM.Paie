@@ -307,7 +307,7 @@
 
     private void ExpandedChanged(bool value, Section section)
     {
-            NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Experience));
+        NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Experience));
     }
 
     private void SilaeExpandedChanged(bool value) => ExpandedChanged(value, Section.Silae);

@@ -144,7 +144,7 @@
 
     private void ExpandedChanged(bool value, Section section)
     {
-            NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Contact));
+        NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Contact));
     }
 
     private void RdvExpandedChanged(bool value) => ExpandedChanged(value, Section.Rdv);
