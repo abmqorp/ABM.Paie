@@ -1,5 +1,7 @@
 ﻿@page "/Experience"
-@page "/Experience/{Title}"
+@page "/Experience/{Sub}"
+@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
 @using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
 
@@ -13,7 +15,7 @@
     </MudButton>
     
     <MudExpansionPanels MultiExpansion="true">
-        <MudExpansionPanel Expanded="@SilaeExpanded" ExpandedChanged="SilaeExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Silae)" ExpandedChanged="SilaeExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Salariée Silae
@@ -95,7 +97,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@ChiffresExpanded" ExpandedChanged="ChiffresExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Chiffres)" ExpandedChanged="ChiffresExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Formatrice Silae en chiffres
@@ -261,7 +263,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@CafelExpanded" ExpandedChanged="CafelExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Cafel)" ExpandedChanged="CafelExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Étudiante Cafel
@@ -296,27 +298,21 @@
 
 @code {
     [Parameter]
-    public string? Title { get; set; }
+    public string? Sub { get; set; }
 
-    private bool SilaeExpanded => Title is "Silae";
-    private bool ChiffresExpanded => Title is "Chiffres";
-    private bool CafelExpanded => Title is "Cafel";
+    private bool IsExpanded(Section section)
+    {
+        return Sub == section.ToString();
+    }
 
-    private void SilaeExpandedChanged(bool value)
+    private void ExpandedChanged(bool value, Section section)
     {
-        if (value) NavigationManager.NavigateTo("/Experience/Silae");
-        else NavigationManager.NavigateTo("/Experience");
+            NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Experience));
     }
-    private void ChiffresExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Experience/Chiffres");
-        else NavigationManager.NavigateTo("/Experience");
-    }
-    private void CafelExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Experience/Cafel");
-        else NavigationManager.NavigateTo("/Experience");
-    }
+
+    private void SilaeExpandedChanged(bool value) => ExpandedChanged(value, Section.Silae);
+    private void ChiffresExpandedChanged(bool value) => ExpandedChanged(value, Section.Chiffres);
+    private void CafelExpandedChanged(bool value) => ExpandedChanged(value, Section.Cafel);
 }
 
 <style>

@@ -1,4 +1,6 @@
-﻿@using ABM.Paie.Pages
+﻿@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
+@using ABM.Paie.Pages
 @using ABM.Paie.Resources
 
 <div class="d-flex flex-wrap justify-center" style="padding:20px 0px;max-width:1000px;">
@@ -11,26 +13,26 @@
 
         <br />
 
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formation)}")" Style="margin:40px 0px 0px 0px;">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Formation))" Style="margin:40px 0px 0px 0px;">
             <MudText Typo="Typo.h5">
                 <b>Formations</b>
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formation)}/Catalogue")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Catalogue))" Style="padding:0px 8px">
             <MudText>
                 Catalogue en ligne
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Formation)}/Perfectionnement")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Perfectionnement))" Style="padding:0px 8px">
             <MudText>
                 Perfectionnement
             </MudText>
         </MudButton>
     </div>
     <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Actualite)}")">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Actualite))">
             <MudText Typo="Typo.h5">
                 <b>Actualités</b>
             </MudText>
@@ -38,68 +40,68 @@
 
         <br />
 
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}")" Style="margin:40px 0px 0px 0px;">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.AbmPaie))" Style="margin:40px 0px 0px 0px;">
             <MudText Typo="Typo.h5">
                 <b>ABM Paie</b>
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Organigramme")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Organigramme))" Style="padding:0px 8px">
             <MudText>
                 Organigramme
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Equipe")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Equipe))" Style="padding:0px 8px">
             <MudText>
                 Équipe pédagogique
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Indicateurs")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Indicateurs))" Style="padding:0px 8px">
             <MudText>
                 Les indicateurs formation
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Valeurs")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Valeurs))" Style="padding:0px 8px">
             <MudText>
                 Mes valeurs
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Assistance")" Style="padding:0px 8px">
+        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Assistance))" Style="padding:0px 8px">
             <MudText>
                 <b>Référente Assistance technique et pédagogie</b>
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@($"/{nameof(AbmPaie)}/Handicap")" Style="padding:0px 8px">
+        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Handicap))" Style="padding:0px 8px">
             <MudText>
                 <b>Référente Handicap</b>
             </MudText>
         </MudButton>
     </div>
     <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}")">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Experience))">
             <MudText Typo="Typo.h5">
                 <b>Expérience</b>
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Silae")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Silae))" Style="padding:0px 8px">
             <MudText>
                 Salariée Silae
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Chiffres")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Chiffres))" Style="padding:0px 8px">
             <MudText>
                 Formatrice Silae en chiffres
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Experience)}/Cafel")" Style="padding:0px 8px">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Cafel))" Style="padding:0px 8px">
             <MudText>
                 Étudiante Cafel
             </MudText>
@@ -117,13 +119,13 @@
         </MudMenu>
     </div>
     <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@($"/{nameof(Contact)}")">
+        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Contact))">
             <MudText Typo="Typo.h5">
                 <b>Contact</b>
             </MudText>
         </MudButton>
         <br />
-        <MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="@($"/{nameof(Contact)}/Rdv")">
+        <MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="@(UriHelper.Get(Section.Rdv))">
             <MudText>
                 Prise de rendez-vous
             </MudText>
@@ -137,7 +139,7 @@
         <br />
         <div class="d-flex align-center">
             <MudIcon Icon="@Icons.Material.TwoTone.Phone" Title="Phone" Size="Size.Small" Style="margin:0px 0px 0px 5px;" />
-            <MudIcon Icon="@Icons.Material.TwoTone.Textsms" Size="Size.Small" Style="margin:0px 0px 0px 5px;" />
+            <MudIcon Icon="@Icons.Material.TwoTone.Textsms" Title="Textsms" Size="Size.Small" Style="margin:0px 0px 0px 5px;" />
             <img src="/images/whatsapp/Digital_Glyph_White.png" alt="WhatsApp" height="18" style="margin:0px 0px 0px 7px;" />
             <MudText Class="white-text" Style="margin:0px 0px 0px 8px;">
                 +33 7 48 10 65 39

@@ -1,5 +1,7 @@
 ﻿@page "/AbmPaie"
-@page "/AbmPaie/{Title}"
+@page "/AbmPaie/{Sub}"
+@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
 @using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
 
@@ -7,7 +9,7 @@
 
 <div style="text-align:justify;margin-bottom:20px;">
     <MudExpansionPanels MultiExpansion="true">
-        <MudExpansionPanel Expanded="@OrganigrammeExpanded" ExpandedChanged="OrganigrammeExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Organigramme)" ExpandedChanged="OrganigrammeExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Organigramme
@@ -19,7 +21,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@EquipeExpanded" ExpandedChanged="EquipeExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Equipe)" ExpandedChanged="EquipeExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Équipe pédagogique
@@ -41,14 +43,14 @@
                         et appuyée par l'obtention du diplôme de <i>Chef de projet, Apprentissage et Formation en ligne</i>.
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="@($"/{nameof(Experience)}/Silae")" 
-                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                    Href="@(UriHelper.Get(Section.Silae))" 
+                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         en savoir plus sur mon parcours
                     </MudButton>
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@AssistanceExpanded" ExpandedChanged="AssistanceExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Assistance)" ExpandedChanged="AssistanceExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Référente Assistance technique et pédagogique
@@ -67,14 +69,14 @@
                         2024-2025 : Étudiante au CAFEL, <i>Chef de projet, Formation et Apprentissage en ligne</i> (Bac+4)
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="@($"/{nameof(Experience)}/Cafel")" 
-                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                    Href="@(UriHelper.Get(Section.Cafel))" 
+                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         en savoir plus sur mon projet CAFEL
                     </MudButton>
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@HandicapExpanded" ExpandedChanged="HandicapExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Handicap)" ExpandedChanged="HandicapExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Référente Handicap
@@ -93,8 +95,8 @@
                         30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i> (2h E-learning)
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                               Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="@Constants.Blank"
-                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                    Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="@Constants.Blank"
+                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         visualiser mon attestation de réalisation
                     </MudButton>
                     <MudText>
@@ -111,7 +113,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@IndicateursExpanded" ExpandedChanged="IndicateursExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Indicateurs)" ExpandedChanged="IndicateursExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Les indicateurs de formation
@@ -126,7 +128,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@ValeursExpanded" ExpandedChanged="ValeursExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Valeurs)" ExpandedChanged="ValeursExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Mes valeurs
@@ -196,45 +198,24 @@
 
 @code {
     [Parameter]
-    public string? Title { get; set; }
+    public string? Sub { get; set; }
 
-    private bool OrganigrammeExpanded => Title is "Organigramme";
-    private bool EquipeExpanded => Title is "Equipe";
-    private bool AssistanceExpanded => Title is "Assistance";
-    private bool HandicapExpanded => Title is "Handicap";
-    private bool IndicateursExpanded => Title is "Indicateurs";
-    private bool ValeursExpanded => Title is "Valeurs";
+    private bool IsExpanded(Section section)
+    {
+        return Sub == section.ToString();
+    }
 
-    private void OrganigrammeExpandedChanged(bool value)
+    private void ExpandedChanged(bool value, Section section)
     {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Organigramme");
-        else NavigationManager.NavigateTo("/ABM-Paie");
+        NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.AbmPaie));
     }
-    private void EquipeExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Equipe");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void AssistanceExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Assistance");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void HandicapExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Handicap");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void IndicateursExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Indicateurs");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
-    private void ValeursExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/ABM-Paie/Valeurs");
-        else NavigationManager.NavigateTo("/ABM-Paie");
-    }
+
+    private void OrganigrammeExpandedChanged(bool value) => ExpandedChanged(value, Section.Organigramme);
+    private void EquipeExpandedChanged(bool value) => ExpandedChanged(value, Section.Equipe);
+    private void AssistanceExpandedChanged(bool value) => ExpandedChanged(value, Section.Assistance);
+    private void HandicapExpandedChanged(bool value) => ExpandedChanged(value, Section.Handicap);
+    private void IndicateursExpandedChanged(bool value) => ExpandedChanged(value, Section.Indicateurs);
+    private void ValeursExpandedChanged(bool value) => ExpandedChanged(value, Section.Valeurs);
 }
 
 <style>

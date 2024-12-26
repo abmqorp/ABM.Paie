@@ -1,5 +1,7 @@
 ﻿@page "/Contact"
-@page "/Contact/{Title}"
+@page "/Contact/{Sub}"
+@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
 @using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
 
@@ -8,12 +10,12 @@
 <div style="text-align:justify;margin-bottom:20px;">
     <div style="margin:20px 0px;">
         <div class="d-flex flex-wrap align-top">
-            <a href="@($"/{nameof(Contact)}/Rdv")">
+            <a href="@(UriHelper.Get(Section.Rdv))">
                 <MudText Class="indigo-text" Typo="Typo.h6">
                     Réserver un créneau horaire
                 </MudText>
             </a>
-            <a href="@($"/{nameof(Contact)}/Rdv")">
+            <a href="@(UriHelper.Get(Section.Rdv))">
                 <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
             </a>
         </div>
@@ -23,12 +25,12 @@
         </MudText>
 
         <div class="d-flex flex-wrap align-top">
-            <a href="@($"/{nameof(Contact)}/Coordonnees")">
+            <a href="@(UriHelper.Get(Section.Coordonnees))">
                 <MudText Class="indigo-text" Typo="Typo.h6">
                     Contact direct
                 </MudText>
             </a>
-            <a href="@($"/{nameof(Contact)}/Coordonnees")">
+            <a href="@(UriHelper.Get(Section.Coordonnees))">
                 <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
             </a>
         </div>
@@ -55,7 +57,7 @@
     </div>
 
     <MudExpansionPanels MultiExpansion="true">
-        <MudExpansionPanel Expanded="@RdvExpanded" ExpandedChanged="RdvExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Rdv)" ExpandedChanged="RdvExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Prise de rendez-vous
@@ -67,7 +69,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@CoordonneesExpanded" ExpandedChanged="CoordonneesExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Coordonnees)" ExpandedChanged="CoordonneesExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Coordonnées (contact)
@@ -113,7 +115,7 @@
                 </div>
             </ChildContent>
         </MudExpansionPanel>
-        <MudExpansionPanel Expanded="@PagesExpanded" ExpandedChanged="PagesExpandedChanged">
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Pages)" ExpandedChanged="PagesExpandedChanged">
             <TitleContent>
                 <MudText Typo="Typo.h5">
                     Mes pages officielles
@@ -133,27 +135,21 @@
 
 @code {
     [Parameter]
-    public string? Title { get; set; }
+    public string? Sub { get; set; }
 
-    private bool RdvExpanded => Title is "Rdv";
-    private bool CoordonneesExpanded => Title is "Coordonnees";
-    private bool PagesExpanded => Title is "Pages";
+    private bool IsExpanded(Section section)
+    {
+        return Sub == section.ToString();
+    }
 
-    private void RdvExpandedChanged(bool value)
+    private void ExpandedChanged(bool value, Section section)
     {
-        if (value) NavigationManager.NavigateTo("/Contact/Rdv");
-        else NavigationManager.NavigateTo("/Contact");
+            NavigationManager.NavigateTo(value ? UriHelper.Get(section) : UriHelper.Get(Constants.Contact));
     }
-    private void CoordonneesExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Contact/Coordonnees");
-        else NavigationManager.NavigateTo("/Contact");
-    }
-    private void PagesExpandedChanged(bool value)
-    {
-        if (value) NavigationManager.NavigateTo("/Contact/Pages");
-        else NavigationManager.NavigateTo("/Contact");
-    }
+
+    private void RdvExpandedChanged(bool value) => ExpandedChanged(value, Section.Rdv);
+    private void CoordonneesExpandedChanged(bool value) => ExpandedChanged(value, Section.Coordonnees);
+    private void PagesExpandedChanged(bool value) => ExpandedChanged(value, Section.Pages);
 }
 
 <style>

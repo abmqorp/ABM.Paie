@@ -7,5 +7,5 @@ public class MenuButton(string text, string? href = null, bool blank = false)
     public string Text { get; } = text;
     public string? Href { get; } = href;
     public bool Blank { get; } = blank;
-    public string? Target => Blank ? Constants.Blank : null;
+    public string? Target => Blank ? Resources.Constants.Blank : null;
 }

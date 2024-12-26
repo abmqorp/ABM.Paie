@@ -1,7 +1,10 @@
 ﻿@using ABM.Paie.Components
+@using ABM.Paie.Enumerations
 @using ABM.Paie.Extensions
+@using ABM.Paie.Helpers
 @using ABM.Paie.Models
 @using ABM.Paie.Pages
+@using ABM.Paie.Resources
 
 @{
 	var accueilActivator = new MenuButton("Accueil", "/");
@@ -10,37 +13,37 @@
 	var formationItems = new MenuButton[]
 	{
 		new("Catalogue en ligne", "https://abmformation.catalogueformpro.com", true),
-		new("Perfectionnement", $"/{nameof(Formation)}/Perfectionnement"),
+		new("Perfectionnement", UriHelper.Get(Section.Perfectionnement)),
 	};
 
-	var actualiteActivator = new MenuButton("Actualités", $"/{nameof(Actualite)}");
+	var actualiteActivator = new MenuButton("Actualités", UriHelper.Get(Constants.Actualite));
 
 	var abmPaieActivator = new MenuButton("ABM Paie".ToBold());
 	var abmPaieItems = new MenuButton[]
 	{
-		new("Organigramme", $"/{nameof(AbmPaie)}/Organigramme"),
-		new("Équipe pédagogique", $"/{nameof(AbmPaie)}/Equipe"),
-		new("Référente Assistance technique et pédagogique", $"/{nameof(AbmPaie)}/Assistance"),
-		new("Référente handicap", $"/{nameof(AbmPaie)}/Handicap"),
-		new("Les indicateurs formation", $"/{nameof(AbmPaie)}/Indicateurs"),
-		new("Mes valeurs", $"/{nameof(AbmPaie)}/Valeurs"),
+		new("Organigramme", UriHelper.Get(Section.Organigramme)),
+		new("Équipe pédagogique", UriHelper.Get(Section.Equipe)),
+		new("Référente Assistance technique et pédagogique", UriHelper.Get(Section.Assistance)),
+		new("Référente handicap", UriHelper.Get(Section.Handicap)),
+		new("Les indicateurs formation", UriHelper.Get(Section.Indicateurs)),
+		new("Mes valeurs", UriHelper.Get(Section.Valeurs)),
 	};
 
 	var experienceActivator = new MenuButton("Expérience");
 	var experienceItems = new MenuButton[]
 	{
 		new("Curriculum vitae", "/resources/ABMq_CV.pdf", true),
-		new("Salariée Silae", $"/{nameof(Experience)}/Silae"),
-		new("Formatrice Silae en chiffres", $"/{nameof(Experience)}/Chiffres"),
-		new("Étudiante CAFEL", $"/{nameof(Experience)}/Cafel"),
+		new("Salariée Silae", UriHelper.Get(Section.Silae)),
+		new("Formatrice Silae en chiffres", UriHelper.Get(Section.Chiffres)),
+		new("Étudiante CAFEL", UriHelper.Get(Section.Cafel)),
 	};
 
 	var contactActivator = new MenuButton("Contact");
 	var contactItems = new MenuButton[]
 	{
-		new("Prise de rendez-vous", $"/{nameof(Contact)}/Rdv"),
-		new("Coordonnées (contact)", $"/{nameof(Contact)}/Coordonnees"),
-		new("Mes pages officielles", $"/{nameof(Contact)}/Pages"),
+		new("Prise de rendez-vous", UriHelper.Get(Section.Rdv)),
+		new("Coordonnées (contact)", UriHelper.Get(Section.Coordonnees)),
+		new("Mes pages officielles", UriHelper.Get(Section.Pages)),
 	};
 
 	var partenariatActivator = new MenuButton("Partenariats");

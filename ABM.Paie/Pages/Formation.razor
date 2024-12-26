@@ -1,5 +1,5 @@
 ﻿@page "/Formation"
-@page "/Formation/{Title}"
+@page "/Formation/{Section}"
 @using ABM.Paie.Resources
 
 <PageTitle>ABM Paie - Formations</PageTitle>
@@ -41,5 +41,5 @@
 
 @code {
     [Parameter]
-    public string? Title { get; set; }
+    public string? Section { get; set; }
 }
