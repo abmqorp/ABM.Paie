@@ -150,3 +150,10 @@ code {
     justify-content: center;
     margin: 10px 0px;
 }
+
+/* Mud */
+
+.mud-expand-panel-header {
+    background-color: var(--primary-lighten-4);
+    color: white;
+}
