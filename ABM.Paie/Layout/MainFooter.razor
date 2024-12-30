@@ -1,152 +1,114 @@
-﻿@using ABM.Paie.Enumerations
+﻿@using ABM.Paie.Components
+@using ABM.Paie.Enumerations
 @using ABM.Paie.Helpers
+@using ABM.Paie.Models
 @using ABM.Paie.Pages
 @using ABM.Paie.Resources
 
-<div class="d-flex flex-wrap justify-center" id="footer" style="padding:20px 0px;max-width:1000px;">
-    <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="/">
-            <MudText Typo="Typo.h5">
-                <b>Accueil</b>
-            </MudText>
-        </MudButton>
+@{
+    var accueilPage = new Link("/", "Accueil");
+
+    var formationPage = new Link(UriHelper.Get(Constants.Formation), "Formations");
+    var catalogueSection = new Link("https://abmformation.catalogueformpro.com", "Catalogue en ligne", true);
+    var perfectionnementSection = new Link(UriHelper.Get(Section.Perfectionnement), "Perfectionnement");
+
+    var actualitePage = new Link(UriHelper.Get(Constants.Actualite), "Actualités");
+
+    var abmPaiePage = new Link(UriHelper.Get(Constants.AbmPaie), "ABM Paie", css: "bold");
+    var organigrammeSection = new Link(UriHelper.Get(Section.Organigramme), "Organigramme");
+    var equipeSection = new Link(UriHelper.Get(Section.Equipe), "Équipe pédagogique");
+    var assistanceSection = new Link(
+        UriHelper.Get(Section.Assistance),
+        "Référente Assistance technique et pédagogique",
+        css: "danger bold");
+    var handicapSection = new Link(
+        UriHelper.Get(Section.Handicap),
+        "Référente handicap",
+        css: "danger bold");
+    var indicateursSection = new Link(UriHelper.Get(Section.Indicateurs), "Les indicateurs formation");
+    var valeursSection = new Link(UriHelper.Get(Section.Valeurs), "Mes valeurs");
+
+    var experiencePage = new Link(UriHelper.Get(Constants.Experience), "Expérience");
+    var cvSection = new Link("/resources/ABMq_CV.pdf", "Curriculum vitae", true);
+    var silaeSection = new Link(UriHelper.Get(Section.Silae), "Salariée Silae");
+    var chiffresSection = new Link(UriHelper.Get(Section.Chiffres), "Formatrice Silae en chiffres");
+    var cafelSection = new Link(UriHelper.Get(Section.Cafel), "Étudiante CAFEL");
+
+    var partenariatActivator = new Link(text: "Partenariats");
+    var partenariatItems = new Link[] { new("https://www.facilaepaie.com", "Facilae Paie", true) };
+
+    var contactPage = new Link(UriHelper.Get(Constants.Contact), "Contact");
+    var rdvSection = new Link(
+        UriHelper.Get(Section.Rdv),
+        "Prise de rendez-vous",
+        css: "danger");
+    var mailSection = new Link("mailto:paie-formation@abmq.fr", "paie-formation@abmq.fr");
+    var pagesSection = new Link(UriHelper.Get(Section.Pages), "Mes pages officielles");
+}
+
+<div class="d-flex flex-wrap justify-center" id="footer">
+    <div>
+        <PageButton Link="accueilPage" />
 
         <br />
 
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Formation))" Style="margin:40px 0px 0px 0px;">
-            <MudText Typo="Typo.h5">
-                <b>Formations</b>
-            </MudText>
-        </MudButton>
+        <PageButton Link="formationPage" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Catalogue))" Style="padding:0px 8px">
-            <MudText>
-                Catalogue en ligne
-            </MudText>
-        </MudButton>
+        <SectionButton Link="catalogueSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Perfectionnement))" Style="padding:0px 8px">
-            <MudText>
-                Perfectionnement
-            </MudText>
-        </MudButton>
+        <SectionButton Link="perfectionnementSection" />
     </div>
-    <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Actualite))">
-            <MudText Typo="Typo.h5">
-                <b>Actualités</b>
-            </MudText>
-        </MudButton>
+    <div>
+        <PageButton Link="actualitePage" />
 
         <br />
 
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.AbmPaie))" Style="margin:40px 0px 0px 0px;">
-            <MudText Typo="Typo.h5">
-                <b>ABM Paie</b>
-            </MudText>
-        </MudButton>
+        <PageButton Link="abmPaiePage" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Organigramme))" Style="padding:0px 8px">
-            <MudText>
-                Organigramme
-            </MudText>
-        </MudButton>
+        <SectionButton Link="organigrammeSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Equipe))" Style="padding:0px 8px">
-            <MudText>
-                Équipe pédagogique
-            </MudText>
-        </MudButton>
+        <SectionButton Link="equipeSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Indicateurs))" Style="padding:0px 8px">
-            <MudText>
-                Les indicateurs formation
-            </MudText>
-        </MudButton>
+        <SectionButton Link="indicateursSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Valeurs))" Style="padding:0px 8px">
-            <MudText>
-                Mes valeurs
-            </MudText>
-        </MudButton>
+        <SectionButton Link="valeursSection" />
         <br />
-        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Assistance))" Style="padding:0px 8px">
-            <MudText>
-                <b>Référente Assistance technique et pédagogie</b>
-            </MudText>
-        </MudButton>
+        <SectionButton Link="assistanceSection" Variant="Variant.Filled" />
         <br />
-        <MudButton Class="pink-text text-darken-4" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Handicap))" Style="padding:0px 8px">
-            <MudText>
-                <b>Référente Handicap</b>
-            </MudText>
-        </MudButton>
+        <SectionButton Link="handicapSection" Variant="Variant.Filled" />
     </div>
-    <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Experience))">
-            <MudText Typo="Typo.h5">
-                <b>Expérience</b>
-            </MudText>
-        </MudButton>
+    <div>
+        <PageButton Link="experiencePage" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Silae))" Style="padding:0px 8px">
-            <MudText>
-                Salariée Silae
-            </MudText>
-        </MudButton>
+        <SectionButton Link="silaeSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Chiffres))" Style="padding:0px 8px">
-            <MudText>
-                Formatrice Silae en chiffres
-            </MudText>
-        </MudButton>
+        <SectionButton Link="chiffresSection" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Section.Cafel))" Style="padding:0px 8px">
-            <MudText>
-                Étudiante Cafel
-            </MudText>
-        </MudButton>
+        <SectionButton Link="cafelSection" />
 
         <br />
 
-        <MudMenu AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.BottomLeft" Dense="true" Style="margin:40px 0px 0px 0px;">
-            <ActivatorContent>
-                <MudButton Class="white-text" Variant="Variant.Text" EndIcon="@Icons.Material.Filled.KeyboardArrowDown"><MudText Typo="Typo.h5"><b>Partenariats</b></MudText></MudButton>
-            </ActivatorContent>
-            <ChildContent>
-                <MudMenuItem Href="https://www.facilaepaie.com" Target="@Constants.Blank">Facilae Paie</MudMenuItem>
-            </ChildContent>
-        </MudMenu>
+        <LayoutMenu Activator="partenariatActivator" Items="partenariatItems" 
+                    AnchorOrigin="Origin.BottomRight" TransformOrigin="Origin.BottomLeft" />
     </div>
-    <div style="padding:20px;width:400px;">
-        <MudButton Class="white-text" Variant="Variant.Text" Href="@(UriHelper.Get(Constants.Contact))">
-            <MudText Typo="Typo.h5">
-                <b>Contact</b>
-            </MudText>
-        </MudButton>
+    <div>
+        <PageButton Link="contactPage" />
         <br />
-        <MudButton Class="pink darken-3 white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.CalendarMonth" Style="padding:0px 8px" Href="@(UriHelper.Get(Section.Rdv))">
-            <MudText>
-                Prise de rendez-vous
-            </MudText>
-        </MudButton>
+        <SectionButton Link="rdvSection" 
+                       Variant="Variant.Filled" StartIcon="@Icons.Material.TwoTone.CalendarMonth" />
         <br />
-        <MudButton Class="white-text" Variant="Variant.Text" StartIcon="@Icons.Material.TwoTone.Email" Style="padding:0px 8px" Href="mailto:paie-formation@abmq.fr">
-            <MudText>
-                paie-formation@abmq.fr
-            </MudText>
-        </MudButton>
+        <MailButton Link="mailSection" />
         <br />
         <div class="d-flex align-center">
             <MudIcon Icon="@Icons.Material.TwoTone.Phone" Title="Phone" Size="Size.Small" Style="margin:0px 0px 0px 5px;" />
             <MudIcon Icon="@Icons.Material.TwoTone.Textsms" Title="Textsms" Size="Size.Small" Style="margin:0px 0px 0px 5px;" />
             <img src="/images/whatsapp/Digital_Glyph_White.png" alt="WhatsApp" height="18" style="margin:0px 0px 0px 7px;" />
-            <MudText Class="white-text" Style="margin:0px 0px 0px 8px;">
+            <Paragraph>
                 +33 7 48 10 65 39
-            </MudText>
+            </Paragraph>
         </div>
-        <div class="d-flex align-center" style="margin:10px 0px 0px 0px;">
-            <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="@Constants.Blank"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="20" style="margin:8px;" /></a>
+        <div class="d-flex align-center">
+            <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="@Constants.Blank"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="20" /></a>
         </div>
     </div>
 </div>

@@ -1,0 +1,27 @@
+﻿<div class="center flex-column" id="values">
+    @for (var i = 0; i < 5; i++)
+    {
+        var index = i;
+        var position = _positions[index];
+        <div class="d-flex flex-wrap justify-content-between primary">
+            @for (var j = 0; j < 5; j++)
+            {
+                if (j == position)
+                {
+                    <div><Paragraph Css="bold white">@Values.ElementAt(index)</Paragraph></div>
+                }
+                else
+                {
+                    <div />
+                }
+            }
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter]
+    public required IEnumerable<string> Values { get; set; }
+
+    private List<int> _positions = [2, 0, 3, 1, 4];
+}

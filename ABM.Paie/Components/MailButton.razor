@@ -1,0 +1,12 @@
+﻿@using ABM.Paie.Models
+
+<MudButton Class="mail-button"
+           Href="@Link.Href" Target="@Link.Target"
+           StartIcon="@Icons.Material.TwoTone.Email" IconClass="@Link.Css">
+    <span class="@Link.Css">@Link.Text</span>
+</MudButton>
+
+@code {
+    [Parameter]
+    public required Link Link { get; set; }
+}

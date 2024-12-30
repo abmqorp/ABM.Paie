@@ -1,10 +1,10 @@
 ﻿@using ABM.Paie.Extensions
 @using ABM.Paie.Models
 
-<MudMenu AnchorOrigin="Origin.BottomLeft" Dense="true">
+<MudMenu Class="layout-menu" Dense="true"
+         AnchorOrigin="@AnchorOrigin" TransformOrigin="@TransformOrigin">
     <ActivatorContent>
-        <MudButton Class="@($"header-button {Variant}".ToCss())" 
-                   Href="@Activator.Href" Target="@Activator.Target"
+        <MudButton Href="@Activator.Href" Target="@Activator.Target"
                    Variant="@Variant" EndIcon="@Icon">
             <MudText><span class="@Activator.Css">@Activator.Text</span></MudText>
         </MudButton>
@@ -19,12 +19,18 @@
 
 @code {
     [Parameter]
-    public required MenuButton Activator { get; set; }
+    public required Link Activator { get; set; }
 
     [Parameter]
-    public IEnumerable<MenuButton> Items { get; set; } = new MenuButton[0];
+    public IEnumerable<Link> Items { get; set; } = new Link[0];
 
     public string? Icon => Items.Any() ? Icons.Material.Filled.KeyboardArrowDown : null;
+
+    [Parameter]
+    public Origin AnchorOrigin { get; set; } = Origin.BottomLeft;
+
+    [Parameter]
+    public Origin TransformOrigin { get; set; }
 
     [Parameter]
     public Variant Variant { get; set; }

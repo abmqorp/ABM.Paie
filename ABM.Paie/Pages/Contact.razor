@@ -1,46 +1,28 @@
 ﻿@page "/Contact"
 @page "/Contact/{Sub}"
+@using ABM.Paie.Components
 @using ABM.Paie.Enumerations
 @using ABM.Paie.Helpers
+@using ABM.Paie.Models
 @using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
 
 <PageTitle>ABM Paie - Contact</PageTitle>
 
-<div style="text-align:justify;margin-bottom:20px;">
-    <div style="margin:20px 0px;">
-        <div class="d-flex flex-wrap align-top">
-            <a href="@(UriHelper.Get(Section.Rdv))">
-                <MudText Class="indigo-text" Typo="Typo.h6">
-                    Réserver un créneau horaire
-                </MudText>
-            </a>
-            <a href="@(UriHelper.Get(Section.Rdv))">
-                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
-            </a>
-        </div>
-
-        <MudText style="margin:10px 0px;">
+<div class="justify">
+    <div>
+        <LinkButton Link="@(new Link(UriHelper.Get(Section.Rdv), "Réserver un créneau horaire", css: "primary-text large"))" />
+        <Paragraph>
             Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
-        </MudText>
+        </Paragraph>
 
-        <div class="d-flex flex-wrap align-top">
-            <a href="@(UriHelper.Get(Section.Coordonnees))">
-                <MudText Class="indigo-text" Typo="Typo.h6">
-                    Contact direct
-                </MudText>
-            </a>
-            <a href="@(UriHelper.Get(Section.Coordonnees))">
-                <MudIcon Class="indigo-text text-lighten-2" Icon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:5px 0px 0px 5px;" />
-            </a>
-        </div>
-
-        <MudText Style="margin:10px 0px;">
+        <LinkButton Link="@(new Link(UriHelper.Get(Section.Coordonnees), "Contact direct", css: "primary-text large"))" />
+        <Paragraph>
             Si je suis indisponible (en formation par exemple), veuillez me laisser vos coordonnées, de préférence par SMS avec :
-        </MudText>
+        </Paragraph>
         <div class="d-flex flex-wrap">
             <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
-            <MudText>
+            <Paragraph>
                 le nom de l'entreprise,
                 <br />
                 la personne à contacter,
@@ -48,12 +30,14 @@
                 le numéro de téléphone,
                 <br />
                 et l'objet de l'appel.
-            </MudText>
+            </Paragraph>
         </div>
 
-        <MudText Style="margin:10px 0px;">
-            <b>Privilégiez la prise de rendez-vous en ligne,</b> nous serons sûrs de consacrer un temps dédié à notre échange (15 ou 30 minutes selon vos préférences et besoins).
-        </MudText>
+        <Paragraph>
+            <span class="bold">Privilégiez la prise de rendez-vous en ligne,</span> 
+            nous serons sûrs de consacrer un temps dédié à notre échange 
+            (15 ou 30 minutes selon vos préférences et besoins).
+        </Paragraph>
     </div>
 
     <MudExpansionPanels MultiExpansion="true">
@@ -76,11 +60,11 @@
                 </MudText>
             </TitleContent>
             <ChildContent>
-                <div class="d-flex justify-space-around flex-wrap" style="margin-top:20px;">
+                <div class="d-flex justify-space-around flex-wrap">
                     <div>
                         <MudList Class="pointer-events-none" T="string">
                             <MudListSubheader>
-                                <MudText Typo="Typo.h6">Par téléphone : +33 7 48 10 65 39</MudText>
+                                <Paragraph>Par téléphone : +33 7 48 10 65 39</Paragraph>
                             </MudListSubheader>
                             <MudListItem Text="SMS" Icon="@Icons.Material.TwoTone.Textsms" />
                             <MudListItem Text="Appel" Icon="@Icons.Material.TwoTone.Phone" />
@@ -95,7 +79,7 @@
                     <div>
                         <MudList T="string">
                             <MudListSubheader>
-                                <MudText Typo="Typo.h6">Une question ?</MudText>
+                                <Paragraph>Une question ?</Paragraph>
                             </MudListSubheader>
                             <MudListItem Text="paie-formation@abmq.fr" Href="mailto:paie-formation@abmq.fr" Icon="@Icons.Material.TwoTone.Email" />
                         </MudList>
@@ -104,7 +88,7 @@
 
                         <MudList T="string">
                             <MudListSubheader>
-                                <MudText Typo="Typo.h6">Demandes précises :</MudText>
+                                <Paragraph>Demandes précises :</Paragraph>
                             </MudListSubheader>
                             <MudListItem Text="Sur le handicap" SecondaryText="referent-handicap@abmq.fr" Href="mailto:referent-handicap@abmq.fr" />
                             <MudListItem Text="Sur l'assistance technique et pédagogique" SecondaryText="assistance-technique-pedagogique@abmq.fr" Href="mailto:assistance-technique-pedagogique@abmq.fr" />
@@ -123,10 +107,8 @@
             </TitleContent>
             <ChildContent>
                 <div class="d-flex align-bottom" style="margin:30px 0px 10px 0px;">
-                    <MudText Typo="Typo.h6">
-                        Mon réseau professionnel :
-                    </MudText>
-                    <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="@Constants.Blank" style="margin:5px 0px 0px 8px;"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="22" /></a>
+                    <Paragraph>Mon réseau professionnel :</Paragraph>
+                    <a href="https://www.linkedin.com/in/abm-paie-1b551a336" target="@Constants.Blank"><img src="/images/linkedin/LI-Logo.png" alt="LinkedIn" height="22" /></a>
                 </div>
             </ChildContent>
         </MudExpansionPanel>

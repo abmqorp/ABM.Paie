@@ -7,55 +7,55 @@
 @using ABM.Paie.Resources
 
 @{
-	var accueilActivator = new MenuButton("Accueil", "/");
+	var accueilActivator = new Link("/", "Accueil");
 
-	var formationActivator = new MenuButton("Formations");
-	var formationItems = new MenuButton[]
+	var formationActivator = new Link(text: "Formations");
+	var formationItems = new Link[]
 	{
-		new("Catalogue en ligne", "https://abmformation.catalogueformpro.com", true),
-		new("Perfectionnement", UriHelper.Get(Section.Perfectionnement)),
+		new("https://abmformation.catalogueformpro.com", "Catalogue en ligne", true),
+		new(UriHelper.Get(Section.Perfectionnement), "Perfectionnement"),
 	};
 
-	var actualiteActivator = new MenuButton("Actualités", UriHelper.Get(Constants.Actualite));
+	var actualiteActivator = new Link(UriHelper.Get(Constants.Actualite), "Actualités");
 
-	var abmPaieActivator = new MenuButton("ABM Paie", css: "bold");
-	var abmPaieItems = new MenuButton[]
+	var abmPaieActivator = new Link(text: "ABM Paie", css: "bold");
+	var abmPaieItems = new Link[]
 	{
-		new("Organigramme", UriHelper.Get(Section.Organigramme)),
-		new("Équipe pédagogique", UriHelper.Get(Section.Equipe)),
-		new("Référente Assistance technique et pédagogique", UriHelper.Get(Section.Assistance)),
-		new("Référente handicap", UriHelper.Get(Section.Handicap)),
-		new("Les indicateurs formation", UriHelper.Get(Section.Indicateurs)),
-		new("Mes valeurs", UriHelper.Get(Section.Valeurs)),
+		new(UriHelper.Get(Section.Organigramme), "Organigramme"),
+		new(UriHelper.Get(Section.Equipe), "Équipe pédagogique"),
+		new(UriHelper.Get(Section.Assistance), "Référente Assistance technique et pédagogique"),
+		new(UriHelper.Get(Section.Handicap), "Référente handicap"),
+		new(UriHelper.Get(Section.Indicateurs), "Les indicateurs formation"),
+		new(UriHelper.Get(Section.Valeurs), "Mes valeurs"),
 	};
 
-	var experienceActivator = new MenuButton("Expérience");
-	var experienceItems = new MenuButton[]
+	var experienceActivator = new Link(text: "Expérience");
+	var experienceItems = new Link[]
 	{
-		new("Curriculum vitae", "/resources/ABMq_CV.pdf", true),
-		new("Salariée Silae", UriHelper.Get(Section.Silae)),
-		new("Formatrice Silae en chiffres", UriHelper.Get(Section.Chiffres)),
-		new("Étudiante CAFEL", UriHelper.Get(Section.Cafel)),
+		new("/resources/ABMq_CV.pdf", "Curriculum vitae", true),
+		new(UriHelper.Get(Section.Silae), "Salariée Silae"),
+		new(UriHelper.Get(Section.Chiffres), "Formatrice Silae en chiffres"),
+		new(UriHelper.Get(Section.Cafel), "Étudiante CAFEL"),
 	};
 
-	var contactActivator = new MenuButton("Contact");
-	var contactItems = new MenuButton[]
+	var contactActivator = new Link(text: "Contact");
+	var contactItems = new Link[]
 	{
-		new("Prise de rendez-vous", UriHelper.Get(Section.Rdv)),
-		new("Coordonnées (contact)", UriHelper.Get(Section.Coordonnees)),
-		new("Mes pages officielles", UriHelper.Get(Section.Pages)),
+		new(UriHelper.Get(Section.Rdv), "Prise de rendez-vous"),
+		new(UriHelper.Get(Section.Coordonnees), "Coordonnées (contact)"),
+		new(UriHelper.Get(Section.Pages), "Mes pages officielles"),
 	};
 
-	var partenariatActivator = new MenuButton("Partenariats");
-	var partenariatItems = new MenuButton[] { new("Facilae Paie", "https://www.facilaepaie.com", true) };
+	var partenariatActivator = new Link(text: "Partenariats");
+	var partenariatItems = new Link[] { new("https://www.facilaepaie.com", "Facilae Paie", true) };
 }
 
 <div id="header">
-	<HeaderMenu Activator="accueilActivator" />
-	<HeaderMenu Activator="formationActivator" Items="formationItems" />
-	<HeaderMenu Activator="actualiteActivator" />
-	<HeaderMenu Activator="abmPaieActivator" Items="abmPaieItems" />
-	<HeaderMenu Activator="experienceActivator" Items="experienceItems" />
-	<HeaderMenu Activator="contactActivator" Items="contactItems" Variant="Variant.Filled" />
-	<HeaderMenu Activator="partenariatActivator" Items="partenariatItems" />
+	<LayoutMenu Activator="accueilActivator" />
+	<LayoutMenu Activator="formationActivator" Items="formationItems" />
+	<LayoutMenu Activator="actualiteActivator" />
+	<LayoutMenu Activator="abmPaieActivator" Items="abmPaieItems" />
+	<LayoutMenu Activator="experienceActivator" Items="experienceItems" />
+	<LayoutMenu Activator="contactActivator" Items="contactItems" Variant="Variant.Filled" />
+	<LayoutMenu Activator="partenariatActivator" Items="partenariatItems" />
 </div>

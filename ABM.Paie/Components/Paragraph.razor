@@ -1,0 +1,11 @@
+﻿@using ABM.Paie.Extensions
+
+<p class="paragraph large @Css?.ToCss()">@ChildContent</p>
+
+@code {
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    [Parameter]
+    public string? Css { get; set; }
+}

@@ -1,24 +1,27 @@
-﻿@using MudBlazor
+﻿@using ABM.Paie.Components
+@using MudBlazor
 @inherits LayoutComponentBase
 
 <MudThemeProvider />
 <MudPopoverProvider />
 
 <MudContainer>
-	<div class="center" style="text-align:center;margin-top:20px;">
-		<img src="/images/ABMq_Paie_Logo.png" alt="logo ABM Paie" width="100"/>
-		<MainHeader />
-	</div>
+    <div class="d-flex center">
+        <a href="/"><img src="/images/ABMq_Paie_Logo.png" alt="logo ABM Paie" width="100" /></a>
+        <MainHeader />
+    </div>
 
-	@Body
-	
-	<MudPaper class="center indigo lighten-2 white-text" Style="margin-bottom:10px;">
-		<MainFooter />
-	</MudPaper>
+    @Body
+    
+    <div class="d-flex primary white-text">
+        <MainFooter />
+    </div>
 
-	<MudText Class="indigo-text" Style="text-align:right;margin:0 0 10px 0;">version : 202412.0</MudText>
+    <div id="version">
+        <Paragraph>version : 202501.0</Paragraph>
+    </div>
 
-	<MudScrollToTop>
-		<MudFab Class="indigo lighten-2 white-text" StartIcon="@Icons.Material.Filled.ArrowCircleUp" />
-	</MudScrollToTop>
+    <MudScrollToTop>
+        <MudFab Class="primary white-text" StartIcon="@Icons.Material.Filled.ArrowCircleUp" />
+    </MudScrollToTop>
 </MudContainer>

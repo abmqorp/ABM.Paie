@@ -1,18 +1,16 @@
 ﻿@page "/Experience"
 @page "/Experience/{Sub}"
+@using ABM.Paie.Components
 @using ABM.Paie.Enumerations
 @using ABM.Paie.Helpers
+@using ABM.Paie.Models
 @using ABM.Paie.Resources
 @inject NavigationManager NavigationManager
 
 <PageTitle>ABM Paie - Expérience</PageTitle>
 
 <div style="text-align:justify;margin-bottom:20px;">
-    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-               Href="/resources/ABMq_CV.pdf" Target="@Constants.Blank"
-               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-        visualiser mon curriculum vitae
-    </MudButton>
+    <LinkButton Link="@(new Link("/resources/ABMq_CV.pdf", "visualiser mon curriculum vitae", true))" />
     
     <MudExpansionPanels MultiExpansion="true">
         <MudExpansionPanel Expanded="@IsExpanded(Section.Silae)" ExpandedChanged="SilaeExpandedChanged">
@@ -22,78 +20,71 @@
                 </MudText>
             </TitleContent>
             <ChildContent>
-                <div class="d-flex flex-column" style="margin-top:20px;">
-                    <MudText Typo="Typo.h6" Style="margin:10px 0 0 0;">8 ans au sein de la société Silae</MudText>
-                    <MudDivider Style="margin:10px 0 0 0;" />
+                <div class="d-flex flex-column">
+                    <Paragraph Css="bold">8 ans au sein de la société Silae</Paragraph>
+                    <MudDivider />
 
-                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
-                        01/11/2024 - 30/11/2020 : <b>Formatrice en clientèle</b>
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    <h2>01/11/2024 - 30/11/2020 : Formatrice en clientèle</h2>
+                    <Paragraph>
                         Mes quatre premières années chez Silae ont été riches sur de nombreux aspects.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         Le premier aura été sur l'aspect humain, j’ai eu la joie de rencontrer beaucoup d’apprenants 
                         et d’avoir eu plaisir autant à vous former qu’à vous découvrir.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         J’ai eu la chance d’avoir vécu des aventures humaines extraordinaires.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         J’ai beaucoup appris sur le terrain sur la pédagogie et sur l’applicatif.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         Le second aspect aura été sur le logiciel directement, 
                         être à votre contact m’a obligée à toujours me dépasser sur mes connaissances sur le produit 
                         afin de pouvoir répondre et satisfaire toute votre soif de savoir sur le logiciel.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         Et enfin, personnellement, j’ai beaucoup appris culturellement sur mon pays ! 
                         Comme par exemple, le beurre salé et la limonade dans les restaurants ouvriers Bretons !
-                    </MudText>
-                    <MudDivider Style="margin:10px 0 0 0;" />
+                    </Paragraph>
+                    <MudDivider />
 
-                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
-                        01/12/2020 - 30/04/2022 : <b>Référente Formation Clients</b>
-                        <br />
-                        01/05/2022 - 31/05/2023 : <b>Responsable Silae Académie</b>
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    <h2>01/12/2020 - 30/04/2022 : Référente Formation Clients</h2>
+                    <h2>01/05/2022 - 31/05/2023 : Responsable Silae Académie</h2>
+                    <Paragraph>
                         Mon expérience en tant que responsable du Service formation a été 
                         un des plus grands apprentissages de ma vie professionnelle jusqu’alors.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         Le chantier était important et ma motivation tout autant ! 
                         J’ai participé à la mise en place des processus de qualité 
                         validé par l’obtention de la certification Qualiopi.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         J’ai également eu une chance immense d’avoir eu des formateurs exceptionnels 
                         dont le savoir a été reflété par une augmentation du catalogue 
                         avec des formations d’un niveau technique spécifique 
                         notamment avec les formations ENIM et Spectacle.
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    </Paragraph>
+                    <Paragraph>
                         L’équipe a été volontaire, brillante et forte, 
                         avec des formateurs qui se sont beaucoup investis 
                         et dont le nombre d’heures de formation ferait exploser le compteur !
-                    </MudText>
+                    </Paragraph>
                     <MudDivider Style="margin:10px 0 0 0;" />
 
-                    <MudText Class="indigo-text" Style="margin:20px 0 0 0;">
-                        01/06/2023 - 31/10/2024 : <b>Analyste Expert QA Paie</b>
-                    </MudText>
-                    <MudText Style="margin:10px 0 0 0;">
+                    <h2>01/06/2023 - 31/10/2024 : Analyste Expert QA Paie</h2>
+                    <Paragraph>
                         Ma dernière année chez Silae a été plus axée sur le produit, 
                         en tant qu’Analyste Expert QA Paie, 
                         je me suis épanouie dans l’impact des processus de qualité pour la paie, 
                         ce qui a renforcé ma fascination pour ce sujet complexe et interactif !
-                    </MudText>
-                    <MudText Style="margin:10px 0;">
+                    </Paragraph>
+                    <Paragraph>
                         Etre au plus proche de l’équipe produit a été un véritable honneur, 
                         mais je suis plus que convaincue que ma passion première est de vous transmettre mon amour 
                         pour la paie et pour ce logiciel de paie.
-                    </MudText>
+                    </Paragraph>
                 </div>
             </ChildContent>
         </MudExpansionPanel>
@@ -104,69 +95,70 @@
                 </MudText>
             </TitleContent>
             <ChildContent>
-                <div class="d-flex flex-column" style="margin-top:20px;padding:20px 10px;">
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">3300+ heures de formation en 430+ formations.</MudText>
+                <div class="d-flex flex-column">
+                    <h2>3300+ heures de formation en 430+ formations.</h2>
 
-                    <MudText>
+                    <Paragraph>
                         L'un de mes objectifs est de réussir à reformaliser toutes ces formations acquises dans mon champ de compétence 
                         selon la norme Qualiopi pour mon enrichir mon catalogue 
                         mais également de créer de nouvelles thématiques.
-                    </MudText>
+                    </Paragraph>
 
-                    <MudText Style="margin:20px 0;"><b>Quelques graphiques de mon métier de formatrice chez Silae</b></MudText>
+                    <Paragraph Css="bold">Quelques graphiques de mon métier de formatrice chez Silae</Paragraph>
 
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">La formation <i>Initiale</i></MudText>
+                    <h2>La formation <span class="italic">Initiale</span></h2>
 
-                    <MudText>2200+ heures de formation initiale</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/InitialeVsPerfectionnement.png" alt="Initiale vs Perfectionnement" />
+                    <Paragraph>2200+ heures de formation initiale</Paragraph>
+                    <img width="450" src="/images/graphs/InitialeVsPerfectionnement.png" alt="Initiale vs Perfectionnement" />
 
-                    <MudText>82% en présentiel et 18% en distanciel</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Initiale_PresentielVsDistanciel.png" alt="Initiale : Présentiel vs Distanciel" />
+                    <Paragraph>82% en présentiel et 18% en distanciel</Paragraph>
+                    <img width="450" src="/images/graphs/Initiale_PresentielVsDistanciel.png" alt="Initiale : Présentiel vs Distanciel" />
 
-                    <MudText>Mes déplacements selon les régions de France métropolitaine</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Region.png" alt="Déplacements selon les régions" />
+                    <Paragraph>Mes déplacements selon les régions de France métropolitaine</Paragraph>
+                    <img width="450" src="/images/graphs/Region.png" alt="Déplacements selon les régions" />
 
-                    <MudText>Mes déplacements selon les départements de France métropolitaine</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Departement.png" alt="Déplacements selon les départements" />
+                    <Paragraph>Mes déplacements selon les départements de France métropolitaine</Paragraph>
+                    <img width="450" src="/images/graphs/Departement.png" alt="Déplacements selon les départements" />
 
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">En présentiel</MudText>
+                    <h2>En présentiel</h2>
 
-                    <MudText>84% en Intra et 16% en Inter</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Initiale_IntraVsInter.png" alt="Initiale : Intra vs Inter" />
+                    <Paragraph>84% en Intra et 16% en Inter</Paragraph>
+                    <img width="450" src="/images/graphs/Initiale_IntraVsInter.png" alt="Initiale : Intra vs Inter" />
 
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">En inter</MudText>
+                    <h2>En inter</h2>
 
-                    <MudText>41% à Aix-en-Provence</MudText>
-                    <MudText>24% à Toulouse</MudText>
-                    <MudText>18% à Paris</MudText>
-                    <MudText>12% à Lille</MudText>
-                    <MudText>6% à Bordeaux</MudText>
+                    <Paragraph>41% à Aix-en-Provence</Paragraph>
+                    <Paragraph>24% à Toulouse</Paragraph>
+                    <Paragraph>18% à Paris</Paragraph>
+                    <Paragraph>12% à Lille</Paragraph>
+                    <Paragraph>6% à Bordeaux</Paragraph>
 
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">La formation <i>Perfectionnement</i></MudText>
+                    <h2>La formation <span class="italic">Perfectionnement</span></h2>
 
-                    <MudText>66% à la carte et 34% par thématique définie</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Perfectionnement_CarteVsThematique.png" alt="Perfectionnement : À la carte vs Thématique définie" />
+                    <Paragraph>66% à la carte et 34% par thématique définie</Paragraph>
+                    <img width="450" src="/images/graphs/Perfectionnement_CarteVsThematique.png" alt="Perfectionnement : À la carte vs Thématique définie" />
 
-                    <MudText>
+                    <Paragraph>
                         La formation perfectionnement à la carte pouvait aller de la théorie de thèmes choisis au consulting.
-                        <br />
+                    </Paragraph>
+                    <Paragraph>
                         Le consulting prenait souvent la forme d’une liste de questions des apprenants 
                         pour lesquelles je devais faire ressortir un fil conducteur tout au long de la journée 
                         afin de transmettre un savoir cohérent, fluide et progressif 
                         pour que les apprenants trouvent d’eux-mêmes la solution aux différentes questions.
-                    </MudText>
+                    </Paragraph>
 
-                    <MudText>Différentes thématiques dispensées, par heures de formation</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/PerfectionnementDistancielThematique.png" alt="Perfectionnement : Distanciel selon les thématiques" />
+                    <Paragraph>Différentes thématiques dispensées, par heures de formation</Paragraph>
+                    <img width="450" src="/images/graphs/PerfectionnementDistancielThematique.png" alt="Perfectionnement : Distanciel selon les thématiques" />
 
-                    <MudText>
-                        <b>Formation DOM :</b>
+                    <Paragraph>
+                        <span>Formation DOM :</span>
                         <br />
                         Formation libre où l’apprenant apprenait selon ses besoins spécifiques.
                         La formation pouvait se faire sur des dossiers modèles adaptés aux spécificités ultramarines.
-                    </MudText>
-                    <MudText>
-                        <b>Formation DSN :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation DSN :</span>
                         <br />
                         Selon les besoins, la formation DSN pouvait prendre plusieurs formes :
                         <br />
@@ -181,24 +173,24 @@
                         Les différents points de paramétrage dans le logiciel de paie pour une DSN juste.
                         <br />
                         Les différentes régularisations et surtout les paramétrages en amont pour éviter les régularisations.
-                    </MudText>
-                    <MudText>
-                        <b>Formation RC :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation RC :</span>
                         <br />
-                        La formation relation client, ainsi appelée avant l'apparition de MySilae, 
+                        La formation relation client, ainsi appelée avant l'apparition de My Silae, 
                         était une formation sur les paramétrages à réaliser pour permettre à vos clients 
                         d’interagir avec vous sur tout ou partie des données de la paie directement dans l’interface.
-                    </MudText>
-                    <MudText>
-                        <b>Formation EC :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation EC :</span>
                         <br />
                         La formation écriture comptable, permettait d’apprendre 
                         comment paramétrer ses OD (opérations diverses) 
                         de paie dans le logiciel avec pour finalité l’export 
                         du fichier séquentiel à destination de votre logiciel de comptabilité.
-                    </MudText>
-                    <MudText>
-                        <b>Formation ABH :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation ABH :</span>
                         <br />
                         La formation Absences en heures mensualisées permettait 
                         d’appréhender toutes les méthodes proposées par le logiciel de paie 
@@ -208,9 +200,9 @@
                         par une méthode ou une autre, pour mieux comprendre du 
                         à la mensualisation les résultats parfois surprenant 
                         sur un bulletin de paie.
-                    </MudText>
-                    <MudText>
-                        <b>Formation ADMIN :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation ADMIN :</span>
                         <br />
                         Cette formation n’a plus lieu d’être aujourd’hui. En effet, 
                         l’interface a été rendue accessible et simplifiée 
@@ -218,9 +210,9 @@
                         dans le logiciel de paie. 
                         L'explication des paramétrages d’administration du logiciel de paie 
                         est aujourd’hui directement expliquée dans mes vidéos de démarrage.
-                    </MudText>
-                    <MudText>
-                        <b>Formation Libellé Profil :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation Libellé Profil :</span>
                         <br /> 
                         La formation Libellé Profil est exclusivement concentrée sur les primes. 
                         Il s’agit de comprendre la différence entre un libellé de prime et 
@@ -230,7 +222,7 @@
                         l’outil de simplification : 
                         Paramétrage &lt; Primes &lt; Primes ou Paramétrage &lt; Primes &lt; Profils Utilisateurs.
                         <br />
-                        Les formations relatives au langage propre à MySilae : 
+                        Les formations relatives au langage propre à My Silae : 
                         le Scriptae ou Paramétrages avancées. CC, CP1, CP2, CP3.
                         <br />
                         J’ai été parmi les actrices de la refonte de la formation Paramétrages 
@@ -247,18 +239,18 @@
                         j’ai la connaissance des deux autres formations incluses 
                         dans le parcours de formation PAAV : 
                         import de variable et optimisation.
-                    </MudText>
-                    <MudText>
-                        <b>Formation EH :</b>
+                    </Paragraph>
+                    <Paragraph>
+                        <span>Formation EH :</span>
                         <br />
                         La formation édition historique est une formation sur un langage spécifique du scriptae, 
                         qui permet d’extraire des tableaux de données des données salariés, société ou du bulletin.
-                    </MudText>
+                    </Paragraph>
 
-                    <MudText style="margin:20px 0;" Class="indigo-text" Typo="Typo.h6">Formation <i>Perfectionnement</i> à la carte</MudText>
+                    <h2>Formation <span class="italic">Perfectionnement</span> à la carte</h2>
 
-                    <MudText>73% en présentiel et 27% en distanciel</MudText>
-                    <img width="450" style="margin:20px 0;" src="/images/graphs/Perfectionnement_PresentielVsDistanciel.png" alt="Perfectionnement : Présentiel vs Distanciel" />
+                    <Paragraph>73% en présentiel et 27% en distanciel</Paragraph>
+                    <img width="450" src="/images/graphs/Perfectionnement_PresentielVsDistanciel.png" alt="Perfectionnement : Présentiel vs Distanciel" />
 
                 </div>
             </ChildContent>
@@ -270,26 +262,18 @@
                 </MudText>
             </TitleContent>
             <ChildContent>
-                <div class="d-flex flex-column" style="margin-top:20px;">
-                    <MudText Style="margin:10px 0 0 0;">
-                        Dans le cadre de ma formation <i>Chef de projet, Formation et Apprentissage en ligne</i>, 
-                        j’apprends les techniques de réalisation d’un projet <span style="white-space:nowrap;">de A à Z.</span>
-                    </MudText>
-                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                               Href="/resources/Plaquette_CAFEL_2024-2025.pdf" Target="@Constants.Blank"
-                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-                        visualiser le programme de formation CAFEL
-                    </MudButton>
+                <div class="d-flex flex-column">
+                    <Paragraph>
+                        Dans le cadre de ma formation <span class="italic">Chef de projet, Formation et Apprentissage en ligne</span>, 
+                        j’apprends les techniques de réalisation d’un projet de A à Z.
+                    </Paragraph>
+                    <LinkButton Link="@(new Link("/resources/Plaquette_CAFEL_2024-2025.pdf", "visualiser le programme de formation CAFEL", true))" />
 
-                    <MudText Style="margin:20px 0 0 0;">
+                    <Paragraph>
                         Je découvre également de nouveaux outils de conception de modules de formation en ligne, 
                         comme Kumullus ou Storyline.
-                    </MudText>
-                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                               Href="/resources/ABMq_Fiche_Projet_CAFEL.pdf" Target="@Constants.Blank"
-                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
-                        décrouvrir mon projet de formation dont la soutenance aura lieu fin juin 2025
-                    </MudButton>
+                    </Paragraph>
+                    <LinkButton Link="@(new Link("/resources/ABMq_Fiche_Projet_CAFEL.pdf", "décrouvrir mon projet de formation dont la soutenance aura lieu fin juin 2025", true))" />
                 </div>
             </ChildContent>
         </MudExpansionPanel>

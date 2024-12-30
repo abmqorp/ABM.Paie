@@ -1,0 +1,14 @@
+﻿@using ABM.Paie.Models
+
+<MudButton Class="link-button"
+           Href="@Link.Href" Target="@Link.Target"
+           EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" IconClass="@Link.Css">
+        <span class="@Link.Css">@Text</span>
+</MudButton>
+
+@code {
+    [Parameter]
+    public required Link Link { get; set; }
+    
+    private string Text => Link.Text ?? "en savoir plus";
+}

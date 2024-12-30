@@ -1,0 +1,12 @@
+﻿@using ABM.Paie.Models
+
+<MudButton Class="page-button" Href="@Link.Href" Target="@Link.Target">
+    <MudText>
+        <span class="@Link.Css">@Link.Text</span>
+    </MudText>
+</MudButton>
+
+@code {
+    [Parameter]
+    public required Link Link { get; set; }
+}

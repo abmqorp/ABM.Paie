@@ -38,8 +38,5 @@ public static class Quotes
         new("Sultan Valad", "Il est impossible d'apprendre un métier tout seul. Une bougie s'allume au contact de la flamme d'une autre bougie. Si elle ne s'en approche pas elle restera éteinte."),
     ];
 
-    public static IEnumerable<Quote> GetAll()
-    {
-        return List;
-    }
+    public static IEnumerable<Quote> GetAll() => List;
 }

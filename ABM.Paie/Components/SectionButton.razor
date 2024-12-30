@@ -1,0 +1,20 @@
+﻿@using ABM.Paie.Models
+
+<MudButton Class="section-button"
+           Href="@Link.Href" Target="@Link.Target"
+           Variant="@Variant" StartIcon="@StartIcon">
+    <MudText>
+        <span class="@Link.Css">@Link.Text</span>
+    </MudText>
+</MudButton>
+
+@code {
+    [Parameter]
+    public required Link Link { get; set; }
+
+    [Parameter]
+    public Variant Variant { get; set; }
+
+    [Parameter]
+    public string? StartIcon { get; set; }
+}

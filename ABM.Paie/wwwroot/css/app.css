@@ -119,34 +119,72 @@ code {
     initial-value: #C5CAE9;
 }
 
-/* Footer */
-
-.footer-button {
-    color: white;
+@property --secondary-dark {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #546E7A;
 }
 
-.footer-button.text.danger {
-    color: var(--danger-darken-4);
+/* Colors */
+
+.primary {
+    background: #0277BD;
 }
 
-.footer-button.filled.danger {
-    background: var(--danger-darken-3);
+.secondary-dark {
+    background: var(--secondary-dark);
 }
 
-/* Header */
+/* Layout */
 
-.header-button.text {
-    color: var(--primary-lighten-2);
+#footer {
+    & .mud-button {
+        color: white;
+    }
+    & .layout-menu, .page-button {
+        & span {
+            font-family: Impact;
+            font-size: 1.5rem;
+            font-weight: normal;
+        }
+    }
+    & .mail-button, .section-button {
+        padding: 0 0.5rem;
+    }
+    & .mud-button-text .danger {
+        color: var(--danger-darken-3);
+        font-weight:bold;
+    }
+    & .mud-button-filled:has(.danger) {
+        background: var(--danger-darken-3);
+    }
+    & .paragraph {
+        font-size: 1rem;
+    }
 }
 
-.header-button.filled {
-    background: var(--primary-lighten-2);
-    color: white;
+#header {
+    & .mud-button-text {
+        color: #0288D1;
+    }
+    & .mud-button-filled {
+        background: #0288D1;
+        color: white;
+    }
+}
+
+#version {
+    color: #0288D1;
+    text-align: right;
 }
 
 /* QuoteCarousel */
 
 .quote-carousel {
+    border: solid;
+    border-color: black;
+    border-radius: 1rem;
+    border-width: medium;
     color: white;
     height: 6rem;
     margin: 3rem 0;
@@ -154,23 +192,52 @@ code {
 
 .quote-carousel-item {
     align-items: center;
-    background: var(--primary-lighten-4);
+    background: #B0BEC5;
     display: flex;
     justify-content: center;
-}
-
-    .quote-carousel-item div {
+    & div {
+        font-size: 0.8rem;
+        line-height: normal;
         width: 80%;
     }
-
-    .quote-carousel-item span:first-child {
+    & span:first-child {
+        font-family: 'Courier New';
         font-style: italic;
+        font-weight: bold;
     }
-
-    .quote-carousel-item span:nth-child(2) {
-        color: var(--primary);
+    & span:nth-child(2) {
+        color: #01579B;
+        font-family: Impact;
         white-space: nowrap;
     }
+}
+
+/* Home */
+
+#actualites .mud-card {
+    width: 20rem;
+}
+
+#partenariats .mud-card {
+    width: 16rem;
+}
+
+#values {
+    width: 27.5rem;
+    & div:has(div) {
+        margin: 1rem 0;
+    }
+    & div div {
+        width: 5rem;
+        &:has(p) {
+            width: 7.5rem;
+        }
+    }
+}
+
+.mud-card-content > .paragraph {
+    font-size: 1rem;
+}
 
 /* Common */
 
@@ -180,18 +247,69 @@ code {
 
 .center {
     align-items: center;
-    display: flex;
     justify-content: center;
-    margin: 10px 0px;
+    text-align: center;
 }
 
-.impact {
+.justify {
+    text-align: justify;
+}
+
+.italic {
+    font-style: italic;
+}
+
+h1, h2 {
+    color: #0277BD;
     font-family: Impact;
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 2rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+.large {
+    font-size: 1.25rem;
+}
+
+.huge {
+    font-size: 1.5rem;
+}
+
+.link-button, .mail-button {
+    width: fit-content;
+}
+
+.link-button {
+    & span {
+        color: #78909C;
+    }
+    &:has(.primary-text) span {
+        color: #0277BD;
+    }
+}
+
+.paragraph {
+    font-family:'Sitka Display';
 }
 
 /* Mud */
 
+.mud-button .mud-button-label {
+    text-transform: none;
+}
+
 .mud-expand-panel-header {
-    background-color: var(--primary-lighten-4);
+    background-color: #546E7A;
     color: white;
+}
+
+.mud-expand-panel.mud-expand-panel-border.mud-elevation-1, .mud-expand-panel-header,
+.mud-paper.mud-elevation-1 {
+    border-radius: 1rem;
 }

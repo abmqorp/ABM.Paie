@@ -1,204 +1,118 @@
 ﻿@page "/"
 @using ABM.Paie.Components
 @using ABM.Paie.Enumerations
+@using ABM.Paie.Extensions
 @using ABM.Paie.Helpers
 @using ABM.Paie.Models
 @using ABM.Paie.Resources
 
 @{
-    var quotes = Quotes.GetAll().ToList();
-    
-    var r = new Random();
-    var n = quotes.Count;
-    
-    while (n > 1) {
-        n--;
-        var k = r.Next(n + 1);
-        var temp = quotes[k];
-        quotes[k] = quotes[n];
-        quotes[n] = temp;
-    }
-    
+    var quotes = Quotes.GetAll().ToRandomizedList();
+
     var quotes1 = quotes[0..6];
     var quotes2 = quotes[6..12];
     var quotes3 = quotes[12..18];
     var quotes4 = quotes[18..24];
     var quotes5 = quotes[24..30];
+
+    IEnumerable<string> values = ["Animation", "Qualité", "Respect", "Originalité", "Curiosité"];
 }
 
 <PageTitle>ABM Paie</PageTitle>
 
-<div style="text-align:center">
+<div class="center">
 
-    <div class="center indigo lighten-4 white-text" style="margin:50px 0px 100px 0;">
-        <MudText Style="padding:30px 10px" Typo="Typo.h3">
-            ABM Paie - Formations sur MySilae
-        </MudText>
-    </div>
+    <MudImage Src="/images/ABMq_Paie_LogoTitle.png" Alt="ABM Paie - Formations sur My Silae" 
+              Style="height:auto;max-width:85%;min-width:450px;
+                     border:solid;border-color:black;border-radius: 1rem;border-width: medium;" />
     
-    <div class="center" style="margin:30px 0;">
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>Faire découvrir, progresser et se perfectionner</b>
-        </MudText>
-    </div>
+    <h1>Faire découvrir, progresser et se perfectionner</h1>
     
-    <div class="center" style="margin:20px 0 50px 0;">
-        <MudText Typo="Typo.h6">
-            Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel MySilae.
-        </MudText>
-    </div>
+    <Paragraph>
+        Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN via le logiciel My Silae.
+    </Paragraph>
 
     <QuoteCarousel Quotes="quotes1" />
 
-    <div class="center" style="margin:60px 0;">
-        <div style="margin:0px 20px">
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>3300+ heures de formations dispensées chez Silae</b><br />
-            </MudText>
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                Href="@(UriHelper.Get(Section.Chiffres))" 
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
+    <div class="d-flex center">
+        <div>
+            <h2>3300+ heures de formations dispensées chez Silae</h2>
+            <LinkButton Link="@(new Link(UriHelper.Get(Section.Chiffres)))" />
         </div>
-        <div style="margin:0px 20px">
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</b><br />
-            </MudText>
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                Href="@(UriHelper.Get(Section.Silae))" 
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
+        <div>
+            <h2>8 ans d'expérience Silae : Formatrice et Responsable Silae Académie</h2>
+            <LinkButton Link="@(new Link(UriHelper.Get(Section.Silae)))" />
         </div>
-        <div style="margin:0px 20px">
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>430+ formations dispensées chez Silae</b><br />
-            </MudText>
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                Href="@(UriHelper.Get(Section.Chiffres))" 
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
+        <div>
+            <h2>430+ formations dispensées chez Silae</h2>
+            <LinkButton Link="@(new Link(UriHelper.Get(Section.Chiffres)))" />
         </div>
     </div>
     
-    <div class="center" style="margin:80px 0 60px 0;">
-        <MudText Typo="Typo.h6">
-            <b>Découvrez le catalogue de formation ABM Paie au travers de tous les programmes de formation</b><br />
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                       Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank"
-                       EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
-        </MudText>
-    </div>
+    <Paragraph Css="bold">
+        Découvrez le catalogue de formation ABM Paie au travers de tous les programmes de formation
+    </Paragraph>
+    <LinkButton Link="@(new Link("https://abmformation.catalogueformpro.com"))" />
 
     <QuoteCarousel Quotes="quotes2" />
     
-    <div class="center" style="margin:60px 0;">
-        <MudText Class="indigo-text" Typo="Typo.h5">
-            <b>Gérez et visualisez votre apprentissage : <span class="black-text" style="font-family:'Segoe Script';white-space:nowrap;">le <span class="green-text">b.a.-b</span>Mp<span class="green-text">a</span>ie</span></b>
-        </MudText>
-    </div>
+    <h1>Gérez et visualisez votre apprentissage : <span class="black-text" style="font-family:'Segoe Script';white-space:nowrap;">le <span class="green-text">b.a.-b</span>Mp<span class="green-text">a</span>ie</span></h1>
     
-    <div class="center flex-wrap" style="margin:40px 0">
-        <img src="/images/digiforma/ABMq_Espace_Digiforma.png" alt="Espace Digiforma" width="450" style="margin:0 10px;">
-        <div class="center flex-column" style="max-width:450px;margin:30px 10px;">
-            <MudText Typo="Typo.h5" Style="margin:20px 0;">Apprenant :</MudText>
-            <MudText>
+    <div class="center flex-wrap">
+        <img src="/images/digiforma/ABMq_Espace_Digiforma.png" alt="Espace Digiforma" width="450">
+        <div class="center flex-column">
+            <h2>Apprenant :</h2>
+            <Paragraph>
                 Visualisez votre courbe de progression, vos compétences acquises, vos temps de formation et vos scores de formation, dans un espace personnalisé dédié à votre montée en compétence.
-            </MudText>
+            </Paragraph>
         </div>
     </div>
     
     <QuoteCarousel Quotes="quotes3" />
 
-    <div class="center" style="margin:60px 0;">
-        <div style="width:stretch;">
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>ABM Paie, c'est</b>
-            </MudText>
-            <MudText Typo="Typo.h5" Style="margin:20px;">Satisfaction : 95 %</MudText>
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                Href="@(UriHelper.Get(Section.Indicateurs))" 
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
-            <br />
-            <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:100px 0 0 0;">
-                <b>Mes valeurs</b>
-            </MudText>
-            <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
-                <div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Animation</MudText></div><div style="width:80px;" /><div style="width:80px;" />
-            </div>
-            <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
-                <div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Qualité</MudText></div><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" />
-            </div>
-            <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
-                <div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Respect</MudText></div><div style="width:80px;" />
-            </div>
-            <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
-                <div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Originalité</MudText></div><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" />
-            </div>
-            <div class="d-flex flex-wrap justify-content-between indigo lighten-2" style="margin:30px 0;width:stretch;">
-                <div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:80px;" /><div style="width:120px;"><MudText Class="white" Typo="Typo.h6">Curiosité</MudText></div>
-            </div>
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                Href="@(UriHelper.Get(Section.Valeurs))"
-                EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                en savoir plus
-            </MudButton>
-        </div>
+    <div class="d-flex flex-column center">
+        <h1>ABM Paie, c'est</h1>
+        <Paragraph Css="bold">Satisfaction : 95 %</Paragraph>
+        <LinkButton Link="@(new Link(UriHelper.Get(Section.Indicateurs)))" />
+        
+        <h1>Mes valeurs</h1>
+        <ValuesItem Values="@values" />
+        <LinkButton Link="@(new Link(UriHelper.Get(Section.Valeurs)))" />
     </div>
 
     <QuoteCarousel Quotes="quotes4" />
 
-    <div class="center" style="margin:50px 0;">
-        <div>
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>Mes actualités</b>
-            </MudText>
-            <MudCard Style="width:300px;margin:20px 0;">
-                <MudCardHeader>
-                    <MudText Typo="Typo.h6">
-                        Décembre 2024
-                    </MudText>
-                </MudCardHeader>
-                <MudCardMedia Image="/images/formations/ABMq_Absences.jpg" Height="300" />
-                <MudCardContent>
-                    <MudText Typo="Typo.body1">
-                        La formation<br /><i>Absences en heures mensualisées</i>
-                    </MudText>
-                </MudCardContent>
-                <MudCardActions>
-                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                        Href="@(UriHelper.Get(Constants.Actualite))" 
-                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                        en savoir plus
-                    </MudButton>
-                </MudCardActions>
-            </MudCard>
-        </div>
+    <div id="actualites" class="d-flex flex-column center">
+        <h1>Mes actualités</h1>
+        <MudCard>
+            <MudCardHeader>
+                <Paragraph Css="bold">Décembre 2024</Paragraph>
+            </MudCardHeader>
+            <MudCardMedia Image="/images/formations/ABMq_Absences.jpg" Height="300" />
+            <MudCardContent>
+                <Paragraph>
+                    La formation
+                </Paragraph>
+                <Paragraph Css="italic">
+                    Absences en heures mensualisées
+                </Paragraph>
+            </MudCardContent>
+            <MudCardActions>
+                <LinkButton Link="@(new Link(UriHelper.Get(Constants.Actualite)))" />
+            </MudCardActions>
+        </MudCard>
     </div>
     
     <QuoteCarousel Quotes="quotes5" />
 
-    <div class="center" style="margin:30px 0 60px 0;">
-        <div>
-            <MudText Class="indigo-text" Typo="Typo.h5">
-                <b>Partenariats</b>
-            </MudText>
-            <MudCard Style="width:250px;margin:20px;">
-                <MudCardMedia Image="https://static.wixstatic.com/media/5bc43a_e8d3d16eefd8470ab97f4eee74f65d9e~mv2.jpg/v1/fill/w_474,h_486,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Facilae_edited.jpg" Height="220" />
-                <MudCardContent>
-                    <MudText>Facilite vos migrations et vos paramétrages dans Silae...</MudText>
-                    <MudButton Class="teal-text text-darken-3" Variant="Variant.Text" EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;" 
-                               Href="https://www.facilaepaie.com" Target="@Constants.Blank">
-                        visiter Facilae Paie
-                    </MudButton>
-                </MudCardContent>
-            </MudCard>
-        </div>
+    <div id="partenariats" class="d-flex flex-column center">
+        <h1>Partenariats</h1>
+        <MudCard>
+            <MudCardMedia Image="https://static.wixstatic.com/media/5bc43a_e8d3d16eefd8470ab97f4eee74f65d9e~mv2.jpg/v1/fill/w_474,h_486,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/Logo%20Facilae_edited.jpg" Height="220" />
+            <MudCardContent>
+                <Paragraph>Facilite vos migrations et vos paramétrages dans Silae...</Paragraph>
+                <LinkButton Link="@(new Link("https://www.facilaepaie.com", "visiter Facilae Paie", css: "teal-text text-darken-1"))" />
+            </MudCardContent>
+        </MudCard>
     </div>
 </div>
