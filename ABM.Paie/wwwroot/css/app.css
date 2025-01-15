@@ -273,6 +273,10 @@ h2 {
     font-size: 1.5rem;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 .large {
     font-size: 1.25rem;
 }
