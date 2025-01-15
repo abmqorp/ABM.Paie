@@ -1,12 +1,19 @@
-﻿@using MudBlazor
+﻿@using ABM.Paie.Components
+@using ABM.Paie.Extensions
+@using MudBlazor
+@inject NavigationManager NavigationManager
 @inherits LayoutComponentBase
 
 <MudThemeProvider />
 <MudPopoverProvider />
 
+@{
+    var isHome = string.IsNullOrEmpty(NavigationManager.ToBaseRelativePath(NavigationManager.Uri));
+}
+
 <MudContainer>
 	<div class="center" style="text-align:center;margin-top:20px;">
-		<img src="/images/ABMq_Paie_Logo.png" alt="logo ABM Paie" width="100"/>
+		<img src="/images/logos/abm-paie.png" alt="logo ABM Paie" width="100"/>
 		<MainHeader />
 	</div>
 
