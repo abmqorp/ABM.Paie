@@ -1,15 +1,10 @@
 ﻿@using ABM.Paie.Components
 @using ABM.Paie.Extensions
 @using MudBlazor
-@inject NavigationManager NavigationManager
 @inherits LayoutComponentBase
 
 <MudThemeProvider />
 <MudPopoverProvider />
-
-@{
-    var isHome = string.IsNullOrEmpty(NavigationManager.ToBaseRelativePath(NavigationManager.Uri));
-}
 
 <MudContainer>
     <div class="d-flex center">
