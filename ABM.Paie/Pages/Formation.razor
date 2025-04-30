@@ -1,5 +1,7 @@
 ﻿@page "/Formation"
-@page "/Formation/{Section}"
+@page "/Formation/{Sub}"
+@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
 @using ABM.Paie.Resources
 
 <PageTitle>ABM Paie - Formations</PageTitle>
@@ -11,12 +13,7 @@
         </MudText>
 
         <MudText style="margin:10px 0px;">
-            Découvrez le catalogue de formation ABM Paie au travers de <b>tous les programmes de formation</b>.<br />
-            <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                       Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank"
-                       EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                voir le catalogue en ligne
-            </MudButton>
+            En cours de construction.
         </MudText>
 
         <MudText Class="indigo-text" Typo="Typo.h6">
@@ -31,9 +28,9 @@
             Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae 
             selon les méthodes réelles ou moyennes en heures ou en calendaire.<br />
             <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
-                       Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank"
+                       Href="@(UriHelper.Get(Constants.Contact))"
                        EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-                découvrir le programme de formation via le catalogue en ligne
+                prendre contact pour plus d'informations
             </MudButton>
         </MudText>
     </div>
@@ -41,5 +38,5 @@
 
 @code {
     [Parameter]
-    public string? Section { get; set; }
+    public string? Sub { get; set; }
 }

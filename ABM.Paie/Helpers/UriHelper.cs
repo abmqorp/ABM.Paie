@@ -17,7 +17,9 @@ public static class UriHelper
         };
     }
 
-    public static string Get(string page, Section? section) => Get(page, section.ToString());
+    public static string Get(string page, Section section) => Get(page, section.ToString());
 
-    public static string Get(string page, string? section = null) => $"/{page}/{section}";
+    public static string Get(string page, string section) => $"/{page}/{section}";
+
+    public static string Get(string page) => $"/{page}";
 }

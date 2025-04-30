@@ -92,24 +92,50 @@
                     </MudButton>
 
                     <MudText Style="margin:20px 0 0 0;">
-                        30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i> (2h E-learning)
+                        30 novembre 2024 : Formation, <i>Sensibilisation des référents handicap OF/CFA</i>
                     </MudText>
                     <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
-                    Href="/resources/ABMq_Attestation_Sensibilisation_Handicap_2024-11-30.pdf" Target="@Constants.Blank"
+                    Href="/resources/ABMq_Handicap_Attestation_Sensibilisation_2024-11-30.pdf" Target="@Constants.Blank"
                     EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
                         visualiser mon attestation de réalisation
                     </MudButton>
-                    <MudText>
-                        Cette formation se compose de deux autres modules programmés pour 2025 :
+
+                    <MudText Style="margin:20px 0 0 0;">
+                        11 février 2025 : Formation, <i>Devenir référent handicap en organisme de formation ou CFA</i>
                     </MudText>
-                    <div class="d-flex flex-wrap" style="margin:10px 0 20px 0">
-                        <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
-                        <MudText>
-                            <i>Devenir Référent handicap</i>
-                            <br />
-                            <i>Troubles cognitifs</i>
-                        </MudText>
-                    </div>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                    Href="/resources/ABMq_Handicap_Devenir_Referent_2025-02-11.pdf" Target="@Constants.Blank"
+                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser mon attestation de réalisation
+                    </MudButton>
+
+                    <MudText Style="margin:20px 0 0 0;">
+                        08 avril 2025 : Formation, <i>Troubles cognitifs (« Dys », autisme) : Connaître comprendre et aménager les parcours de formation</i>
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text" 
+                    Href="/resources/ABMq_Handicap_Troubles_Cognitifs_2025-04-08.pdf" Target="@Constants.Blank"
+                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser mon attestation de réalisation
+                    </MudButton>
+                </div>
+            </ChildContent>
+        </MudExpansionPanel>
+        <MudExpansionPanel Expanded="@IsExpanded(Section.Qualiopi)" ExpandedChanged="QualiopiExpandedChanged">
+            <TitleContent>
+                <MudText Typo="Typo.h5">
+                    Certification QUALIOPI
+                </MudText>
+            </TitleContent>
+            <ChildContent>
+                <div class="d-flex flex-column" style="margin-top:20px;">
+                    <MudText Style="margin:10px 0 0 0;">
+                        21 mars 2025 : Obtention de la certification QUALIOPI
+                    </MudText>
+                    <MudButton Class="indigo-text text-lighten-2" Variant="Variant.Text"
+                               Href="/resources/ABMq_Qualiopi_Certificat_2024-11-30.pdf" Target="@Constants.Blank"
+                               EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="margin:10px 0 10px 0;text-transform:none;width:fit-content;">
+                        visualiser ma certification
+                    </MudButton>
                 </div>
             </ChildContent>
         </MudExpansionPanel>
@@ -214,6 +240,7 @@
     private void EquipeExpandedChanged(bool value) => ExpandedChanged(value, Section.Equipe);
     private void AssistanceExpandedChanged(bool value) => ExpandedChanged(value, Section.Assistance);
     private void HandicapExpandedChanged(bool value) => ExpandedChanged(value, Section.Handicap);
+    private void QualiopiExpandedChanged(bool value) => ExpandedChanged(value, Section.Qualiopi);
     private void IndicateursExpandedChanged(bool value) => ExpandedChanged(value, Section.Indicateurs);
     private void ValeursExpandedChanged(bool value) => ExpandedChanged(value, Section.Valeurs);
 }

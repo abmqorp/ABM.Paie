@@ -1,20 +1,60 @@
 ﻿@page "/Actualite"
+@using ABM.Paie.Enumerations
+@using ABM.Paie.Helpers
 @using ABM.Paie.Resources
 
 <PageTitle>ABM Paie - Actualités</PageTitle>
 
 <MudText Class="indigo-text" Typo="Typo.h5" Style="margin:50px 20px 0 20px"><b>Nouveautés</b></MudText>
 
-<MudPaper Class="indigo lighten-4 indigo-text d-flex flex-column" Style="padding:30px 20px;margin:20px 0;">
+<MudPaper id="actu2504" Class="indigo lighten-4 indigo-text d-flex flex-column" Style="padding:30px 20px;margin:20px 0;">
+    <MudText Class="white-text" Typo="Typo.h5" Style="margin:20px 0;">Avril 2025 :</MudText>
+    <MudText Typo="Typo.h5">Nouvelles certifications</MudText>
+    <MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
+        Obtention de la certification QUALIOPI (21 mars 2025).<br />
+        <MudButton Class="white-text" Variant="Variant.Text"
+                   Href="@(UriHelper.Get(Section.Qualiopi))"
+                   EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </MudText>
+    <MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
+        Référente Handicap avec 2 nouvelles formations (février et mars 2025).
+        <div class="d-flex flex-wrap" style="margin:10px 0;">
+            <MudDivider Vertical="true" FlexItem="true" Style="margin:0px 20px;" />
+            <MudText>
+                <i>Devenir référent handicap en organisme de formation ou CFA</i>
+                <br />
+                <i>Troubles cognitifs (« Dys », autisme) : Connaître comprendre et aménager les parcours de formation</i>
+            </MudText>
+        </div>
+        <MudButton Class="white-text" Variant="Variant.Text"
+                   Href="@(UriHelper.Get(Section.Handicap))"
+                   EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </MudText>
+    <MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
+        20/20 à la soutenance de mi-parcours (05 avril 2025) de mon projet
+        "Former sur le processus des déclarations sociales en paie, de A à Z, en incluant des modules d'apprentissage numérique."<br />
+        <MudButton Class="white-text" Variant="Variant.Text"
+                   Href="@(UriHelper.Get(Section.Cafel))"
+                   EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
+            en savoir plus
+        </MudButton>
+    </MudText>
+</MudPaper>
+
+<MudPaper id="actu2412" Class="indigo lighten-4 indigo-text d-flex flex-column" Style="padding:30px 20px;margin:20px 0;">
     <MudText Class="white-text" Typo="Typo.h5" Style="margin:20px 0;">Décembre 2024 :</MudText>
-    <MudText Typo="Typo.h5">La formation <i style="white-space:nowrap;">Absences en heures mensualisées</i>.</MudText>
+    <MudText Typo="Typo.h5">La formation <i style="white-space:nowrap;">Absences en heures mensualisées</i></MudText>
     <MudText Typo="Typo.h6" Style="margin:20px 0;text-align:justify">
         Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae
         selon les méthodes réelles ou moyennes en heures ou en calendaire.<br />
         <MudButton Class="white-text" Variant="Variant.Text"
-                   Href="https://abmformation.catalogueformpro.com" Target="@Constants.Blank" 
+                   Href="@(UriHelper.Get(Section.Perfectionnement))"
                    EndIcon="@Icons.Material.TwoTone.ArrowCircleRight" Style="text-transform:none;">
-            voir le catalogue en ligne
+            en savoir plus
         </MudButton>
     </MudText>
 </MudPaper>

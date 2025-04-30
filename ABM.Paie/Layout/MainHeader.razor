@@ -12,7 +12,7 @@
 	var formationActivator = new MenuButton("Formations");
 	var formationItems = new MenuButton[]
 	{
-		new("Catalogue en ligne", "https://abmformation.catalogueformpro.com", true),
+		new("Catalogue", UriHelper.Get(Section.Catalogue)),
 		new("Perfectionnement", UriHelper.Get(Section.Perfectionnement)),
 	};
 
@@ -25,6 +25,7 @@
 		new("Équipe pédagogique", UriHelper.Get(Section.Equipe)),
 		new("Référente Assistance technique et pédagogique", UriHelper.Get(Section.Assistance)),
 		new("Référente handicap", UriHelper.Get(Section.Handicap)),
+		new("Certification QUALIOPI", UriHelper.Get(Section.Qualiopi)),
 		new("Les indicateurs formation", UriHelper.Get(Section.Indicateurs)),
 		new("Mes valeurs", UriHelper.Get(Section.Valeurs)),
 	};

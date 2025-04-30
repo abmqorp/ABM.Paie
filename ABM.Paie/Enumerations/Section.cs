@@ -7,6 +7,7 @@ public enum Section
     Equipe,
     Assistance,
     Handicap,
+    Qualiopi,
     Indicateurs,
     Valeurs,
 
