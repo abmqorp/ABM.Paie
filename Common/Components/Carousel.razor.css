@@ -1,0 +1,23 @@
+﻿.common-carousel {
+    display: flex;
+    border-radius: 1rem;
+    background: var(--gray);
+    color: var(--white);
+    height: 6rem;
+}
+
+.common-carousel-button {
+    background-color: transparent;
+    border: none;
+    border-radius: 1rem;
+    fill: var(--gray-light);
+    & svg {
+        fill: inherit;
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+}
+
+.common-carousel-button:hover {
+    fill: var(--white);
+}

@@ -1,0 +1,10 @@
+﻿@using Common.Models
+
+<div class="common-quote-template">
+    <span>@Quote?.Text</span> <span>@Quote?.Author</span>
+</div>
+
+@code {
+    [Parameter]
+    public Quote? Quote { get; set; }
+}

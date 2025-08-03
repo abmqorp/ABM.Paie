@@ -1,0 +1,15 @@
+﻿@page "/"
+@using Common.Components
+@using ABM.Paie.Formation.Extensions
+@using ABM.Paie.Formation.Resources
+@using Common.Models
+
+@{
+    var quotes = Quotes.GetAll().ToRandomizedList();
+}
+
+<PageTitle>ABM Paie</PageTitle>
+
+<Carousel Templates="quotes">
+    <QuoteTemplate Quote="context" />
+</Carousel>

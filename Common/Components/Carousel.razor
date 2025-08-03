@@ -1,0 +1,90 @@
+﻿@using System.Timers
+@using Microsoft.AspNetCore.Components.Web
+@using Common.Components.Icons
+@using Common.Extensions
+@using Common.Models
+@typeparam T
+@implements IDisposable
+
+<div class="common-carousel">
+    <button class="common-carousel-button" @onclick="Previous">
+        <ArrowBack />
+    </button>
+    @for (_position = 0; _position < Batch; _position++)
+    {
+        @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
+    }
+    <button class="common-carousel-button" @onclick="Next">
+        <ArrowForward />
+    </button>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public IEnumerable<T?> Templates { get; set; }
+    [Parameter, EditorRequired]
+    public RenderFragment<T?> ChildContent { get; set; }
+    [Parameter]
+    public int? Interval { get; set; } = 10;
+    [Parameter]
+    public int Batch { get; set; } = 1;
+
+    private const int SecondsToMilliseconds = 1000;
+    private Timer? _timer;
+    private int _count;
+    private int _index = 0;
+    private int _position = 0;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        if (Templates.Any() && Interval.HasValue)
+        {
+            _timer = new(Interval.Value * SecondsToMilliseconds);
+            _timer.Elapsed += OnTimedEvent;
+            _timer.AutoReset = true;
+            _timer.Start();
+        }
+
+        _count = Templates.Count();
+        if (_count < Batch) Batch = _count;
+    }
+
+    private void OnTimedEvent(object? sender, ElapsedEventArgs e)
+    {
+        SetCurrent();
+    }
+
+    private void Previous(MouseEventArgs _)
+    {
+        SetCurrent(false);
+        _timer?.Reset();
+    }
+
+    private void Next(MouseEventArgs _)
+    {
+        SetCurrent();
+        _timer?.Reset();
+    }
+
+    private void SetCurrent(bool isNext = true)
+    {
+        if (_count > 0)
+        {
+            _position = 0;
+            _index = GetIndex(isNext);
+            StateHasChanged();
+        }
+    }
+
+    private int GetIndex(bool isNext = true)
+    {
+        return (_index + _position + (isNext ? 1 : _count - 1)) % _count;
+    }
+
+    public void Dispose()
+    {
+        _timer?.Dispose();
+    }
+}
