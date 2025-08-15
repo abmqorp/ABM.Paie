@@ -6,15 +6,15 @@
 @typeparam T
 @implements IDisposable
 
-<div class="common-carousel">
-    <button class="common-carousel-button" @onclick="Previous">
+<div class="common-carousel @typeof(T).Name.ToLower()">
+    <button class="common-carousel-button left" aria-label="Précédent" type="button" disabled="@_isDisabled" @onclick="Previous">
         <ArrowBack />
     </button>
     @for (_position = 0; _position < Batch; _position++)
     {
         @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     }
-    <button class="common-carousel-button" @onclick="Next">
+    <button class="common-carousel-button right" aria-label="Suivant" type="button" disabled="@_isDisabled" @onclick="Next">
         <ArrowForward />
     </button>
 </div>
@@ -34,21 +34,23 @@
     private int _count;
     private int _index = 0;
     private int _position = 0;
+    private bool _isDisabled;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-        if (Templates.Any() && Interval.HasValue)
+        _count = Templates.Count();
+        _isDisabled = _count <= Batch;
+        if (_isDisabled) Batch = _count;
+
+        if (Templates.Any() && !_isDisabled && Interval.HasValue)
         {
             _timer = new(Interval.Value * SecondsToMilliseconds);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
             _timer.Start();
         }
-
-        _count = Templates.Count();
-        if (_count < Batch) Batch = _count;
     }
 
     private void OnTimedEvent(object? sender, ElapsedEventArgs e)
