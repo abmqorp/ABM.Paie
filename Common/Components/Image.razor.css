@@ -1,0 +1,4 @@
+﻿.common-image {
+    border-radius: var(--common-image-border-radius) var(--common-image-border-radius) 0 0;
+    width: inherit;
+}

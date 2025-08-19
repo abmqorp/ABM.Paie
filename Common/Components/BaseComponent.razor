@@ -1,0 +1,21 @@
+﻿@using Common.Enumerations
+@using Common.Tools
+
+@code {
+    protected ClassBuilder _builder = new ClassBuilder();
+
+    [Parameter]
+    public string? Class { get; set; }
+    [Parameter]
+    public Color Color { get; set; } = Color.Primary;
+    [Parameter]
+    public Size FontSize { get; set; } = Size.NormalSize;
+    [Parameter]
+    public Size BorderRadius { get; set; } = Size.NormalSize;
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append(Class);
+        base.OnInitialized();
+    }
+}

@@ -1,0 +1,17 @@
+﻿@using Common.Extensions
+@inherits BaseComponent
+
+<img class=@_builder src=@Source aria-label=@Label style="--common-image-border-radius:@BorderRadius.GetDescription();" />
+
+@code {
+    [Parameter, EditorRequired]
+    public string Source { get; set; }
+    [Parameter, EditorRequired]
+    public string Label { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common-image");
+        base.OnInitialized();
+    }
+}

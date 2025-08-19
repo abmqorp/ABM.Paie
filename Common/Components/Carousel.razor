@@ -1,21 +1,21 @@
 ﻿@using System.Timers
 @using Microsoft.AspNetCore.Components.Web
-@using Common.Components.Icons
 @using Common.Extensions
 @using Common.Models
 @typeparam T
+@inherits BaseComponent
 @implements IDisposable
 
-<div class="common-carousel @typeof(T).Name.ToLower()">
-    <button class="common-carousel-button left" aria-label="Précédent" type="button" disabled="@_isDisabled" @onclick="Previous">
-        <ArrowBack />
+<div class=@_builder style="--common-carousel-border-radius:@BorderRadius.GetDescription();">
+    <button class="common-carousel-button left" aria-label="Précédent" type="button" disabled=@_isDisabled @onclick=Previous>
+        <Icon Content=@Icon.Path.ArrowBack />
     </button>
     @for (_position = 0; _position < Batch; _position++)
     {
         @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     }
-    <button class="common-carousel-button right" aria-label="Suivant" type="button" disabled="@_isDisabled" @onclick="Next">
-        <ArrowForward />
+    <button class="common-carousel-button right" aria-label="Suivant" type="button" disabled=@_isDisabled @onclick=Next>
+        <Icon Content=@Icon.Path.ArrowForward />
     </button>
 </div>
 
@@ -38,6 +38,7 @@
 
     protected override void OnInitialized()
     {
+        _ = _builder.Append("common-carousel").Append(typeof(T).Name.ToLower());
         base.OnInitialized();
 
         _count = Templates.Count();

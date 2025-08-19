@@ -96,3 +96,9 @@ body {
     margin: auto;
     padding: 0.5rem;
 }
+
+h1 {
+    color: var(--primary);
+    font-family: 'Permanent Marker Regular';
+    font-size: 3rem;
+}

@@ -1,5 +1,4 @@
 ﻿.common-carousel {
-    --common-carousel-border-radius: 1rem;
     display: flex;
     border-radius: var(--common-carousel-border-radius);
 }
@@ -11,18 +10,18 @@
     color: var(--white);
 }
 
-.common-carousel-button {
+.common-carousel > button {
     fill: var(--common-carousel-color);
-    & svg {
+    & .common-icon {
         height: 2.5rem;
         width: 2.5rem;
     }
 }
 
-.common-carousel-button.right {
+.common-carousel > button.right {
     border-radius: 0 var(--common-carousel-border-radius) var(--common-carousel-border-radius) 0;
 }
 
-.common-carousel-button.left {
+.common-carousel > button.left {
     border-radius: var(--common-carousel-border-radius) 0 0 var(--common-carousel-border-radius);
 }

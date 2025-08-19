@@ -1,10 +1,17 @@
 ﻿@using Common.Models
+@inherits BaseComponent
 
-<div class="common-quote-template">
+<div class=@_builder>
     <span>@Quote?.Text</span> <span>@Quote?.Author</span>
 </div>
 
 @code {
     [Parameter]
     public Quote? Quote { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common-quote-template");
+        base.OnInitialized();
+    }
 }

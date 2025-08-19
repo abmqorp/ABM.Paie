@@ -1,0 +1,8 @@
+﻿.common-link {
+    color: var(--common-link-color);
+    font-size: var(--common-link-font-size);
+    & .common-icon {
+        fill: var(--common-link-color);
+        height: var(--common-link-font-size);
+    }
+}

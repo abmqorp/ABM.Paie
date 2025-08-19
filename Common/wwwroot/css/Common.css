@@ -8,6 +8,11 @@
     inherits: false;
     initial-value: #0000000d;
 }
+@property --shade-dark {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #00000034;
+}
 @property --black {
     syntax: "<color>";
     inherits: false;
@@ -57,6 +62,11 @@
     syntax: "<color>";
     inherits: false;
     initial-value: #b0bec5;
+}
+@property --partner {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #00897b;
 }
 
 /* --- --- --- --- --- */
@@ -291,7 +301,12 @@
 }
 
 a {
+    border-radius: 0.5rem;
     text-decoration: none;
+    text-align: center;
+    align-content: center;
+    padding: 0.5rem;
+    width: fit-content;
 }
 
 button {
@@ -300,7 +315,6 @@ button {
     cursor: pointer;
     font-family: inherit;
     padding: 0;
-    transition: 220ms all ease-in-out;
 }
 
 button:disabled {
@@ -308,10 +322,15 @@ button:disabled {
     fill: var(--shade) !important;
 }
 
-button:disabled, button:hover {
+a, button {
+    transition: 220ms all ease-in-out;
+}
+
+a:hover, button:hover, button:disabled {
     background-color: var(--shade);
 }
 
 svg {
     fill: inherit;
+    width: auto;
 }
