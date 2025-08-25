@@ -1,22 +1,25 @@
 ﻿@using System.Timers
 @using Microsoft.AspNetCore.Components.Web
+@using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
 @typeparam T
 @inherits BaseComponent
 @implements IDisposable
 
-<div class=@_builder style="--common-carousel-border-radius:@BorderRadius.GetDescription();">
-    <button class="common-carousel-button left" aria-label="Précédent" type="button" disabled=@_isDisabled @onclick=Previous>
-        <Icon Content=@Icon.Path.ArrowBack />
-    </button>
+<div class=@_builder>
+    <OpButton Class="left" Label="Suivant" Action=Previous IsDisabled=_isDisabled
+        Color=Color FontSize=FontSize>
+        <Icon Content=@IconPath.ArrowBack />
+    </OpButton>
     @for (_position = 0; _position < Batch; _position++)
     {
         @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     }
-    <button class="common-carousel-button right" aria-label="Suivant" type="button" disabled=@_isDisabled @onclick=Next>
-        <Icon Content=@Icon.Path.ArrowForward />
-    </button>
+    <OpButton Class="right" Label="Suivant" Action=Next IsDisabled=_isDisabled
+        Color=Color FontSize=FontSize>
+        <Icon Content=@IconPath.ArrowForward />
+    </OpButton>
 </div>
 
 @code {
@@ -59,13 +62,13 @@
         SetCurrent();
     }
 
-    private void Previous(MouseEventArgs _)
+    private void Previous()
     {
         SetCurrent(false);
         _timer?.Reset();
     }
 
-    private void Next(MouseEventArgs _)
+    private void Next()
     {
         SetCurrent();
         _timer?.Reset();

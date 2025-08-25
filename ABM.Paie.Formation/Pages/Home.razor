@@ -11,24 +11,22 @@
 
 <PageTitle>ABM Paie</PageTitle>
 
-<Carousel Templates=quotes>
-    <QuoteTemplate Quote=context />
+<Carousel Templates=quotes Color=Color.White FontSize=Size.Larger>
+    <QuoteTemplate Data=context />
 </Carousel>
 
 <h1>Partenariats</h1>
 
 <Card>
-    <Illustration>
+    <ImageTemplate>
         <Image Source="/images/facilaepaie/Logo Facilae_edited.avif" Label="Logo Facilae Paie" />
-    </Illustration>
+    </ImageTemplate>
     <Description>
         <Paragraph>
             Facilite vos migrations et vos paramétrages dans Silae...
         </Paragraph>
     </Description>
-    <Action>
-        <Link Url="https://www.facilaepaie.com" IsExternal=true Color=Color.Partner>
-            visiter Facilae Paie
-        </Link>
-    </Action>
+    <OperationTemplate>
+        <OpLink Url="https://www.facilaepaie.com" Label="visiter Facilae Paie" IsExternal=true Color=Color.Partner />
+    </OperationTemplate>
 </Card>

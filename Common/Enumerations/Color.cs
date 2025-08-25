@@ -3,6 +3,8 @@
 namespace Common.Enumerations;
 public enum Color
 {
+    [Description("--gray-dark")]
+    GrayDark,
     [Description("--shade")]
     Shade,
     [Description("--shade-dark")]
@@ -23,8 +25,6 @@ public enum Color
     Success,
     [Description("--gray-light")]
     GrayLight,
-    [Description("--gray-dark")]
-    GrayDark,
     [Description("--gray")]
     Gray,
     [Description("--partner")]

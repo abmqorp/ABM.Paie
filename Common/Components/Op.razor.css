@@ -1,0 +1,28 @@
+﻿.common-op {
+    color: var(--common-op-color);
+    font-size: var(--common-op-font-size);
+}
+.common-op {
+    & .common-icon {
+        fill: var(--common-op-color);
+        height: var(--common-op-font-size);
+    }
+}
+
+.common-op.filled {
+    background: var(--common-op-color);
+    color: var(--white);
+}
+.common-op.filled {
+    & .common-icon {
+        fill: var(--white);
+    }
+}
+
+.common-op.filled:hover, .common-op.filled:disabled {
+    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--common-op-color), var(--common-op-color));
+}
+
+.common-op-content {
+    display: inline-block;
+}

@@ -1,0 +1,20 @@
+﻿@using Common.Enumerations
+@using Common.Models
+
+@if (Data is LinkData linkData)
+{
+    <OpLink Class=@Data.Class Label=@Data.Text
+        Url=@linkData.Url IsExternal=linkData.IsExternal StartIcon=Data.StartIcon
+        Color=Data.Color />
+}
+else if (Data is ButtonData buttonData)
+{
+    <OpButton Class=@Data.Class Label=@Data.Text
+        Action=buttonData.Action EndIcon=buttonData.EndIcon StartIcon=Data.StartIcon
+        Color=Data.Color/>
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public Models.OpData? Data { get; set; }
+}

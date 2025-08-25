@@ -2,12 +2,12 @@
 @inherits BaseComponent
 
 <div class=@_builder>
-    <span>@Quote?.Text</span> <span>@Quote?.Author</span>
+    <span>@Data?.Text</span> <span>@Data?.Author</span>
 </div>
 
 @code {
     [Parameter]
-    public Quote? Quote { get; set; }
+    public QuoteData? Data { get; set; }
 
     protected override void OnInitialized()
     {

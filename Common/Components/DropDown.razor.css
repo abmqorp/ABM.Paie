@@ -1,0 +1,26 @@
+﻿.common-drop-down {
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.common-drop-down-content {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0 0.125rem 0.25rem 0.125rem var(--shade-dark);
+    visibility: visible;
+    z-index: 1;
+}
+.common-drop-down-content {
+    & .common-link {
+        border-radius: 0;
+        text-align: justify;
+        width: stretch;
+    }
+}
+
+.common-drop-down-content.hidden {
+    visibility: hidden;
+}

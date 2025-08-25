@@ -1,0 +1,35 @@
+﻿@using Common.Enumerations
+@using Common.Extensions
+@using Microsoft.AspNetCore.Components.Web
+@inherits Op
+
+<button class=@_builder aria-label=@Label
+    style="--common-op-color:@(Color.ToVar());--common-op-font-size:@(FontSize.GetDescription());"
+    type="button" disabled=@IsDisabled @onclick=InvokeAction>
+    <Icon Content=StartIcon />
+    <div class="common-op-content">
+        @if (ChildContent is not null) @ChildContent
+        else @Label
+    </div>
+    <Icon Content=EndIcon />
+</button>
+
+@code {
+    [Parameter]
+    public Action? Action { get; set; }
+    [Parameter]
+    public IconPath? EndIcon { get; set; }
+    [Parameter]
+    public bool IsDisabled { get; set; } = false;
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common-button");
+        base.OnInitialized();
+    }
+
+    private void InvokeAction()
+    {
+        Action?.Invoke();
+    }
+}

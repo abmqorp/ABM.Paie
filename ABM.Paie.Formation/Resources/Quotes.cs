@@ -4,7 +4,7 @@ namespace ABM.Paie.Formation.Resources;
 
 public static class Quotes
 {
-    private static readonly IEnumerable<Quote> List = [
+    private static readonly IEnumerable<QuoteData> List = [
         new("Gustave Thibon", "Rien ne prédispose plus au conformisme que le manque de formation."),
         new("Socrate", "Le savoir est la seule matière qui s'accroit avec le partage."),
         new("Proverbe chinois", "L'apprentissage est un trésor qui suivra son propriétaire partout."),
@@ -37,5 +37,5 @@ public static class Quotes
         new("Sultan Valad", "Il est impossible d'apprendre un métier tout seul. Une bougie s'allume au contact de la flamme d'une autre bougie. Si elle ne s'en approche pas elle restera éteinte."),
     ];
 
-    public static IEnumerable<Quote> GetAll() => List;
+    public static IEnumerable<QuoteData> GetAll() => List;
 }

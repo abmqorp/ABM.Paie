@@ -4,10 +4,14 @@
     line-height: 1;
     width: stretch;
     padding: 0 0.5em;
+}
+.common-quote-template {
     & span:first-child {
         font-family: 'Encode Sans SemiExpanded Medium';
         font-style: italic;
     }
+}
+.common-quote-template {
     & span:nth-child(2) {
         color: var(--primary-dark);
         font-family: 'Kaushan Script Regular';

@@ -298,11 +298,16 @@
 
 * {
     box-sizing: border-box;
+    font-family: 'Encode Sans SemiExpanded Medium';
 }
 
 a {
-    border-radius: 0.5rem;
     text-decoration: none;
+    border-radius: 0.5rem;
+}
+
+a, button {
+    display: inline-block;
     text-align: center;
     align-content: center;
     padding: 0.5rem;
@@ -313,8 +318,6 @@ button {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    font-family: inherit;
-    padding: 0;
 }
 
 button:disabled {
@@ -322,15 +325,18 @@ button:disabled {
     fill: var(--shade) !important;
 }
 
-a, button {
-    transition: 220ms all ease-in-out;
-}
-
 a:hover, button:hover, button:disabled {
     background-color: var(--shade);
 }
 
-svg {
-    fill: inherit;
-    width: auto;
+a > *, button > * {
+    vertical-align: middle;
+}
+
+svg + div {
+    margin-left: 0.25rem;
+}
+
+div:has(+svg) {
+    margin-right: 0.25rem;
 }

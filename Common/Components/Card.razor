@@ -2,24 +2,27 @@
 
 <div class=@_builder>
     @Title
-    @Illustration
+    @ImageTemplate
     @Description
-    @Action
+    @OperationTemplate
 </div>
 
 @code {
     [Parameter]
     public RenderFragment? Title { get; set; }
     [Parameter]
-    public RenderFragment? Illustration { get; set; }
+    public RenderFragment? ImageTemplate { get; set; }
     [Parameter]
     public RenderFragment? Description { get; set; }
     [Parameter]
-    public RenderFragment? Action { get; set; }
-    
+    public RenderFragment? OperationTemplate { get; set; }
+
     protected override void OnInitialized()
     {
         _ = _builder.Append("common-card");
         base.OnInitialized();
+
+        if (Title is null) _ = _builder.Append("top");
+        if (Description is null && OperationTemplate is null) _ = _builder.Append("bottom");
     }
 }

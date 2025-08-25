@@ -1,0 +1,17 @@
+﻿@using Common.Enumerations
+@inherits BaseComponent
+
+@code {
+    [Parameter, EditorRequired]
+    public string Label { get; set; }
+    [Parameter]
+    public IconPath? StartIcon { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common-op");
+        base.OnInitialized();
+    }
+}

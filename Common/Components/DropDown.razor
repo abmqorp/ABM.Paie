@@ -1,0 +1,56 @@
+﻿@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+@using Common.Enumerations;
+@typeparam T
+@inherits BaseComponent
+
+<div class=@_builder @onfocusout=Reset>
+    @if (Title is ButtonData buttonData)
+    {
+        buttonData.Action = DisplayDropDown;
+        buttonData.EndIcon = _isDisplayed ? IconPath.ArrowDropUp : IconPath.ArrowDropDown;
+    }
+    <OpTemplate Data=Title />
+    @if (Templates is not null && Templates.Any())
+    {
+        <div class=@($"common-drop-down-content{(_isDisplayed ? "" : " hidden")}")>
+            @foreach (var item in Templates)
+            {
+                @ContentTemplate(item)
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private bool _isDisplayed = false;
+
+    [Parameter]
+    public OpData? Title { get; set; }
+    [Parameter]
+    public IEnumerable<T>? Templates { get; set; } = new List<T>();
+    [Parameter, EditorRequired]
+    public RenderFragment<T> ContentTemplate { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common-drop-down");
+        base.OnInitialized();
+    }
+
+    private void Reset()
+    {
+        UpdateDisplay(false);
+    }
+
+    private void DisplayDropDown()
+    {
+        UpdateDisplay(!_isDisplayed);
+    }
+
+    private void UpdateDisplay(bool isDisplayed)
+    {
+        _isDisplayed = isDisplayed;
+        StateHasChanged();
+    }
+}
