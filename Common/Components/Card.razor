@@ -4,7 +4,7 @@
     @Title
     @ImageTemplate
     @Description
-    @OperationTemplate
+    @LinkTemplate
 </div>
 
 @code {
@@ -15,14 +15,14 @@
     [Parameter]
     public RenderFragment? Description { get; set; }
     [Parameter]
-    public RenderFragment? OperationTemplate { get; set; }
+    public RenderFragment? LinkTemplate { get; set; }
 
     protected override void OnInitialized()
     {
-        _ = _builder.Append("common-card");
+        _ = _builder.Append("common__card");
         base.OnInitialized();
 
         if (Title is null) _ = _builder.Append("top");
-        if (Description is null && OperationTemplate is null) _ = _builder.Append("bottom");
+        if (Description is null && LinkTemplate is null) _ = _builder.Append("bottom");
     }
 }

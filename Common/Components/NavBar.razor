@@ -1,0 +1,38 @@
+﻿@using Common.Components
+@using Common.Components.Templates
+@using Common.Enumerations
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+
+<nav aria-label="Barre de navigation">
+    <ul>
+        <li>@ChildContent</li>
+        @foreach (var menu in Menus)
+        {
+            if (menu.Any())
+            {
+                <li class="dropdown">
+                    <LinkTemplate Data=menu.First() Color=Color.Primary FontSize=Size.Large />
+                    <!-- aria-controls needs set up -->
+                    <!-- aria-expanded needs managed with Javascript -->
+                    @if (menu.Count() > 1)
+                    {
+                        <ul class="dropdown__menu">
+                            @foreach (var link in menu.Skip(1))
+                            {
+                                <li><LinkTemplate Data=link /></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+        }
+    </ul>
+</nav>
+
+@code {
+    [Parameter, EditorRequired]
+    public IEnumerable<IEnumerable<LinkData>> Menus { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

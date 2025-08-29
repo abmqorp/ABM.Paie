@@ -13,11 +13,11 @@ public enum Size
     FootNoteSize,
     [Description("0.75rem")]
     Small,
-    [Description("1.5rem")]
+    [Description("1.25rem")]
     Large,
-    [Description("2rem")]
+    [Description("1.5rem")]
     Larger,
-    [Description("2.5rem")]
+    [Description("2rem")]
     Huge,
     [Description("3rem")]
     Huger,

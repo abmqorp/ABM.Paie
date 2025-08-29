@@ -8,18 +8,22 @@
 @implements IDisposable
 
 <div class=@_builder>
-    <OpButton Class="left" Label="Suivant" Action=Previous IsDisabled=_isDisabled
-        Color=Color FontSize=FontSize>
-        <Icon Content=@IconPath.ArrowBack />
-    </OpButton>
+    @if (!_isDisabled)
+    {
+        <button type="button" class="left" label="Suivant" @onclick=Previous>
+            <Icon Content=@IconPath.ArrowBack />
+        </button>
+    }
     @for (_position = 0; _position < Batch; _position++)
     {
         @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     }
-    <OpButton Class="right" Label="Suivant" Action=Next IsDisabled=_isDisabled
-        Color=Color FontSize=FontSize>
-        <Icon Content=@IconPath.ArrowForward />
-    </OpButton>
+    @if (!_isDisabled)
+    {
+        <button type="button" class="right" aria-label="Suivant" @onclick=Next>
+            <Icon Content=@IconPath.ArrowForward />
+        </button>
+    }
 </div>
 
 @code {
@@ -41,7 +45,7 @@
 
     protected override void OnInitialized()
     {
-        _ = _builder.Append("common-carousel").Append(typeof(T).Name.ToLower());
+        _ = _builder.Append("common__carousel").Append(typeof(T).Name.ToLower());
         base.OnInitialized();
 
         _count = Templates.Count();

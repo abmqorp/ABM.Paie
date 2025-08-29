@@ -1,19 +1,15 @@
-﻿@using Common.Models
-@using Microsoft.AspNetCore.Components.Web
+﻿@using Common.Components.Templates;
 @using Common.Enumerations;
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
 @typeparam T
 @inherits BaseComponent
 
 <div class=@_builder @onfocusout=Reset>
-    @if (Title is ButtonData buttonData)
-    {
-        buttonData.Action = DisplayDropDown;
-        buttonData.EndIcon = _isDisplayed ? IconPath.ArrowDropUp : IconPath.ArrowDropDown;
-    }
-    <OpTemplate Data=Title />
+    <LinkTemplate Data=Title />
     @if (Templates is not null && Templates.Any())
     {
-        <div class=@($"common-drop-down-content{(_isDisplayed ? "" : " hidden")}")>
+        <div class=@($"common__dropdown__content{(_isDisplayed ? "" : " hidden")}")>
             @foreach (var item in Templates)
             {
                 @ContentTemplate(item)
@@ -26,7 +22,7 @@
     private bool _isDisplayed = false;
 
     [Parameter]
-    public OpData? Title { get; set; }
+    public LinkData? Title { get; set; }
     [Parameter]
     public IEnumerable<T>? Templates { get; set; } = new List<T>();
     [Parameter, EditorRequired]
@@ -34,7 +30,7 @@
 
     protected override void OnInitialized()
     {
-        _ = _builder.Append("common-drop-down");
+        _ = _builder.Append("common__dropdown");
         base.OnInitialized();
     }
 

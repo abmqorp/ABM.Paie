@@ -1,3 +1,4 @@
-﻿.common-image {
+﻿.common__image {
+    height: inherit;
     width: inherit;
 }

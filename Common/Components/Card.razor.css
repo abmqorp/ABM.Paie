@@ -1,4 +1,4 @@
-﻿.common-card {
+﻿.common__card {
     display: flex;
     flex-direction: column;
     border: none;
@@ -10,21 +10,21 @@
     padding: 0 0 0.5rem;
     width: 15rem;
 }
-.common-card {
-    & .common-paragraph {
+.common__card {
+    & .common__paragraph {
         margin: 0.5rem 0 0.25rem 0;
     }
 }
 
-.common-card.top {
-    & .common-image {
+.common__card.top {
+    & .common__image {
         border-start-start-radius: inherit;
         border-start-end-radius: inherit;
     }
 }
 
-.common-card.bottom {
-    & .common-image {
+.common__card.bottom {
+    & .common__image {
         border-end-start-radius: inherit;
         border-end-end-radius: inherit;
     }

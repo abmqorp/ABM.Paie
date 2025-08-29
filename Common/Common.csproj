@@ -14,10 +14,4 @@
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="9.0.6" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Components/Op.razor.css" CssScope="common-op-css-scope" />
-    <None Update="Components/OpButton.razor.css" CssScope="common-op-css-scope" />
-    <None Update="Components/OpLink.razor.css" CssScope="common-op-css-scope" />
-  </ItemGroup>
-
 </Project>

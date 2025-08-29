@@ -94,7 +94,6 @@ code {
 html {
     max-width: 80rem;
     margin: auto;
-    padding: 0.5rem;
 }
 
 h1 {
@@ -103,25 +102,13 @@ h1 {
     font-size: 3rem;
 }
 
-div#header {
-    flex-direction: column;
-}
-
-div#header ul {
-    flex-wrap: wrap;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-div#header, div#header ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-img.banner {
+.banner {
+    display: block;
+    margin: auto;
     max-width: 80%;
     min-width: 28rem;
+}
+
+#body {
+    padding: 0.5rem;
 }

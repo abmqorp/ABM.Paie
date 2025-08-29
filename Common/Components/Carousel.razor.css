@@ -1,33 +1,30 @@
-﻿.common-carousel {
+﻿.common__carousel {
     display: flex;
     border-radius: 1rem;
 }
-.common-carousel {
-    & .right {
-        border-start-end-radius: inherit;
-        border-end-end-radius: inherit;
-    }
-}
-.common-carousel {
-    & .left {
-        border-start-start-radius: inherit;
-        border-end-start-radius: inherit;
-    }
+
+.right {
+    border-start-end-radius: inherit;
+    border-end-end-radius: inherit;
 }
 
-.common-carousel.quotedata {
-    --common-carousel-color: var(--white);
+.left {
+    border-start-start-radius: inherit;
+    border-end-start-radius: inherit;
+}
+
+.quotedata {
+    --common__carousel--color: var(--white);
     height: 6rem;
     background: var(--gray);
-    color: var(--common-carousel-color);
+    color: var(--common__carousel--color);
 }
 
-.common-carousel > button, button.common-button.common-op {
-    fill: var(--common-carousel-color) !important;
+button {
+    fill: var(--common__carousel--color);
 }
-.common-carousel > button {
-    & .common-icon {
-        height: 2.5rem;
-        width: 2.5rem;
+button {
+    & .common__icon {
+        width: 1.5rem;
     }
 }

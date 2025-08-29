@@ -5,53 +5,46 @@
 @inherits LayoutComponentBase
 
 @{
-    List<(Common.Models.OpData Page, List<Common.Models.OpData>? Links)> menus = [
-        new(new ButtonData(text: "Formations", color: Color.Primary), [
-                new LinkData("#", text: "Catalogue en ligne"),
-                new LinkData("#", text: "Perfectionnement"),
-                new LinkData("#", text: "Organigramme"),
-            ]),
-        new(new LinkData("#", text: "Actualités", color: Color.Primary), null),
-        new(new ButtonData(text: "ABM Paie", color: Color.Primary), [
-                new LinkData("#", text: "Équipe pédagogique"),
-                new LinkData("#", text: "Référente Assistance technique et pédagogique"),
-                new LinkData("#", text: "Référente handicap"),
-                new LinkData("#", text: "Les indicateurs formation"),
-                new LinkData("#", text: "Mes valeurs"),
-            ]),
-        new(new ButtonData(text: "Expérience", color: Color.Primary), [
-                new LinkData("#", text: "Curriculum vitae", isExternal: true),
-                new LinkData("#", text: "Salariée Silae"),
-                new LinkData("#", text: "Formatrice Silae en chiffres"),
-                new LinkData("#", text: "Étudiante CAFEL"),
-            ]),
-        new(new ButtonData(text: "Contact", cssClass: "filled", color: Color.Primary), [
-                new LinkData("#", text: "Prise de rendez-vous", isExternal: true),
-                new LinkData("#", text: "Coordonnées"),
-                new LinkData("#", text: "Mes pages officielles"),
-            ]),
-        new(new ButtonData(text: "Partenariats", color: Color.Primary), [
-                new LinkData("#", text: "Facilae Paie", isExternal: true),
-            ]),
+    List<List<LinkData>> menus = [
+        [
+            new("#", "Formations", EndIcon: IconPath.ArrowDropDown),
+            new("#", "Catalogue en ligne"),
+            new("#", "Perfectionnement"),
+            new("#", "Organigramme"),
+        ],
+        [ new("#", "Actualités"), ],
+        [
+            new("#", "ABM Paie", EndIcon: IconPath.ArrowDropDown),
+            new("#", "Équipe pédagogique"),
+            new("#", "Référente Assistance technique et pédagogique"),
+            new("#", "Référente handicap"),
+            new("#", "Les indicateurs formation"),
+            new("#", "Mes valeurs"),
+        ],
+        [
+            new("#", "Expérience", EndIcon: IconPath.ArrowDropDown),
+            new("#", "Curriculum vitae", IsExternal: true),
+            new("#", "Salariée Silae"),
+            new("#", "Formatrice Silae en chiffres"),
+            new("#", "Étudiante CAFEL"),
+        ],
+        [
+            new("#", "Contact", EndIcon: IconPath.ArrowDropDown, Class: "filled"),
+            new("#", "Prise de rendez-vous", IsExternal: true),
+            new("#", "Coordonnées"),
+            new("#", "Mes pages officielles"),
+        ],
+        [
+            new("#", "Partenariats", EndIcon: IconPath.ArrowDropDown),
+            new("#", "Facilae Paie", IsExternal: true),
+        ],
     ];
 }
 
-<div id="header">
-    <Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations sur My Silae" />
+<Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations sur My Silae" />
 
-    <ul>
-        @foreach (var menu in menus)
-        {
-            <li>
-                <DropDown Title=menu.Page Templates=menu.Links>
-                    <ContentTemplate>
-                        <OpTemplate Data=context />
-                    </ContentTemplate>
-                </DropDown>
-            </li>
-        }
-    </ul>
-
-</div>
+<NavBar Menus=menus>
+    <a href="/"><Image Source="/logos/abm-paie/abm-paie_thin.svg" Label="Accueil" /></a>
+</NavBar>
 
 @Body

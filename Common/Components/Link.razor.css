@@ -1,0 +1,30 @@
+﻿.common__link {
+    border-radius: 0.5rem;
+    color: var(--common__link--color);
+    font-size: var(--common__link--fontsize);
+    padding: 0.5rem;
+}
+.common__link {
+    & .common__icon {
+        fill: var(--common__link--color);
+        height: var(--common__link--fontsize);
+    }
+}
+
+.filled {
+    background: var(--common__link--color);
+    color: var(--white);
+}
+.filled {
+    & .common__icon {
+        fill: var(--white);
+    }
+}
+
+.filled:hover {
+    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--common__link--color), var(--common__link--color));
+}
+
+.common__link__content {
+    display: inline-block;
+}

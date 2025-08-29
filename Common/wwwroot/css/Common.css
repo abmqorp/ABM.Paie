@@ -303,14 +303,12 @@
 
 a {
     text-decoration: none;
-    border-radius: 0.5rem;
 }
 
 a, button {
     display: inline-block;
     text-align: center;
     align-content: center;
-    padding: 0.5rem;
     width: fit-content;
 }
 
@@ -322,15 +320,14 @@ button {
 
 button:disabled {
     cursor: not-allowed;
-    fill: var(--shade) !important;
 }
 
-a:hover, button:hover, button:disabled {
+a:hover, button:hover {
     background-color: var(--shade);
 }
 
 a > *, button > * {
-    vertical-align: middle;
+    /*vertical-align: middle;*/
 }
 
 svg + div {
