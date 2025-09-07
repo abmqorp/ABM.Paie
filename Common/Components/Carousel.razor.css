@@ -14,14 +14,14 @@
 }
 
 .quotedata {
-    --common__carousel--color: var(--white);
     height: 6rem;
     background: var(--gray);
-    color: var(--common__carousel--color);
+    color: var(--white);
 }
 
 button {
-    fill: var(--common__carousel--color);
+    color: inherit;
+    fill: currentColor;
 }
 button {
     & .common__icon {

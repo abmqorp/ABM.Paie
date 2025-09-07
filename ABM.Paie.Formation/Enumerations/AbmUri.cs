@@ -1,0 +1,52 @@
+﻿using System.ComponentModel;
+
+namespace ABM.Paie.Formation.Enumerations;
+public enum AbmUri
+{
+    [Description("accueil")]
+    Accueil,
+    [Description("formations")]
+    Formations,
+    [Description("formations_catalogue")]
+    FormationsCatalogue,
+    [Description("formations_perfectionnement")]
+    FormationsPerfectionnement,
+    [Description("actualites")]
+    Actualites,
+    [Description("abmpaie")]
+    Abmpaie,
+    [Description("abmpaie_organigramme")]
+    AbmpaieOrganigramme,
+    [Description("abmpaie_equipe")]
+    AbmpaieEquipe,
+    [Description("abmpaie_indicateurs")]
+    AbmpaieIndicateurs,
+    [Description("abmpaie_valeurs")]
+    AbmpaieValeurs,
+    [Description("abmpaie_ref-assistance")]
+    AbmpaieRefAssistance,
+    [Description("abmpaie_ref-handicap")]
+    AbmpaieRefHandicap,
+    [Description("experience")]
+    Experience,
+    [Description("experience_cv")]
+    ExperienceCv,
+    [Description("experience_silae")]
+    ExperienceSilae,
+    [Description("experience_chiffres")]
+    ExperienceChiffres,
+    [Description("experience_cafel")]
+    ExperienceCafel,
+    [Description("contact")]
+    Contact,
+    [Description("contact_rendez-vous")]
+    ContactRendezVous,
+    [Description("contact_coordonnees")]
+    ContactCoordonnees,
+    [Description("contact_pages-officielles")]
+    ContactPagesOfficielles,
+    [Description("partenariats")]
+    Partenariats,
+    [Description("partenariats_facilae")]
+    PartenariatsFacilae
+}

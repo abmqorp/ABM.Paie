@@ -1,0 +1,37 @@
+﻿@using Common.Enumerations
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+@inherits BaseComponent
+
+@if (Model.Action is not null)
+{
+    <button class=@_builder aria-label=@Model.Uri.Label type="button" @onclick=Model.Action>
+        <Activator Model=Model.Activator>
+            @ChildContent
+        </Activator>
+    </button>
+}
+else
+{
+    <a class=@_builder aria-label=@Model.Uri.Label href=@Model.Uri target=@(Model.Uri.IsExternal ? "_blank" : null)>
+        <Activator Model=Model.Activator>
+            @ChildContent
+        </Activator>
+    </a>
+}
+
+
+@code {
+    [Parameter, EditorRequired]
+    public NavModel Model { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common__navaction");
+        base.OnInitialized();
+
+        if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+    }
+}

@@ -1,37 +1,44 @@
 ﻿@page "/"
+@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Extensions
+@using ABM.Paie.Formation.Resources
+@using ABM.Paie.Formation.Services
 @using Common.Components
 @using Common.Components.Templates
 @using Common.Enumerations
-@using ABM.Paie.Formation.Extensions
-@using ABM.Paie.Formation.Resources
 @using Common.Models
-
-@{
-    var quotes = Quotes.GetAll().ToRandomizedList();
-}
+@inject IUriProvider UriProvider
 
 <PageTitle>ABM Paie</PageTitle>
 
 <div id="body">
 
+    @{
+        var quotes = Quotes.GetAll().ToRandomizedList();
+    }
     <Carousel Templates=quotes>
         <QuoteTemplate Data=context />
     </Carousel>
     
     <h1>Partenariats</h1>
     
+    @{
+        var facilae = UriProvider.Get(AbmUri.PartenariatsFacilae);
+    }
     <Card>
-        <ImageTemplate>
-            <Image Source="/images/facilaepaie/Logo Facilae_edited.avif" Label="Logo Facilae Paie" />
-        </ImageTemplate>
+        <Illustration>
+            <Image Source=@facilae.Image Label="Logo Facilae Paie" />
+        </Illustration>
         <Description>
             <Paragraph>
                 Facilite vos migrations et vos paramétrages dans Silae...
             </Paragraph>
         </Description>
-        <LinkTemplate>
-            <Link Url="https://www.facilaepaie.com" Label="visiter Facilae Paie" IsExternal=true Color=Color.Partner />
-        </LinkTemplate>
+        <Action>
+            <NavAction Model=facilae Class="facilae">
+                @facilae.Content
+            </NavAction>
+        </Action>
     </Card>
 
 </div>

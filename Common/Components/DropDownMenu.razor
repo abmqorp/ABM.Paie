@@ -1,0 +1,49 @@
+﻿@using Common.Components.Templates
+@using Common.Enumerations
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+@inherits BaseComponent
+@inject NavigationManager NavigationManager
+
+
+@if (Menu.Any())
+{
+    @* <AnchorTemplate Data=Menu.First() Color=Color.Primary FontSize=Size.Large /> *@
+    <!-- TODO aria-controls needs set up -->
+    <!-- TODO aria-expanded needs managed with Javascript -->
+    @* TODO button onclick sets css variable for display property *@
+    <button aria-label=@Title?.Uri.Label @onclick=Navigate>
+        @Title?.Uri.Content
+        @if (!IsBlock)
+        {
+            <Icon Content=@IconPath.ArrowDropDown Color=Enumerations.Color.Primary FontSize=Size.Large />
+        }
+    </button>
+
+    @if (Menu.Count() > 1)
+    {
+        <ul class="dropdown__menu">
+            @foreach (var link in Menu.Skip(1))
+            {
+                <li><NavAction Model=link /></li>
+            }
+        </ul>
+    }
+}
+@ChildContent
+
+@code {
+    private NavModel? Title => Menu.FirstOrDefault();
+
+    [Parameter]
+    public bool IsBlock { get; set; } = false;
+    [Parameter, EditorRequired]
+    public IEnumerable<NavModel> Menu { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    private void Navigate(MouseEventArgs _)
+    {
+        if (IsBlock && Title is not null) NavigationManager.NavigateTo(Title.Uri);
+    }
+}

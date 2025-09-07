@@ -70,6 +70,15 @@
 }
 
 /* --- --- --- --- --- */
+/* ---  VARIABLES  --- */
+/* --- --- --- --- --- */
+
+:root {
+    --color: var(--gray-dark);
+    --fontsize: 1rem;
+}
+
+/* --- --- --- --- --- */
 /* --- -- FONTS -- --- */
 /* --- --- --- --- --- */
 
@@ -305,17 +314,26 @@ a {
     text-decoration: none;
 }
 
-a, button {
-    display: inline-block;
-    text-align: center;
-    align-content: center;
-    width: fit-content;
-}
-
 button {
     background-color: transparent;
     border: none;
     cursor: pointer;
+    padding-block: 0;
+    padding-inline: 0;
+}
+
+a, button {
+    display: inline-block;
+    width: fit-content;
+    color: var(--color);
+    text-align: center;
+    align-content: center;
+}
+
+a:has(.filled), button:has(.filled) {
+    --filled--color: var(--color);
+    color: var(--white);
+    background: var(--filled--color)
 }
 
 button:disabled {
@@ -326,14 +344,22 @@ a:hover, button:hover {
     background-color: var(--shade);
 }
 
-a > *, button > * {
-    /*vertical-align: middle;*/
+a:hover:has(.filled), button:hover:has(.filled) {
+    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--filled--color), var(--filled--color));
 }
 
-svg + div {
+svg + span {
     margin-left: 0.25rem;
 }
 
-div:has(+svg) {
+span:has(+svg) {
     margin-right: 0.25rem;
+}
+
+.primary {
+    --color: var(--primary)
+}
+
+.facilae {
+    color: var(--partner)
 }

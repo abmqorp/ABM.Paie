@@ -23,20 +23,18 @@ nav > ul {
 }
 
 nav > ul > li {
-    & > a:has(.common__image) {
-        border-radius: 0.5rem;
-        padding: 0.5rem;
+    & > .common__navaction:has(.common__image) {
+        & > .common__activator {
+            padding: 0.25rem;
+        }
     }
 }
 nav > ul > li {
-    & > .common__link {
-        font-size: 1.25rem;
-        padding: 1rem;
-    }
-}
-nav > ul > li {
-    & > .common__link:has(+.dropdown__menu) {
-        border-radius: 0;
+    & > .common__navaction {
+        & > .common__activator {
+            --fontsize: 1.25rem;
+            padding: 1rem;
+        }
     }
 }
 
@@ -47,7 +45,7 @@ ul {
 }
 
 .dropdown {
-    & > .common__link .common__icon {
+    & > .common__navaction .common__icon {
         transition: var(--nav--transition);
     }
 }
@@ -58,9 +56,11 @@ ul {
     visibility: visible;
 }
 .dropdown:hover, .dropdown:focus-within {
-    & > .common__link .common__icon {
-        transform: rotateX(180deg);
-        transition: var(--nav--transition);
+    & > .common__navaction {
+        & > .common__activator .common__icon {
+            transform: rotateX(180deg);
+            transition: var(--nav--transition);
+        }
     }
 }
 
@@ -79,7 +79,7 @@ ul {
     transition: var(--nav--transition);
 }
 .dropdown__menu {
-    & .common__link {
+    & .common__navaction {
         border-radius: 0;
         text-align: left;
         width: stretch;

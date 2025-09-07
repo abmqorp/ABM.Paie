@@ -1,0 +1,15 @@
+﻿.common__activator {
+    color: inherit;
+    font-size: var(--fontsize);
+    padding: 0.5rem;
+}
+.common__activator {
+    & .common__icon {
+        fill: currentColor;
+        height: var(--fontsize);
+    }
+}
+
+.common__activator__content {
+    display: inline-block;
+}

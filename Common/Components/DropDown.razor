@@ -6,7 +6,7 @@
 @inherits BaseComponent
 
 <div class=@_builder @onfocusout=Reset>
-    <LinkTemplate Data=Title />
+    <NavAction Model=Title />
     @if (Templates is not null && Templates.Any())
     {
         <div class=@($"common__dropdown__content{(_isDisplayed ? "" : " hidden")}")>
@@ -22,9 +22,9 @@
     private bool _isDisplayed = false;
 
     [Parameter]
-    public LinkData? Title { get; set; }
+    public NavModel? Title { get; set; }
     [Parameter]
-    public IEnumerable<T>? Templates { get; set; } = new List<T>();
+    public IEnumerable<T>? Templates { get; set; } = new T[0];
     [Parameter, EditorRequired]
     public RenderFragment<T> ContentTemplate { get; set; }
 

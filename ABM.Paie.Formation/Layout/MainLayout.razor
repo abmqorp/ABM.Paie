@@ -1,50 +1,64 @@
-﻿@using Common.Components
+﻿@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Services
+@using Common.Components
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
 @inherits LayoutComponentBase
+@inject IUriProvider UriProvider
 
 @{
-    List<List<LinkData>> menus = [
-        [
-            new("#", "Formations", EndIcon: IconPath.ArrowDropDown),
-            new("#", "Catalogue en ligne"),
-            new("#", "Perfectionnement"),
-            new("#", "Organigramme"),
-        ],
-        [ new("#", "Actualités"), ],
-        [
-            new("#", "ABM Paie", EndIcon: IconPath.ArrowDropDown),
-            new("#", "Équipe pédagogique"),
-            new("#", "Référente Assistance technique et pédagogique"),
-            new("#", "Référente handicap"),
-            new("#", "Les indicateurs formation"),
-            new("#", "Mes valeurs"),
-        ],
-        [
-            new("#", "Expérience", EndIcon: IconPath.ArrowDropDown),
-            new("#", "Curriculum vitae", IsExternal: true),
-            new("#", "Salariée Silae"),
-            new("#", "Formatrice Silae en chiffres"),
-            new("#", "Étudiante CAFEL"),
-        ],
-        [
-            new("#", "Contact", EndIcon: IconPath.ArrowDropDown, Class: "filled"),
-            new("#", "Prise de rendez-vous", IsExternal: true),
-            new("#", "Coordonnées"),
-            new("#", "Mes pages officielles"),
-        ],
-        [
-            new("#", "Partenariats", EndIcon: IconPath.ArrowDropDown),
-            new("#", "Facilae Paie", IsExternal: true),
-        ],
-    ];
+    var logo = UriProvider.Get(AbmUri.Accueil);
+
+    var accueil = new NavModel[] { logo };
+    var formations = new NavModel[]
+    {
+        UriProvider.Get(AbmUri.Formations),
+        UriProvider.Get(AbmUri.FormationsCatalogue),
+        UriProvider.Get(AbmUri.FormationsPerfectionnement),
+    };
+    var actualites = new NavModel[] { UriProvider.Get(AbmUri.Actualites) };
+    var abmPaie = new NavModel[]
+    {
+        UriProvider.Get(AbmUri.Abmpaie),
+        UriProvider.Get(AbmUri.AbmpaieOrganigramme),
+        UriProvider.Get(AbmUri.AbmpaieEquipe),
+        UriProvider.Get(AbmUri.AbmpaieRefAssistance),
+        UriProvider.Get(AbmUri.AbmpaieRefHandicap),
+        UriProvider.Get(AbmUri.AbmpaieIndicateurs),
+        UriProvider.Get(AbmUri.AbmpaieValeurs),
+    };
+    var experience = new NavModel[]
+    {
+        UriProvider.Get(AbmUri.Experience),
+        UriProvider.Get(AbmUri.ExperienceCv),
+        UriProvider.Get(AbmUri.ExperienceSilae),
+        UriProvider.Get(AbmUri.ExperienceChiffres),
+        UriProvider.Get(AbmUri.ExperienceCafel),
+    };
+    var headerContact = new NavModel[]
+    {
+        new(UriProvider.Get(AbmUri.Contact), new(cssClass: "filled")),
+        UriProvider.Get(AbmUri.ContactRendezVous),
+        UriProvider.Get(AbmUri.ContactCoordonnees),
+        UriProvider.Get(AbmUri.ContactPagesOfficielles),
+    };
+    var partenariats = new NavModel[]
+    {
+        UriProvider.Get(AbmUri.Partenariats),
+        UriProvider.Get(AbmUri.PartenariatsFacilae),
+    };
+
+    var headerMenus = new NavModel[][] { formations, actualites, abmPaie, experience, headerContact, partenariats };
+    var footerMenus = new NavModel[][] { accueil, formations, actualites, experience };
 }
 
-<Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations sur My Silae" />
+<Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations Paie & DSN" />
 
-<NavBar Menus=menus>
-    <a href="/"><Image Source="/logos/abm-paie/abm-paie_thin.svg" Label="Accueil" /></a>
+<NavBar Menus=headerMenus>
+    <NavAction Model=logo>
+        <Image Source=@logo.Image Label=@logo.Label />
+    </NavAction>
 </NavBar>
 
 @Body

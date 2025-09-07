@@ -7,20 +7,32 @@
 <nav aria-label="Barre de navigation">
     <ul>
         <li>@ChildContent</li>
-        @foreach (var menu in Menus)
+        @foreach (var menu in Menus.Where(m => m.Any()))
         {
             if (menu.Any())
             {
                 <li class="dropdown">
-                    <LinkTemplate Data=menu.First() Color=Color.Primary FontSize=Size.Large />
-                    <!-- aria-controls needs set up -->
-                    <!-- aria-expanded needs managed with Javascript -->
-                    @if (menu.Count() > 1)
+                    @{
+                        var title = menu.First();
+                        var isDropDown = menu.Count() > 1;
+                        if (isDropDown)
+                        {
+                            title.Action = () => { };
+                            title.Activator.EndIcon = IconPath.ArrowDropDown;
+                        }
+                    }
+                    <NavAction Model=title Class="primary">
+                        @title.Uri.Content
+                    </NavAction>
+                    <!-- TODO aria-controls needs set up -->
+                    <!-- TODO aria-expanded needs managed with Javascript -->
+                    @* TODO button onclick sets css variable for display property *@
+                    @if (isDropDown)
                     {
                         <ul class="dropdown__menu">
-                            @foreach (var link in menu.Skip(1))
+                            @foreach (var nav in menu.Skip(1))
                             {
-                                <li><LinkTemplate Data=link /></li>
+                                <li><NavAction Model=nav>@nav.Uri.Content</NavAction></li>
                             }
                         </ul>
                     }
@@ -32,7 +44,7 @@
 
 @code {
     [Parameter, EditorRequired]
-    public IEnumerable<IEnumerable<LinkData>> Menus { get; set; }
+    public IEnumerable<IEnumerable<NavModel>> Menus { get; set; }
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 }

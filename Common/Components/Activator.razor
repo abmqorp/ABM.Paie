@@ -1,0 +1,28 @@
+﻿@using Common.Enumerations
+@using Common.Extensions
+@using Common.Models
+@inherits BaseComponent
+
+<div class=@_builder>
+    <Icon Content=Model.StartIcon />
+    @if (ChildContent is not null)
+    {
+        <span class="common__activator__content">
+            @ChildContent
+        </span>
+    }
+    <Icon Content=Model.EndIcon />
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public ActivatorModel Model { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common__activator").Append(Model.Class);
+        base.OnInitialized();
+    }
+}

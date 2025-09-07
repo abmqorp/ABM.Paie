@@ -14,7 +14,7 @@
     z-index: 1;
 }
 .common__dropdown__content {
-    & .common__link {
+    & .common__navaction {
         border-radius: 0;
         text-align: justify;
         width: stretch;
