@@ -13,18 +13,13 @@
     border-end-start-radius: inherit;
 }
 
-.quotedata {
-    height: 6rem;
-    background: var(--gray);
-    color: var(--white);
-}
-
 button {
+    padding: 0.5rem;
     color: inherit;
     fill: currentColor;
 }
 button {
     & .common__icon {
-        width: 1.5rem;
+        width: 1.75rem;
     }
 }

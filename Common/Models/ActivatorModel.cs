@@ -1,11 +1,7 @@
 ﻿using Common.Enumerations;
 
 namespace Common.Models;
-public class ActivatorModel(
-    IconPath? startIcon = null,
-    IconPath? endIcon = null,
-    string? cssClass = null) : BaseModel(cssClass)
+public record ActivatorModel(IconPath? StartIcon = null, IconPath? EndIcon = null, string? Class = null) : BaseModel(Class)
 {
-    public IconPath? StartIcon { get; } = startIcon;
-    public IconPath? EndIcon { get; set; } = endIcon;
+    public IconPath? EndIcon { get; set; } = EndIcon;
 }

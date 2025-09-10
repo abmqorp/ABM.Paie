@@ -1,16 +1,5 @@
 ﻿namespace Common.Models;
-public class UriModel(
-    string uri,
-    string label,
-    string? content = null,
-    bool isExternal = false,
-    string? image = null)
+public record UriModel(string Label, string Uri, string? Content = null, bool IsExternal = false, string? Image = null)
 {
-    public string Uri { get; } = uri;
-    public string Label { get; } = label;
-    public string? Content { get; } = content;
-    public bool IsExternal { get; } = isExternal;
-    public string? Image { get; } = image;
-
-    public static implicit operator string(UriModel data) => data.Uri;
+    public override string ToString() => Uri;
 }

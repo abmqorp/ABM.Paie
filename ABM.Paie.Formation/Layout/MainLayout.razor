@@ -38,7 +38,7 @@
     };
     var headerContact = new NavModel[]
     {
-        new(UriProvider.Get(AbmUri.Contact), new(cssClass: "filled")),
+        new(UriProvider.Get(AbmUri.Contact), new(Class: "filled")),
         UriProvider.Get(AbmUri.ContactRendezVous),
         UriProvider.Get(AbmUri.ContactCoordonnees),
         UriProvider.Get(AbmUri.ContactPagesOfficielles),
@@ -56,7 +56,7 @@
 <Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations Paie & DSN" />
 
 <NavBar Menus=headerMenus>
-    <NavAction Model=logo>
+    <NavAction Label=@logo.Label Uri=@logo.Uri IsExternal=logo.IsExternal>
         <Image Source=@logo.Image Label=@logo.Label />
     </NavAction>
 </NavBar>

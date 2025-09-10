@@ -91,6 +91,10 @@ code {
 /* --- - GENERAL - --- */
 /* --- --- --- --- --- */
 
+* {
+    font-family: 'Encode Sans SemiExpanded Medium';
+}
+
 html {
     max-width: 80rem;
     margin: auto;

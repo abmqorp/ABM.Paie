@@ -4,40 +4,14 @@
 @using Common.Models
 @using Microsoft.AspNetCore.Components.Web
 
-<nav aria-label="Barre de navigation">
+<nav class="common__nav" aria-label="Barre de navigation">
     <ul>
         <li>@ChildContent</li>
         @foreach (var menu in Menus.Where(m => m.Any()))
         {
-            if (menu.Any())
-            {
-                <li class="dropdown">
-                    @{
-                        var title = menu.First();
-                        var isDropDown = menu.Count() > 1;
-                        if (isDropDown)
-                        {
-                            title.Action = () => { };
-                            title.Activator.EndIcon = IconPath.ArrowDropDown;
-                        }
-                    }
-                    <NavAction Model=title Class="primary">
-                        @title.Uri.Content
-                    </NavAction>
-                    <!-- TODO aria-controls needs set up -->
-                    <!-- TODO aria-expanded needs managed with Javascript -->
-                    @* TODO button onclick sets css variable for display property *@
-                    @if (isDropDown)
-                    {
-                        <ul class="dropdown__menu">
-                            @foreach (var nav in menu.Skip(1))
-                            {
-                                <li><NavAction Model=nav>@nav.Uri.Content</NavAction></li>
-                            }
-                        </ul>
-                    }
-                </li>
-            }
+            <li>
+                <DropDownMenu Menu=@menu Class="primary" />
+            </li>
         }
     </ul>
 </nav>

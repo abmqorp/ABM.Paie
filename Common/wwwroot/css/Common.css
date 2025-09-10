@@ -307,7 +307,12 @@
 
 * {
     box-sizing: border-box;
-    font-family: 'Encode Sans SemiExpanded Medium';
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 a {
@@ -362,4 +367,10 @@ span:has(+svg) {
 
 .facilae {
     color: var(--partner)
+}
+
+.quotemodel {
+    height: 6rem;
+    background: var(--gray);
+    color: var(--white);
 }

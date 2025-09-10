@@ -1,9 +1,7 @@
 ﻿namespace Common.Models;
-public class NavModel(UriModel uri, ActivatorModel activator, Action? action = null)
+public record NavModel(UriModel Uri, ActivatorModel Activator, Action? Action = null)
 {
-    public UriModel Uri { get; set; } = uri;
-    public ActivatorModel Activator { get; set; } = activator;
-    public Action? Action { get; set; } = action;
+    public Action? Action { get; set; } = Action;
 
-    public static implicit operator NavModel(UriModel data) => new(data, new());
+    public static implicit operator NavModel(UriModel model) => new(model, new());
 }

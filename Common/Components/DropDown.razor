@@ -6,7 +6,7 @@
 @inherits BaseComponent
 
 <div class=@_builder @onfocusout=Reset>
-    <NavAction Model=Title />
+    <NavTemplate Model=Title />
     @if (Templates is not null && Templates.Any())
     {
         <div class=@($"common__dropdown__content{(_isDisplayed ? "" : " hidden")}")>

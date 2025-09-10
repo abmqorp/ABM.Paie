@@ -1,5 +1,4 @@
-﻿nav {
-    --nav--transition: 500ms all 125ms ease-out;
+﻿.common__nav {
     background: var(--white);
     position: sticky;
     top: 0;
@@ -8,7 +7,7 @@
     padding: 0.5rem 0 0 0;
 }
 
-nav, nav > ul {
+.common__nav, .common__nav > ul {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -16,76 +15,14 @@ nav, nav > ul {
     text-align: center;
 }
 
-nav > ul {
+.common__nav > ul {
     & .common__image {
-        height: 2.75rem;
+        height: 2.5rem;
     }
 }
 
-nav > ul > li {
-    & > .common__navaction:has(.common__image) {
-        & > .common__activator {
-            padding: 0.25rem;
-        }
+.common__nav > ul > li {
+    & > .common__navaction:has(.common__image) > .common__activator {
+        padding: 0.5rem 0.5rem 0.25rem 0.5rem;
     }
-}
-nav > ul > li {
-    & > .common__navaction {
-        & > .common__activator {
-            --fontsize: 1.25rem;
-            padding: 1rem;
-        }
-    }
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.dropdown {
-    & > .common__navaction .common__icon {
-        transition: var(--nav--transition);
-    }
-}
-
-.dropdown:hover .dropdown__menu, .dropdown:focus-within .dropdown__menu {
-    opacity: 1;
-    transform: rotateX(0);
-    visibility: visible;
-}
-.dropdown:hover, .dropdown:focus-within {
-    & > .common__navaction {
-        & > .common__activator .common__icon {
-            transform: rotateX(180deg);
-            transition: var(--nav--transition);
-        }
-    }
-}
-
-.dropdown__menu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: var(--white);
-    min-width: 10rem;
-    box-shadow: 0 0.125rem 0.25rem 0.125rem var(--shade-dark);
-    visibility: hidden;
-    z-index: 1;
-    transform: rotateX(-90deg);
-    transform-origin: top center;
-    opacity: 0;
-    transition: var(--nav--transition);
-}
-.dropdown__menu {
-    & .common__navaction {
-        border-radius: 0;
-        text-align: left;
-        width: stretch;
-    }
-}
-
-.dropdown__menu li {
-    width: stretch;
 }

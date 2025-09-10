@@ -3,27 +3,35 @@
 @using Microsoft.AspNetCore.Components.Web
 @inherits BaseComponent
 
-@if (Model.Action is not null)
+@if (Action is not null)
 {
-    <button class=@_builder aria-label=@Model.Uri.Label type="button" @onclick=Model.Action>
-        <Activator Model=Model.Activator>
+    <button class=@_builder aria-label=@Label type="button" @onclick=Action>
+        <Activator Model=Activator>
             @ChildContent
         </Activator>
     </button>
 }
 else
 {
-    <a class=@_builder aria-label=@Model.Uri.Label href=@Model.Uri target=@(Model.Uri.IsExternal ? "_blank" : null)>
-        <Activator Model=Model.Activator>
+    <a class=@_builder aria-label=@Label href=@Uri target=@(IsExternal ? "_blank" : null)>
+        <Activator Model=Activator>
             @ChildContent
         </Activator>
     </a>
 }
 
-
 @code {
     [Parameter, EditorRequired]
-    public NavModel Model { get; set; }
+    public string Label { get; set; }
+    [Parameter]
+    public string? Uri { get; set; }
+    [Parameter]
+    public bool IsExternal { get; set; }
+    [Parameter]
+    public ActivatorModel Activator { get; set; } = new();
+    [Parameter]
+    public Action? Action { get; set; }
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 
@@ -32,6 +40,6 @@ else
         _ = _builder.Append("common__navaction");
         base.OnInitialized();
 
-        if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+        if (IsExternal) Activator.EndIcon = IconPath.OpenInNew;
     }
 }

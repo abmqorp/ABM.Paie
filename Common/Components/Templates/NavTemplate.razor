@@ -1,0 +1,11 @@
+﻿@using Common.Models
+@inherits BaseComponent
+
+<NavAction Class=@Class Label=@Model.Uri.Label Uri=@Model.Uri.ToString() IsExternal=Model.Uri.IsExternal Activator=Model.Activator Action=Model.Action>
+    @Model.Uri.Content
+</NavAction>
+
+@code {
+    [Parameter, EditorRequired]
+    public NavModel Model { get; set; }
+}
