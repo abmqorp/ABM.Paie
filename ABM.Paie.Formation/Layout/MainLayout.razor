@@ -1,64 +1,127 @@
 ﻿@using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
 @using Common.Components
+@using Common.Components.Templates
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
 @inherits LayoutComponentBase
 @inject IUriProvider UriProvider
+@inject NavigationManager NavigationManager
 
 @{
-    var logo = UriProvider.Get(AbmUri.Accueil);
+    var accueil = UriProvider.Get<UriImageModel>(AbmUri.Accueil);
 
-    var accueil = new NavModel[] { logo };
-    var formations = new NavModel[]
+    var formations = GetMenu([ AbmUri.Formations, AbmUri.FormationsCatalogue, AbmUri.FormationsPerfectionnement ]);
+    var actualites = GetMenu([ AbmUri.Actualites ]);
+    var headerAbmPaie = GetMenu(
+        [
+            AbmUri.Abmpaie,
+            AbmUri.AbmpaieOrganigramme,
+            AbmUri.AbmpaieEquipe,
+            AbmUri.AbmpaieRefAssistance,
+            AbmUri.AbmpaieRefHandicap,
+            AbmUri.AbmpaieIndicateurs,
+            AbmUri.AbmpaieValeurs,
+        ]);
+    var experience = GetMenu(
+        [
+            AbmUri.Experience,
+            AbmUri.ExperienceCv,
+            AbmUri.ExperienceSilae,
+            AbmUri.ExperienceChiffres,
+            AbmUri.ExperienceCafel,
+        ]);
+    var headerContact = GetMenu(
+        [
+            AbmUri.Contact,
+            AbmUri.ContactRendezVous,
+            AbmUri.ContactCoordonnees,
+            AbmUri.ContactPagesOfficielles,
+        ],
+        "filled");
+    var partenariats = GetMenu([ AbmUri.Partenariats, AbmUri.PartenariatsFacilae, ]);
+
+    var headerMenus = new NavModel[][] { formations, actualites, headerAbmPaie, experience, headerContact, partenariats };
+
+    var footerAbmPaie = new NavModel[]
     {
-        UriProvider.Get(AbmUri.Formations),
-        UriProvider.Get(AbmUri.FormationsCatalogue),
-        UriProvider.Get(AbmUri.FormationsPerfectionnement),
+            UriProvider.Get(AbmUri.Abmpaie),
+            UriProvider.Get(AbmUri.AbmpaieOrganigramme),
+            UriProvider.Get(AbmUri.AbmpaieEquipe),
+            new(UriProvider.Get(AbmUri.AbmpaieRefAssistance), new(Class: "danger filled")),
+            new(UriProvider.Get(AbmUri.AbmpaieRefHandicap), new(Class: "danger filled")),
+            UriProvider.Get(AbmUri.AbmpaieIndicateurs),
+            UriProvider.Get(AbmUri.AbmpaieValeurs),
     };
-    var actualites = new NavModel[] { UriProvider.Get(AbmUri.Actualites) };
-    var abmPaie = new NavModel[]
+    var footerContact = new NavModel[]
     {
-        UriProvider.Get(AbmUri.Abmpaie),
-        UriProvider.Get(AbmUri.AbmpaieOrganigramme),
-        UriProvider.Get(AbmUri.AbmpaieEquipe),
-        UriProvider.Get(AbmUri.AbmpaieRefAssistance),
-        UriProvider.Get(AbmUri.AbmpaieRefHandicap),
-        UriProvider.Get(AbmUri.AbmpaieIndicateurs),
-        UriProvider.Get(AbmUri.AbmpaieValeurs),
-    };
-    var experience = new NavModel[]
-    {
-        UriProvider.Get(AbmUri.Experience),
-        UriProvider.Get(AbmUri.ExperienceCv),
-        UriProvider.Get(AbmUri.ExperienceSilae),
-        UriProvider.Get(AbmUri.ExperienceChiffres),
-        UriProvider.Get(AbmUri.ExperienceCafel),
-    };
-    var headerContact = new NavModel[]
-    {
-        new(UriProvider.Get(AbmUri.Contact), new(Class: "filled")),
-        UriProvider.Get(AbmUri.ContactRendezVous),
-        UriProvider.Get(AbmUri.ContactCoordonnees),
-        UriProvider.Get(AbmUri.ContactPagesOfficielles),
-    };
-    var partenariats = new NavModel[]
-    {
-        UriProvider.Get(AbmUri.Partenariats),
-        UriProvider.Get(AbmUri.PartenariatsFacilae),
+        UriProvider.Get(AbmUri.Contact),
+        new(UriProvider.Get(AbmUri.ContactRendezVous), new(IconPath.CalendarMonth, Class: "danger filled")),
+        new(UriProvider.Get(AbmMailUri.PaieFormation), new(IconPath.Mail)),
     };
 
-    var headerMenus = new NavModel[][] { formations, actualites, abmPaie, experience, headerContact, partenariats };
-    var footerMenus = new NavModel[][] { accueil, formations, actualites, experience };
+    var footerMenus = new NavModel[][] { [ accueil ], formations, actualites, footerAbmPaie, experience, partenariats };
+
+    var linkedin = UriProvider.Get<UriImageModel>(AbmUri.LinkedIn);
 }
 
-<Image Class="banner" Source="/logos/abm-paie/abm-paie_banner_v3.svg" Label="ABM Paie - Formations Paie & DSN" />
+@* @if (NavigationManager.BaseUri == NavigationManager.ToAbsoluteUri(accueil.Location).AbsoluteUri)
+{ *@
+<ImageTemplate Class="banner" Model=UriProvider.Get(AbmImageUri.Banner) />
+@* } *@
 
 <NavBar Menus=headerMenus>
-    <NavAction Label=@logo.Label Uri=@logo.Uri IsExternal=logo.IsExternal>
-        <Image Source=@logo.Image Label=@logo.Label />
+    <NavAction Label=@accueil.Label Location=@accueil.Location IsExternal=accueil.IsExternal>
+        <ImageTemplate Model=@accueil.Image />
     </NavAction>
 </NavBar>
 
 @Body
+
+<div id="footer">
+    <div>
+        <div>
+            <DropDownMenu Menu=[accueil] />
+            <DropDownMenu Menu=formations />
+            <DropDownMenu Menu=actualites />
+        </div>
+        <div>
+            <DropDownMenu Menu=footerAbmPaie />
+        </div>
+    </div>
+    <div>
+        <div>
+            <DropDownMenu Menu=experience />
+            <DropDownMenu Menu=partenariats />
+        </div>
+        <div>
+            <DropDownMenu Menu=footerContact>
+                <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
+                    <Icon Content=IconPath.Call />
+                    <Icon Content=IconPath.Sms />
+                    <ImageTemplate Class="inline" Model=UriProvider.Get(AbmImageUri.WhatsAppGlyph) />
+                    +33 7 48 10 65 39
+                </Paragraph>
+                <Paragraph Class="primary">
+                    <NavAction Label=@linkedin.Label Location=@linkedin.Location IsExternal=linkedin.IsExternal Activator=@new(Class: "white filled")>
+                        <ImageTemplate Class="inline" Model=@linkedin.Image />
+                    </NavAction>
+                </Paragraph>
+            </DropDownMenu>
+        </div>
+    </div>
+</div>
+
+@code {
+    private NavModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = null)
+    {
+        List<NavModel> menus = [];
+        if (uris.Any()) menus.Add(new(UriProvider.Get(uris.First()), new(Class: titleClass)));
+        foreach (var uri in uris.Skip(1))
+        {
+            menus.Add(UriProvider.Get(uri));
+        }
+        return menus.ToArray();
+    }
+}

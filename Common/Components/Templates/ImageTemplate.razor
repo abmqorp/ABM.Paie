@@ -1,0 +1,9 @@
+﻿@using Common.Models
+@inherits BaseComponent
+
+<Image Class=@Class Label=@Model.Label Source=@Model.Source />
+
+@code {
+    [Parameter, EditorRequired]
+    public ImageModel Model { get; set; }
+}

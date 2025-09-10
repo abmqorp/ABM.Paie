@@ -6,19 +6,16 @@
 @inject NavigationManager NavigationManager
 
 
-@if (Title is not null)
+@if (_title is not null)
 {
     var hasLinks = Menu.Count() > 1;
-    if (IsDropDown && hasLinks)
-    {
-        Title.Action = () => { };
-        Title.Activator.EndIcon = IconPath.ArrowDropDown;
-    }
+    if (IsDropDown && hasLinks) _title = _title with { Activator = _title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = () => { } };
+    else if (!IsDropDown) _ = _builder.Append("block");
 
-    <div class="common__dropdownmenu">
+    <div class=@_builder>
         <!-- TODO aria-controls needs set up -->
         <!-- TODO aria-expanded needs managed with Javascript -->
-        <NavTemplate Model=Title Class=@Class />
+        <NavTemplate Model=_title />@*  Class=@Class /> *@
 
         @if (hasLinks || ChildContent is not null)
         {
@@ -37,12 +34,20 @@
 }
 
 @code {
-    private NavModel? Title => Menu.FirstOrDefault();
+    private NavModel? _title;
 
     [Parameter, EditorRequired]
     public IEnumerable<NavModel> Menu { get; set; }
     [Parameter]
-    public bool IsDropDown { get; set; } = true;
+    public bool IsDropDown { get; set; }
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+
+    protected override void OnInitialized()
+    {
+        _ = _builder.Append("common__dropdownmenu");
+        base.OnInitialized();
+
+        _title = Menu.FirstOrDefault();
+    }
 }

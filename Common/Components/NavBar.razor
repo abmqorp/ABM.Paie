@@ -10,7 +10,7 @@
         @foreach (var menu in Menus.Where(m => m.Any()))
         {
             <li>
-                <DropDownMenu Menu=@menu Class="primary" />
+                <DropDownMenu Class="primary" Menu=@menu IsDropDown=true />
             </li>
         }
     </ul>

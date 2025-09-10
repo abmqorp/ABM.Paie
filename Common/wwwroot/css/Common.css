@@ -2,79 +2,25 @@
 /*  CUSTOM PROPERTIES  */
 /* --- --- --- --- --- */
 
-/* Colors */
-@property --shade {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #0000000d;
-}
-@property --shade-dark {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #00000034;
-}
-@property --black {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #000000;
-}
-@property --white {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #ffffff;
-}
-@property --primary {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #0288d1;
-}
-@property --primary-dark {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #013d5f;
-}
-@property --danger {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #c00000;
-}
-@property --warning {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #843c0c;
-}
-@property --success {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #528235;
-}
-@property --gray-light {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #e3e3e3;
-}
-@property --gray-dark {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #70797d;
-}
-@property --gray {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #b0bec5;
-}
-@property --partner {
-    syntax: "<color>";
-    inherits: false;
-    initial-value: #00897b;
-}
-
-/* --- --- --- --- --- */
-/* ---  VARIABLES  --- */
-/* --- --- --- --- --- */
-
 :root {
+    /* Colors */
+    --shade: #0000001b;
+    --shade-dark: #00000034;
+    --black: #000000;
+    --white: #ffffff;
+    --primary: #0288d1;
+    --primary-dark: #013d5f;
+    --danger: #c00000;
+    --warning: #843c0c;
+    --success: #528235;
+    --gray-light: #e3e3e3;
+    --gray-dark: #70797d;
+    --gray: #b0bec5;
+
+    /* Variables */
     --color: var(--gray-dark);
+    --filled--color: var(--white);
+    --hover--color: var(--shade);
     --fontsize: 1rem;
 }
 
@@ -309,6 +255,11 @@
     box-sizing: border-box;
 }
 
+p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -320,7 +271,6 @@ a {
 }
 
 button {
-    background-color: transparent;
     border: none;
     cursor: pointer;
     padding-block: 0;
@@ -328,9 +278,10 @@ button {
 }
 
 a, button {
+    background:inherit;
     display: inline-block;
     width: fit-content;
-    color: var(--color);
+    color: inherit;
     text-align: center;
     align-content: center;
 }
@@ -338,7 +289,7 @@ a, button {
 a:has(.filled), button:has(.filled) {
     --filled--color: var(--color);
     color: var(--white);
-    background: var(--filled--color)
+    background: var(--filled--color);
 }
 
 button:disabled {
@@ -346,11 +297,7 @@ button:disabled {
 }
 
 a:hover, button:hover {
-    background-color: var(--shade);
-}
-
-a:hover:has(.filled), button:hover:has(.filled) {
-    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--filled--color), var(--filled--color));
+    background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
 }
 
 svg + span {
@@ -361,16 +308,26 @@ span:has(+svg) {
     margin-right: 0.25rem;
 }
 
-.primary {
-    --color: var(--primary)
-}
-
-.facilae {
-    color: var(--partner)
-}
-
 .quotemodel {
+    --filled--color: var(--gray);
     height: 6rem;
-    background: var(--gray);
+    background: var(--filled--color);
     color: var(--white);
+}
+
+.filled {
+    --hover--color: var(--shade-dark);
+}
+
+.primary {
+    --color: var(--primary);
+}
+
+.danger {
+    --color: var(--danger);
+}
+
+.white.filled {
+    --filled--color: white;
+    color: inherit;
 }

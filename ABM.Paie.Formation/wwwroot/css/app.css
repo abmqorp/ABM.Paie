@@ -88,22 +88,60 @@ code {
 }
 
 /* --- --- --- --- --- */
+/*  CUSTOM PROPERTIES  */
+/* --- --- --- --- --- */
+
+/* Colors */
+@property --facilae {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #00897b;
+}
+
+/* --- --- --- --- --- */
 /* --- - GENERAL - --- */
 /* --- --- --- --- --- */
+
+#body {
+    padding: 0.5rem;
+}
+
+#footer {
+    --color: var(--white);
+    --filled--color: var(--primary);
+    --hover--color: var(--shade-dark);
+    display: flex;
+    flex-wrap: wrap;
+    background: var(--filled--color);
+    color: var(--color);
+    justify-content: center;
+}
+#footer > div {
+    display: flex;
+    flex-wrap: wrap;
+}
 
 * {
     font-family: 'Encode Sans SemiExpanded Medium';
 }
 
 html {
+    color: var(--gray-dark);
     max-width: 80rem;
     margin: auto;
 }
 
-h1 {
+h1, .h1 {
     color: var(--primary);
-    font-family: 'Permanent Marker Regular';
     font-size: 3rem;
+}
+
+h2, .h2 {
+    font-size: 2rem;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+    font-family: 'Permanent Marker Regular';
 }
 
 .banner {
@@ -113,6 +151,6 @@ h1 {
     min-width: 28rem;
 }
 
-#body {
-    padding: 0.5rem;
+.facilae {
+    color: var(--facilae);
 }

@@ -1,0 +1,5 @@
+﻿.common__paragraph {
+    font-size: var(--fontsize);
+    background-color: var(--filled--color);
+    color: var(--color);
+}

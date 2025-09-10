@@ -17,17 +17,17 @@
         var quotes = Quotes.GetAll().ToRandomizedList();
     }
     <Carousel Templates=quotes>
-        <QuoteTemplate Data=context />
+        <QuoteTemplate Model=context />
     </Carousel>
     
     <h1>Partenariats</h1>
     
     @{
-        var facilae = UriProvider.Get(AbmUri.PartenariatsFacilae);
+        var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae);
     }
     <Card>
         <Illustration>
-            <Image Source=@facilae.Image Label="Logo Facilae Paie" />
+            <ImageTemplate Model=facilae.Image />
         </Illustration>
         <Description>
             <Paragraph>
@@ -35,7 +35,7 @@
             </Paragraph>
         </Description>
         <Action>
-            <NavTemplate Model=facilae Class="facilae" />
+            <NavTemplate Model=@new(facilae, new(Class: "facilae")) />
         </Action>
     </Card>
 

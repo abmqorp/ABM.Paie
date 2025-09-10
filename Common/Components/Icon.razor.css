@@ -1,0 +1,5 @@
+﻿.common__icon {
+    fill: currentColor;
+    height: calc(var(--fontsize) * 1.25);
+    vertical-align: text-bottom;
+}

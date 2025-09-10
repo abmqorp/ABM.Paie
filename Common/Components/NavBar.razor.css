@@ -22,7 +22,7 @@
 }
 
 .common__nav > ul > li {
-    & > .common__navaction:has(.common__image) > .common__activator {
+    & > .common__navaction:has(.common__image) {
         padding: 0.5rem 0.5rem 0.25rem 0.5rem;
     }
 }

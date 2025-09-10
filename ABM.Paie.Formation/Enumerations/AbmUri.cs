@@ -48,5 +48,7 @@ public enum AbmUri
     [Description("partenariats")]
     Partenariats,
     [Description("partenariats_facilae")]
-    PartenariatsFacilae
+    PartenariatsFacilae,
+    [Description("linkedin")]
+    LinkedIn,
 }
