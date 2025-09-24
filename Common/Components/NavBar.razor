@@ -9,9 +9,7 @@
         <li>@ChildContent</li>
         @foreach (var menu in Menus.Where(m => m.Any()))
         {
-            <li>
-                <DropDownMenu Class="primary" Menu=@menu IsDropDown=true />
-            </li>
+            <li><DropDownMenu Class="primary" Menu=@menu IsDropDown=true /></li>
         }
     </ul>
 </nav>

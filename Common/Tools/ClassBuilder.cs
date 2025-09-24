@@ -7,10 +7,7 @@ public class ClassBuilder
 
     public ClassBuilder Append(string? str)
     {
-        if (!string.IsNullOrWhiteSpace(str))
-        {
-            _ = _sb.Append(str.Trim() + " ");
-        }
+        if (!string.IsNullOrWhiteSpace(str)) _ = _sb.Append(str.Trim() + " ");
 
         return this;
     }

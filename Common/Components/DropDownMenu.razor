@@ -5,49 +5,42 @@
 @inherits BaseComponent
 @inject NavigationManager NavigationManager
 
+@{
+    _ = _builder.Append("common__dropdownmenu");
 
-@if (_title is not null)
-{
-    var hasLinks = Menu.Count() > 1;
-    if (IsDropDown && hasLinks) _title = _title with { Activator = _title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = () => { } };
-    else if (!IsDropDown) _ = _builder.Append("block");
-
-    <div class=@_builder>
-        <!-- TODO aria-controls needs set up -->
-        <!-- TODO aria-expanded needs managed with Javascript -->
-        <NavTemplate Model=_title />@*  Class=@Class /> *@
-
-        @if (hasLinks || ChildContent is not null)
-        {
-            <ul class="common__dropdownmenu__content">
-                @foreach (var link in Menu.Skip(1))
-                {
-                    <li><NavTemplate Model=link /></li>
-                }
-                @if (ChildContent is not null)
-                {
-                    <li>@ChildContent</li>
-                }
-            </ul>
-        }
-    </div>
+    if (Menu.FirstOrDefault() is NavModel title)
+    {
+        var hasLinks = Menu.Count() > 1;
+    
+        if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = () => { } };
+        else if (!IsDropDown) _ = _builder.Append("block");
+    
+        <div class=@_builder>
+            <!-- TODO aria-controls needs set up -->
+            <!-- TODO aria-expanded needs managed with Javascript -->
+            <NavTemplate Model=title />@*  Class=@Class /> *@
+            @if (hasLinks || ChildContent is not null)
+            {
+                <ul class="common__dropdownmenu__content">
+                    @foreach (var link in Menu.Skip(1))
+                    {
+                        <li><NavTemplate Model=link /></li>
+                    }
+                    @if (ChildContent is not null)
+                    {
+                        <li>@ChildContent</li>
+                    }
+                </ul>
+            }
+        </div>
+    }
 }
 
 @code {
-    private NavModel? _title;
-
     [Parameter, EditorRequired]
     public IEnumerable<NavModel> Menu { get; set; }
     [Parameter]
     public bool IsDropDown { get; set; }
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__dropdownmenu");
-        base.OnInitialized();
-
-        _title = Menu.FirstOrDefault();
-    }
 }

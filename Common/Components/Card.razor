@@ -1,5 +1,13 @@
 ﻿@inherits BaseComponent
 
+@{
+    _ = _builder.Append("common__card");
+
+    if (Title is null) _ = _builder.Append("top");
+    
+    if (Description is null && Action is null) _ = _builder.Append("bottom");
+}
+
 <div class=@_builder>
     @Title
     @Illustration
@@ -16,13 +24,4 @@
     public RenderFragment? Description { get; set; }
     [Parameter]
     public RenderFragment? Action { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__card");
-        base.OnInitialized();
-
-        if (Title is null) _ = _builder.Append("top");
-        if (Description is null && Action is null) _ = _builder.Append("bottom");
-    }
 }

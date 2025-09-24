@@ -3,20 +3,18 @@
 @using Common.Extensions
 @inherits BaseComponent
 
-@if (Content is not null)
-{
-    <svg class=@_builder xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-        <path d=@Content.GetDescription() />
-    </svg>
+@{
+    _ = _builder.Append("common__icon");
+    
+    if (Content is not null)
+    {
+        <svg class=@_builder xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+            <path d=@Content.GetDescription() />
+        </svg>
+    }
 }
 
 @code {
     [Parameter, EditorRequired]
     public IconPath? Content { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__icon");
-        base.OnInitialized();
-    }
 }

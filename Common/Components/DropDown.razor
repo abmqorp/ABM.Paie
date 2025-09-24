@@ -5,15 +5,14 @@
 @typeparam T
 @inherits BaseComponent
 
+@{ _ = _builder.Append("common__dropdown"); }
+
 <div class=@_builder @onfocusout=Reset>
     <NavTemplate Model=Title />
     @if (Templates is not null && Templates.Any())
     {
         <div class=@($"common__dropdown__content{(_isDisplayed ? "" : " hidden")}")>
-            @foreach (var item in Templates)
-            {
-                @ContentTemplate(item)
-            }
+            @foreach (var item in Templates) @ContentTemplate(item)
         </div>
     }
 </div>
@@ -27,12 +26,6 @@
     public IEnumerable<T>? Templates { get; set; } = new T[0];
     [Parameter, EditorRequired]
     public RenderFragment<T> ContentTemplate { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__dropdown");
-        base.OnInitialized();
-    }
 
     private void Reset()
     {

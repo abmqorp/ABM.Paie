@@ -3,21 +3,27 @@
 @using Microsoft.AspNetCore.Components.Web
 @inherits BaseComponent
 
-@if (Action is not null)
-{
-    <button class=@_builder aria-label=@Label type="button" @onclick=Action>
-        <Activator Model=Activator>
-            @ChildContent
-        </Activator>
-    </button>
-}
-else
-{
-    <a class=@_builder aria-label=@Label href=@Location target=@(IsExternal ? "_blank" : null)>
-        <Activator Model=Activator>
-            @ChildContent
-        </Activator>
-    </a>
+@{
+    _ = _builder.Append("common__navaction").Append(Activator.Class);
+    
+    if (IsExternal) Activator.EndIcon = IconPath.OpenInNew;
+    
+    if (Action is not null)
+    {
+        <button class=@_builder aria-label=@Label type="button" @onclick=Action>
+            <Activator Model=Activator>
+                @ChildContent
+            </Activator>
+        </button>
+    }
+    else
+    {
+        <a class=@_builder aria-label=@Label href=@Location target=@(IsExternal ? "_blank" : null)>
+            <Activator Model=Activator>
+                @ChildContent
+            </Activator>
+        </a>
+    }
 }
 
 @code {
@@ -31,15 +37,6 @@ else
     public ActivatorModel Activator { get; set; } = new();
     [Parameter]
     public Action? Action { get; set; }
-
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__navaction").Append(Activator.Class);
-        base.OnInitialized();
-
-        if (IsExternal) Activator.EndIcon = IconPath.OpenInNew;
-    }
 }

@@ -11,6 +11,7 @@
 
 @{
     var accueil = UriProvider.Get<UriImageModel>(AbmUri.Accueil);
+    var linkedin = UriProvider.Get<UriImageModel>(AbmUri.LinkedIn);
 
     var formations = GetMenu([ AbmUri.Formations, AbmUri.FormationsCatalogue, AbmUri.FormationsPerfectionnement ]);
     var actualites = GetMenu([ AbmUri.Actualites ]);
@@ -60,14 +61,9 @@
         new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth, Class: "danger filled")),
         new(UriProvider.Get(AbmMailUri.PaieFormation), new(IconPath.Mail)),
     };
-
-    var linkedin = UriProvider.Get<UriImageModel>(AbmUri.LinkedIn);
 }
 
-@if (_showBanner)
-{
-    <ImageTemplate Class="banner" Model=UriProvider.Get(AbmImageUri.Banner) />
-}
+@if (_showBanner) { <ImageTemplate Class="banner" Model=UriProvider.Get(AbmImageUri.Banner) /> }
 
 <NavBar Menus=headerMenus>
     <NavAction Label=@accueil.Label Location=@accueil.Location IsExternal=accueil.IsExternal>
@@ -115,49 +111,51 @@
 
 @code {
     private string? _accueilUri;
-    private bool _showBanner = true;
+    private bool _showBanner;
 
-    // protected override void OnInitialized()
-    // {
-    //     NavigationManager.LocationChanged += LocationChanged;
-    //     base.OnInitialized();
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += LocationChanged;
+        base.OnInitialized();
 
-    //     _accueilUri = NavigationManager.ToAbsoluteUri(UriProvider.Get(AbmUri.Accueil).Location).AbsoluteUri;
-    //     _showBanner = NavigationManager.Uri == _accueilUri;
-    // }
+        _accueilUri = NavigationManager.ToAbsoluteUri(UriProvider.Get(AbmUri.Accueil).Location).AbsoluteUri;
+        _showBanner = NavigationManager.Uri == _accueilUri;
+    }
 
-    // private void LocationChanged(object? _, LocationChangedEventArgs e)
-    // {
-    //     var currentValue = _showBanner;
-    //     var newValue = e.Location == _accueilUri;
+    private void LocationChanged(object? _, LocationChangedEventArgs e)
+    {
+        var currentValue = _showBanner;
+        var newValue = e.Location == _accueilUri;
 
-    //     if (currentValue != newValue)
-    //     {
-    //         _showBanner = NavigationManager.Uri == _accueilUri;
-    //         StateHasChanged();
-    //     }
-    // }
+        if (currentValue != newValue)
+        {
+            _showBanner = !_showBanner;
+            StateHasChanged();
+        }
+    }
 
     private NavModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = null)
     {
         List<NavModel> menus = [];
+
         if (uris.Any()) menus.Add(new(UriProvider.Get(uris.First()), new(Class: titleClass)));
-        foreach (var uri in uris.Skip(1))
-        {
-            menus.Add(UriProvider.Get(uri));
-        }
+
+        foreach (var uri in uris.Skip(1)) menus.Add(UriProvider.Get(uri));
+
         return menus.ToArray();
     }
 
     private NavModel[] SetAsFooter(NavModel[] menu)
     {
         var footerMenu = new List<NavModel>();
+
         if (menu.Any())
         {
             var title = menu[0];
             footerMenu.Add(title with { Activator = title.Activator with { Class = "h2" } });
             footerMenu.AddRange(menu[1..]);
         }
+
         return footerMenu.ToArray();
     }
 }

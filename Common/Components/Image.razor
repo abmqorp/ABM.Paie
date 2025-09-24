@@ -1,6 +1,8 @@
 ﻿@using Common.Extensions
 @inherits BaseComponent
 
+@{ _ = _builder.Append("common__image"); }
+
 <img class=@_builder src=@Source aria-label=@Label />
 
 @code {
@@ -8,10 +10,4 @@
     public string Source { get; set; }
     [Parameter, EditorRequired]
     public string Label { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__image");
-        base.OnInitialized();
-    }
 }

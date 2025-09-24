@@ -7,6 +7,8 @@
 @inherits BaseComponent
 @implements IDisposable
 
+@{ _ = _builder.Append("common__carousel").Append(typeof(T).Name.ToLower()); }
+
 <div class=@_builder>
     @if (!_isDisabled)
     {
@@ -14,10 +16,7 @@
             <Icon Content=@IconPath.ArrowBack />
         </button>
     }
-    @for (_position = 0; _position < Batch; _position++)
-    {
-        @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
-    }
+    @for (_position = 0; _position < Batch; _position++) @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     @if (!_isDisabled)
     {
         <button type="button" class="right" aria-label="Suivant" @onclick=Next>
@@ -45,11 +44,9 @@
 
     protected override void OnInitialized()
     {
-        _ = _builder.Append("common__carousel").Append(typeof(T).Name.ToLower());
-        base.OnInitialized();
-
         _count = Templates.Count();
         _isDisabled = _count <= Batch;
+
         if (_isDisabled) Batch = _count;
 
         if (Templates.Any() && !_isDisabled && Interval.HasValue)

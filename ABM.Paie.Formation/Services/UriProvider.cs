@@ -11,8 +11,7 @@ public class UriProvider(IConfiguration configuration) : IUriProvider
     public ImageModel Get(AbmImageUri value) => Get<ImageModel>(ComputeKey(value));
     public UriModel Get(AbmMailUri value) => Get<UriModel>(ComputeKey(value));
 
-    private T Get<T>(string value) => configuration.GetSection(value).Get<T>()
-        ?? throw new KeyNotFoundException();
+    private T Get<T>(string value) => configuration.GetSection(value).Get<T>() ?? throw new KeyNotFoundException();
 
     private static string ComputeKey(AbmUri value) => $"uris:{value.GetDescription()}";
     private static string ComputeImageKey(AbmUri value) => $"{ComputeKey(value)}:image";

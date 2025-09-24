@@ -11,18 +11,16 @@
 
 <PageTitle>ABM Paie</PageTitle>
 
-@{
-    var quotes = Quotes.GetAll().ToRandomizedList();
-}
+@{ var quotes = Quotes.GetAll().ToRandomizedList(); }
+
 <Carousel Templates=quotes>
     <QuoteTemplate Model=context />
 </Carousel>
 
 <h1>Partenariats</h1>
 
-@{
-    var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae);
-}
+@{ var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae); }
+
 <Card>
     <Illustration>
         <ImageTemplate Model=facilae.Image />

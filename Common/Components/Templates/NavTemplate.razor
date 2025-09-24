@@ -1,7 +1,8 @@
 ﻿@using Common.Models
 @inherits BaseComponent
 
-<NavAction Label=@Model.Uri.Label Location=@Model.Uri.Location IsExternal=Model.Uri.IsExternal Activator=Model.Activator Action=Model.Action>
+<NavAction Label=@Model.Uri.Label Location=@Model.Uri.Location IsExternal=Model.Uri.IsExternal
+    Activator=Model.Activator Action=Model.Action>
     @Model.Uri.Content
 </NavAction>
 

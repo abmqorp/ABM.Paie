@@ -3,13 +3,13 @@
 @using Common.Models
 @inherits BaseComponent
 
+@{ _ = _builder.Append("common__activator").Append(Model.Class); }
+
 <div class=@_builder>
     <Icon Content=Model.StartIcon />
     @if (ChildContent is not null)
     {
-        <span class="common__activator__content">
-            @ChildContent
-        </span>
+        <span class="common__activator__content">@ChildContent</span>
     }
     <Icon Content=Model.EndIcon />
 </div>
@@ -19,10 +19,4 @@
     public ActivatorModel Model { get; set; }
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
-
-    protected override void OnInitialized()
-    {
-        _ = _builder.Append("common__activator").Append(Model.Class);
-        base.OnInitialized();
-    }
 }
