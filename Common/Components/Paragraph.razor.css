@@ -2,4 +2,6 @@
     font-size: var(--fontsize);
     background-color: var(--filled--color);
     color: var(--color);
+    line-height: 200%;
+    margin-bottom: 0.5rem;
 }

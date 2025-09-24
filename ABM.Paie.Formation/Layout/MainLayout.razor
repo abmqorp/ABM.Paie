@@ -35,7 +35,7 @@
     var headerContact = GetMenu(
         [
             AbmUri.Contact,
-            AbmUri.ContactRendezVous,
+            AbmUri.ContactReserver,
             AbmUri.ContactCoordonnees,
             AbmUri.ContactPagesOfficielles,
         ],
@@ -49,27 +49,25 @@
             UriProvider.Get(AbmUri.Abmpaie),
             UriProvider.Get(AbmUri.AbmpaieOrganigramme),
             UriProvider.Get(AbmUri.AbmpaieEquipe),
-            new(UriProvider.Get(AbmUri.AbmpaieRefAssistance), new(Class: "danger filled")),
-            new(UriProvider.Get(AbmUri.AbmpaieRefHandicap), new(Class: "danger filled")),
             UriProvider.Get(AbmUri.AbmpaieIndicateurs),
             UriProvider.Get(AbmUri.AbmpaieValeurs),
+            new(UriProvider.Get(AbmUri.AbmpaieRefAssistance), new(Class: "danger filled")),
+            new(UriProvider.Get(AbmUri.AbmpaieRefHandicap), new(Class: "danger filled")),
     };
     var footerContact = new NavModel[]
     {
         UriProvider.Get(AbmUri.Contact),
-        new(UriProvider.Get(AbmUri.ContactRendezVous), new(IconPath.CalendarMonth, Class: "danger filled")),
+        new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth, Class: "danger filled")),
         new(UriProvider.Get(AbmMailUri.PaieFormation), new(IconPath.Mail)),
     };
-
-    var footerMenus = new NavModel[][] { [ accueil ], formations, actualites, footerAbmPaie, experience, partenariats };
 
     var linkedin = UriProvider.Get<UriImageModel>(AbmUri.LinkedIn);
 }
 
-@* @if (NavigationManager.BaseUri == NavigationManager.ToAbsoluteUri(accueil.Location).AbsoluteUri)
-{ *@
-<ImageTemplate Class="banner" Model=UriProvider.Get(AbmImageUri.Banner) />
-@* } *@
+@if (_showBanner)
+{
+    <ImageTemplate Class="banner" Model=UriProvider.Get(AbmImageUri.Banner) />
+}
 
 <NavBar Menus=headerMenus>
     <NavAction Label=@accueil.Label Location=@accueil.Location IsExternal=accueil.IsExternal>
@@ -77,26 +75,28 @@
     </NavAction>
 </NavBar>
 
-@Body
+<div id="body">
+    @Body
+</div>
 
 <div id="footer">
     <div>
         <div>
-            <DropDownMenu Menu=[accueil] />
-            <DropDownMenu Menu=formations />
-            <DropDownMenu Menu=actualites />
+            <DropDownMenu Menu=SetAsFooter([accueil]) />
+            <DropDownMenu Menu=SetAsFooter(formations) />
+            <DropDownMenu Menu=SetAsFooter(actualites) />
         </div>
         <div>
-            <DropDownMenu Menu=footerAbmPaie />
+            <DropDownMenu Menu=SetAsFooter(footerAbmPaie) />
         </div>
     </div>
     <div>
         <div>
-            <DropDownMenu Menu=experience />
-            <DropDownMenu Menu=partenariats />
+            <DropDownMenu Menu=SetAsFooter(experience) />
+            <DropDownMenu Menu=SetAsFooter(partenariats) />
         </div>
         <div>
-            <DropDownMenu Menu=footerContact>
+            <DropDownMenu Menu=SetAsFooter(footerContact)>
                 <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
                     <Icon Content=IconPath.Call />
                     <Icon Content=IconPath.Sms />
@@ -114,6 +114,30 @@
 </div>
 
 @code {
+    private string? _accueilUri;
+    private bool _showBanner = true;
+
+    // protected override void OnInitialized()
+    // {
+    //     NavigationManager.LocationChanged += LocationChanged;
+    //     base.OnInitialized();
+
+    //     _accueilUri = NavigationManager.ToAbsoluteUri(UriProvider.Get(AbmUri.Accueil).Location).AbsoluteUri;
+    //     _showBanner = NavigationManager.Uri == _accueilUri;
+    // }
+
+    // private void LocationChanged(object? _, LocationChangedEventArgs e)
+    // {
+    //     var currentValue = _showBanner;
+    //     var newValue = e.Location == _accueilUri;
+
+    //     if (currentValue != newValue)
+    //     {
+    //         _showBanner = NavigationManager.Uri == _accueilUri;
+    //         StateHasChanged();
+    //     }
+    // }
+
     private NavModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = null)
     {
         List<NavModel> menus = [];
@@ -123,5 +147,17 @@
             menus.Add(UriProvider.Get(uri));
         }
         return menus.ToArray();
+    }
+
+    private NavModel[] SetAsFooter(NavModel[] menu)
+    {
+        var footerMenu = new List<NavModel>();
+        if (menu.Any())
+        {
+            var title = menu[0];
+            footerMenu.Add(title with { Activator = title.Activator with { Class = "h2" } });
+            footerMenu.AddRange(menu[1..]);
+        }
+        return footerMenu.ToArray();
     }
 }

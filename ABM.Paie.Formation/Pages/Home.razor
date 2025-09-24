@@ -11,32 +11,30 @@
 
 <PageTitle>ABM Paie</PageTitle>
 
-<div id="body">
+@{
+    var quotes = Quotes.GetAll().ToRandomizedList();
+}
+<Carousel Templates=quotes>
+    <QuoteTemplate Model=context />
+</Carousel>
 
-    @{
-        var quotes = Quotes.GetAll().ToRandomizedList();
-    }
-    <Carousel Templates=quotes>
-        <QuoteTemplate Model=context />
-    </Carousel>
-    
-    <h1>Partenariats</h1>
-    
-    @{
-        var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae);
-    }
-    <Card>
-        <Illustration>
-            <ImageTemplate Model=facilae.Image />
-        </Illustration>
-        <Description>
-            <Paragraph>
-                Facilite vos migrations et vos paramétrages dans Silae...
-            </Paragraph>
-        </Description>
-        <Action>
-            <NavTemplate Model=@new(facilae, new(Class: "facilae")) />
-        </Action>
-    </Card>
+<h1>Partenariats</h1>
 
-</div>
+@{
+    var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae);
+}
+<Card>
+    <Illustration>
+        <ImageTemplate Model=facilae.Image />
+    </Illustration>
+    <Description>
+        <Paragraph>
+            Facilite vos migrations et vos paramétrages dans Silae...
+        </Paragraph>
+    </Description>
+    <Action>
+        <NavAction Label=@facilae.Label Location=@facilae.Location IsExternal=facilae.IsExternal Activator=@new(Class: "facilae")>
+            visiter @facilae.Content
+        </NavAction>
+    </Action>
+</Card>

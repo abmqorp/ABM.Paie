@@ -5,4 +5,12 @@ public enum AbmMailUri
 {
     [Description("paie-formation")]
     PaieFormation,
+    [Description("ref-handicap")]
+    RefHandicap,
+    [Description("assistance")]
+    Assistance,
+    [Description("facturation")]
+    Facturation,
+    [Description("historique-versions")]
+    HistoriqueVersions,
 }

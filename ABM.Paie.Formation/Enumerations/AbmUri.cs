@@ -39,16 +39,18 @@ public enum AbmUri
     ExperienceCafel,
     [Description("contact")]
     Contact,
-    [Description("contact_rendez-vous")]
-    ContactRendezVous,
+    [Description("contact_reserver")]
+    ContactReserver,
     [Description("contact_coordonnees")]
     ContactCoordonnees,
     [Description("contact_pages-officielles")]
     ContactPagesOfficielles,
+    [Description("rendez-vous")]
+    RendezVous,
+    [Description("linkedin")]
+    LinkedIn,
     [Description("partenariats")]
     Partenariats,
     [Description("partenariats_facilae")]
     PartenariatsFacilae,
-    [Description("linkedin")]
-    LinkedIn,
 }

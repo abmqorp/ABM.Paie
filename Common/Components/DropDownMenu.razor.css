@@ -26,6 +26,16 @@
         transition: var(--common__dropdownmenu--transition);
     }
 }
+.common__dropdownmenu.block {
+    & > .common__navaction {
+        padding: 0.5rem 1rem;
+    }
+}
+.common__dropdownmenu.block {
+    & > .common__navaction .common__activator {
+        --fontsize: 2rem;
+    }
+}
 
 .common__dropdownmenu__content {
     display: flex;
@@ -38,9 +48,15 @@
     }
 }
 .common__dropdownmenu__content {
+    & .common__paragraph {
+        line-height: 100%;
+        margin: 0;
+        text-align: left;
+    }
+}
+.common__dropdownmenu__content {
     & .common__paragraph:first-child {
         padding: 0.5rem 1rem;
-        text-align: left;
     }
 }
 

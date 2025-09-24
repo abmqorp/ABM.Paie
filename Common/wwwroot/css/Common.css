@@ -16,12 +16,12 @@
     --gray-light: #e3e3e3;
     --gray-dark: #70797d;
     --gray: #b0bec5;
-
     /* Variables */
     --color: var(--gray-dark);
     --filled--color: var(--white);
     --hover--color: var(--shade);
     --fontsize: 1rem;
+    --fontfamily: 'Encode Sans SemiExpanded Medium';
 }
 
 /* --- --- --- --- --- */
@@ -330,4 +330,10 @@ span:has(+svg) {
 .white.filled {
     --filled--color: white;
     color: inherit;
+}
+
+.leftseparator {
+    border-left: 0.125rem solid;
+    padding-left: 1rem;
+    margin-left: 2rem;
 }

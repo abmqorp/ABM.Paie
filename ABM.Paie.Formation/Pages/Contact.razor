@@ -1,0 +1,43 @@
+﻿@page "/Contact"
+@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Services
+@using Common.Components
+@using Common.Components.Templates
+@using Common.Enumerations
+@inject IUriProvider UriProvider
+
+<h1>Contact</h1>
+
+<h2 id="reserver">Réserver un créneau horaire</h2>
+
+<Paragraph>
+    Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
+    <br />
+    <NavTemplate Model=@new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth)) />
+</Paragraph>
+
+<h2 id="coordonnees">Réserver un créneau horaire</h2>
+
+<Paragraph>
+    Si je suis indisponible (en formation par exemple), veuillez me laisser vos coordonnées, de préférence par SMS avec :
+</Paragraph>
+
+<Paragraph class="leftseparator">
+    le nom de l'entreprise,
+    <br />
+    la personne à contacter,
+    <br />
+    le numéro de téléphone,
+    <br />
+    et l'objet de l'appel.
+</Paragraph>
+
+<Paragraph>
+    <b>Privilégiez la prise de rendez-vous en ligne,</b> nous serons sûrs de consacrer un temps dédié à notre échange (15 ou 30 minutes selon vos préférences et besoins).
+</Paragraph>
+
+<h2 id="pages-officielles">Mes pages officielles</h2>
+
+@code {
+
+}
