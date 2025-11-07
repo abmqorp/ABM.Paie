@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace ABM.Paie.Formation.Enumerations;
-public enum AbmImageUri
+public enum AbmImage
 {
     [Description("banner")]
     Banner,

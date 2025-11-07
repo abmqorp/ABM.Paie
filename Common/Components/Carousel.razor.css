@@ -3,6 +3,12 @@
     border-radius: 1rem;
 }
 
+.common__carousel {
+  & > div {
+    margin: 0 0.5rem;
+  }
+}
+
 .right {
     border-start-end-radius: inherit;
     border-end-end-radius: inherit;

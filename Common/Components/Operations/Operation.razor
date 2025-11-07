@@ -1,0 +1,40 @@
+﻿@using Common.Components.Templates
+@using Common.Enumerations
+@using Common.Models.Operations
+@using Common.Models.Uris
+
+@if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+
+<CoreOp Model=Model.Uri Class=@Model.Activator.Class>
+    @if (ChildContent is not null)
+    {
+        @ChildContent
+    }
+    else
+    {
+        if (Model.Uri is ImageUriModel imageUri)
+        {
+            <Activator Model=Model.Activator>
+                <ImageTemplate Class="inline" Model=imageUri.Image />
+            </Activator>
+        }
+        else
+        {
+            if (Model.Uri is DescriptionUriModel descriptionUri && !string.IsNullOrWhiteSpace(descriptionUri.Description))
+            {
+                <span>@descriptionUri.Description</span>
+            }
+            <Activator Model=Model.Activator>
+                @Model.Uri.Content
+            </Activator>
+        }
+    }
+</CoreOp>
+
+@code {
+    [Parameter, EditorRequired]
+    public OperationModel Model { get; set; }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+}

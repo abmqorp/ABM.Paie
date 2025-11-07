@@ -29,8 +29,8 @@ public enum AbmUri
     AbmpaieRefHandicap,
     [Description("experience")]
     Experience,
-    [Description("experience_cv")]
-    ExperienceCv,
+    [Description("cv")]
+    Cv,
     [Description("experience_silae")]
     ExperienceSilae,
     [Description("experience_chiffres")]
@@ -45,12 +45,22 @@ public enum AbmUri
     ContactCoordonnees,
     [Description("contact_pages-officielles")]
     ContactPagesOfficielles,
+    [Description("contact_telephone")]
+    ContactTelephone,
     [Description("rendez-vous")]
     RendezVous,
+    [Description("call")]
+    Call,
+    [Description("sms")]
+    Sms,
+    [Description("whatsapp")]
+    WhatsApp,
     [Description("linkedin")]
     LinkedIn,
     [Description("partenariats")]
     Partenariats,
-    [Description("partenariats_facilae")]
-    PartenariatsFacilae,
+    [Description("facilae")]
+    Facilae,
+    [Description("prismatik")]
+    Prismatik,
 }

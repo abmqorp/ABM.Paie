@@ -1,6 +1,6 @@
 ﻿@using Common.Enumerations
 @using Common.Extensions
-@using Common.Models
+@using Common.Models.Operations
 @inherits BaseComponent
 
 @{ _ = _builder.Append("common__activator").Append(Model.Class); }
@@ -17,6 +17,7 @@
 @code {
     [Parameter, EditorRequired]
     public ActivatorModel Model { get; set; }
+
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 }

@@ -20,9 +20,3 @@
         height: 2.5rem;
     }
 }
-
-.common__nav > ul > li {
-    & > .common__navaction:has(.common__image) {
-        padding: 0.5rem 0.5rem 0.25rem 0.5rem;
-    }
-}

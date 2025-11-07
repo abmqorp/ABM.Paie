@@ -1,0 +1,33 @@
+﻿@using Common.Models.Uris
+@using Microsoft.AspNetCore.Components.Web
+@inherits BaseComponent
+@inject NavigationManager NavigationManager
+
+@{
+    _ = _builder.Append("common__operation");
+
+    if (Model.Location is string location && Model.IsExternal)
+    {
+        <a class=@_builder aria-label=@Model.Label href=@location target="_blank">
+            @ChildContent
+        </a>
+    }
+    else
+    {
+        var action = Action ?? (Model.Location is null ? () => { } : () => NavigationManager.NavigateTo(Model.Location));
+
+        <button class=@_builder aria-label=@Model.Label type="button" @onclick=action>
+            @ChildContent
+        </button>
+    }
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public UriModel Model { get; set; }
+    [Parameter, EditorRequired]
+    public RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    public Action? Action { get; set; }
+}

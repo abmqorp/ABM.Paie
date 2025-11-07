@@ -300,14 +300,6 @@ a:hover, button:hover {
     background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
 }
 
-svg + span {
-    margin-left: 0.25rem;
-}
-
-span:has(+svg) {
-    margin-right: 0.25rem;
-}
-
 .quotemodel {
     --filled--color: var(--gray);
     height: 6rem;

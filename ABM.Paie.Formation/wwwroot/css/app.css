@@ -97,6 +97,16 @@ code {
     inherits: false;
     initial-value: #00897b;
 }
+@property --prismatik {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: #01a6c2;
+}
+
+:root {
+    /* Variables */
+    --minwidth: 28rem;
+}
 
 /* --- --- --- --- --- */
 /* --- - GENERAL - --- */
@@ -140,17 +150,44 @@ h2, .h2 {
     font-size: 2rem;
 }
 
-h1, .h1, h2, .h2, h3, .h3 {
+h1, .h1, h2, .h2 {
     --fontfamily: 'Permanent Marker Regular';
+    scroll-margin-top: 80px;
 }
 
 .banner {
     display: block;
     margin: auto;
     max-width: 80%;
-    min-width: 28rem;
+    min-width: var(--minwidth);
 }
 
 .facilae {
     color: var(--facilae);
+}
+
+.prismatik {
+    color: var(--prismatik);
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+.wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.grow {
+  flex-basis: 0;
+  flex-grow: 1;
+  flex-shrink: 0;
+  min-width: calc(var(--minwidth) * 3 / 4);
 }

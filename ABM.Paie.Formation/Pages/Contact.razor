@@ -2,8 +2,9 @@
 @using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
 @using Common.Components
-@using Common.Components.Templates
+@using Common.Components.Operations
 @using Common.Enumerations
+@using Common.Models.Uris
 @inject IUriProvider UriProvider
 
 <h1>Contact</h1>
@@ -14,10 +15,10 @@
     Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, 
     j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
     <br />
-    <NavTemplate Model=@new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth)) />
+    <Operation Model=@new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth)) />
 </Paragraph>
 
-<h2 id="coordonnees">Réserver un créneau horaire</h2>
+<h2 id="coordonnees">Coordonnées</h2>
 
 <Paragraph>
     Si je suis indisponible (en formation par exemple), veuillez me laisser vos coordonnées, de préférence par SMS avec :
@@ -38,6 +39,23 @@
     nous serons sûrs de consacrer un temps dédié à notre échange (15 ou 30 minutes selon vos préférences et besoins).
 </Paragraph>
 
-<h2 id="pages-officielles">Mes pages officielles</h2>
+<div class="wrap">
+    <div class="column grow">
+        <h3 id="telephone">Par téléphone : +33 7 48 10 65 39</h3>
+        <Operation Model=@(new(UriProvider.Get(AbmUri.Call), new(IconPath.Call))) />
+        <Operation Model=@(new(UriProvider.Get(AbmUri.Sms), new(IconPath.Sms))) />
+        <Operation Model=@(UriProvider.Get<ImageUriModel>(AbmUri.WhatsApp)) />
+    </div>
+    <div class="column grow">
+        <h3>Une question ?</h3>
+        <Operation Model=@(UriProvider.Get(AbmMail.PaieFormation)) />
+        
+        <h3>Demandes précises :</h3>
+        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.RefHandicap)) />
+        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.Assistance)) />
+        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.Facturation)) />
+        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.HistoriqueVersions)) />
+    </div>
+</div>
 
-@code { }
+<h2 id="pages-officielles">Mes pages officielles</h2>

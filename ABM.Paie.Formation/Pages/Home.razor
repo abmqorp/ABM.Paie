@@ -4,9 +4,10 @@
 @using ABM.Paie.Formation.Resources
 @using ABM.Paie.Formation.Services
 @using Common.Components
+@using Common.Components.Operations
 @using Common.Components.Templates
-@using Common.Enumerations
-@using Common.Models
+@using Common.Extensions
+@using Common.Models.Uris
 @inject IUriProvider UriProvider
 
 <PageTitle>ABM Paie</PageTitle>
@@ -19,20 +20,26 @@
 
 <h1>Partenariats</h1>
 
-@{ var facilae = UriProvider.Get<UriImageModel>(AbmUri.PartenariatsFacilae); }
+@{
+    var partenariats = new (ImageUriModel Model, string Class)[]
+    {
+        new(UriProvider.Get<ImageUriModel>(AbmUri.Facilae), "facilae"),
+        new(UriProvider.Get<ImageUriModel>(AbmUri.Prismatik), "prismatik"),
+    };
+}
 
-<Card>
-    <Illustration>
-        <ImageTemplate Model=facilae.Image />
-    </Illustration>
-    <Description>
-        <Paragraph>
-            Facilite vos migrations et vos paramétrages dans Silae...
-        </Paragraph>
-    </Description>
-    <Action>
-        <NavAction Label=@facilae.Label Location=@facilae.Location IsExternal=facilae.IsExternal Activator=@new(Class: "facilae")>
-            visiter @facilae.Content
-        </NavAction>
-    </Action>
-</Card>
+<Carousel Templates=partenariats.ToRandomizedList() Batch=3>
+    <Card>
+        <Illustration>
+            <ImageTemplate Model=context.Model.Image />
+        </Illustration>
+        <Description>
+            <Paragraph>
+                @context.Model.Description
+            </Paragraph>
+        </Description>
+        <Action>
+            <Operation Model=@(new(context.Model.ToBase(content: "visiter " + context.Model.Content), new(Class: context.Class))) />
+        </Action>
+    </Card>
+</Carousel>

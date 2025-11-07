@@ -1,7 +1,4 @@
-﻿@using Common.Components
-@using Common.Components.Templates
-@using Common.Enumerations
-@using Common.Models
+﻿@using Common.Models.Operations
 @using Microsoft.AspNetCore.Components.Web
 
 <nav class="common__nav" aria-label="Barre de navigation">
@@ -16,7 +13,8 @@
 
 @code {
     [Parameter, EditorRequired]
-    public IEnumerable<IEnumerable<NavModel>> Menus { get; set; }
+    public IEnumerable<IEnumerable<OperationModel>> Menus { get; set; }
+    
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 }

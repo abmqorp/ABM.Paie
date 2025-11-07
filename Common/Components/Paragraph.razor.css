@@ -5,3 +5,8 @@
     line-height: 200%;
     margin-bottom: 0.5rem;
 }
+
+.common__paragraph:has(+ a) {
+    margin-bottom: 0;
+}
+

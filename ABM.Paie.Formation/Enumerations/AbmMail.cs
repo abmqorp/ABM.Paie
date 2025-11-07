@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace ABM.Paie.Formation.Enumerations;
-public enum AbmMailUri
+public enum AbmMail
 {
     [Description("paie-formation")]
     PaieFormation,

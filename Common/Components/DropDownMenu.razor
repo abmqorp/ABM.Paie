@@ -1,6 +1,7 @@
-﻿@using Common.Components.Templates
+﻿@using Common.Components.Operations
+@using Common.Components.Templates
 @using Common.Enumerations
-@using Common.Models
+@using Common.Models.Operations
 @using Microsoft.AspNetCore.Components.Web
 @inherits BaseComponent
 @inject NavigationManager NavigationManager
@@ -8,23 +9,23 @@
 @{
     _ = _builder.Append("common__dropdownmenu");
 
-    if (Menu.FirstOrDefault() is NavModel title)
+    if (Menu.FirstOrDefault() is OperationModel title)
     {
         var hasLinks = Menu.Count() > 1;
-    
+
         if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = () => { } };
         else if (!IsDropDown) _ = _builder.Append("block");
     
         <div class=@_builder>
             <!-- TODO aria-controls needs set up -->
             <!-- TODO aria-expanded needs managed with Javascript -->
-            <NavTemplate Model=title />@*  Class=@Class /> *@
+            <Operation Model=title />@*  Class=@Class /> *@
             @if (hasLinks || ChildContent is not null)
             {
                 <ul class="common__dropdownmenu__content">
                     @foreach (var link in Menu.Skip(1))
                     {
-                        <li><NavTemplate Model=link /></li>
+                        <li><Operation Model=link /></li>
                     }
                     @if (ChildContent is not null)
                     {
@@ -38,7 +39,8 @@
 
 @code {
     [Parameter, EditorRequired]
-    public IEnumerable<NavModel> Menu { get; set; }
+    public IEnumerable<OperationModel> Menu { get; set; }
+
     [Parameter]
     public bool IsDropDown { get; set; }
     [Parameter]

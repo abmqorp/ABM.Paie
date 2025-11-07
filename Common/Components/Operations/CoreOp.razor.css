@@ -1,0 +1,14 @@
+﻿.common__operation {
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  text-align: left;
+  --description__fontsize: var(--fontsize);
+  font-size: var(--description__fontsize);
+}
+
+.common__operation {
+  & span + .common__activator {
+    padding-top: 0.25rem;
+    --fontsize: calc(var(--description__fontsize) * 0.80);
+  }
+}

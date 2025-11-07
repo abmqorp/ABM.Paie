@@ -6,3 +6,11 @@
 .common__activator__content {
     display: inline-block;
 }
+
+svg + span {
+    margin-left: 0.25rem;
+}
+
+span:has(+ svg) {
+    margin-right: 0.25rem;
+}

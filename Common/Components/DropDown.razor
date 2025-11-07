@@ -1,6 +1,8 @@
-﻿@using Common.Components.Templates;
+﻿@using Common.Components.Operations
+@using Common.Components.Templates;
 @using Common.Enumerations;
 @using Common.Models
+@using Common.Models.Operations
 @using Microsoft.AspNetCore.Components.Web
 @typeparam T
 @inherits BaseComponent
@@ -8,7 +10,7 @@
 @{ _ = _builder.Append("common__dropdown"); }
 
 <div class=@_builder @onfocusout=Reset>
-    <NavTemplate Model=Title />
+    <Operation Model=Title />
     @if (Templates is not null && Templates.Any())
     {
         <div class=@($"common__dropdown__content{(_isDisplayed ? "" : " hidden")}")>
@@ -21,7 +23,7 @@
     private bool _isDisplayed = false;
 
     [Parameter]
-    public NavModel? Title { get; set; }
+    public OperationModel? Title { get; set; }
     [Parameter]
     public IEnumerable<T>? Templates { get; set; } = new T[0];
     [Parameter, EditorRequired]

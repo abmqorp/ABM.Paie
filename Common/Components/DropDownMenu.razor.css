@@ -4,35 +4,35 @@
 .common__dropdownmenu.block {
     border-right: 0.125rem solid var(--color);
     margin: 1rem 0;
-    padding: 0 0.5rem;
+    padding: 0 0.5rem 0 1rem;
 }
 .common__dropdownmenu {
-    & > .common__navaction {
+    & > .common__operation {
         padding: 1rem;
     }
 }
 .common__dropdownmenu {
-    & > .common__navaction .common__activator {
+    & > .common__operation .common__activator {
         --fontsize: 1.25rem;
     }
 }
 .common__dropdownmenu {
-    & > .common__navaction .common__activator:not(.filled) {
+    & > .common__operation .common__activator:not(.filled) {
         color: var(--color);
     }
 }
 .common__dropdownmenu {
-    & > .common__navaction .common__activator .common__icon {
+    & > .common__operation .common__activator .common__icon {
         transition: var(--common__dropdownmenu--transition);
     }
 }
 .common__dropdownmenu.block {
-    & > .common__navaction {
+    & > .common__operation {
         padding: 0.5rem 1rem;
     }
 }
 .common__dropdownmenu.block {
-    & > .common__navaction .common__activator {
+    & > .common__operation .common__activator {
         --fontsize: 2rem;
     }
 }
@@ -42,7 +42,7 @@
     flex-direction: column;
 }
 .common__dropdownmenu__content {
-    & .common__navaction {
+    & .common__operation {
         padding: 0.5rem 1rem;
         text-align: left;
     }
@@ -73,7 +73,7 @@
     transition: var(--common__dropdownmenu--transition);
 }
 .common__dropdownmenu:not(.block) .common__dropdownmenu__content {
-    & .common__navaction {
+    & .common__operation {
         border-radius: 0;
         width: stretch;
     }
@@ -90,7 +90,7 @@
 }
 
 .common__dropdownmenu:hover, .common__dropdownmenu:focus-within {
-    & > .common__navaction {
+    & > .common__operation {
         & > .common__activator .common__icon {
             transform: rotateX(180deg);
         }

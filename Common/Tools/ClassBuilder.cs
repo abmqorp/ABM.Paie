@@ -1,16 +1,23 @@
-﻿using System.Text;
-
-namespace Common.Tools;
+﻿namespace Common.Tools;
 public class ClassBuilder
 {
-    private readonly StringBuilder _sb = new();
+    private const char Sep = ' ';
+
+    private readonly HashSet<string> _classes = [];
 
     public ClassBuilder Append(string? str)
     {
-        if (!string.IsNullOrWhiteSpace(str)) _ = _sb.Append(str.Trim() + " ");
+        if (str is null) return this;
+
+        var classes = str.Split(Sep);
+
+        foreach (var c in classes)
+        {
+            if (!string.IsNullOrWhiteSpace(c)) _ = _classes.Add(c.Trim());
+        }
 
         return this;
     }
 
-    public override string ToString() => _sb.ToString().Trim();
+    public override string ToString() => string.Join(Sep, _classes).Trim();
 }
