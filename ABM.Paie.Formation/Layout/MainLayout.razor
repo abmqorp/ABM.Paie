@@ -8,6 +8,7 @@
 @using Common.Models.Operations
 @using Common.Models.Uris
 @inherits LayoutComponentBase
+@inject IConfiguration Configuration
 @inject IUriProvider UriProvider
 @inject NavigationManager NavigationManager
 
@@ -43,7 +44,7 @@
             AbmUri.ContactPagesOfficielles,
         ],
         "filled");
-    var partenariats = GetMenu([AbmUri.Partenariats, AbmUri.Facilae,]);
+    var partenariats = GetMenu([AbmUri.Partenariats, AbmUri.Facilae, AbmUri.Prismatik]);
 
     var headerMenus = new OperationModel[][] { formations, actualites, headerAbmPaie, experience, headerContact, partenariats };
 
@@ -102,12 +103,16 @@
                     <ImageTemplate Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
                     +33 7 48 10 65 39
                 </Paragraph>
-                <Paragraph Class="primary">
+                <Paragraph Class="linkedin">
                     <Operation Model=linkedin />
                 </Paragraph>
             </DropDownMenu>
         </div>
     </div>
+</div>
+
+<div id="version" class="primary float-right mx-3 my-2">
+    <Paragraph>version : @Configuration["version"]</Paragraph>
 </div>
 
 @code {

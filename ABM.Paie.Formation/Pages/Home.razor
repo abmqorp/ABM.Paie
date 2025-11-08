@@ -12,34 +12,38 @@
 
 <PageTitle>ABM Paie</PageTitle>
 
-@{ var quotes = Quotes.GetAll().ToRandomizedList(); }
+<div class="flex-center column">
 
-<Carousel Templates=quotes>
-    <QuoteTemplate Model=context />
-</Carousel>
+    @{ var quotes = Quotes.GetAll().ToRandomizedList(); }
+    
+    <Carousel Templates=quotes>
+        <QuoteTemplate Model=context />
+    </Carousel>
+    
+    <h1>Partenariats</h1>
+    
+    @{
+        var partenariats = new (ImageUriModel Model, string Class)[]
+        {
+            new(UriProvider.Get<ImageUriModel>(AbmUri.Facilae), "facilae"),
+            new(UriProvider.Get<ImageUriModel>(AbmUri.Prismatik), "prismatik"),
+        };
+    }
+    
+    <Carousel Templates=partenariats.ToRandomizedList() Batch=3>
+        <Card Class="mx-2">
+            <Illustration>
+                <ImageTemplate Model=context.Model.Image />
+            </Illustration>
+            <Description>
+                <Paragraph Class="italic">
+                    @context.Model.Description
+                </Paragraph>
+            </Description>
+            <Action>
+                <Operation Model=@(new(context.Model.ToBase(content: "visiter " + context.Model.Content), new(Class: context.Class))) />
+            </Action>
+        </Card>
+    </Carousel>
 
-<h1>Partenariats</h1>
-
-@{
-    var partenariats = new (ImageUriModel Model, string Class)[]
-    {
-        new(UriProvider.Get<ImageUriModel>(AbmUri.Facilae), "facilae"),
-        new(UriProvider.Get<ImageUriModel>(AbmUri.Prismatik), "prismatik"),
-    };
-}
-
-<Carousel Templates=partenariats.ToRandomizedList() Batch=3>
-    <Card>
-        <Illustration>
-            <ImageTemplate Model=context.Model.Image />
-        </Illustration>
-        <Description>
-            <Paragraph>
-                @context.Model.Description
-            </Paragraph>
-        </Description>
-        <Action>
-            <Operation Model=@(new(context.Model.ToBase(content: "visiter " + context.Model.Content), new(Class: context.Class))) />
-        </Action>
-    </Card>
-</Carousel>
+</div>

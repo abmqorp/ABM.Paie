@@ -44,7 +44,7 @@
         <h3 id="telephone">Par téléphone : +33 7 48 10 65 39</h3>
         <Operation Model=@(new(UriProvider.Get(AbmUri.Call), new(IconPath.Call))) />
         <Operation Model=@(new(UriProvider.Get(AbmUri.Sms), new(IconPath.Sms))) />
-        <Operation Model=@(UriProvider.Get<ImageUriModel>(AbmUri.WhatsApp)) />
+        <Operation Model=@(new(UriProvider.Get<ImageUriModel>(AbmUri.WhatsApp), new(Class: "whatsapp"))) />
     </div>
     <div class="column grow">
         <h3>Une question ?</h3>
@@ -59,3 +59,8 @@
 </div>
 
 <h2 id="pages-officielles">Mes pages officielles</h2>
+
+<Paragraph>
+    <b>Consulter mon réseau professionnel :</b>
+    <Operation Model=@(new(UriProvider.Get<ImageUriModel>(AbmUri.LinkedIn), new(Class: "linkedin"))) />
+</Paragraph>

@@ -3,25 +3,25 @@
 /* --- --- --- --- --- */
 
 :root {
-    /* Colors */
-    --shade: #0000001b;
-    --shade-dark: #00000034;
-    --black: #000000;
-    --white: #ffffff;
-    --primary: #0288d1;
-    --primary-dark: #013d5f;
-    --danger: #c00000;
-    --warning: #843c0c;
-    --success: #528235;
-    --gray-light: #e3e3e3;
-    --gray-dark: #70797d;
-    --gray: #b0bec5;
-    /* Variables */
-    --color: var(--gray-dark);
-    --filled--color: var(--white);
-    --hover--color: var(--shade);
-    --fontsize: 1rem;
-    --fontfamily: 'Encode Sans SemiExpanded Medium';
+  /* Colors */
+  --shade: #0000001b;
+  --shade-dark: #00000034;
+  --black: #000000;
+  --white: #ffffff;
+  --primary: #0288d1;
+  --primary-dark: #013d5f;
+  --danger: #c00000;
+  --warning: #843c0c;
+  --success: #528235;
+  --gray-light: #e3e3e3;
+  --gray-dark: #70797d;
+  --gray: #b0bec5;
+  /* Variables */
+  --color: var(--gray-dark);
+  --filled--color: var(--white);
+  --hover--color: var(--shade);
+  --fontsize: 1rem;
+  --fontfamily: 'Encode Sans SemiExpanded Medium';
 }
 
 /* --- --- --- --- --- */
@@ -30,221 +30,221 @@
 
 /* Cabin Sketch */
 @font-face {
-    font-family: 'Cabin Sketch Regular';
-    src: url('../fonts/Cabin_Sketch/CabinSketch-Regular.ttf') format('truetype');
+  font-family: 'Cabin Sketch Regular';
+  src: url('../fonts/Cabin_Sketch/CabinSketch-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Cabin Sketch Bold';
-    src: url('../fonts/Cabin_Sketch/CabinSketch-Bold.ttf') format('truetype');
+  font-family: 'Cabin Sketch Bold';
+  src: url('../fonts/Cabin_Sketch/CabinSketch-Bold.ttf') format('truetype');
 }
 
 /* Encode Sans */
 @font-face {
-    font-family: 'Encode Sans';
-    src: url('../fonts/Encode_Sans/EncodeSans-VariableFont_wdth,wght.ttf') format('truetype');
+  font-family: 'Encode Sans';
+  src: url('../fonts/Encode_Sans/EncodeSans-VariableFont_wdth,wght.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Encode Sans Condensed Black';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Black.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Black';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Black.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed Bold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Bold.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Bold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed ExtraBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-ExtraBold.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed ExtraBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed ExtraLight';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-ExtraLight.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed ExtraLight';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-ExtraLight.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed Light';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Light.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Light';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Light.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed Medium';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Medium.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Medium';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Medium.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed Regular';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Regular.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Regular';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed SemiBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-SemiBold.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed SemiBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-SemiBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Condensed Thin';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Thin.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Encode Sans Expanded Black';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Black.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded Bold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Bold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded ExtraBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-ExtraBold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded ExtraLight';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-ExtraLight.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded Light';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Light.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded Medium';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Medium.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded Regular';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded SemiBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-SemiBold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans Expanded Thin';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Thin.ttf') format('truetype');
+  font-family: 'Encode Sans Condensed Thin';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Condensed-Thin.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Black';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Black.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Black';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Black.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Bold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Bold.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Bold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed ExtraBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-ExtraBold.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded ExtraBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed ExtraLight';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-ExtraLight.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded ExtraLight';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-ExtraLight.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Light';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Light.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Light';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Light.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Medium';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Medium.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Medium';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Medium.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Regular';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Regular.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Regular';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed SemiBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-SemiBold.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded SemiBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-SemiBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiCondensed Thin';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Thin.ttf') format('truetype');
-}
-
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Black';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Black.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Bold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Bold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded ExtraBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-ExtraBold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded ExtraLight';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-ExtraLight.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Light';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Light.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Medium';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Medium.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Regular';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Regular.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded SemiBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-SemiBold.ttf') format('truetype');
-}
-@font-face {
-    font-family: 'Encode Sans SemiExpanded Thin';
-    src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Thin.ttf') format('truetype');
+  font-family: 'Encode Sans Expanded Thin';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_Expanded-Thin.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Encode Sans Black';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Black.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Black';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Black.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Bold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Bold.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Bold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Bold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans ExtraBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-ExtraBold.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed ExtraBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-ExtraBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans ExtraLight';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-ExtraLight.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed ExtraLight';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-ExtraLight.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Light';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Light.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Light';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Light.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Medium';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Medium.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Medium';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Medium.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Regular';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Regular.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Regular';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Regular.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans SemiBold';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-SemiBold.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed SemiBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-SemiBold.ttf') format('truetype');
 }
 @font-face {
-    font-family: 'Encode Sans Thin';
-    src: url('../fonts/Encode_Sans/static/EncodeSans-Thin.ttf') format('truetype');
+  font-family: 'Encode Sans SemiCondensed Thin';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiCondensed-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Black';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Bold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded ExtraBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded ExtraLight';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Light';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Medium';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Regular';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded SemiBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiExpanded Thin';
+  src: url('../fonts/Encode_Sans/static/EncodeSans_SemiExpanded-Thin.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Encode Sans Black';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Black.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans Bold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Bold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans ExtraBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-ExtraBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans ExtraLight';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-ExtraLight.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans Light';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Light.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans Medium';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Medium.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans Regular';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Regular.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans SemiBold';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-SemiBold.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Encode Sans Thin';
+  src: url('../fonts/Encode_Sans/static/EncodeSans-Thin.ttf') format('truetype');
 }
 
 /* Hurricane */
 @font-face {
-    font-family: 'Hurricane Regular';
-    src: url('../fonts/Hurricane/Hurricane-Regular.ttf') format('truetype');
+  font-family: 'Hurricane Regular';
+  src: url('../fonts/Hurricane/Hurricane-Regular.ttf') format('truetype');
 }
 
 /* Kaushan Script */
 @font-face {
-    font-family: 'Kaushan Script Regular';
-    src: url('../fonts/Kaushan_Script/KaushanScript-Regular.ttf') format('truetype');
+  font-family: 'Kaushan Script Regular';
+  src: url('../fonts/Kaushan_Script/KaushanScript-Regular.ttf') format('truetype');
 }
 
 /* Permanent Marker */
 @font-face {
-    font-family: 'Permanent Marker Regular';
-    src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.ttf') format('truetype');
+  font-family: 'Permanent Marker Regular';
+  src: url('../fonts/Permanent_Marker/PermanentMarker-Regular.ttf') format('truetype');
 }
 
 /* --- --- --- --- --- */
@@ -252,80 +252,84 @@
 /* --- --- --- --- --- */
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 p {
-    margin-block-start: 0;
-    margin-block-end: 0;
+  margin-block-start: 0;
+  margin-block-end: 0;
 }
 
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 button {
-    border: none;
-    cursor: pointer;
-    padding-block: 0;
-    padding-inline: 0;
+  border: none;
+  cursor: pointer;
+  padding-block: 0;
+  padding-inline: 0;
 }
 
 a, button {
-    background:inherit;
-    display: inline-block;
-    width: fit-content;
-    color: inherit;
-    text-align: center;
-    align-content: center;
+  background:inherit;
+  display: inline-block;
+  width: fit-content;
+  color: inherit;
+  text-align: center;
+  align-content: center;
 }
 
 a:has(.filled), button:has(.filled) {
-    --filled--color: var(--color);
-    color: var(--white);
-    background: var(--filled--color);
+  --filled--color: var(--color);
+  color: var(--white);
+  background: var(--filled--color);
 }
 
 button:disabled {
-    cursor: not-allowed;
+  cursor: not-allowed;
 }
 
 a:hover, button:hover {
-    background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
+  background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
 }
 
 .quotemodel {
-    --filled--color: var(--gray);
-    height: 6rem;
-    background: var(--filled--color);
-    color: var(--white);
+  --filled--color: var(--gray);
+  height: 6rem;
+  background: var(--filled--color);
+  color: var(--white);
 }
 
 .filled {
-    --hover--color: var(--shade-dark);
+  --hover--color: var(--shade-dark);
 }
 
 .primary {
-    --color: var(--primary);
+  --color: var(--primary);
 }
 
 .danger {
-    --color: var(--danger);
+  --color: var(--danger);
 }
 
 .white.filled {
-    --filled--color: white;
-    color: inherit;
+  --filled--color: white;
+  color: inherit;
 }
 
 .leftseparator {
-    border-left: 0.125rem solid;
-    padding-left: 1rem;
-    margin-left: 2rem;
+  border-left: 0.125rem solid;
+  padding-left: 1rem;
+  margin-left: 2rem;
+}
+
+.italic {
+  font-style: italic;
 }

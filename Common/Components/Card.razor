@@ -10,7 +10,12 @@
 
 <div class=@_builder>
     @Title
-    @Illustration
+    @if (Illustration is not null)
+    {
+        <div>
+            @Illustration
+        </div>
+    }
     @Description
     @Action
 </div>

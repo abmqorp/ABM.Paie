@@ -1,31 +1,26 @@
 ﻿.common__carousel {
-    display: flex;
-    border-radius: 1rem;
-}
-
-.common__carousel {
-  & > div {
-    margin: 0 0.5rem;
-  }
+  display: flex;
+  border-radius: 1rem;
+  width: 100%;
 }
 
 .right {
-    border-start-end-radius: inherit;
-    border-end-end-radius: inherit;
+  border-start-end-radius: inherit;
+  border-end-end-radius: inherit;
 }
 
 .left {
-    border-start-start-radius: inherit;
-    border-end-start-radius: inherit;
+  border-start-start-radius: inherit;
+  border-end-start-radius: inherit;
 }
 
 button {
-    padding: 0.5rem;
-    color: inherit;
-    fill: currentColor;
+  padding: 0.5rem;
+  color: inherit;
+  fill: currentColor;
 }
 button {
-    & .common__icon {
-        height: 1.75rem;
-    }
+  & .common__icon {
+    height: 1.75rem;
+  }
 }

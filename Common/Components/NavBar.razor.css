@@ -1,22 +1,23 @@
 ﻿.common__nav {
-    background: var(--white);
-    position: sticky;
-    top: 0;
-    box-shadow: 0 0.125rem 0.25rem 0.125rem var(--white);
-    margin: 0.5rem 0;
-    padding: 0.5rem 0 0 0;
+  background: var(--white);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 0.125rem 0.25rem 0.125rem var(--white);
+  margin: 0.5rem 0;
+  padding: 0.5rem 0 0 0;
 }
 
 .common__nav, .common__nav > ul {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .common__nav > ul {
-    & .common__image {
-        height: 2.5rem;
-    }
+  & .common__image {
+    height: 2.5rem;
+  }
 }
