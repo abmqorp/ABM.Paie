@@ -14,9 +14,11 @@
 
 <div class="flex-center column">
 
-    @{ var quotes = Quotes.GetAll().ToRandomizedList(); }
-    
-    <Carousel Templates=quotes>
+    @{
+        var quotes = Quotes.GetAll().ToRandomizedList(); 
+    }
+
+    <Carousel Templates=quotes Class="quote full-width">
         <QuoteTemplate Model=context />
     </Carousel>
     

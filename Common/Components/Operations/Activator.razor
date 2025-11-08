@@ -3,7 +3,9 @@
 @using Common.Models.Operations
 @inherits BaseComponent
 
-@{ _ = _builder.Append("common__activator").Append(Model.Class); }
+@{
+    _ = _builder.Append("common__activator").Append(Model.Class); 
+}
 
 <div class=@_builder>
     <Icon Content=Model.StartIcon />

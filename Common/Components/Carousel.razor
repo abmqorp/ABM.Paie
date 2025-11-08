@@ -7,7 +7,9 @@
 @inherits BaseComponent
 @implements IDisposable
 
-@{ _ = _builder.Append("common__carousel").Append(typeof(T).Name.ToLower()); }
+@{
+    _ = _builder.Append("common__carousel"); 
+}
 
 <div class=@_builder>
     @if (!_isDisabled)
@@ -56,6 +58,8 @@
             _timer.AutoReset = true;
             _timer.Start();
         }
+
+        base.OnInitialized();
     }
 
     private void OnTimedEvent(object? sender, ElapsedEventArgs e)

@@ -122,10 +122,11 @@
     protected override void OnInitialized()
     {
         NavigationManager.LocationChanged += LocationChanged;
-        base.OnInitialized();
 
         _accueilUri = NavigationManager.ToAbsoluteUri(UriProvider.Get(AbmUri.Accueil).Location).AbsoluteUri;
         _showBanner = NavigationManager.Uri == _accueilUri;
+        
+        base.OnInitialized();
     }
 
     private void LocationChanged(object? _, LocationChangedEventArgs e)

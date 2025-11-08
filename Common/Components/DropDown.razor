@@ -7,7 +7,9 @@
 @typeparam T
 @inherits BaseComponent
 
-@{ _ = _builder.Append("common__dropdown"); }
+@{
+    _ = _builder.Append("common__dropdown"); 
+}
 
 <div class=@_builder @onfocusout=Reset>
     <Operation Model=Title />

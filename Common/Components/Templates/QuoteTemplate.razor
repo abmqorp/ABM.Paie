@@ -1,7 +1,9 @@
 ﻿@using Common.Models
 @inherits BaseComponent
 
-@{ _ = _builder.Append("common__quotetemplate"); }
+@{
+    _ = _builder.Append("common__quote"); 
+}
 
 <div class=@_builder>
     <span>@Model?.Text</span> <span>@Model?.Author</span>

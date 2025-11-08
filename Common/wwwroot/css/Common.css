@@ -300,7 +300,7 @@ a:hover, button:hover {
   background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
 }
 
-.quotemodel {
+.quote {
   --filled--color: var(--gray);
   height: 6rem;
   background: var(--filled--color);

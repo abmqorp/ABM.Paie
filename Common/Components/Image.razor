@@ -1,7 +1,9 @@
 ﻿@using Common.Extensions
 @inherits BaseComponent
 
-@{ _ = _builder.Append("common__image"); }
+@{
+    _ = _builder.Append("common__image"); 
+}
 
 <img class=@_builder src=@Source aria-label=@Label />
 
