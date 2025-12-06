@@ -6,57 +6,59 @@
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models.Operations
-@using Common.Models.Uris
 @inherits LayoutComponentBase
 @inject IConfiguration Configuration
 @inject IUriProvider UriProvider
 @inject NavigationManager NavigationManager
 
 @{
-    var accueil = UriProvider.Get<ImageUriModel>(AbmUri.Accueil);
-    var linkedin = new OperationModel(UriProvider.Get<ImageUriModel>(AbmUri.LinkedIn), new(Class: "white filled"));
+    var accueil = UriProvider.Get(AbmUri.Accueil);
+    var linkedin = new OperationModel(UriProvider.Get(AbmUri.LinkedIn), new(Class: "white filled"));
 
-    var formations = GetMenu([AbmUri.Formations, AbmUri.FormationsCatalogue, AbmUri.FormationsPerfectionnement]);
+    var formations = GetMenu([AbmUri.Formations, AbmUri.Catalogue, AbmUri.Perfectionnement]);
     var actualites = GetMenu([AbmUri.Actualites]);
     var headerAbmPaie = GetMenu(
         [
             AbmUri.Abmpaie,
-            AbmUri.AbmpaieOrganigramme,
-            AbmUri.AbmpaieEquipe,
-            AbmUri.AbmpaieRefAssistance,
-            AbmUri.AbmpaieRefHandicap,
-            AbmUri.AbmpaieIndicateurs,
-            AbmUri.AbmpaieValeurs,
+            AbmUri.Organigramme,
+            AbmUri.Equipe,
+            AbmUri.RefAssistance,
+            AbmUri.RefHandicap,
+            AbmUri.Indicateurs,
+            AbmUri.Valeurs,
         ]);
     var experience = GetMenu(
         [
             AbmUri.Experience,
             AbmUri.Cv,
-            AbmUri.ExperienceSilae,
-            AbmUri.ExperienceChiffres,
-            AbmUri.ExperienceCafel,
+            AbmUri.Silae,
+            AbmUri.Chiffres,
+            AbmUri.Cafel,
         ]);
     var headerContact = GetMenu(
         [
             AbmUri.Contact,
-            AbmUri.ContactReserver,
-            AbmUri.ContactCoordonnees,
-            AbmUri.ContactPagesOfficielles,
+            AbmUri.Reserver,
+            AbmUri.Coordonnees,
+            AbmUri.PagesOfficielles,
         ],
         "filled");
-    var partenariats = GetMenu([AbmUri.Partenariats, AbmUri.Facilae, AbmUri.Prismatik]);
+    var partenariats = GetMenu([AbmUri.Partenariats])
+        .Append(UriProvider.Get(AbmUri.Facilae).ToBase())
+        .Append(UriProvider.Get(AbmUri.Prismatik).ToBase())
+        .ToArray();
 
     var headerMenus = new OperationModel[][] { formations, actualites, headerAbmPaie, experience, headerContact, partenariats };
 
     var footerAbmPaie = new OperationModel[]
     {
             UriProvider.Get(AbmUri.Abmpaie),
-            UriProvider.Get(AbmUri.AbmpaieOrganigramme),
-            UriProvider.Get(AbmUri.AbmpaieEquipe),
-            UriProvider.Get(AbmUri.AbmpaieIndicateurs),
-            UriProvider.Get(AbmUri.AbmpaieValeurs),
-            new(UriProvider.Get(AbmUri.AbmpaieRefAssistance), new(Class: "danger filled")),
-            new(UriProvider.Get(AbmUri.AbmpaieRefHandicap), new(Class: "danger filled")),
+            UriProvider.Get(AbmUri.Organigramme),
+            UriProvider.Get(AbmUri.Equipe),
+            UriProvider.Get(AbmUri.Indicateurs),
+            UriProvider.Get(AbmUri.Valeurs),
+            new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
+            new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
     };
     var footerContact = new OperationModel[]
     {
@@ -93,7 +95,7 @@
     <div>
         <div>
             <DropDownMenu Menu=SetAsFooter(experience) />
-            <DropDownMenu Menu=SetAsFooter(partenariats) />
+            @* <DropDownMenu Menu=SetAsFooter(partenariats) /> *@
         </div>
         <div>
             <DropDownMenu Menu=SetAsFooter(footerContact)>
@@ -103,9 +105,9 @@
                     <ImageTemplate Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
                     +33 7 48 10 65 39
                 </Paragraph>
-                <Paragraph Class="linkedin">
+                <span Class="linkedin">
                     <Operation Model=linkedin />
-                </Paragraph>
+                </span>
             </DropDownMenu>
         </div>
     </div>
@@ -141,7 +143,7 @@
         }
     }
 
-    private OperationModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = null)
+    private OperationModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = default)
     {
         List<OperationModel> menus = [];
 

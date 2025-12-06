@@ -1,14 +1,14 @@
-﻿using Common.Models.Uris;
+﻿using Common.Models;
 
 namespace Common.Extensions;
 public static class UriModelExtensions
 {
     public static UriModel ToBase(
         this UriModel model,
-        string? label = null,
-        string? location = null,
-        string? content = null,
-        bool? isExternal = null)
+        string? label = default,
+        string? location = default,
+        string? content = default,
+        bool? isExternal = default)
         => new(
             label ?? model.Label,
             location ?? model.Location,

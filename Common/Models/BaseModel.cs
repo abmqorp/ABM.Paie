@@ -1,2 +1,2 @@
 ﻿namespace Common.Models;
-public record BaseModel(string? Class = null);
+public record BaseModel(string? Class = default);

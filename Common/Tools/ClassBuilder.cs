@@ -1,5 +1,5 @@
 ﻿namespace Common.Tools;
-public class ClassBuilder
+public sealed class ClassBuilder
 {
     private const char Sep = ' ';
 

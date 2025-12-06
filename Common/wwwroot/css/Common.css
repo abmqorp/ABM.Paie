@@ -313,6 +313,7 @@ a:hover, button:hover {
 
 .primary {
   --color: var(--primary);
+  color: var(--primary);
 }
 
 .danger {

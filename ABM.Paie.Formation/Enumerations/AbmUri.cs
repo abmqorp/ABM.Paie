@@ -1,66 +1,84 @@
 ﻿using System.ComponentModel;
+using Common.Attributes;
 
 namespace ABM.Paie.Formation.Enumerations;
 public enum AbmUri
 {
     [Description("accueil")]
+    [Image(AbmImage.LogoThin)]
     Accueil,
     [Description("formations")]
     Formations,
-    [Description("formations_catalogue")]
-    FormationsCatalogue,
-    [Description("formations_perfectionnement")]
-    FormationsPerfectionnement,
+    [Description("catalogue")]
+    [Parent(AbmUri.Formations)]
+    Catalogue,
+    [Description("perfectionnement")]
+    [Parent(AbmUri.Formations)]
+    Perfectionnement,
     [Description("actualites")]
     Actualites,
     [Description("abmpaie")]
     Abmpaie,
-    [Description("abmpaie_organigramme")]
-    AbmpaieOrganigramme,
-    [Description("abmpaie_equipe")]
-    AbmpaieEquipe,
-    [Description("abmpaie_indicateurs")]
-    AbmpaieIndicateurs,
-    [Description("abmpaie_valeurs")]
-    AbmpaieValeurs,
-    [Description("abmpaie_ref-assistance")]
-    AbmpaieRefAssistance,
-    [Description("abmpaie_ref-handicap")]
-    AbmpaieRefHandicap,
+    [Description("organigramme")]
+    [Parent(AbmUri.Abmpaie)]
+    Organigramme,
+    [Description("equipe")]
+    [Parent(AbmUri.Abmpaie)]
+    Equipe,
+    [Parent(AbmUri.Abmpaie)]
+    [Description("indicateurs")]
+    Indicateurs,
+    [Description("valeurs")]
+    [Parent(AbmUri.Abmpaie)]
+    Valeurs,
+    [Description("ref-assistance")]
+    [Parent(AbmUri.Abmpaie)]
+    RefAssistance,
+    [Description("ref-handicap")]
+    [Parent(AbmUri.Abmpaie)]
+    RefHandicap,
     [Description("experience")]
     Experience,
     [Description("cv")]
     Cv,
-    [Description("experience_silae")]
-    ExperienceSilae,
-    [Description("experience_chiffres")]
-    ExperienceChiffres,
-    [Description("experience_cafel")]
-    ExperienceCafel,
+    [Description("silae")]
+    [Parent(AbmUri.Experience)]
+    Silae,
+    [Description("chiffres")]
+    [Parent(AbmUri.Experience)]
+    Chiffres,
+    [Description("cafel")]
+    [Parent(AbmUri.Experience)]
+    Cafel,
     [Description("contact")]
     Contact,
-    [Description("contact_reserver")]
-    ContactReserver,
-    [Description("contact_coordonnees")]
-    ContactCoordonnees,
-    [Description("contact_pages-officielles")]
-    ContactPagesOfficielles,
-    [Description("contact_telephone")]
-    ContactTelephone,
+    [Description("reserver")]
+    [Parent(AbmUri.Contact)]
+    Reserver,
+    [Description("coordonnees")]
+    [Parent(AbmUri.Contact)]
+    Coordonnees,
+    [Description("pages-officielles")]
+    [Parent(AbmUri.Contact)]
+    PagesOfficielles,
     [Description("rendez-vous")]
     RendezVous,
     [Description("call")]
     Call,
     [Description("sms")]
     Sms,
-    [Description("whatsapp")]
-    WhatsApp,
     [Description("linkedin")]
+    [Image(AbmImage.LinkedIn)]
     LinkedIn,
+    [Description("whatsapp")]
+    [Image(AbmImage.WhatsAppInline)]
+    WhatsApp,
     [Description("partenariats")]
     Partenariats,
     [Description("facilae")]
+    [Image(AbmImage.Facilae)]
     Facilae,
     [Description("prismatik")]
+    [Image(AbmImage.Prismatik)]
     Prismatik,
 }

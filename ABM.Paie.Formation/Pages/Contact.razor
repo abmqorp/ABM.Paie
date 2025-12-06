@@ -4,7 +4,6 @@
 @using Common.Components
 @using Common.Components.Operations
 @using Common.Enumerations
-@using Common.Models.Uris
 @inject IUriProvider UriProvider
 
 <h1>Contact</h1>
@@ -44,23 +43,23 @@
         <h3 id="telephone">Par téléphone : +33 7 48 10 65 39</h3>
         <Operation Model=@(new(UriProvider.Get(AbmUri.Call), new(IconPath.Call))) />
         <Operation Model=@(new(UriProvider.Get(AbmUri.Sms), new(IconPath.Sms))) />
-        <Operation Model=@(new(UriProvider.Get<ImageUriModel>(AbmUri.WhatsApp), new(Class: "whatsapp"))) />
+        <Operation Model=@(new(UriProvider.Get(AbmUri.WhatsApp), new(Class: "whatsapp"))) />
     </div>
     <div class="column grow">
         <h3>Une question ?</h3>
         <Operation Model=@(UriProvider.Get(AbmMail.PaieFormation)) />
         
         <h3>Demandes précises :</h3>
-        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.RefHandicap)) />
-        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.Assistance)) />
-        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.Facturation)) />
-        <Operation Model=@(UriProvider.Get<DescriptionUriModel>(AbmMail.HistoriqueVersions)) />
+        <Operation Model=@(UriProvider.Get(AbmMail.RefHandicap)) />
+        <Operation Model=@(UriProvider.Get(AbmMail.Assistance)) />
+        <Operation Model=@(UriProvider.Get(AbmMail.Facturation)) />
+        <Operation Model=@(UriProvider.Get(AbmMail.HistoriqueVersions)) />
     </div>
 </div>
 
 <h2 id="pages-officielles">Mes pages officielles</h2>
 
-<Paragraph>
+<Paragraph Class="mb-5">
     <b>Consulter mon réseau professionnel :</b>
-    <Operation Model=@(new(UriProvider.Get<ImageUriModel>(AbmUri.LinkedIn), new(Class: "linkedin"))) />
+    <Operation Model=@(new(UriProvider.Get(AbmUri.LinkedIn), new(Class: "linkedin"))) />
 </Paragraph>

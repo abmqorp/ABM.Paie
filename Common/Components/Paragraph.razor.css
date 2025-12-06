@@ -3,10 +3,9 @@
     background-color: var(--filled--color);
     color: var(--color);
     line-height: 200%;
-    margin-bottom: 0.5rem;
 }
 
-.common__paragraph:has(+ a) {
-    margin-bottom: 0;
+.common__paragraph:has(+ .common__paragraph) {
+    margin-bottom: 0.5rem;
 }
 
