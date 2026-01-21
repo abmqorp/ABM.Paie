@@ -1,0 +1,26 @@
+﻿@using Common.Enumerations
+@using Common.Models
+@inherits BaseComponent
+
+@{
+    _ = _builder.Append("common__section");
+}
+
+@SetSection()
+
+@code {
+    [Parameter, EditorRequired]
+    public UriModel Model { get; set; }
+    [Parameter]
+    public SectionLevel Level { get; set; } = SectionLevel.H1;
+
+    private RenderFragment? SetSection() => Level switch {
+        SectionLevel.H1 => @<h1 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h1>,
+        SectionLevel.H2 => @<h2 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h2>,
+        SectionLevel.H3 => @<h3 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h3>,
+        SectionLevel.H4 => @<h4 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h4>,
+        SectionLevel.H5 => @<h5 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h5>,
+        SectionLevel.H6 => @<h6 id=@Model.Anchor?.TrimStart('/', '#') class=@_builder>@Model.Content</h6>,
+        _ => null
+    };
+}

@@ -5,13 +5,11 @@ public static class UriModelExtensions
 {
     public static UriModel ToBase(
         this UriModel model,
-        string? label = default,
-        string? location = default,
-        string? content = default,
-        bool? isExternal = default)
+        string? anchor = default,
+        string? content = default)
         => new(
-            label ?? model.Label,
-            location ?? model.Location,
+            model.Label,
+            model.Location + anchor,
             content ?? model.Content,
-            isExternal ?? model.IsExternal);
+            model.IsExternal);
 }

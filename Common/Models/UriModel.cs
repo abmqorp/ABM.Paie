@@ -8,6 +8,6 @@ public record UriModel(
     ImageModel? Image = default,
     UriModel? Parent = default)
 {
-    private readonly string? _relative = Location;
-    public string? Location => Parent?.Location + _relative;
+    public string? Anchor { get; init; } = Location;
+    public string? Location => Parent?.Location + Anchor;
 }

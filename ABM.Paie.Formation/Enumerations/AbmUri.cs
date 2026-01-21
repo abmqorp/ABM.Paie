@@ -37,6 +37,9 @@ public enum AbmUri
     [Description("ref-handicap")]
     [Parent(AbmUri.Abmpaie)]
     RefHandicap,
+    [Description("qualiopi")]
+    [Parent(AbmUri.Abmpaie)]
+    Qualiopi,
     [Description("experience")]
     Experience,
     [Description("cv")]

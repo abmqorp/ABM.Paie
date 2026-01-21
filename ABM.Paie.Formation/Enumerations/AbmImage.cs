@@ -7,14 +7,18 @@ public enum AbmImage
     LogoThin,
     [Description("banner")]
     Banner,
-    [Description("linkedin")]
-    LinkedIn,
-    [Description("whatsapp-glyph")]
-    WhatsAppGlyph,
-    [Description("whatsapp-inline")]
-    WhatsAppInline,
+    [Description("absences")]
+    Absences,
+    [Description("certifications")]
+    Certifications,
     [Description("facilae")]
     Facilae,
     [Description("prismatik")]
     Prismatik,
+    [Description("linkedin")]
+    LinkedIn,
+    [Description("whatsapp-inline")]
+    WhatsAppInline,
+    [Description("whatsapp-glyph")]
+    WhatsAppGlyph,
 }

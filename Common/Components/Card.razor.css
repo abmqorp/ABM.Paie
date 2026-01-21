@@ -14,11 +14,19 @@
   width: 15rem;
 }
 
+.common__card.large {
+  width: 18rem;
+}
+
 .common__card > div {
   width: inherit;
   min-height: 10rem;
   max-height: 12rem;
   overflow: hidden;
+}
+
+.common__card.large > div {
+  max-height: inherit;
 }
 
 .common__card.top > div {

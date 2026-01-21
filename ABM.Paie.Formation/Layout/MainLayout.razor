@@ -24,6 +24,7 @@
             AbmUri.Equipe,
             AbmUri.RefAssistance,
             AbmUri.RefHandicap,
+            AbmUri.Qualiopi,
             AbmUri.Indicateurs,
             AbmUri.Valeurs,
         ]);
@@ -59,6 +60,7 @@
             UriProvider.Get(AbmUri.Valeurs),
             new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
             new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
+            new(UriProvider.Get(AbmUri.Qualiopi), new(Class: "danger filled")),
     };
     var footerContact = new OperationModel[]
     {

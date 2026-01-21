@@ -6,9 +6,11 @@
 @using Common.Components
 @using Common.Components.Operations
 @using Common.Components.Templates
+@using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
 @inject IUriProvider UriProvider
+@inject INewsService News
 
 <PageTitle>ABM Paie</PageTitle>
 
@@ -21,7 +23,7 @@
     <h1>Faire découvrir, progresser et se perfectionner</h1>
 
     <Paragraph Class="mb-5">
-        Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DNS
+        Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN
         via le logiciel MySilae.
     </Paragraph>
 
@@ -29,17 +31,40 @@
         <QuoteTemplate Model=context />
     </Carousel>
 
-    <h1>Actualités</h1>
+    <Section Model=@UriProvider.Get(AbmUri.Actualites) />
 
     @{
-        var actualites = new (UriModel Model, string Class)[]
-        {
-            new(UriProvider.Get(AbmUri.Facilae), "facilae"),
-            new(UriProvider.Get(AbmUri.Prismatik), "prismatik"),
-        };
+        var actualites = News.Recaps.Take(5);
     }
+
+    <Carousel Class="mb-5" Templates=actualites Batch=3>
+        <Card Class="large mx-2">
+            <Title>
+                <Paragraph Class="h2">
+                    @context.Date.ToString("MMMM yyyy")
+                </Paragraph>
+            </Title>
+            <Illustration>
+                <ImageTemplate Model=context.Image />
+            </Illustration>
+            <Description>
+                <Paragraph Class="italic">
+                    @context.Title
+                </Paragraph>
+            </Description>
+            <Action>
+                <Operation Model=@(new(
+                    UriProvider.Get(AbmUri.Actualites).ToBase(context.Date.ToString("yyMM"), "en savoir plus"),
+                    new(Class: "primary") {EndIcon = IconPath.ArrowCircleRight})) />
+            </Action>
+        </Card>
+    </Carousel>
+
+    <Carousel Templates=quotes[24..30] Class="quote full-width">
+        <QuoteTemplate Model=context />
+    </Carousel>
     
-    <h1 id="partenariats">Partenariats</h1>
+    <Section Model=@UriProvider.Get(AbmUri.Partenariats) />
     
     @{
         var partenariats = new (UriModel Model, string Class)[]
