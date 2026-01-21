@@ -43,6 +43,13 @@
   & .common__paragraph {
     margin-top: 0.5rem;
     margin-bottom: 0.25rem;
+    margin-inline: 0.5rem;
+  }
+}
+
+.common__card:not(.large) {
+  & .common__paragraph {
+    --fontsize: 0.9rem;
   }
 }
 

@@ -1,8 +1,8 @@
 ﻿namespace Common.Models;
 public record UriModel(
-    string Label,
-    string? Location,
+    string? Location = default,
     string? Content = default,
+    string? Label = default,
     bool IsExternal = default,
     string? Description = default,
     ImageModel? Image = default,

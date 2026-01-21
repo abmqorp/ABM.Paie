@@ -41,7 +41,7 @@
         <Card Class="large mx-2">
             <Title>
                 <Paragraph Class="h2">
-                    @context.Date.ToString("MMMM yyyy")
+                    @context.LongDate
                 </Paragraph>
             </Title>
             <Illustration>
@@ -53,9 +53,7 @@
                 </Paragraph>
             </Description>
             <Action>
-                <Operation Model=@(new(
-                    UriProvider.Get(AbmUri.Actualites).ToBase(context.Date.ToString("yyMM"), "en savoir plus"),
-                    new(Class: "primary") {EndIcon = IconPath.ArrowCircleRight})) />
+                <Operation Model=@UriProvider.Get(AbmUri.Actualites).ToDefaultOperation(context.Id, "primary") />
             </Action>
         </Card>
     </Carousel>

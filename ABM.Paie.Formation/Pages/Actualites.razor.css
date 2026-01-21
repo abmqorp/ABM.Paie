@@ -1,0 +1,27 @@
+﻿.actualites__descriptions {
+  border-radius: 1rem;
+  background: var(--gray-light);
+  margin-bottom: 2rem;
+  padding-inline: 1rem;
+  overflow: hidden;
+}
+
+.actualites__descriptions {
+  & .common__operation {
+    margin-bottom: 1.5rem;
+  }
+}
+
+.actualites__recap {
+  & > .common__section {
+    margin-bottom: 0;
+  }
+}
+
+div:has(> .common__image) {
+  width: 24rem;
+}
+
+hr {
+  margin-top: 0;
+}

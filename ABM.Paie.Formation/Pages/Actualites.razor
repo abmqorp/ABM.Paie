@@ -1,0 +1,46 @@
+﻿@page "/Actualites"
+@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Services
+@using Common.Components
+@using Common.Components.Operations
+@using Common.Components.Templates
+@using Common.Enumerations
+@using Common.Extensions
+@inject IUriProvider UriProvider
+@inject INewsService News
+
+<Section Model=@UriProvider.Get(AbmUri.Actualites) />
+
+@{
+    var actualites = News.Recaps.Take(5).OrderByDescending(r => r.Date);
+    foreach (var actualite in actualites)
+    {
+        <div class="actualites__recap">
+            <Section Model=actualite.Uri Level=SectionLevel.H2/>
+            <hr />
+            <div class="flex-center column mb-3">
+                <h3>@actualite.Title</h3>
+                <div>
+                    <ImageTemplate Model=actualite.Image />
+                </div>
+            </div>
+
+            <div class="actualites__descriptions">
+                @foreach (var news in actualite.News)
+                {
+                    <h4>@((MarkupString)news.Title)</h4>
+                    @if (news.Descriptions?.Any() ?? false)
+                    {
+                        <ul class="leftseparator mb-3">
+                            @foreach (var description in news.Descriptions)
+                            {
+                                <li>@((MarkupString)description)</li>
+                            }
+                        </ul>
+                    }
+                    <Operation Model=@news.Uri.ToDefaultOperation(activatorClass: "filled") />
+                }
+            </div>
+        </div>
+    }
+}

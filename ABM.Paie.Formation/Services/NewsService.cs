@@ -30,9 +30,12 @@ public sealed class NewsService : INewsService
             new(
                 "Référente Handicap avec 2 nouvelles formations (février et mars 2025).",
                 _uriProvider.Get(AbmUri.RefHandicap),
-                "Devenir référent handicap en organisme de formation ou CFA\r\nTroubles cognitifs (« Dys », autisme) : Connaître comprendre et aménager les parcours de formation"),
+                [
+                    "Devenir référent handicap en organisme de formation ou CFA",
+                    "Troubles cognitifs (« Dys », autisme) : Connaître comprendre et aménager les parcours de formation"
+                ]),
             new(
-                "20/20 à la soutenance de mi-parcours (05 avril 2025) de mon projet \"Former sur le processus des déclarations sociales en paie, de A à Z, en incluant des modules d'apprentissage numérique.\"",
+                "20/20 à la soutenance de mi-parcours (05 avril 2025) de mon projet <i>Former sur le processus des déclarations sociales en paie, de A à Z, en incluant des modules d'apprentissage numérique.</i>",
                 _uriProvider.Get(AbmUri.Cafel)),
         ];
 
