@@ -1,11 +1,18 @@
 ﻿namespace Common.Tools;
+
 public sealed class ClassBuilder
 {
     private const char Sep = ' ';
 
     private readonly HashSet<string> _classes = [];
 
-    public ClassBuilder Append(string? str)
+    public ClassBuilder Add(string? str) => Update(str, AddClass);
+
+    public ClassBuilder Remove(string? str) => Update(str, RemoveClass);
+
+    public override string ToString() => string.Join(Sep, _classes).Trim();
+
+    private ClassBuilder Update(string? str, Action<string> action)
     {
         if (str is null) return this;
 
@@ -13,11 +20,13 @@ public sealed class ClassBuilder
 
         foreach (var c in classes)
         {
-            if (!string.IsNullOrWhiteSpace(c)) _ = _classes.Add(c.Trim());
+            if (!string.IsNullOrWhiteSpace(c)) action.Invoke(c);
         }
 
         return this;
     }
 
-    public override string ToString() => string.Join(Sep, _classes).Trim();
+    private Action<string> AddClass => (str) => _ = _classes.Add(str);
+
+    private Action<string> RemoveClass => (str) => _ = _classes.Remove(str);
 }

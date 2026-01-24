@@ -1,11 +1,11 @@
 ﻿@inherits BaseComponent
 
 @{
-    _ = _builder.Append("common__card");
+    _ = _builder.Add("common__card");
 
-    if (Title is null) _ = _builder.Append("top");
+    if (Title is null) _ = _builder.Add("top");
     
-    if (Description is null && Action is null) _ = _builder.Append("bottom");
+    if (Description is null && Action is null) _ = _builder.Add("bottom");
 }
 
 <div class=@_builder>

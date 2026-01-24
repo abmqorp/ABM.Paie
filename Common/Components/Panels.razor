@@ -1,0 +1,50 @@
+﻿@using Common.Enumerations
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+@inherits BaseComponent
+@inject NavigationManager NavigationManager
+
+
+@{
+    _ = _builder.Add("common__panel full-width");
+}
+
+<div class="column mb-5">
+    @foreach (var model in Models)
+    {
+        <div class="column">
+            <button id=@model.Uri.Id class=@_builder type ="button" @onclick =@(() => Update(model))>
+                <div>
+                    <span>@model.Uri.Content</span>
+                    <Icon Class="float-right" Content=@(model.IsHidden ? IconPath.ArrowDropDown : IconPath.ArrowDropUp) />
+                </div>
+            </button>
+            <div hidden=@model.IsHidden>
+                <Paragraph>@model.Uri.Label</Paragraph>
+            </div>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public IEnumerable<TabModel> Models { get; set; }
+
+    public void Update(TabModel tab)
+    {
+        tab.IsHidden = !tab.IsHidden;
+        foreach (var model in Models.Except([tab]))
+        {
+            model.IsHidden = true;
+        }
+    }
+
+    protected override void OnInitialized()
+    {
+        var anchor = NavigationManager.Uri.Split('#').ElementAtOrDefault(1);
+
+        Models.FirstOrDefault(m => m.Uri.Id == anchor)?.IsHidden = false;
+
+        base.OnInitialized();
+    }
+}

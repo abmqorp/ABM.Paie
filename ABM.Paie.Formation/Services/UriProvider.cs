@@ -6,6 +6,7 @@ using Common.Models;
 using Common.Models.Operations;
 
 namespace ABM.Paie.Formation.Services;
+
 public sealed class UriProvider(IConfiguration configuration) : IUriProvider
 {
     public T Get<T>(AbmUri value) where T : UriModel => Get<T>(ComputeKey(value));

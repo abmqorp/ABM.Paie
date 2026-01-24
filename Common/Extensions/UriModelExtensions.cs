@@ -3,6 +3,7 @@ using Common.Models;
 using Common.Models.Operations;
 
 namespace Common.Extensions;
+
 public static class UriModelExtensions
 {
     public static UriModel ToBase(this UriModel model, string? anchor = default, string? content = default)
@@ -15,5 +16,5 @@ public static class UriModelExtensions
     public static OperationModel ToDefaultOperation(this UriModel model, string? anchor = default, string? activatorClass = default)
         => new(
             model.ToBase(anchor, "en savoir plus"),
-            new(Class: activatorClass) { EndIcon = IconPath.ArrowCircleRight });
+            new(EndIcon: IconPath.ArrowCircleRight, Class: activatorClass));
 }

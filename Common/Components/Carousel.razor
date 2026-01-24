@@ -8,21 +8,21 @@
 @implements IDisposable
 
 @{
-    _ = _builder.Append("common__carousel"); 
+    _ = _builder.Add("common__carousel"); 
 }
 
 <div class=@_builder>
     @if (!_isDisabled)
     {
         <button type="button" class="left" label="Suivant" @onclick=Previous>
-            <Icon Content=@IconPath.ArrowBack />
+            <Icon Content=@IconPath.ArrowBackIosNew />
         </button>
     }
     @for (_position = 0; _position < Batch; _position++) @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     @if (!_isDisabled)
     {
         <button type="button" class="right" aria-label="Suivant" @onclick=Next>
-            <Icon Content=@IconPath.ArrowForward />
+            <Icon Content=@IconPath.ArrowForwardIos />
         </button>
     }
 </div>

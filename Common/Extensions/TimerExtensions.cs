@@ -1,6 +1,7 @@
 ﻿using Timer = System.Timers.Timer;
 
 namespace Common.Extensions;
+
 public static class TimerExtensions
 {
     public static void Reset(this Timer timer)

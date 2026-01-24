@@ -8,7 +8,7 @@
 @inherits BaseComponent
 
 @{
-    _ = _builder.Append("common__dropdown"); 
+    _ = _builder.Add("common__dropdown"); 
 }
 
 <div class=@_builder @onfocusout=Reset>
@@ -36,14 +36,8 @@
         UpdateDisplay(false);
     }
 
-    private void DisplayDropDown()
-    {
-        UpdateDisplay(!_isDisplayed);
-    }
-
     private void UpdateDisplay(bool isDisplayed)
     {
         _isDisplayed = isDisplayed;
-        StateHasChanged();
     }
 }

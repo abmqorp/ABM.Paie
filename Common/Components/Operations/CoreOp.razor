@@ -4,9 +4,9 @@
 @inject NavigationManager NavigationManager
 
 @{
-    _ = _builder.Append("common__operation");
+    _ = _builder.Add("common__operation");
 
-    if (Model.Location is string location && Model.IsExternal)
+    if (Model.IsExternal && Model.Location is string location)
     {
         <a class=@_builder aria-label=@Model.Label href=@location target="_blank">
             @ChildContent

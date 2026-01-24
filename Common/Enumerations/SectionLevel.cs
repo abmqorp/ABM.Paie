@@ -1,4 +1,5 @@
 ﻿namespace Common.Enumerations;
+
 public enum SectionLevel
 {
     H1 = 1,

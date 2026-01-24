@@ -1,0 +1,7 @@
+﻿.common__panel {
+    --color: var(--gray);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.25rem;
+}

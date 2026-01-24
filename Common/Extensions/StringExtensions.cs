@@ -1,4 +1,5 @@
 ﻿namespace Common.Extensions;
+
 public static class StringExtensions
 {
     public static string UpFirstChar(this string value)

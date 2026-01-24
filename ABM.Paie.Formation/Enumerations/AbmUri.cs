@@ -1,7 +1,8 @@
-﻿using System.ComponentModel;
-using Common.Attributes;
+﻿using Common.Attributes;
+using System.ComponentModel;
 
 namespace ABM.Paie.Formation.Enumerations;
+
 public enum AbmUri
 {
     [Description("accueil")]

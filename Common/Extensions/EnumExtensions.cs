@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 
 namespace Common.Extensions;
+
 public static class EnumExtensions
 {
     public static T? Get<T>(this Enum value) where T : Attribute

@@ -1,0 +1,21 @@
+﻿@page "/abmpaie"
+@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Services
+@using Common.Components
+@using Common.Enumerations
+@using Common.Models
+@inject IUriProvider UriProvider
+
+<Section Model=@UriProvider.Get(AbmUri.Contact) />
+
+<Section Model=@UriProvider.Get(AbmUri.Organigramme) Level=SectionLevel.H2 />
+
+@{
+    IEnumerable<TabModel> panels = [new(UriProvider.Get(AbmUri.RefAssistance), null), new(UriProvider.Get(AbmUri.RefHandicap), null)];
+
+    <Panels Class="filled" Models=panels />
+}
+
+@code {
+
+}

@@ -3,6 +3,7 @@ using Common.Models;
 using Common.Models.Operations;
 
 namespace ABM.Paie.Formation.Services;
+
 public interface IUriProvider
 {
     T Get<T>(AbmUri value) where T : UriModel;

@@ -1,4 +1,5 @@
 ﻿namespace Common.Models;
+
 public record UriModel(
     string? Location = default,
     string? Content = default,
@@ -8,6 +9,9 @@ public record UriModel(
     ImageModel? Image = default,
     UriModel? Parent = default)
 {
-    public string? Anchor { get; init; } = Location;
+    private string? Anchor { get; init; } = Location;
+
+    public string? Id => Anchor?.TrimStart('/', '#');
+
     public string? Location => Parent?.Location + Anchor;
 }

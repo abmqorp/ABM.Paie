@@ -4,16 +4,16 @@
 <nav class="common__nav" aria-label="Barre de navigation">
     <ul>
         <li>@ChildContent</li>
-        @foreach (var menu in Menus.Where(m => m.Any()))
+        @foreach (var menu in Models.Where(m => m.Any()))
         {
-            <li><DropDownMenu Class="primary" Menu=@menu IsDropDown=true /></li>
+            <li><DropDownMenu Class="primary" Model=@menu IsDropDown=true /></li>
         }
     </ul>
 </nav>
 
 @code {
     [Parameter, EditorRequired]
-    public IEnumerable<IEnumerable<OperationModel>> Menus { get; set; }
+    public IEnumerable<IEnumerable<OperationModel>> Models { get; set; }
     
     [Parameter]
     public RenderFragment? ChildContent { get; set; }

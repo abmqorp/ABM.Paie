@@ -286,7 +286,7 @@ a, button {
   align-content: center;
 }
 
-a:has(.filled), button:has(.filled) {
+a.filled, button.filled {
   --filled--color: var(--color);
   color: var(--white);
   background: var(--filled--color);

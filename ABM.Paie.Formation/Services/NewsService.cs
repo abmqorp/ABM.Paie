@@ -2,6 +2,7 @@
 using Common.Models;
 
 namespace ABM.Paie.Formation.Services;
+
 public sealed class NewsService : INewsService
 {
     private readonly IUriProvider _uriProvider;
