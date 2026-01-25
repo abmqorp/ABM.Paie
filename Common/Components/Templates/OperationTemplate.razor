@@ -27,7 +27,6 @@
     public UriModel Model { get; set; }
     [Parameter, EditorRequired]
     public RenderFragment ChildContent { get; set; }
-
-    [Parameter]
+    [Parameter, EditorRequired]
     public Action? Action { get; set; }
 }

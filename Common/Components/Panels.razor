@@ -1,27 +1,31 @@
 ﻿@using Common.Enumerations
 @using Common.Models
+@using Common.Tools
 @using Microsoft.AspNetCore.Components.Web
 @inherits BaseComponent
 @inject NavigationManager NavigationManager
 
 
 @{
-    _ = _builder.Add("common__panel full-width");
+    _ = _builder.Add("common__panels").Add("column");
 }
 
-<div class="column mb-5">
+<div class=@_builder>
     @foreach (var model in Models)
     {
+        var operation = model.Operation with {
+            Uri = model.Operation.Uri with {Label = $"{(model.IsHidden ? "Développer" : "Réduire")} le contenu"},
+            Activator = new(EndIcon: model.IsHidden ? IconPath.ArrowDropDown : IconPath.ArrowDropUp, Class: "large filled full-width"),
+            Action = () => Update(model),
+        };
         <div class="column">
-            <button id=@model.Uri.Id class=@_builder type ="button" @onclick =@(() => Update(model))>
-                <div>
-                    <span>@model.Uri.Content</span>
-                    <Icon Class="float-right" Content=@(model.IsHidden ? IconPath.ArrowDropDown : IconPath.ArrowDropUp) />
+            <Operation Model=operation />
+            @if (model.Content is not null)
+            {
+                <div class="m-3" hidden=@model.IsHidden>
+                    @model.Content
                 </div>
-            </button>
-            <div hidden=@model.IsHidden>
-                <Paragraph>@model.Uri.Label</Paragraph>
-            </div>
+            }
         </div>
     }
 </div>
@@ -30,20 +34,24 @@
     [Parameter, EditorRequired]
     public IEnumerable<TabModel> Models { get; set; }
 
+    [Parameter]
+    public bool OverrideInitialize { get; set; }
+
     public void Update(TabModel tab)
     {
         tab.IsHidden = !tab.IsHidden;
-        foreach (var model in Models.Except([tab]))
-        {
-            model.IsHidden = true;
-        }
+        foreach (var model in Models.Except([tab])) model.IsHidden = true;
+        StateHasChanged();
     }
 
     protected override void OnInitialized()
     {
-        var anchor = NavigationManager.Uri.Split('#').ElementAtOrDefault(1);
-
-        Models.FirstOrDefault(m => m.Uri.Id == anchor)?.IsHidden = false;
+        if (OverrideInitialize) foreach (var model in Models.Where(m => !m.IsHidden).Skip(1)) model.IsHidden = true;
+        else
+        {
+            var anchor = NavigationManager.Uri.Split('#').ElementAtOrDefault(1);
+            Models.FirstOrDefault(m => m.Operation.Uri.Id == anchor)?.IsHidden = false;
+        }
 
         base.OnInitialized();
     }

@@ -2,8 +2,6 @@
 @using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
 @using Common.Components
-@using Common.Components.Operations
-@using Common.Components.Templates
 @using Common.Enumerations
 @using Common.Extensions
 @inject IUriProvider UriProvider
@@ -18,10 +16,10 @@
         <div class="actualites__recap">
             <Section Model=actualite.Uri Level=SectionLevel.H2/>
             <hr />
-            <div class="flex-center column mb-3">
+            <div class="full-center column mb-3">
                 <h3>@actualite.Title</h3>
                 <div>
-                    <ImageTemplate Model=actualite.Image />
+                    <Image Model=actualite.Image />
                 </div>
             </div>
 

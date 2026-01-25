@@ -1,9 +1,30 @@
-﻿@using Common.Models
+﻿@using Common.Enumerations
+@using Common.Extensions
+@using System.Globalization
 @inherits BaseComponent
 
-<Image Class=@Class Label=@Model.Label Source=@Model.Source />
+@{
+    _ = _builder.Add("common__image");
+    var style = Scale is double scale
+        ? Property switch
+        {
+            SizeProperty.Width => $"width: {scale.ToString(CultureInfo.InvariantCulture)}rem;",
+            SizeProperty.Height => $"height: {scale.ToString(CultureInfo.InvariantCulture)}rem;",
+            SizeProperty.Scale => $"width: {(scale * 100).ToString(CultureInfo.InvariantCulture)}%;",
+            _ => null
+        }
+        : null;
+}
+
+<img class=@_builder src=@Source aria-label=@Label style=@style/>
 
 @code {
     [Parameter, EditorRequired]
-    public ImageModel Model { get; set; }
+    public string Source { get; set; }
+    [Parameter, EditorRequired]
+    public string Label { get; set; }
+    [Parameter, EditorRequired]
+    public double? Scale { get; set; }
+    [Parameter, EditorRequired]
+    public SizeProperty Property { get; set; }
 }

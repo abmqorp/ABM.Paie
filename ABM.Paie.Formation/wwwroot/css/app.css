@@ -113,11 +113,8 @@ body {
   --color: var(--white);
   --filled--color: var(--primary);
   --hover--color: var(--shade-dark);
-  display: flex;
-  flex-wrap: wrap;
   background: var(--filled--color);
   color: var(--color);
-  justify-content: center;
 }
 
 #footer > div {
@@ -178,18 +175,24 @@ h3, .h3 {
   color: var(--whatsapp);
 }
 
-.column {
+.column,
+.row,
+.wrap,
+.full-center,
+.flex-center, 
+.justify-center {
   display: flex;
+}
+
+.column {
   flex-direction: column;
 }
 
 .row {
-  display: flex;
   flex-direction: row;
 }
 
 .wrap {
-  display: flex;
   flex-wrap: wrap;
 }
 
@@ -200,10 +203,18 @@ h3, .h3 {
   min-width: calc(var(--minwidth) * 3 / 4);
 }
 
+.full-center,
 .flex-center {
-  display: flex;
-  justify-content: center;
   align-items: center;
+}
+
+.full-center,
+.justify-center {
+  justify-content: center;
+}
+
+.full-center {
+  text-align: center;
 }
 
 .float-right {

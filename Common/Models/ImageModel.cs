@@ -1,3 +1,5 @@
-﻿namespace Common.Models;
+﻿using Common.Enumerations;
 
-public sealed record ImageModel(string Source, string Label);
+namespace Common.Models;
+
+public sealed record ImageModel(string Source, string Label, double? Scale = null, SizeProperty Property = default);

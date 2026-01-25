@@ -6,6 +6,10 @@
   font-size: var(--description__fontsize);
 }
 
+.common__operation.h2, .common__operation.large {
+  padding: 1rem;
+}
+
 .common__operation {
   & span + .common__activator {
     padding-top: 0.25rem;

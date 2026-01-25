@@ -4,8 +4,6 @@
 @using ABM.Paie.Formation.Resources
 @using ABM.Paie.Formation.Services
 @using Common.Components
-@using Common.Components.Operations
-@using Common.Components.Templates
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
@@ -18,7 +16,7 @@
     var quotes = Quotes.GetAll().ToRandomizedList();
 }
 
-<div class="flex-center column">
+<div class="full-center column">
 
     <h1>Faire découvrir, progresser et se perfectionner</h1>
 
@@ -28,7 +26,7 @@
     </Paragraph>
 
     <Carousel Templates=quotes[0..6] Class="quote full-width">
-        <QuoteTemplate Model=context />
+        <Quote Model=context />
     </Carousel>
 
     <Section Model=@UriProvider.Get(AbmUri.Actualites) />
@@ -45,7 +43,7 @@
                 </Paragraph>
             </Title>
             <Illustration>
-                <ImageTemplate Model=context.Image />
+                <Image Model=context.Image />
             </Illustration>
             <Description>
                 <Paragraph Class="italic">
@@ -59,7 +57,7 @@
     </Carousel>
 
     <Carousel Templates=quotes[24..30] Class="quote full-width">
-        <QuoteTemplate Model=context />
+        <Quote Model=context />
     </Carousel>
     
     <Section Model=@UriProvider.Get(AbmUri.Partenariats) />
@@ -75,7 +73,7 @@
     <Carousel Class="mb-5" Templates=partenariats.ToRandomizedList() Batch=3>
         <Card Class="mx-2">
             <Illustration>
-                <ImageTemplate Model=context.Model.Image />
+                <Image Model=context.Model.Image />
             </Illustration>
             <Description>
                 <Paragraph Class="italic">

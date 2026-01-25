@@ -3,7 +3,6 @@ using Common.Attributes;
 using Common.Enumerations;
 using Common.Extensions;
 using Common.Models;
-using Common.Models.Operations;
 
 namespace ABM.Paie.Formation.Services;
 
@@ -20,6 +19,7 @@ public sealed class UriProvider(IConfiguration configuration) : IUriProvider
     public OperationModel Get(AbmMail value)
         => new(Get<UriModel>(ComputeKey(value)) with { IsExternal = true }, new(IconPath.Mail));
     public ImageModel Get(AbmImage value) => Get<ImageModel>(ComputeKey(value));
+    public ImageModel Get(AbmImage value, double scale) => Get(value) with { Scale = scale };
 
     private T Get<T>(string value) => configuration.GetSection(value).Get<T>()
         ?? throw new KeyNotFoundException($"{value} was not present in appsettings.");

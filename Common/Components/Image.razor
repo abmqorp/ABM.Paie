@@ -1,15 +1,10 @@
-﻿@using Common.Extensions
+﻿@using Common.Components.Templates
+@using Common.Models
 @inherits BaseComponent
 
-@{
-    _ = _builder.Add("common__image"); 
-}
-
-<img class=@_builder src=@Source aria-label=@Label />
+<ImageTemplate Class=@Class Label=@Model.Label Source=@Model.Source Scale=Model.Scale Property=Model.Property />
 
 @code {
     [Parameter, EditorRequired]
-    public string Source { get; set; }
-    [Parameter, EditorRequired]
-    public string Label { get; set; }
+    public ImageModel Model { get; set; }
 }

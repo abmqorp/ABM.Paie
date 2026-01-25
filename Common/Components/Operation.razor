@@ -1,11 +1,15 @@
 ﻿@using Common.Components.Templates
 @using Common.Enumerations
 @using Common.Models
-@using Common.Models.Operations
+@inherits BaseComponent
 
-@if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+@{
+    _ = _builder.Add(Model.Activator.Class);
 
-<CoreOp Model=Model.Uri Class=@Model.Activator.Class>
+    if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+}
+
+<OperationTemplate Class=@_builder Model=Model.Uri Action=Model.Action>
     @if (ChildContent is not null)
     {
         @ChildContent
@@ -15,7 +19,7 @@
         if (Model.Uri.Image is ImageModel image)
         {
             <Activator Model=Model.Activator>
-                <ImageTemplate Class="inline" Model=image />
+                <Image Class="inline" Model=image />
             </Activator>
         }
         else
@@ -29,12 +33,11 @@
             </Activator>
         }
     }
-</CoreOp>
+</OperationTemplate>
 
 @code {
     [Parameter, EditorRequired]
     public OperationModel Model { get; set; }
-
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
 }

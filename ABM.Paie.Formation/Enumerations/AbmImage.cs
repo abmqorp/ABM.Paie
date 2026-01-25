@@ -8,6 +8,10 @@ public enum AbmImage
     LogoThin,
     [Description("banner")]
     Banner,
+    [Description("mjo-signature")]
+    MjoSignature,
+    [Description("mmarquis-avatar")]
+    MMarquisAvatar,
     [Description("absences")]
     Absences,
     [Description("certifications")]

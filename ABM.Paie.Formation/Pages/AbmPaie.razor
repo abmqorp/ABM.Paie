@@ -3,6 +3,7 @@
 @using ABM.Paie.Formation.Services
 @using Common.Components
 @using Common.Enumerations
+@using Common.Extensions
 @using Common.Models
 @inject IUriProvider UriProvider
 
@@ -11,9 +12,64 @@
 <Section Model=@UriProvider.Get(AbmUri.Organigramme) Level=SectionLevel.H2 />
 
 @{
-    IEnumerable<TabModel> panels = [new(UriProvider.Get(AbmUri.RefAssistance), null), new(UriProvider.Get(AbmUri.RefHandicap), null)];
+    IEnumerable<TabModel> panels = [
+        new(
+            new UriModel("#autoentrepreneuse", "Auto-entrepreneuse"),
+@<div class="wrap">
+    <Image Model=@UriProvider.Get(AbmImage.LogoThin, 8) />
+    <ul class="grow mx-2">
+        <li class="my-2"><span class="primary">ABMq</span>, SIRET : 933155970 00017</li>
+        <li class="my-2">Date de création : 18/09/2024</li>
+        <li class="my-2">Code APE : 8559B</li>
+        <li class="my-2">
+            Déclaration d'activité enregistrée sous le 93132355313.<br />
+            Cet enregistrement ne vaut pas agrément de l'État.
+        </li>
+    </ul>
+    </div>,
+            false
+        ),
+        new(
+            new UriModel("#formatrice", "Formatrice"),
+@<div class="column">
+    <ul>
+        <li><Paragraph>8 ans d'expérience Silae : Formatrice et Responsable du service Formation</Paragraph></li>
+        <li><Paragraph>430+ formations dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
+        <li><Paragraph>3300+ heures de formations dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
+    </ul>
+    <Operation Class="my-1" Model=UriProvider.Get(AbmUri.Experience).ToDefaultOperation() />
+</div>
+        ),
+        new(
+            UriProvider.Get(AbmUri.RefAssistance),
+@<div class="column">
+    <Paragraph>
+        Pour toutes demandes relatives à une assistance technique et/ou pédagogique, je suis à votre écoute à l'adresse :
+    </Paragraph>
+    <Operation Class="my-1" Model=UriProvider.Get(AbmMail.Assistance) />
+    <Operation Class="my-1" Model=UriProvider.Get(AbmUri.RefAssistance).ToDefaultOperation() />
+</div>
+        ),
+        new(
+            UriProvider.Get(AbmUri.RefHandicap),
+@<div class="column">
+    <Paragraph>
+        Pour toutes demandes relatives à un handicap, je suis à votre écoute à l'adresse :
+    </Paragraph>
+    <Operation Class="my-1" Model=UriProvider.Get(AbmMail.RefHandicap) />
+    <Operation Class="my-1" Model=UriProvider.Get(AbmUri.RefHandicap).ToDefaultOperation() />
+</div>
+        ),
+    ];
 
-    <Panels Class="filled" Models=panels />
+    <div class="wrap justify-center mb-5">
+        <div class="column flex-center mx-3">
+            <Drawing Model=UriProvider.Get(AbmImage.MMarquisAvatar) Signature=@UriProvider.Get(AbmImage.MjoSignature, 2.5) />
+            <span class="large name">Marine MARQUIS</span>
+        </div>
+
+        <Panels Class="grow mt-2" Models=panels OverrideInitialize=true />
+    </div>
 }
 
 @code {

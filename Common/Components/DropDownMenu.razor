@@ -1,7 +1,5 @@
-﻿@using Common.Components.Operations
-@using Common.Components.Templates
-@using Common.Enumerations
-@using Common.Models.Operations
+﻿@using Common.Enumerations
+@using Common.Models
 @inherits BaseComponent
 @inject NavigationManager NavigationManager
 
@@ -12,7 +10,7 @@
     {
         var hasLinks = Model.Count() > 1;
 
-        if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = () => { } };
+        if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = null };
         else if (!IsDropDown) _ = _builder.Add("block");
     
         <div class=@_builder>

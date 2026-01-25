@@ -1,0 +1,26 @@
+﻿.common__activator {
+  color: inherit;
+  font-size: var(--fontsize);
+  display: flex;
+  align-items: end;
+}
+
+.common__activator.large {
+  font-size: 1.25rem;
+}
+
+.common__activator.h2 {
+  font-size: 2rem;
+}
+
+svg + span {
+  margin-left: 0.25rem;
+}
+
+.common__activator:not(.full-width) > span:has(+ svg) {
+  margin-right: 0.25rem;
+}
+
+.common__activator.full-width > span:has(+ svg) {
+  width: stretch;
+}

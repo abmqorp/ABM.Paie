@@ -1,7 +1,9 @@
-﻿.common__panel {
+﻿.common__panels {
+  min-width: var(--minwidth);
+}
+
+.common__panels > div {
+  & .common__operation {
     --color: var(--gray);
-    border-radius: 0.5rem;
-    padding: 1rem;
-    text-align: left;
-    font-size: 1.25rem;
+  }
 }

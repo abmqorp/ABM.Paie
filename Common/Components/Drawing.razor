@@ -1,0 +1,20 @@
+﻿@using Common.Models
+@inherits BaseComponent
+
+@{
+    _ = _builder.Add("common__drawing");
+}
+
+<div class=@_builder>
+    <Image Model=Model />
+    <div class="common__drawing__signature">
+        <Image Model=Signature />
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public ImageModel Model { get; set; }
+    [Parameter]
+    public ImageModel? Signature { get; set; }
+}

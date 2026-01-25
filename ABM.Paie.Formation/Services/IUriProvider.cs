@@ -1,6 +1,5 @@
 ﻿using ABM.Paie.Formation.Enumerations;
 using Common.Models;
-using Common.Models.Operations;
 
 namespace ABM.Paie.Formation.Services;
 
@@ -10,4 +9,5 @@ public interface IUriProvider
     UriModel Get(AbmUri value);
     OperationModel Get(AbmMail value);
     ImageModel Get(AbmImage value);
+    ImageModel Get(AbmImage value, double scale);
 }

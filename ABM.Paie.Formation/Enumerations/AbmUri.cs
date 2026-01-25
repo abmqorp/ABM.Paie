@@ -23,21 +23,12 @@ public enum AbmUri
     [Description("organigramme")]
     [Parent(AbmUri.Abmpaie)]
     Organigramme,
-    [Description("equipe")]
-    [Parent(AbmUri.Abmpaie)]
-    Equipe,
     [Parent(AbmUri.Abmpaie)]
     [Description("indicateurs")]
     Indicateurs,
     [Description("valeurs")]
     [Parent(AbmUri.Abmpaie)]
     Valeurs,
-    [Description("ref-assistance")]
-    [Parent(AbmUri.Abmpaie)]
-    RefAssistance,
-    [Description("ref-handicap")]
-    [Parent(AbmUri.Abmpaie)]
-    RefHandicap,
     [Description("qualiopi")]
     [Parent(AbmUri.Abmpaie)]
     Qualiopi,
@@ -51,9 +42,12 @@ public enum AbmUri
     [Description("chiffres")]
     [Parent(AbmUri.Experience)]
     Chiffres,
-    [Description("cafel")]
+    [Description("ref-assistance")]
     [Parent(AbmUri.Experience)]
-    Cafel,
+    RefAssistance,
+    [Description("ref-handicap")]
+    [Parent(AbmUri.Experience)]
+    RefHandicap,
     [Description("contact")]
     Contact,
     [Description("reserver")]

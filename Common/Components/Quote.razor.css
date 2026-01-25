@@ -9,9 +9,3 @@
 span:first-child {
     font-style: italic;
 }
-span:nth-child(2) {
-    color: var(--primary-dark);
-    font-family: 'Kaushan Script Regular';
-    font-weight: bold;
-    white-space: nowrap;
-}

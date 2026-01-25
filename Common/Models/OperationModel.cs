@@ -1,4 +1,4 @@
-﻿namespace Common.Models.Operations;
+﻿namespace Common.Models;
 
 public sealed record OperationModel(UriModel Uri, ActivatorModel Activator, Action? Action = default)
 {

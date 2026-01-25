@@ -334,3 +334,14 @@ a:hover, button:hover {
 .italic {
   font-style: italic;
 }
+
+span.large {
+    font-size: 1.25rem;
+}
+
+.name {
+  color: var(--primary-dark);
+  font-family: 'Kaushan Script Regular';
+  font-weight: bold;
+  white-space: nowrap;
+}

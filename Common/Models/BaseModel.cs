@@ -1,3 +1,8 @@
-﻿namespace Common.Models;
+﻿using Common.Tools;
 
-public record BaseModel(string? Class = default);
+namespace Common.Models;
+
+public record BaseModel(ClassBuilder? Class = default)
+{
+    public ClassBuilder Class { get; init; } = Class ?? new();
+}

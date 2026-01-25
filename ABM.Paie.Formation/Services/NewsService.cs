@@ -37,7 +37,7 @@ public sealed class NewsService : INewsService
                 ]),
             new(
                 "20/20 à la soutenance de mi-parcours (05 avril 2025) de mon projet <i>Former sur le processus des déclarations sociales en paie, de A à Z, en incluant des modules d'apprentissage numérique.</i>",
-                _uriProvider.Get(AbmUri.Cafel)),
+                _uriProvider.Get(AbmUri.RefAssistance)),
         ];
 
         return [

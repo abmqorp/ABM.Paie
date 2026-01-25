@@ -2,7 +2,7 @@
 
 namespace Common.Models;
 
-public sealed record TabModel(UriModel Uri, RenderFragment? Content, bool IsHidden = true)
+public sealed record TabModel(OperationModel Operation, RenderFragment? Content, bool IsHidden = true)
 {
     public bool IsHidden { get; set; } = IsHidden;
 }

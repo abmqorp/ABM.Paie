@@ -1,11 +1,10 @@
 ﻿@using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
 @using Common.Components
-@using Common.Components.Operations
-@using Common.Components.Templates
 @using Common.Enumerations
 @using Common.Extensions
-@using Common.Models.Operations
+@using Common.Models
+@using Common.Tools
 @inherits LayoutComponentBase
 @inject IConfiguration Configuration
 @inject IUriProvider UriProvider
@@ -21,9 +20,6 @@
         [
             AbmUri.Abmpaie,
             AbmUri.Organigramme,
-            AbmUri.Equipe,
-            AbmUri.RefAssistance,
-            AbmUri.RefHandicap,
             AbmUri.Qualiopi,
             AbmUri.Indicateurs,
             AbmUri.Valeurs,
@@ -34,7 +30,8 @@
             AbmUri.Cv,
             AbmUri.Silae,
             AbmUri.Chiffres,
-            AbmUri.Cafel,
+            AbmUri.RefAssistance,
+            AbmUri.RefHandicap,
         ]);
     var headerContact = GetMenu(
         [
@@ -55,12 +52,18 @@
     {
             UriProvider.Get(AbmUri.Abmpaie),
             UriProvider.Get(AbmUri.Organigramme),
-            UriProvider.Get(AbmUri.Equipe),
             UriProvider.Get(AbmUri.Indicateurs),
             UriProvider.Get(AbmUri.Valeurs),
+            new(UriProvider.Get(AbmUri.Qualiopi), new(Class: "danger filled")),
+    };
+    var footerExperience = new OperationModel[]
+    {
+            UriProvider.Get(AbmUri.Experience),
+            UriProvider.Get(AbmUri.Cv),
+            UriProvider.Get(AbmUri.Silae),
+            UriProvider.Get(AbmUri.Chiffres),
             new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
             new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
-            new(UriProvider.Get(AbmUri.Qualiopi), new(Class: "danger filled")),
     };
     var footerContact = new OperationModel[]
     {
@@ -72,7 +75,7 @@
 
 @if (_showBanner)
 {
-    <ImageTemplate Class="banner" Model=UriProvider.Get(AbmImage.Banner) />
+    <Image Class="banner" Model=UriProvider.Get(AbmImage.Banner) />
 }
 
 <NavBar Models=headerMenus>
@@ -81,7 +84,7 @@
 
 @Body
 
-<div id="footer" class="wrap">
+<div id="footer" class="wrap justify-center">
     <div class="wrap">
         <div>
             <DropDownMenu Model=@(SetAsFooter([accueil.ToBase()])) />
@@ -94,15 +97,14 @@
     </div>
     <div>
         <div>
-            <DropDownMenu Model=SetAsFooter(experience) />
-            @* <DropDownMenu Menu=SetAsFooter(partenariats) /> *@
+            <DropDownMenu Model=SetAsFooter(footerExperience) />
         </div>
         <div>
             <DropDownMenu Model=SetAsFooter(footerContact)>
                 <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
                     <Icon Content=IconPath.Call />
                     <Icon Content=IconPath.Sms />
-                    <ImageTemplate Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
+                    <Image Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
                     +33 7 48 10 65 39
                 </Paragraph>
                 <span Class="linkedin">
@@ -143,11 +145,11 @@
         }
     }
 
-    private OperationModel[] GetMenu(IEnumerable<AbmUri> uris, string? titleClass = default)
+    private OperationModel[] GetMenu(IEnumerable<AbmUri> uris, string titleClass = "")
     {
         List<OperationModel> menus = [];
 
-        if (uris.Any()) menus.Add(new(UriProvider.Get(uris.First()), new(Class: titleClass)));
+        if (uris.Any()) menus.Add(new(UriProvider.Get(uris.First()), new(Class: new ClassBuilder(titleClass).Add("large"))));
 
         foreach (var uri in uris.Skip(1)) menus.Add(UriProvider.Get(uri));
 
