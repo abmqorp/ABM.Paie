@@ -1,5 +1,5 @@
 ﻿using ABM.Paie.Formation.Enumerations;
-using Common.Models;
+using ABM.Paie.Formation.Models;
 
 namespace ABM.Paie.Formation.Services;
 

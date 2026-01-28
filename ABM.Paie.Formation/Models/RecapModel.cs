@@ -1,6 +1,7 @@
 ﻿using Common.Extensions;
+using Common.Models;
 
-namespace Common.Models;
+namespace ABM.Paie.Formation.Models;
 
 public sealed record RecapModel(DateOnly Date, string Title, ImageModel Image, IEnumerable<NewsModel> News)
 {
