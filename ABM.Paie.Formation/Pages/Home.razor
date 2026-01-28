@@ -20,12 +20,35 @@
 
     <h1>Faire découvrir, progresser et se perfectionner</h1>
 
-    <Paragraph Class="mb-5">
+    <Paragraph Class="large mb-5">
         Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN
         via le logiciel MySilae.
     </Paragraph>
 
     <Carousel Templates=quotes[0..6] Class="quote full-width">
+        <Quote Model=context />
+    </Carousel>
+
+    <Section Model=@UriProvider.Get(AbmUri.Valeurs) />
+
+    @{
+        IEnumerable<(string Word, int Position)> valeurs = [
+            new("Respect", 3),
+            new("Qualité,", 1),
+            new("Animation", 4),
+            new("Originalité", 2),
+            new("Curiosité", 5),
+        ];
+    }
+
+    <div class="valeurs">
+        @foreach (var key in Enum.GetValues<Values.Key>())
+        {
+            <Bar Class="mb-5" Model=Values.Dictionary[key] Size=5 />
+        }
+    </div>
+
+    <Carousel Templates=quotes[6..12] Class="quote full-width">
         <Quote Model=context />
     </Carousel>
 

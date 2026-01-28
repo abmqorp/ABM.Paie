@@ -1,0 +1,27 @@
+@using Common.Models
+@inherits BaseComponent
+
+@{
+    _ = _builder.Add("common__bar");
+}
+
+<div class=@_builder>
+    @for (var i = 0; i < Size; i++)
+    {
+        if (i + 1 == Model.Position)
+        {
+            <div><Paragraph Class="bold large">@Model.Word</Paragraph></div>
+        }
+        else
+        {
+            <div />
+        }
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public BarModel Model { get; set; }
+    [Parameter, EditorRequired]
+    public int Size { get; set; }
+}

@@ -286,7 +286,8 @@ a, button {
   align-content: center;
 }
 
-a.filled, button.filled {
+a.filled, button.filled,
+*:not(.filled) > div.filled {
   --filled--color: var(--color);
   color: var(--white);
   background: var(--filled--color);
@@ -331,12 +332,17 @@ a:hover, button:hover {
   margin-left: 2rem;
 }
 
+.bold {
+  font-weight: bold;
+}
+
 .italic {
   font-style: italic;
 }
 
-span.large {
-    font-size: 1.25rem;
+span.large, p.large {
+  --fontsize: 1.25rem;
+  font-size: var(--fontsize);
 }
 
 .name {

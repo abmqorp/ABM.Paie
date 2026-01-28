@@ -134,16 +134,16 @@ html {
 
 h1, .h1 {
   color: var(--primary);
-  font-size: 2.5rem;
+  font-size: 3rem;
 }
 
 h2, .h2 {
-  --fontsize: 2rem;
-  font-size: 2rem;
+  --fontsize: 2.5rem;
+  font-size: 2.5rem;
 }
 
 h1, .h1, h2, .h2 {
-  --fontfamily: 'Permanent Marker Regular';
+  --fontfamily: 'Cabin Sketch Regular';
   scroll-margin-top: 80px;
 }
 
@@ -173,6 +173,11 @@ h3, .h3 {
 
 .whatsapp {
   color: var(--whatsapp);
+}
+
+.valeurs {
+  width: 100%;
+  max-width: 40rem;
 }
 
 .column,

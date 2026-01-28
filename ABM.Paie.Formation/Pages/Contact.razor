@@ -58,7 +58,9 @@
 
 <Section Model=@UriProvider.Get(AbmUri.PagesOfficielles) Level=SectionLevel.H2 />
 
-<Paragraph Class="mb-5">
-    <b>Consulter mon réseau professionnel :</b>
+<div class="row mb-5">
+    <Paragraph Class="bold">
+        Consulter mon réseau professionnel :
+    </Paragraph>
     <Operation Model=@(new(UriProvider.Get(AbmUri.LinkedIn), new(Class: "linkedin"))) />
-</Paragraph>
+</div>

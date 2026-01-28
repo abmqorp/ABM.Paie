@@ -1,5 +1,6 @@
 ﻿@page "/abmpaie"
 @using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Resources
 @using ABM.Paie.Formation.Services
 @using Common.Components
 @using Common.Enumerations
@@ -61,16 +62,68 @@
 </div>
         ),
     ];
-
-    <div class="wrap justify-center mb-5">
-        <div class="column flex-center mx-3">
-            <Drawing Model=UriProvider.Get(AbmImage.MMarquisAvatar) Signature=@UriProvider.Get(AbmImage.MjoSignature, 2.5) />
-            <span class="large name">Marine MARQUIS</span>
-        </div>
-
-        <Panels Class="grow mt-2" Models=panels OverrideInitialize=true />
-    </div>
 }
+
+<div class="wrap justify-center mb-5">
+    <div class="column flex-center mx-3">
+        <Drawing Model=UriProvider.Get(AbmImage.MMarquisAvatar) Signature=@UriProvider.Get(AbmImage.MjoSignature, 2.5) />
+        <span class="large name">Marine MARQUIS</span>
+    </div>
+
+    <Panels Class="grow mt-2" Models=panels OverrideInitialize=true />
+</div>
+
+<Section Model=UriProvider.Get(AbmUri.Valeurs) Level=SectionLevel.H2 />
+
+<Bar Class="thin" Model=Values.Dictionary[Values.Key.Respect] Size="10" />
+
+<Paragraph Class="mt-5">
+    Je mets un point d'honneur sur cette Valeur au quotidien.
+</Paragraph>
+<Paragraph Class="mb-5">
+    Je décline cette valeur dans mon métier et au sein d'ABM Paie. 
+    Nos échanges ainsi que les formations doivent se faire dans l'écoute, la bienveillance et le respect mutuel.
+</Paragraph>
+
+<Bar Class="thin" Model=Values.Dictionary[Values.Key.Quality] Size="10" />
+
+<Paragraph Class="mt-5">
+    Mon catalogue de formation ne reflète pas toutes mes connaissances sur la paie et la DSN.
+</Paragraph>
+<Paragraph Class="mb-5">
+    Ma priorité est avant tout de délivrer des formations de qualité, tant dans le contenu que dans la forme, 
+    dans la veille technique que dans la mise à jour continue des supports. 
+    C'est pourquoi, de nouvelles formations sont en préparation mais pour une qualité de pédagogie ne seront visibles 
+    que lorsque tous les critères de qualité seront validés.
+</Paragraph>
+
+<Bar Class="thin" Model=Values.Dictionary[Values.Key.Organization] Size="10" />
+
+<Paragraph Class="my-5">
+    Animer, ou insuffler de l'âme, j'ai à cœur que les moments passés en formation se fassent dans la joie, 
+    le plaisir et la bonne humeur, pour une assimilation de connaissance réussie.
+</Paragraph>
+
+<Bar Class="thin" Model=Values.Dictionary[Values.Key.Originality] Size="10" />
+
+<Paragraph Class="my-5">
+    J'ai la volonté de rendre mes formations originales par leur fil conducteur, leur thème et leurs formats divers et complets 
+    (nombreux exemples de bulletins, exercices de mise en application, quiz via des formations numériques, etc.).
+</Paragraph>
+
+<Bar Class="thin" Model=Values.Dictionary[Values.Key.Curiosity] Size="10" />
+
+<Paragraph Class="mt-5">
+    Un de mes objectifs est de vous rendre curieux sur la thématique technique et complète qu'est la paie 
+    J'ai le souhait de réussir à vous transmettre le sentiment de magie que j'éprouve à découvrir toutes les facettes de la paie 
+    au travers des cahiers techniques NEODèS et NEORèS et grâce à la puissance des logiciels.
+</Paragraph>
+<Paragraph Class="mb-5">
+    Cette curiosité fait partie de moi, elle nourrit mon désir de création de nouvelles formations 
+    mais me pousse également dans mon quotidien. 
+    Cela s'est traduit par ma volonté de retourner sur les bancs de l'université 
+    en m'étant inscrite aux cursus universitaires pour découvrir de nouveaux logiciels de conception de digital formation.
+</Paragraph>
 
 @code {
 

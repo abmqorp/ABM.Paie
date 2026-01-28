@@ -1,0 +1,15 @@
+.common__bar {
+  display: flex;
+  justify-content: space-between;
+  background: var(--primary);
+}
+
+.common__bar > div:has(.common__paragraph)
+{
+  background: var(--white);
+  padding: 0.5rem 2rem;
+}
+
+.common__bar.thin > div:has(.common__paragraph) {
+  padding: 0 1rem;
+}
