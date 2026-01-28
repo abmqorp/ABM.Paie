@@ -1,4 +1,5 @@
-﻿using Common.Models;
+﻿using ABM.Paie.Formation.Models;
+using Common.Models;
 using System.Collections.Immutable;
 
 namespace ABM.Paie.Formation.Resources;
