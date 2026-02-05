@@ -1,0 +1,27 @@
+﻿@page "/experience"
+@using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Services
+@using Common.Components
+@using Common.Components.Charts
+@using Common.Enumerations
+@using Common.Models.Charts
+@inject IUriProvider UriProvider
+
+<Section Model=UriProvider.Get(AbmUri.Experience) />
+
+<Section Model=UriProvider.Get(AbmUri.Chiffres) Level=SectionLevel.H2 />
+
+<Tooltip Text="Some text">
+    <Image Model=@(UriProvider.Get(AbmUri.Accueil).Image! with {Scale = 10}) />
+</Tooltip>
+
+<div style="display: flex;justify-content: center;">
+    <BarChart Templates=@([
+        new("B1", 25, "Aenean fringilla pretium nunc, quis egestas dolor venenatis vel. Praesent quis lectus in nunc pellentesque efficitur non sed ex. Morbi tristique iaculis magna ut faucibus. Nulla vitae malesuada turpis. Pellentesque egestas ante id tortor maximus elementum. Mauris sapien orci, varius vel turpis eget, viverra placerat tortor. Integer vitae urna diam. Aliquam eu lacus lacus. Nullam turpis libero, laoreet sed tincidunt et, condimentum ac dui. Suspendisse quam orci, auctor a tempor in, eleifend a tortor. Donec congue ex massa, eget tempus velit vehicula id. Fusce ultrices, arcu sed tincidunt aliquam, quam ex mattis augue, a molestie odio mi quis ante. Mauris semper felis est, eget efficitur sapien fringilla sed. Phasellus mauris velit, imperdiet at tellus id, posuere pellentesque nulla. In hac habitasse platea dictumst. Nulla facilisi. Maecenas pulvinar convallis lectus id bibendum. Nullam dictum nisl fermentum sem facilisis, lobortis accumsan neque laoreet. Suspendisse potenti. Praesent semper congue ex, consectetur pharetra magna malesuada quis. Praesent laoreet iaculis nulla, sed congue ligula tristique ac. Fusce quis vulputate urna. Quisque imperdiet aliquam ligula, at tempor ipsum posuere quis. Phasellus placerat imperdiet sodales.", true),
+        new("B2", 50, "Cras maximus ex lacus, fringilla congue justo malesuada ut. Vestibulum vel metus urna. Sed porta nibh mi, quis bibendum est blandit sed. Maecenas non efficitur felis, tincidunt ornare ante. Vestibulum metus lacus, accumsan at quam sit amet, venenatis sagittis arcu. Curabitur dapibus pharetra felis quis laoreet. Etiam faucibus nunc id nulla dignissim, non maximus risus fermentum. Maecenas a vehicula magna."),
+        new("B3", 75)]) Caption="Graphique avec barres" Ordinates=@([0, 25, 50, 75, 100]) />
+</div>
+
+@code {
+
+}

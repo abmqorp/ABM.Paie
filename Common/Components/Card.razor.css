@@ -14,7 +14,7 @@
   width: 15rem;
 }
 
-.common__card.large {
+.common__card.xl {
   width: 18rem;
 }
 
@@ -25,7 +25,7 @@
   overflow: hidden;
 }
 
-.common__card.large > div {
+.common__card.xl > div {
   max-height: inherit;
 }
 
@@ -47,7 +47,13 @@
   }
 }
 
-.common__card:not(.large) {
+.common__card {
+  & .common__paragraph.h2 {
+    --fontsize: 2rem;
+  }
+}
+
+.common__card:not(.xl) {
   & .common__paragraph {
     --fontsize: 0.9rem;
   }

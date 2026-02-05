@@ -1,5 +1,4 @@
 ﻿using ABM.Paie.Formation.Models;
-using Common.Models;
 using System.Collections.Immutable;
 
 namespace ABM.Paie.Formation.Resources;
@@ -15,7 +14,7 @@ public static class Values
         Curiosity,
     }
 
-    public static readonly ImmutableDictionary<Key, BarModel> Dictionary = ImmutableDictionary.CreateRange(new KeyValuePair<Key, BarModel>[]
+    public static readonly ImmutableDictionary<Key, ValueModel> Dictionary = ImmutableDictionary.CreateRange(new KeyValuePair<Key, ValueModel>[]
     {
         new(Key.Respect, new("Respect", 3)),
         new(Key.Quality, new("Qualité", 1)),

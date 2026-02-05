@@ -78,7 +78,7 @@
     <Image Class="banner" Model=UriProvider.Get(AbmImage.Banner) />
 }
 
-<NavBar Models=headerMenus>
+<NavBar Menus=headerMenus>
     <Operation Model=accueil />
 </NavBar>
 
@@ -87,20 +87,20 @@
 <div id="footer" class="wrap justify-center">
     <div class="wrap">
         <div>
-            <DropDownMenu Model=@(SetAsFooter([accueil.ToBase()])) />
-            <DropDownMenu Model=SetAsFooter(formations) />
-            <DropDownMenu Model=SetAsFooter(actualites) />
+            <DropDownMenu Operations=@(SetAsFooter([accueil.ToBase()])) />
+            <DropDownMenu Operations=SetAsFooter(formations) />
+            <DropDownMenu Operations=SetAsFooter(actualites) />
         </div>
         <div>
-            <DropDownMenu Model=SetAsFooter(footerAbmPaie) />
+            <DropDownMenu Operations=SetAsFooter(footerAbmPaie) />
         </div>
     </div>
     <div>
         <div>
-            <DropDownMenu Model=SetAsFooter(footerExperience) />
+            <DropDownMenu Operations=SetAsFooter(footerExperience) />
         </div>
         <div>
-            <DropDownMenu Model=SetAsFooter(footerContact)>
+            <DropDownMenu Operations=SetAsFooter(footerContact)>
                 <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
                     <Icon Content=IconPath.Call />
                     <Icon Content=IconPath.Sms />

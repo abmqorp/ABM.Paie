@@ -1,9 +1,0 @@
-﻿.common__panels {
-  min-width: var(--minwidth);
-}
-
-.common__panels > div {
-  & .common__operation {
-    --color: var(--gray);
-  }
-}

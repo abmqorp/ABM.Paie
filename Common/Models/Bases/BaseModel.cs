@@ -1,6 +1,6 @@
 ﻿using Common.Tools;
 
-namespace Common.Models;
+namespace Common.Models.Bases;
 
 public record BaseModel(ClassBuilder? Class = default)
 {

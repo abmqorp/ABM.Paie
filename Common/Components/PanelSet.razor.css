@@ -1,0 +1,23 @@
+﻿.common__panels {
+  min-width: var(--minwidth);
+}
+
+.common__panels > div {
+  & .common__operation {
+    --color: var(--gray);
+  }
+}
+
+.common__panels > div {
+  & .common__operation .common__activator .common__icon {
+    transition: 500ms all 0ms ease-out;
+  }
+}
+
+.common__panels > div {
+  & .common__operation:has(+ div:not([hidden])) {
+    & > .common__activator .common__icon {
+      transform: rotateX(180deg);
+    }
+  }
+}

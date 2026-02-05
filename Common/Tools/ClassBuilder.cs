@@ -22,10 +22,7 @@ public sealed class ClassBuilder
 
         var classes = str.Split(Sep);
 
-        foreach (var c in classes)
-        {
-            if (!string.IsNullOrWhiteSpace(c)) action.Invoke(c);
-        }
+        foreach (var c in classes) if (!string.IsNullOrWhiteSpace(c)) action.Invoke(c);
 
         return this;
     }

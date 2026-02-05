@@ -45,7 +45,7 @@
     <div class="valeurs">
         @foreach (var key in Enum.GetValues<Values.Key>())
         {
-            <Bar Class="mb-5" Model=Values.Dictionary[key] Size=5 />
+            <Value Class="mb-5" Model=Values.Dictionary[key] Size=5 />
         }
     </div>
 
@@ -60,7 +60,7 @@
     }
 
     <Carousel Class="mb-5" Templates=actualites Batch=3>
-        <Card Class="large mx-2">
+        <Card Class="xl mx-2">
             <Title>
                 <Paragraph Class="h2">
                     @context.LongDate

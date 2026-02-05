@@ -28,16 +28,16 @@
             Cet enregistrement ne vaut pas agrément de l'État.
         </li>
     </ul>
-    </div>,
-            false
+</div>,
+            true
         ),
         new(
             new UriModel("#formatrice", "Formatrice"),
 @<div class="column">
     <ul>
-        <li><Paragraph>8 ans d'expérience Silae : Formatrice et Responsable du service Formation</Paragraph></li>
-        <li><Paragraph>430+ formations dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
-        <li><Paragraph>3300+ heures de formations dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
+        <li><Paragraph><span class="primary">8 ans d'expérience</span> Silae : Formatrice et Responsable du service Formation</Paragraph></li>
+        <li><Paragraph><span class="primary">430+ formations</span> dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
+        <li><Paragraph><span class="primary">3300+ heures</span> de formations dispensées en tant que Formatrice en clientèle - Silae</Paragraph></li>
     </ul>
     <Operation Class="my-1" Model=UriProvider.Get(AbmUri.Experience).ToDefaultOperation() />
 </div>
@@ -71,12 +71,12 @@
         <span class="large name">Marine MARQUIS</span>
     </div>
 
-    <Panels Class="grow mt-2" Models=panels OverrideInitialize=true />
+    <PanelSet Class="grow mt-2" Templates=panels />
 </div>
 
 <Section Model=UriProvider.Get(AbmUri.Valeurs) Level=SectionLevel.H2 />
 
-<Bar Class="thin" Model=Values.Dictionary[Values.Key.Respect] Size="10" />
+<Value Class="thin" Model=Values.Dictionary[Values.Key.Respect] Size="10" />
 
 <Paragraph Class="mt-5">
     Je mets un point d'honneur sur cette Valeur au quotidien.
@@ -86,7 +86,7 @@
     Nos échanges ainsi que les formations doivent se faire dans l'écoute, la bienveillance et le respect mutuel.
 </Paragraph>
 
-<Bar Class="thin" Model=Values.Dictionary[Values.Key.Quality] Size="10" />
+<Value Class="thin" Model=Values.Dictionary[Values.Key.Quality] Size="10" />
 
 <Paragraph Class="mt-5">
     Mon catalogue de formation ne reflète pas toutes mes connaissances sur la paie et la DSN.
@@ -98,21 +98,21 @@
     que lorsque tous les critères de qualité seront validés.
 </Paragraph>
 
-<Bar Class="thin" Model=Values.Dictionary[Values.Key.Organization] Size="10" />
+<Value Class="thin" Model=Values.Dictionary[Values.Key.Organization] Size="10" />
 
 <Paragraph Class="my-5">
     Animer, ou insuffler de l'âme, j'ai à cœur que les moments passés en formation se fassent dans la joie, 
     le plaisir et la bonne humeur, pour une assimilation de connaissance réussie.
 </Paragraph>
 
-<Bar Class="thin" Model=Values.Dictionary[Values.Key.Originality] Size="10" />
+<Value Class="thin" Model=Values.Dictionary[Values.Key.Originality] Size="10" />
 
 <Paragraph Class="my-5">
     J'ai la volonté de rendre mes formations originales par leur fil conducteur, leur thème et leurs formats divers et complets 
     (nombreux exemples de bulletins, exercices de mise en application, quiz via des formations numériques, etc.).
 </Paragraph>
 
-<Bar Class="thin" Model=Values.Dictionary[Values.Key.Curiosity] Size="10" />
+<Value Class="thin" Model=Values.Dictionary[Values.Key.Curiosity] Size="10" />
 
 <Paragraph Class="mt-5">
     Un de mes objectifs est de vous rendre curieux sur la thématique technique et complète qu'est la paie 
@@ -125,7 +125,3 @@
     Cela s'est traduit par ma volonté de retourner sur les bancs de l'université 
     en m'étant inscrite aux cursus universitaires pour découvrir de nouveaux logiciels de conception de digital formation.
 </Paragraph>
-
-@code {
-
-}

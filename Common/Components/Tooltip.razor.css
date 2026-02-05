@@ -1,0 +1,24 @@
+.common__tooltip {
+  position: relative;
+  cursor: help;
+}
+
+.common__tooltip__text {
+  position: absolute;
+  background-color: var(--gray-dark);
+  border: 0.125rem solid var(--white);
+  color: var(--white);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  white-space: nowrap;
+}
+
+.common__tooltip:hover .common__tooltip__text,
+.common__tooltip:focus .common__tooltip__text {
+  opacity: 1;
+  visibility: visible;
+}

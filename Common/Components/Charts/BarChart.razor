@@ -1,0 +1,37 @@
+﻿@using Common.Components.Bases
+@using Common.Models.Charts
+@using Microsoft.AspNetCore.Components.Web
+@inherits SelectableBase<BarModel>
+
+<figure class="common__barchart my-5">
+    <figcaption Class="h3">@Caption</figcaption>
+    <div class="common__barchart__content" data-cols=@Templates.Count()>
+        @foreach (var ordinate in Ordinates)
+        {
+            <div class="common__barchart__axes" value=@(ordinate - 1)><span>@ordinate</span></div>
+        }
+    
+        @foreach (var item in Templates)
+        {
+            <Tooltip value=@item.Percent selected=@item.IsSelected Text=@($"{item.Title} : {item.Percent}") 
+                OnActivated=@(() => Update(item))>
+                <span>@item.Title</span>
+            </Tooltip>
+        }
+    </div>
+    @if (Description is not null)
+    {
+        <div class="common__barchart__description mx-3">
+            @Description
+        </div>
+    }
+</figure>
+
+@code {
+    [Parameter, EditorRequired]
+    public string Caption { get; set; }
+    [Parameter]
+    public IEnumerable<int> Ordinates { get; set; } = Enumerable.Range(0, 6).Select(i => i * 20);
+
+    private string? Description => Templates.FirstOrDefault(t => t.IsSelected)?.Description;
+}

@@ -1,10 +1,11 @@
 @using ABM.Paie.Formation.Components
 @using ABM.Paie.Formation.Models
 @using Common.Components
-@inherits BaseComponent
+@using Common.Components.Bases
+@inherits Base
 
 @{
-    _ = _builder.Add("common__bar");
+    _ = _builder.Add("common__value");
 }
 
 <div class=@_builder>
@@ -23,7 +24,7 @@
 
 @code {
     [Parameter, EditorRequired]
-    public BarModel Model { get; set; }
+    public ValueModel Model { get; set; }
     [Parameter, EditorRequired]
     public int Size { get; set; }
 }

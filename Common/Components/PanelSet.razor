@@ -1,0 +1,37 @@
+﻿@using Common.Components.Bases
+@using Common.Enumerations
+@using Common.Models
+@using Microsoft.AspNetCore.Components.Web
+@inherits SelectableBase<TabModel>
+
+@{
+    _ = _builder.Add("common__panels").Add("column");
+}
+
+<div class=@_builder>
+    @foreach (var item in Templates)
+    {
+        var operation = item.Operation with {
+            Uri = item.Operation.Uri with {Label = $"{(item.IsSelected ? "Réduire" : "Développer")} le contenu"},
+            Activator = new(EndIcon: IconPath.ArrowDropDownCircle, Class: "large filled full-width"),
+            Action = () => Update(item),
+        };
+        <div class="column">
+            <Operation Model=operation />
+            @if (item.Content is not null)
+            {
+                <div class="m-3" hidden=@(item.IsSelected == false)>
+                    @item.Content
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@code {
+    protected override void Update(TabModel model)
+    {
+        base.Update(model);
+        StateHasChanged();
+    }
+}

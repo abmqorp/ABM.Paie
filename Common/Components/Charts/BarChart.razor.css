@@ -1,0 +1,71 @@
+.common__barchart {
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.common__barchart figcaption {
+  margin-bottom: 3rem;
+}
+
+.common__barchart:not(:has(> .common__barchart__description)) {
+  padding-bottom: 2rem;
+}
+
+.common__barchart__description {
+  margin-top: 3rem;
+}
+
+.common__barchart__content {
+  height: 16rem;
+  width: calc(attr(data-cols rem) * 4);
+  display: flex;
+  position: relative;
+  justify-content: space-evenly;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.common__barchart__content {
+  & .common__tooltip {
+    --bar-color: var(--gray);
+    position: relative;
+    background: var(--bar-color);
+    display: flex;
+    flex-direction: column;
+    height: attr(value %);
+    width: 2rem;
+  }
+}
+
+.common__barchart__content {
+  & .common__tooltip[selected] {
+    --bar-color: var(--primary);
+  }
+}
+
+.common__barchart__content {
+  & .common__tooltip:hover {
+    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--bar-color), var(--bar-color));
+  }
+}
+
+.common__barchart__content {
+  & .common__tooltip span {
+    position: absolute;
+    bottom: -1.5rem;
+    font-size: var(--fontsize);
+    color: var(--bar-color);
+  }
+}
+
+.common__barchart__axes {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: attr(value %);
+  width: stretch;
+  border-bottom: 0.125rem solid var(--primary);
+}

@@ -1,4 +1,5 @@
 ﻿using Common.Enumerations;
+using Common.Models.Bases;
 using Common.Tools;
 
 namespace Common.Models;

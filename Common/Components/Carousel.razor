@@ -1,10 +1,11 @@
 ﻿@using System.Timers
-@using Microsoft.AspNetCore.Components.Web
+@using Common.Components.Bases
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
+@using Microsoft.AspNetCore.Components.Web
 @typeparam T
-@inherits BaseComponent
+@inherits Base
 @implements IDisposable
 
 @{
@@ -18,7 +19,7 @@
             <Icon Content=@IconPath.ArrowBackIosNew />
         </button>
     }
-    @for (_position = 0; _position < Batch; _position++) @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
+    @for (Position = 0; Position < Batch; Position++) @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     @if (!_isDisabled)
     {
         <button type="button" class="right" aria-label="Suivant" @onclick=Next>
@@ -28,6 +29,8 @@
 </div>
 
 @code {
+    private const int SecondsToMilliseconds = 1000;
+
     [Parameter, EditorRequired]
     public IEnumerable<T?> Templates { get; set; }
     [Parameter, EditorRequired]
@@ -37,11 +40,11 @@
     [Parameter]
     public int Batch { get; set; } = 1;
 
-    private const int SecondsToMilliseconds = 1000;
+    private int Index { get; set; } = 0;
+    private int Position { get; set; } = 0;
+
     private Timer? _timer;
     private int _count;
-    private int _index = 0;
-    private int _position = 0;
     private bool _isDisabled;
 
     protected override void OnInitialized()
@@ -65,6 +68,7 @@
     private void OnTimedEvent(object? sender, ElapsedEventArgs e)
     {
         SetCurrent();
+        StateHasChanged();
     }
 
     private void Previous()
@@ -83,15 +87,14 @@
     {
         if (_count > 0)
         {
-            _position = 0;
-            _index = GetIndex(isNext);
-            StateHasChanged();
+            Position = 0;
+            Index = GetIndex(isNext);
         }
     }
 
     private int GetIndex(bool isNext = true)
     {
-        return (_index + _position + (isNext ? 1 : _count - 1)) % _count;
+        return (Index + Position + (isNext ? 1 : _count - 1)) % _count;
     }
 
     public void Dispose()

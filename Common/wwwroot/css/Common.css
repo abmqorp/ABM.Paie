@@ -266,6 +266,10 @@ ul {
   padding: 0;
 }
 
+figure {
+  margin: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -340,7 +344,7 @@ a:hover, button:hover {
   font-style: italic;
 }
 
-span.large, p.large {
+.large {
   --fontsize: 1.25rem;
   font-size: var(--fontsize);
 }

@@ -1,0 +1,54 @@
+@using System.Threading.Tasks
+@using Common.Components.Bases
+@using Microsoft.AspNetCore.Components.Web
+@inherits Base
+
+<button class=@_builder.Add("common__tooltip") type="button"
+    @attributes=AdditionalAttributes
+    @onmouseover=Show @onmouseout=Hide @onmousemove=Move
+    @onfocusin=Show @onfocusout=Hide
+    @onclick=Activate>
+    @ChildContent
+    <div class="common__tooltip__text" style=@($"display: {(IsVisible ? "block" : "none")};{_position}")>@Text</div>
+</button>
+
+@code {
+    private const int ToolTipDelay = 500;
+    private const string DefaultPosition = "right: 0; bottom: 0;";
+
+    private bool _isOut = true;
+    private string _position = DefaultPosition;
+
+    private bool IsVisible { get; set; } = false;
+
+    [Parameter, EditorRequired]
+    public string Text { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+    [Parameter]
+    public RenderFragment? ChildContent {get; set;}
+    [Parameter]
+    public EventCallback OnActivated { get; set; }
+
+    private void Activate() => OnActivated.InvokeAsync();
+
+    private async Task Show()
+    {
+        _isOut = false;
+        await Task.Delay(ToolTipDelay);
+
+        if (!_isOut)
+        {
+            IsVisible = true;
+        }
+    }
+
+    private void Hide()
+    {
+        IsVisible = false;
+        _isOut = true;
+        _position = DefaultPosition;
+    }
+
+    private void Move(MouseEventArgs args) => _position = $"left: {20 + args.OffsetX}px; top: {24 + args.OffsetY}px;";
+}
