@@ -1,0 +1,16 @@
+.common__slice {
+  --filled--color: var(--gray);
+  fill: var(--filled--color);
+  stroke: var(--white);
+  stroke-linecap: round;
+  stroke-width: 2%;
+  cursor: help;
+}
+
+.common__slice[selected] {
+  --filled--color: var(--primary);
+}
+
+.common__slice:hover, .common__slice:focus {
+  fill: color(from var(--filled--color) display-p3 calc(r - 0.15) calc(g - 0.15) calc(b - 0.15));
+}

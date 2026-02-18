@@ -1,9 +1,13 @@
-.common__tooltip {
+.common__piechart__content {
   position: relative;
-  cursor: help;
 }
 
-.common__tooltip__text {
+*:focus {
+  outline: none;
+} /*TODO*/
+
+.common__piechart .common__tooltip__text {
+  box-sizing: border-box;
   position: absolute;
   background-color: var(--gray-dark);
   border: 0.125rem solid var(--white);
@@ -18,7 +22,9 @@
   transition: 250ms opacity 1000ms ease-out;
 }
 
-.common__tooltip .common__tooltip__text[opaque] {
+.common__piechart .common__tooltip__text[opaque] {
   opacity: 0;
   visibility: hidden;
 }
+
+

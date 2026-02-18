@@ -1,0 +1,49 @@
+@using Common.Components.Bases
+@using Common.Extensions
+@using Common.Models.Charts
+@using Common.Models.General
+@using Microsoft.AspNetCore.Components.Web
+@inherits SelectableBase<SliceModel>
+
+<figure class="common__piechart my-5">
+    <figcaption Class="h3">@Caption</figcaption>
+
+    <div class="common__piechart__content">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-1 -1 2 2">
+            @foreach (var item in Templates)
+            {
+                var cumPercent = item.CumPercent - Quadrant;
+                var start = Point.Polar(1, cumPercent);
+                var end = Point.Polar(1, cumPercent + item.Percent);
+                <Slice Content=item Start=start End=end LargeArcFlag=@(item.Percent > SemiCircle) IsSelected=item.IsSelected
+                    OnActivated=@(() => Update(item)) OnChanged=SetTip /> @*TODO Point (default style for focus)*@
+            }
+        </svg>
+
+        <div class="common__tooltip__text" opaque=@(Slice is null) style=@Style>@($"{Slice?.Title} : {Slice?.Count / Slice?.Total:0.##%}")</div>
+    </div>
+
+    @if (SelectedItem?.Description is string description)
+    {
+        <div class="common__piechart__description mx-3">
+            @description
+        </div>
+    }
+</figure>
+
+@code {
+    private const int Quadrant = 25;
+    private const int SemiCircle = 2 * Quadrant;
+
+    [Parameter, EditorRequired]
+    public string Caption { get; set; }
+
+    private SliceModel? Slice { get; set; }
+    private string? Style { get; set; }
+
+    private void SetTip(TipEventArgs<SliceModel>? args)
+    {
+        Slice = args?.Content;
+        Style = args?.Style;
+    }
+}

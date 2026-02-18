@@ -4,11 +4,7 @@
 @using Common.Models
 @inherits Base
 
-@{
-    _ = _builder.Add("common__quote"); 
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__quote")>
     <span>@Model?.Text</span> <span class="name">@Model?.Author</span>
 </div>
 

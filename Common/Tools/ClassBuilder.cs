@@ -1,10 +1,9 @@
-﻿using Common.Models;
-
-namespace Common.Tools;
+﻿namespace Common.Tools;
 
 public sealed class ClassBuilder
 {
     private const char Sep = ' ';
+
     private readonly HashSet<string> _classes = [];
 
     public ClassBuilder(string? str = null) => Add(str);
@@ -12,19 +11,27 @@ public sealed class ClassBuilder
     public static implicit operator ClassBuilder(string? str) => new(str);
     public static implicit operator string(ClassBuilder builder) => builder.ToString();
 
-    public ClassBuilder Add(string? str) => Update(str, AddClass);
-    public ClassBuilder Remove(string? str) => Update(str, RemoveClass);
-    public override string ToString() => string.Join(Sep, _classes).Trim();
-
-    private ClassBuilder Update(string? str, Action<string> action)
+    public ClassBuilder Add(string? str) => Build(str, AddClass);
+    public ClassBuilder Add(params string?[] strings)
     {
-        if (str is null) return this;
-
-        var classes = str.Split(Sep);
-
-        foreach (var c in classes) if (!string.IsNullOrWhiteSpace(c)) action.Invoke(c);
+        foreach (var str in strings) Update(str, AddClass);
 
         return this;
+    }
+
+    public ClassBuilder Remove(string? str) => Build(str, RemoveClass);
+    public override string ToString() => string.Join(Sep, _classes).Trim();
+
+    private ClassBuilder Build(string? str, Action<string> action)
+    {
+        Update(str, action); 
+
+        return this;
+    }
+
+    private static void Update(string? str, Action<string> action)
+    {
+        if (str is not null) foreach (var s in str.Split(Sep)) if (!string.IsNullOrWhiteSpace(s)) action.Invoke(s);
     }
 
     private Action<string> AddClass => (str) => _ = _classes.Add(str);

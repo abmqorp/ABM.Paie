@@ -1,11 +1,9 @@
 ﻿@using System.Globalization
 @using Common.Components.Bases
 @using Common.Enumerations
-@using Common.Extensions
 @inherits Base
 
 @{
-    _ = _builder.Add("common__image");
     var style = Scale is double scale
         ? Property switch
         {
@@ -17,7 +15,7 @@
         : null;
 }
 
-<img class=@_builder src=@Source aria-label=@Label style=@style/>
+<img class=@_builder.Add("common__image") src=@Source aria-label=@Label style=@style/>
 
 @code {
     [Parameter, EditorRequired]

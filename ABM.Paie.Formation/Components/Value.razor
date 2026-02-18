@@ -4,11 +4,7 @@
 @using Common.Components.Bases
 @inherits Base
 
-@{
-    _ = _builder.Add("common__value");
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__value")>
     @for (var i = 0; i < Size; i++)
     {
         if (i + 1 == Model.Position)

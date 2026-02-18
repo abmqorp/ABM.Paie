@@ -8,6 +8,8 @@ public abstract class SelectableBase<T> : Base where T : SelectableModel
     [Parameter, EditorRequired]
     public IEnumerable<T> Templates { get; set; }
 
+    protected T? SelectedItem => Templates.FirstOrDefault(t => t.IsSelected);
+
     protected virtual void Update(T model)
     {
         model.Toggle();

@@ -5,11 +5,7 @@
 @typeparam T
 @inherits Base
 
-@{
-    _ = _builder.Add("common__dropdown"); 
-}
-
-<div class=@_builder @onfocusout=Reset>
+<div class=@_builder.Add("common__dropdown") @onfocusout=Reset>
     <Operation Model=Title />
     @if (Templates is not null && Templates.Any())
     {

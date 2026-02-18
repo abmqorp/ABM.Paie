@@ -35,7 +35,7 @@
     background: var(--bar-color);
     display: flex;
     flex-direction: column;
-    height: attr(value %);
+    height: attr(count %);
     width: 2rem;
   }
 }
@@ -57,6 +57,11 @@
     position: absolute;
     bottom: -1.5rem;
     font-size: var(--fontsize);
+  }
+}
+
+.common__barchart__content {
+  & .common__tooltip[selected] span {
     color: var(--bar-color);
   }
 }
@@ -65,7 +70,7 @@
   display: flex;
   flex-direction: row;
   position: absolute;
-  bottom: attr(value %);
+  bottom: attr(ordinate %);
   width: stretch;
   border-bottom: 0.125rem solid var(--primary);
 }

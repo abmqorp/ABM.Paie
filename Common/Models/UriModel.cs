@@ -1,4 +1,6 @@
-﻿namespace Common.Models;
+﻿using Common.Enumerations;
+
+namespace Common.Models;
 
 public record UriModel(
     string? Location = default,
@@ -10,8 +12,9 @@ public record UriModel(
     UriModel? Parent = default)
 {
     private string? Anchor { get; init; } = Location;
-
     public string? Id => Anchor?.TrimStart('/', '#');
-
     public string? Location => Parent?.Location + Anchor;
+
+    public UriModel ToBase(string? anchor = default, string? content = default)
+        => new(Location + anchor, content ?? Content, Label, IsExternal);
 }

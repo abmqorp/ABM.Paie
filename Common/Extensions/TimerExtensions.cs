@@ -4,9 +4,12 @@ namespace Common.Extensions;
 
 public static class TimerExtensions
 {
-    public static void Reset(this Timer timer)
+    extension(Timer timer)
     {
-        timer.Stop();
-        timer.Start();
+        public void Reset()
+        {
+            timer.Stop();
+            timer.Start();
+        }
     }
 }

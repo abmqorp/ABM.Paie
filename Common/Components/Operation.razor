@@ -4,13 +4,9 @@
 @using Common.Models
 @inherits Base
 
-@{
-    _ = _builder.Add(Model.Activator.Class);
+@if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
 
-    if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
-}
-
-<OperationTemplate Class=@_builder Model=Model.Uri Action=Model.Action>
+<OperationTemplate Class=@_builder.Add(Model.Activator.Class) Model=Model.Uri Action=Model.Action>
     @if (ChildContent is not null)
     {
         @ChildContent

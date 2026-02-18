@@ -1,14 +1,9 @@
 ﻿@using Common.Components.Bases
 @using Common.Enumerations
-@using Common.Extensions
 @using Common.Models
 @inherits Base
 
-@{
-    _ = _builder.Add("common__activator").Add(Model.Class); 
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__activator", Model.Class)>
     <Icon Content=Model.StartIcon />
     @if (ChildContent is not null)
     {

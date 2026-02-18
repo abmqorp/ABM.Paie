@@ -4,15 +4,11 @@
 @using Common.Extensions
 @inherits Base
 
-@{
-    _ = _builder.Add("common__icon");
-    
-    if (Content is not null)
-    {
-        <svg class=@_builder xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-            <path d=@Content.GetDescription() />
-        </svg>
-    }
+@if (Content is not null)
+{
+    <svg class=@_builder.Add("common__icon") xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
+        <path d=@Content.Description />
+    </svg>
 }
 
 @code {

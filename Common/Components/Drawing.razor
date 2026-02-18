@@ -2,11 +2,7 @@
 @using Common.Models
 @inherits Base
 
-@{
-    _ = _builder.Add("common__drawing");
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__drawing")>
     <Image Model=Model />
     <div class="common__drawing__signature">
         <Image Model=Signature />

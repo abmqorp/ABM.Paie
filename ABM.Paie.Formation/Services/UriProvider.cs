@@ -31,5 +31,5 @@ public sealed class UriProvider(IConfiguration configuration) : IUriProvider
             AbmMail _ => "mailtos",
             AbmImage _ => "images",
             _ => throw new NotSupportedException(),
-        }}:{value.GetDescription()}";
+        }}:{value.Description}";
 }

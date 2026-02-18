@@ -1,11 +1,7 @@
 ﻿@using Common.Components.Bases
 @inherits Base
 
-@{
-    _ = _builder.Add("common__paragraph"); 
-}
-
-<p class=@_builder>
+<p class=@_builder.Add("common__paragraph")>
     @ChildContent
 </p>
 

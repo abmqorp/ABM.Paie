@@ -1,0 +1,24 @@
+@using Common.Components.Bases
+@using Common.Extensions
+@using Common.Models.Charts
+@using Common.Models.General
+@using Microsoft.AspNetCore.Components.Web
+@inherits TooltipBase<SliceModel>
+
+<path d="@($"M {Start.X.Invariant} {Start.Y.Invariant} A 1 1 0 {(LargeArcFlag ? 1 : 0)} 1 {End.X.Invariant} {End.Y.Invariant} L 0 0 Z")"
+      class=@_builder.Add("common__slice") selected=@IsSelected tabindex="0"
+      @onclick=Activate
+      @onmouseover=Show @onmouseout=Hide @onmousemove=Update
+      @onfocusin=Show @onfocusout=Hide>
+</path>
+
+@code {
+    [Parameter, EditorRequired]
+    public Point Start { get; set; }
+    [Parameter, EditorRequired]
+    public Point End { get; set; }
+    [Parameter, EditorRequired]
+    public bool LargeArcFlag { get; set; }
+    [Parameter]
+    public bool IsSelected { get; set; }
+}

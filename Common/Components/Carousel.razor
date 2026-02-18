@@ -8,11 +8,7 @@
 @inherits Base
 @implements IDisposable
 
-@{
-    _ = _builder.Add("common__carousel"); 
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__carousel")>
     @if (!_isDisabled)
     {
         <button type="button" class="left" label="Suivant" @onclick=Previous>
@@ -65,7 +61,7 @@
         base.OnInitialized();
     }
 
-    private void OnTimedEvent(object? sender, ElapsedEventArgs e)
+    private void OnTimedEvent(object? sender, ElapsedEventArgs args)
     {
         SetCurrent();
         StateHasChanged();

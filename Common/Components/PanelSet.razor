@@ -4,11 +4,7 @@
 @using Microsoft.AspNetCore.Components.Web
 @inherits SelectableBase<TabModel>
 
-@{
-    _ = _builder.Add("common__panels").Add("column");
-}
-
-<div class=@_builder>
+<div class=@_builder.Add("common__panels", "column")>
     @foreach (var item in Templates)
     {
         var operation = item.Operation with {

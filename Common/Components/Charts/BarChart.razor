@@ -3,26 +3,26 @@
 @using Microsoft.AspNetCore.Components.Web
 @inherits SelectableBase<BarModel>
 
-<figure class="common__barchart my-5">
+<figure class=@_builder.Add("common__barchart my-5")>
     <figcaption Class="h3">@Caption</figcaption>
     <div class="common__barchart__content" data-cols=@Templates.Count()>
         @foreach (var ordinate in Ordinates)
         {
-            <div class="common__barchart__axes" value=@(ordinate - 1)><span>@ordinate</span></div>
+            <div class="common__barchart__axes" ordinate=@(ordinate - 1)><span>@ordinate</span></div>
         }
     
         @foreach (var item in Templates)
         {
-            <Tooltip value=@item.Percent selected=@item.IsSelected Text=@($"{item.Title} : {item.Percent}") 
+            <Tooltip count=@item.Count selected=@item.IsSelected Content=@($"{item.Title} : {item.Count:0.##}") 
                 OnActivated=@(() => Update(item))>
                 <span>@item.Title</span>
             </Tooltip>
         }
     </div>
-    @if (Description is not null)
+    @if (SelectedItem?.Description is string description)
     {
         <div class="common__barchart__description mx-3">
-            @Description
+            @description
         </div>
     }
 </figure>
@@ -32,6 +32,4 @@
     public string Caption { get; set; }
     [Parameter]
     public IEnumerable<int> Ordinates { get; set; } = Enumerable.Range(0, 6).Select(i => i * 20);
-
-    private string? Description => Templates.FirstOrDefault(t => t.IsSelected)?.Description;
 }

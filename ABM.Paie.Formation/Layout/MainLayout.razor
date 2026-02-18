@@ -2,7 +2,6 @@
 @using ABM.Paie.Formation.Services
 @using Common.Components
 @using Common.Enumerations
-@using Common.Extensions
 @using Common.Models
 @using Common.Tools
 @inherits LayoutComponentBase
@@ -133,10 +132,10 @@
         base.OnInitialized();
     }
 
-    private void LocationChanged(object? _, LocationChangedEventArgs e)
+    private void LocationChanged(object? sender, LocationChangedEventArgs args)
     {
         var currentValue = _showBanner;
-        var newValue = e.Location == _accueilUri;
+        var newValue = args.Location == _accueilUri;
 
         if (currentValue != newValue)
         {

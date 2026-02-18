@@ -14,7 +14,7 @@
 <PageTitle>ABM Paie</PageTitle>
 
 @{
-    var quotes = Quotes.GetAll().ToRandomizedList();
+    var quotes = Quotes.List.Randomized;
 }
 
 <div class="full-center column">
@@ -94,7 +94,7 @@
         };
     }
     
-    <Carousel Class="mb-5" Templates=partenariats.ToRandomizedList() Batch=3>
+    <Carousel Class="mb-5" Templates=partenariats.Randomized Batch=3>
         <Card Class="mx-2">
             <Illustration>
                 <Image Model=context.Model.Image />
