@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Common.Enumerations;
+using System.ComponentModel;
 
 namespace Common.Extensions;
 
@@ -15,5 +16,10 @@ public static class EnumExtensions
             .GetField(value.ToString())?
             .GetCustomAttributes(typeof(T), false)
             .SingleOrDefault();
+    }
+
+    extension(Color value)
+    {
+        public string Var => $"var(--{value.Description})";
     }
 }

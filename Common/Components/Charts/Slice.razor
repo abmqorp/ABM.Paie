@@ -1,24 +1,45 @@
 @using Common.Components.Bases
+@using Common.Enumerations
 @using Common.Extensions
 @using Common.Models.Charts
 @using Common.Models.General
 @using Microsoft.AspNetCore.Components.Web
 @inherits TooltipBase<SliceModel>
 
-<path d="@($"M {Start.X.Invariant} {Start.Y.Invariant} A 1 1 0 {(LargeArcFlag ? 1 : 0)} 1 {End.X.Invariant} {End.Y.Invariant} L 0 0 Z")"
-      class=@_builder.Add("common__slice") selected=@IsSelected tabindex="0"
-      @onclick=Activate
-      @onmouseover=Show @onmouseout=Hide @onmousemove=Update
-      @onfocusin=Show @onfocusout=Hide>
-</path>
+<path d=@Path class=@_builder.Add("common__slice") selected=@Model.IsSelected clicked=@Clicked tabindex="0" data-color=@((Model.Color ?? Color.Gray).Var)
+    @onclick=Activate @onkeyup=Activate @onmouseover=Show @onmouseout=Hide @onmousemove=Update @onfocusin=Show @onfocusout=Hide />
 
 @code {
-    [Parameter, EditorRequired]
-    public Point Start { get; set; }
-    [Parameter, EditorRequired]
-    public Point End { get; set; }
-    [Parameter, EditorRequired]
-    public bool LargeArcFlag { get; set; }
+    private const int Quadrant = 25;
+    private const int SemiCircle = 2 * Quadrant;
+
     [Parameter]
-    public bool IsSelected { get; set; }
+    public double? Multiplier { get; set; }
+
+    private bool Clicked { get; set; }
+    private string Path
+    {
+        get {
+            var cumPercent = Model.CumPercent - Quadrant;
+            var start = Point.Polar(1, cumPercent);
+            var end = Point.Polar(1, cumPercent + Model.Percent);
+            var Radius = Compute(1d);
+            var largeArcFlag = Model.Percent > SemiCircle ? 1 : 0;
+            return $"M {Compute(start.X)} {Compute(start.Y)} A {Radius} {Radius} 0 {largeArcFlag} 1 {Compute(end.X)} {Compute(end.Y)} L 0 0 Z";
+        }
+    }
+
+    protected override void Activate(MouseEventArgs _)
+    {
+        Clicked = true;
+        base.Activate(_);
+    }
+
+    protected override void Show(FocusEventArgs _)
+    {
+        Clicked = false;
+        base.Show(_);
+    }
+
+    private string Compute(double value) => (Model.IsSelected ? value : value / (Multiplier ?? 1.1)).Invariant;
 }

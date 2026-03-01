@@ -4,6 +4,7 @@
 @using Common.Components
 @using Common.Components.Charts
 @using Common.Enumerations
+@using Common.Extensions
 @using Common.Models.Charts
 @inject IUriProvider UriProvider
 
@@ -11,23 +12,155 @@
 
 <Section Model=UriProvider.Get(AbmUri.Chiffres) Level=SectionLevel.H2 />
 
-<Tooltip Content="Some text">
-    <Image Model=@(UriProvider.Get(AbmUri.Accueil).Image! with {Scale = 10}) />
-</Tooltip>
+<Paragraph>
+    Le nom et la description de ces formations sont indiqués de façon très globale, pour donner une idée du contenu. 
+    Il ne s'agit en aucun cas des termes officiels actuels, ou alors de façon involontaire. 
+    Les chiffres ont été calculés à la baisse sur la base de mon calendrier personnel et non sur la base de chiffres officiels.
+</Paragraph>
 
-<div class="mb-5" style="display: flex;justify-content: center;">
-    <BarChart Templates=@([
-        new("B1", 25, "Aenean fringilla pretium nunc, quis egestas dolor venenatis vel. Praesent quis lectus in nunc pellentesque efficitur non sed ex. Morbi tristique iaculis magna ut faucibus. Nulla vitae malesuada turpis. Pellentesque egestas ante id tortor maximus elementum. Mauris sapien orci, varius vel turpis eget, viverra placerat tortor. Integer vitae urna diam. Aliquam eu lacus lacus. Nullam turpis libero, laoreet sed tincidunt et, condimentum ac dui. Suspendisse quam orci, auctor a tempor in, eleifend a tortor. Donec congue ex massa, eget tempus velit vehicula id. Fusce ultrices, arcu sed tincidunt aliquam, quam ex mattis augue, a molestie odio mi quis ante. Mauris semper felis est, eget efficitur sapien fringilla sed. Phasellus mauris velit, imperdiet at tellus id, posuere pellentesque nulla. In hac habitasse platea dictumst. Nulla facilisi. Maecenas pulvinar convallis lectus id bibendum. Nullam dictum nisl fermentum sem facilisis, lobortis accumsan neque laoreet. Suspendisse potenti. Praesent semper congue ex, consectetur pharetra magna malesuada quis. Praesent laoreet iaculis nulla, sed congue ligula tristique ac. Fusce quis vulputate urna. Quisque imperdiet aliquam ligula, at tempor ipsum posuere quis. Phasellus placerat imperdiet sodales.", true),
-        new("B2", 50, "Cras maximus ex lacus, fringilla congue justo malesuada ut. Vestibulum vel metus urna. Sed porta nibh mi, quis bibendum est blandit sed. Maecenas non efficitur felis, tincidunt ornare ante. Vestibulum metus lacus, accumsan at quam sit amet, venenatis sagittis arcu. Curabitur dapibus pharetra felis quis laoreet. Etiam faucibus nunc id nulla dignissim, non maximus risus fermentum. Maecenas a vehicula magna."),
-                            new("B3", 75)]) Caption="Graphique avec barres" Ordinates=@([0, 25, 50, 75, 100]) />
+<h3>La formation « Initiale »</h3>
+
+<Paragraph>
+    J'ai réalisé plus de <b>2 200 heures de formation « Initiale »</b> en tant que formatrice en clientèle pour la société Silae. 
+    Pendant ces 4 années, j'ai traversé la France métropolitaine avec plus de 80% de formation en présentiel.
+</Paragraph>
+
+<div class="wrap justify-evenly">
+    <PieChart Caption="Proportion d'heures de formation « Initiale » et d'heures de formation « Perfectionnement » sur un total de plus de 3 300 heures de formation."
+        Templates=@(new PieModel([
+        new("Initiale", 2287, Color: Color.Primary),
+        new("Perfectionnement", 1059, Color: Color.Gray)]).Slices) />
+
+    <PieChart Caption="Proportion d'heures de formation réalisées en présentiel et à distance sur un total de plus de 2 200 heures de formation « Initiale »."
+        Templates=@(new PieModel([
+        new("Présentiel", 1879, Color: Color.Primary),
+        new("Distanciel", 408, Color: Color.Gray)]).Slices) />
 </div>
 
-<div style="display: flex;justify-content: center;">
-    <PieChart Templates=@(new PieModel([
-        new("S1", 25),
-        new("S2", 50, "Cras maximus ex lacus, fringilla congue justo malesuada ut. Vestibulum vel metus urna. Sed porta nibh mi, quis bibendum est blandit sed. Maecenas non efficitur felis, tincidunt ornare ante. Vestibulum metus lacus, accumsan at quam sit amet, venenatis sagittis arcu. Curabitur dapibus pharetra felis quis laoreet. Etiam faucibus nunc id nulla dignissim, non maximus risus fermentum. Maecenas a vehicula magna."),
-        new("S3", 75, null, true)]).Slices) Caption="Graphique avec parts" />
+<h3>Mes déplacements</h3>
+
+<Paragraph>
+    « Initiale » ou « Perfectionnement », j'ai principalement formé dans la région PACA, Île-de-France, Pays-de-la-Loire et Bretagne.
+</Paragraph>
+
+<Paragraph>
+    Je n'ai malheureusement jamais eu la chance de rencontrer nos clients ultra-marins sur les régions et départements d'Outre-mer.
+</Paragraph>
+
+<h3>La formation « Collective »</h3>
+
+<Paragraph>
+    Cette géographie s'explique facilement par la présence des formateurs sur trois sites : Paris, Lyon et Aix-en-Provence.
+    Je n'ai ainsi jamais réalisé de formation « Collective » sur la ville lyonnaise.
+    Sur l'ensemble des formations « Intiale » et « Perfectionnement » que j'ai réalisées,
+    moins de 20% d'entre elles étaient des formations inter (« Collective »), à Aix-en-Provence principalement, Paris, Toulouse, Lille et Bordeaux.
+</Paragraph>
+
+<div class="wrap justify-evenly">
+    <PieChart Caption="Proportion d'heures de formations en présentiel intra « Clients » et inter « Collective » sur un total de 1 760 heures de formation « Collective »."
+        Templates=@(new PieModel([
+        new("Intra", 1573, Color: Color.Primary),
+        new("Inter", 306, Color: Color.Gray)]).Slices) />
+
+    <PieChart Caption="Répartition des heures de formation inter « Collective » selon 5 villes de France."
+        Templates=@(new PieModel([
+        new("Aix-en-Provence", 126, Color: Color.Primary),
+        new("Bordeaux", 18, Color: Color.GrayDark),
+        new("Lille", 36, Color: Color.GrayLight),
+        new("Paris", 54, Color: Color.PrimaryDark),
+        new("Toulouse", 72, Color: Color.Gray)]).Slices) />
 </div>
+
+<h3>La formation « Perfectionnement »</h3>
+
+<Paragraph>
+    Les formations « Perfectionnement » représentaient toutes les formations en dehors des formations « Initiale » et « Code ». 
+    Les thèmes étaient définis selon le catalogue de formation ou bien « À la carte » selon les besoins des clients, formations pouvant se rapprocher du consulting. 
+    Ces formations « À la carte » prenaient souvent la forme d'une liste de questions des apprenants. 
+    Ma conviction reste de dispenser des connaissances et une méthodologie, 
+    c'est pourquoi mon rôle au travers de ces journées « À la carte » était de faire ressortir un fil conducteur tout au long de la journée 
+    afin de transmettre un savoir cohérent, fluide et progressif pour que les apprenants trouvent d'eux-mêmes la solution aux différentes problématiques.
+</Paragraph>
+
+<div class="wrap justify-evenly">
+    <PieChart Caption="Proportion d'heures de formation « Thématique définie » et « À la carte » sur un total de 1 100 heures de formation « Perfectionnement »."
+        Templates=@(new PieModel([
+        new("À la carte", 697, Color: Color.Primary),
+        new("Thématique définie", 362, Color: Color.Gray)]).Slices) />
+
+    <PieChart Caption="Proportion d'heures de formation réalisées en présentiel et à distance sur un total de 700 heures de formation « À la carte »."
+        Templates=@(new PieModel([
+        new("Présentiel", 1879, Color: Color.Primary),
+        new("Distanciel", 408, Color: Color.Gray)]).Slices) />
+</div>
+
+<h3>La formation « Thématique Définie » en distanciel</h3>
+
+<Paragraph>
+    Progressivement, les formations « Thématique Définie » en distanciel sur des formats de 2, 3 ou 4 heures
+    sont arrivées pour travailler plus en profondeur une thématique, principalement au format inter.
+</Paragraph>
+
+<Paragraph>
+    À l'exception des formations portant sur le code que j'ai dispensées lorsque j'étais responsable du service formation, 
+    les autres formations ont été dispensées lorsque j'étais formatrice en clientèle.
+</Paragraph>
+
+@{
+    IEnumerable<BarModel> bars = [
+        new("DOM",
+            47,
+            "<b>La formation « DOM » :</b><br />La formation DOM était une formation libre totalement adaptée aux besoins spécifiques et à la situation géographique."),
+        new("DSN",
+            60,
+            "<b>La formation « DSN » :</b><br />La formation DSN pouvait prendre plusieurs formes.<ul style=\"list-style-type: disc; margin: 0 0 0 2rem;\">"
+            + "<li>Révision du paramétrage des cotisations et des organismes pour un approfondissement complet de la maîtrise du paramétrage des FPOC "
+            + "(Feuilles de Paramétrage des Organismes Complémentaires).</li>"
+            + "<li>Description des différents points de paramétrage dans le logiciel de paie pour une DSN juste.</li>"
+            + "<li>Étude des différentes situations pour comprendre les régularisations adaptées.</li></ul>"),
+        new("RC",
+            62,
+            "<b>La formation « RC » :</b><br />La formation Relation Client listait les paramétrages à réaliser pour permettre aux clients d'interargir dans l'interface."),
+        new("EC",
+            32,
+            "<b>La formation « EC » :</b><br />La formation Écriture Comptable permettait d'apprendre comment paramétrer ses opérations diverses de paie "
+            + "dans le logiciel de paie avec pour finalité l'export du fichier séquenciel à destination du logiciel de comptabilité."),
+        new("ABH",
+            38,
+            "<b>La formation « ABH » :</b><br />La formation Absence en Heures Mensualisées permettait d'appréhender toutes les méthodes proposées "
+            + "par le logiciel de paie pour calculer les absences des salariés exclusivement en heures mensualisées."),
+        new("ADM",
+            32,
+            "<b>La formation « ADM » :</b><br />La formation Administrateur donnait les paramétrages clés du responsable administrateur."),
+        new("LP",
+            6,
+            "<b>La formation « LP » :</b><br />La formation Libellé Profil était exclusivement concentrée sur le module de création de primes de façon pérenne."),
+        new("CC",
+            10,
+            "<b>Les formations « Code » : « CC », « CP1 », « CP2 », « CP3 »</b><br />"
+            + "Les formations Code avaient pour objectif d'initier les apprenants aux langages spécifiques du logiciel de paie."),
+        new("CP1",
+            12,
+            "<b>Les formations « Code » : « CC », « CP1 », « CP2 », « CP3 »</b><br />"
+            + "Les formations Code avaient pour objectif d'initier les apprenants aux langages spécifiques du logiciel de paie."),
+        new("CP2",
+            10,
+            "<b>Les formations « Code » : « CC », « CP1 », « CP2 », « CP3 »</b><br />"
+            + "Les formations Code avaient pour objectif d'initier les apprenants aux langages spécifiques du logiciel de paie."),
+        new("CP3",
+            12,
+            "<b>Les formations « Code » : « CC », « CP1 », « CP2 », « CP3 »</b><br />"
+            + "Les formations Code avaient pour objectif d'initier les apprenants aux langages spécifiques du logiciel de paie."),
+        new("EH",
+            41,
+            "<b>La formation « EH » :</b><br />La formation Édition Historique était une formation sur le langage spécifique du logiciel de paie "
+            + "permettant d'extraire des tableaux de données salariées.")
+    ];
+}
+
+<BarChart Class="my-5" Caption="Nombre d'heures de formation « Thématique Définie » en distanciel par thématique."
+    Description=@($"<i style=\"color: {Color.Danger.Var};\">Sélectionnez une formation sur le graphique pour voir sa description.</i>")
+    Templates=@bars Max=70 Ordinates=@([0, 20, 40, 60]) />
 
 @code {
 

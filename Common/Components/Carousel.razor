@@ -3,6 +3,7 @@
 @using Common.Enumerations
 @using Common.Extensions
 @using Common.Models
+@using Common.Tools
 @using Microsoft.AspNetCore.Components.Web
 @typeparam T
 @inherits Base
@@ -25,8 +26,6 @@
 </div>
 
 @code {
-    private const int SecondsToMilliseconds = 1000;
-
     [Parameter, EditorRequired]
     public IEnumerable<T?> Templates { get; set; }
     [Parameter, EditorRequired]
@@ -52,7 +51,7 @@
 
         if (Templates.Any() && !_isDisabled && Interval.HasValue)
         {
-            _timer = new(Interval.Value * SecondsToMilliseconds);
+            _timer = new(Interval.Value * Constants.SecondsToMilliseconds);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
             _timer.Start();
@@ -61,7 +60,7 @@
         base.OnInitialized();
     }
 
-    private void OnTimedEvent(object? sender, ElapsedEventArgs args)
+    private void OnTimedEvent(object? sender, ElapsedEventArgs _)
     {
         SetCurrent();
         StateHasChanged();

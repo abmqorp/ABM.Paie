@@ -1,15 +1,15 @@
-@using System.Threading.Tasks
 @using Common.Components.Bases
 @using Microsoft.AspNetCore.Components.Web
 @inherits TooltipBase<string>
 
 <button class=@_builder.Add("common__tooltip") type="button"
     @attributes=AdditionalAttributes
-    @onmouseover=Show @onmouseout=Hide @onmousemove=Update
-    @onfocusin=Show @onfocusout=Hide
-    @onclick=Activate>
-    @ChildContent
-    <div class="common__tooltip__text" opaque=@IsOpaque style=@Style>@Content</div>
+    @onclick=Activate @onmouseover=Show @onmouseout=Hide @onmousemove=Update @onfocusin=Show @onfocusout=Hide>
+    @if (ChildContent is not null)
+    {
+        <span>@ChildContent</span>
+    }
+    <div class="common__tooltip__text" opaque=@IsOpaque style=@Style>@Model</div>
 </button>
 
 @code {

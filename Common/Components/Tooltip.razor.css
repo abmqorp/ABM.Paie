@@ -1,6 +1,7 @@
 .common__tooltip {
+  box-sizing: content-box;
   position: relative;
-  cursor: help;
+  cursor: default;
 }
 
 .common__tooltip__text {
@@ -15,10 +16,15 @@
   opacity: 1;
   visibility: visible;
   white-space: nowrap;
-  transition: 250ms opacity 1000ms ease-out;
+  transition: 250ms opacity 500ms ease-out;
 }
 
-.common__tooltip .common__tooltip__text[opaque] {
+.common__tooltip .common__tooltip__text[opaque],
+.common__tooltip:has(> span:hover) .common__tooltip__text {
   opacity: 0;
   visibility: hidden;
+}
+
+.common__tooltip:not(:has(> span:hover)) {
+  cursor: help;
 }

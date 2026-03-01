@@ -148,9 +148,16 @@ h1, .h1, h2, .h2 {
 }
 
 h3, .h3 {
-  color: var(--primary);
   font-size: 1.25rem;
   font-weight: bold;
+}
+
+h4, .h4 {
+  font-style: italic;
+}
+
+h3, .h3, h4, .h4 {
+  color: var(--primary);
 }
 
 .banner {
@@ -222,6 +229,10 @@ h3, .h3 {
 
 .full-center {
   text-align: center;
+}
+
+.justify-evenly {
+  justify-content: space-evenly;
 }
 
 .float-right {

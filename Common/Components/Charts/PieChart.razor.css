@@ -1,13 +1,43 @@
+.common__piechart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 28rem;
+  margin-top: 1rem;
+}
+
 .common__piechart__content {
   position: relative;
 }
 
-*:focus {
-  outline: none;
-} /*TODO*/
+.common__piechart figcaption {
+  margin-top: 0.5rem;
+}
+
+.common__piechart__description {
+  margin-top: 0.5rem;
+}
+
+.common__piechart__content svg {
+  width: 12rem;
+}
+
+.common__piechart__legend {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.common__piechart__legend p {
+  margin-block: 0.25rem;
+}
+
+.common__piechart__legend p svg {
+  height: calc(var(--fontsize) * 0.8);
+  width: fit-content;
+  fill: attr(data-color type(<color>));
+}
 
 .common__piechart .common__tooltip__text {
-  box-sizing: border-box;
   position: absolute;
   background-color: var(--gray-dark);
   border: 0.125rem solid var(--white);
@@ -19,12 +49,10 @@
   opacity: 1;
   visibility: visible;
   white-space: nowrap;
-  transition: 250ms opacity 1000ms ease-out;
+  transition: 250ms opacity 500ms ease-out;
 }
 
 .common__piechart .common__tooltip__text[opaque] {
   opacity: 0;
   visibility: hidden;
 }
-
-

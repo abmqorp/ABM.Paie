@@ -1,26 +1,34 @@
 .common__barchart {
-  height: fit-content;
-  align-items: center;
-  justify-content: center;
   display: flex;
   flex-direction: column;
-}
-
-.common__barchart figcaption {
-  margin-bottom: 3rem;
-}
-
-.common__barchart:not(:has(> .common__barchart__description)) {
-  padding-bottom: 2rem;
-}
-
-.common__barchart__description {
-  margin-top: 3rem;
+  align-items: center;
 }
 
 .common__barchart__content {
+  position: relative;
+}
+
+.common__barchart figcaption {
+  margin-bottom: 1rem;
+}
+
+.common__barchart__description {
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.common__barchart:not(:has(> .common__barchart__description)) {
+  margin-bottom: 3rem;
+}
+
+.common__barchart .common__barchart__description {
+  margin-top: 2rem;
+}
+
+.common__barchart .common__barchart__content {
   height: 16rem;
   width: calc(attr(data-cols rem) * 4);
+  max-width: 100%;
   display: flex;
   position: relative;
   justify-content: space-evenly;
@@ -28,49 +36,45 @@
   align-items: flex-end;
 }
 
-.common__barchart__content {
+.common__barchart .common__barchart__content {
   & .common__tooltip {
-    --bar-color: var(--gray);
+    --bar--color: attr(data-color type(<color>));
     position: relative;
-    background: var(--bar-color);
+    background: var(--bar--color);
     display: flex;
     flex-direction: column;
-    height: attr(count %);
+    height: calc(attr(data-count %) * 100 / attr(data-max type(<integer>), 100));
     width: 2rem;
+    margin-left: 1rem;
   }
 }
 
-.common__barchart__content {
-  & .common__tooltip[selected] {
-    --bar-color: var(--primary);
-  }
-}
-
-.common__barchart__content {
+.common__barchart .common__barchart__content {
   & .common__tooltip:hover {
-    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--bar-color), var(--bar-color));
+    background: linear-gradient(var(--shade-dark), var(--shade-dark)), linear-gradient(var(--bar--color), var(--bar--color));
   }
 }
 
-.common__barchart__content {
+.common__barchart .common__barchart__content {
   & .common__tooltip span {
     position: absolute;
-    bottom: -1.5rem;
-    font-size: var(--fontsize);
+    bottom: -1.2rem;
+    font-size: 0.9rem;
   }
 }
 
-.common__barchart__content {
+.common__barchart .common__barchart__content {
   & .common__tooltip[selected] span {
-    color: var(--bar-color);
+    color: var(--bar--color);
   }
 }
 
-.common__barchart__axes {
+.common__barchart .common__barchart__axes {
   display: flex;
   flex-direction: row;
   position: absolute;
-  bottom: attr(ordinate %);
+  bottom: calc(calc(attr(data-ordinate %) * 100 / attr(data-max type(<integer>), 100)) - 0.125rem);
   width: stretch;
   border-bottom: 0.125rem solid var(--primary);
+  left: -1rem;
 }
