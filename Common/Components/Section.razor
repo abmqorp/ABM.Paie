@@ -13,16 +13,8 @@
 
     private RenderFragment? SetSection()
     {
-        _ = _builder.Add("common__section");
-
-        return Level switch {
-            SectionLevel.H1 => @<h1 id=@Model.Id class=@_builder>@Model.Content</h1>,
-            SectionLevel.H2 => @<h2 id=@Model.Id class=@_builder>@Model.Content</h2>,
-            SectionLevel.H3 => @<h3 id=@Model.Id class=@_builder>@Model.Content</h3>,
-            SectionLevel.H4 => @<h4 id=@Model.Id class=@_builder>@Model.Content</h4>,
-            SectionLevel.H5 => @<h5 id=@Model.Id class=@_builder>@Model.Content</h5>,
-            SectionLevel.H6 => @<h6 id=@Model.Id class=@_builder>@Model.Content</h6>,
-            _ => null
-        };
+        var tag = Level.ToString().ToLower();
+        return @: @((MarkupString)$"<{tag} id={Model.Id} class={_builder.Add("common__section")}>{Model.Content}</{tag}>")
+        ;
     }
 }

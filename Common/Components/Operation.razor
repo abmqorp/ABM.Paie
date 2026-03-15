@@ -1,10 +1,10 @@
 ﻿@using Common.Components.Bases
 @using Common.Components.Templates
-@using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Models
 @inherits Base
 
-@if (Model.Uri.IsExternal) Model.Activator.EndIcon = IconPath.OpenInNew;
+@if (Model.Uri.IsExternal) Model.Activator.EndIcon = SvgIcon.OpenInNew;
 
 <OperationTemplate Class=@_builder.Add(Model.Activator.Class) Model=Model.Uri Action=Model.Action>
     @if (ChildContent is not null)

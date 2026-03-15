@@ -1,5 +1,5 @@
 ﻿@using Common.Components.Bases
-@using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Models
 @using Microsoft.AspNetCore.Components.Web
 @inherits SelectableBase<TabModel>
@@ -9,7 +9,7 @@
     {
         var operation = item.Operation with {
             Uri = item.Operation.Uri with {Label = $"{(item.IsSelected ? "Réduire" : "Développer")} le contenu"},
-            Activator = new(EndIcon: IconPath.ArrowDropDownCircle, Class: "large filled full-width"),
+            Activator = new(EndIcon: SvgIcon.ArrowDropDownCircle, Class: "large filled full-width"),
             Action = () => Update(item),
         };
         <div class="column">

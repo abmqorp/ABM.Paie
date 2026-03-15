@@ -1,6 +1,6 @@
 ﻿@using System.Timers
 @using Common.Components.Bases
-@using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Extensions
 @using Common.Models
 @using Common.Tools
@@ -13,14 +13,14 @@
     @if (!_isDisabled)
     {
         <button type="button" class="left" label="Suivant" @onclick=Previous>
-            <Icon Content=@IconPath.ArrowBackIosNew />
+            <Icon Content=@SvgIcon.ArrowBackIosNew />
         </button>
     }
     @for (Position = 0; Position < Batch; Position++) @ChildContent(Templates.ElementAtOrDefault(GetIndex()))
     @if (!_isDisabled)
     {
         <button type="button" class="right" aria-label="Suivant" @onclick=Next>
-            <Icon Content=@IconPath.ArrowForwardIos />
+                <Icon Content=@SvgIcon.ArrowForwardIos />
         </button>
     }
 </div>
@@ -51,7 +51,7 @@
 
         if (Templates.Any() && !_isDisabled && Interval.HasValue)
         {
-            _timer = new(Interval.Value * Constants.SecondsToMilliseconds);
+            _timer = new(Interval.Value * Constants.Time.SecondsToMilliseconds);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
             _timer.Start();

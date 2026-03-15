@@ -1,6 +1,6 @@
 ﻿using ABM.Paie.Formation.Enumerations;
 using Common.Attributes;
-using Common.Enumerations;
+using Common.Enumerations.Svg;
 using Common.Extensions;
 using Common.Models;
 
@@ -17,7 +17,7 @@ public sealed class UriProvider(IConfiguration configuration) : IUriProvider
             Parent = value.Get<ParentAttribute>()?.Parent is AbmUri parent ? Get<UriModel>(parent) : default,
         };
     public OperationModel Get(AbmMail value)
-        => new(Get<UriModel>(ComputeKey(value)) with { IsExternal = true }, new(IconPath.Mail));
+        => new(Get<UriModel>(ComputeKey(value)) with { IsExternal = true }, new(SvgIcon.Mail));
     public ImageModel Get(AbmImage value) => Get<ImageModel>(ComputeKey(value));
     public ImageModel Get(AbmImage value, double scale) => Get(value) with { Scale = scale };
 

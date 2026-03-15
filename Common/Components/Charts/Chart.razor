@@ -1,0 +1,15 @@
+﻿@using Common.Components.Bases
+@using Common.Components.Templates
+@using Common.Models.Charts
+@using Common.Models.General
+@inherits Base
+
+<ChartTemplate Class=@_builder.Add(Model.Class)
+    Templates=Model.Drawings ViewBox=@Model.ViewBox Caption=@Model.Caption Description=@Model.Description Reference=Reference />
+
+@code {
+    [Parameter, EditorRequired]
+    public ChartModel Model { get; set; }
+    [Parameter]
+    public Reference Reference { get; set; } = new();
+}

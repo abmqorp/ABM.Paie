@@ -1,0 +1,28 @@
+﻿@using Common.Components.Bases
+@using Common.Models.Svg
+@using Common.Tools.Builders
+@inherits Base
+
+@SetDrawing()
+
+@code {
+    [Parameter, EditorRequired]
+    public Shape Shape { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private RenderFragment? SetDrawing()
+    {
+        _builder.Add("common__drawing");
+
+        return Shape switch
+        {
+            Path or PathBuilder => @<path class=@_builder @attributes="AdditionalAttributes" />,
+            Circle => @<circle class=@_builder @attributes="AdditionalAttributes" />,
+            Line => @<line class=@_builder @attributes="AdditionalAttributes" />,
+            Rect => @<rect class=@_builder @attributes="AdditionalAttributes" />,
+            Text text => @<text><text class=@_builder @attributes="AdditionalAttributes">@text.Content</text></text>,
+            _ => null,
+        };
+    }
+}

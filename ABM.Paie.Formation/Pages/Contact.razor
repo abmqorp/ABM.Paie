@@ -3,6 +3,7 @@
 @using ABM.Paie.Formation.Services
 @using Common.Components
 @using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Models
 @inject IUriProvider UriProvider
 
@@ -14,7 +15,7 @@
     Afin d'organiser au mieux mes journées de travail entre formation et ingénierie de formation, 
     j'ai bloqué des créneaux dédiés pour un échange individuel, complet et personnalisé avec vous.
 </Paragraph>
-<Operation Model=@new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth, Class: "primary")) /> @* TODO *@
+<Operation Model=@new(UriProvider.Get(AbmUri.RendezVous), new(SvgIcon.CalendarMonth, Class: "primary")) /> @* TODO *@
 
 <Section Model=@UriProvider.Get(AbmUri.Coordonnees) Level=SectionLevel.H2 />
 
@@ -40,8 +41,8 @@
 <div class="wrap">
     <div class="column grow">
         <h3 id="telephone">Par téléphone : +33 7 48 10 65 39</h3>
-        <Operation Model=@(new(UriProvider.Get(AbmUri.Call), new(IconPath.Call))) />
-        <Operation Model=@(new(UriProvider.Get(AbmUri.Sms), new(IconPath.Sms))) />
+        <Operation Model=@(new(UriProvider.Get(AbmUri.Call), new(SvgIcon.Call))) />
+        <Operation Model=@(new(UriProvider.Get(AbmUri.Sms), new(SvgIcon.Sms))) />
         <Operation Model=@(new(UriProvider.Get(AbmUri.WhatsApp), new(Class: "whatsapp"))) />
     </div>
     <div class="column grow">

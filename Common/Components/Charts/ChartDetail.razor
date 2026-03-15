@@ -1,0 +1,29 @@
+@using Common.Components.Bases
+@using Common.Enumerations
+@using Common.Extensions
+@using Common.Interfaces
+@using Common.Models.Svg
+@using Microsoft.AspNetCore.Components.Web
+@inherits TooltipBase<IDrawable>
+
+<Drawing Class=@_builder Shape=Shape @attributes=Shape.Attributes data-color=@Shape.Color.Var data-color-contour=@Shape.Palette.Contour?.Var
+    selected=@Shape.IsSelected focusable=@Shape.IsFocusable tabindex=@TabIndex clicked=@IsClicked
+    @onclick=Activate @onkeyup=Activate @onmouseover=Show @onmouseout=Hide @onmousemove=Update @onfocusin=Show @onfocusout=Hide />
+
+@code {
+    private Shape Shape => Model.Shape;
+    private string TabIndex => Shape.IsFocusable ? "0" : "-1";
+    private bool IsClicked { get; set; }
+
+    protected override void Activate(MouseEventArgs _)
+    {
+        IsClicked = true;
+        base.Activate(_);
+    }
+
+    protected override void Show(FocusEventArgs _)
+    {
+        IsClicked = false;
+        base.Show(_);
+    }
+}

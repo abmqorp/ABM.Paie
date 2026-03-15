@@ -1,11 +1,14 @@
 ﻿@page "/experience"
 @using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
+@using Common.Attributes
 @using Common.Components
 @using Common.Components.Charts
 @using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Extensions
 @using Common.Models.Charts
+@using Common.Models.General
 @inject IUriProvider UriProvider
 
 <Section Model=UriProvider.Get(AbmUri.Experience) />
@@ -26,25 +29,109 @@
 </Paragraph>
 
 <div class="wrap justify-evenly">
-    <PieChart Caption="Proportion d'heures de formation « Initiale » et d'heures de formation « Perfectionnement » sur un total de plus de 3 300 heures de formation."
-        Templates=@(new PieModel([
-        new("Initiale", 2287, Color: Color.Primary),
-        new("Perfectionnement", 1059, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [new("Initiale", 2287, Color: Color.Primary), new("Perfectionnement", 1059, Color: Color.Gray)],
+        new("Proportion d'heures de formation « Initiale » et d'heures de formation « Perfectionnement » sur un total de plus de 3 300 heures de formation.",
+            Position.Bottom))) />
 
-    <PieChart Caption="Proportion d'heures de formation réalisées en présentiel et à distance sur un total de plus de 2 200 heures de formation « Initiale »."
-        Templates=@(new PieModel([
-        new("Présentiel", 1879, Color: Color.Primary),
-        new("Distanciel", 408, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [new("Présentiel", 1879, Color: Color.Primary), new("Distanciel", 408, Color: Color.Gray)],
+        new("Proportion d'heures de formation réalisées en présentiel et à distance sur un total de plus de 2 200 heures de formation « Initiale ».",
+            Position.Bottom))) />
 </div>
 
 <h3>Mes déplacements</h3>
 
 <Paragraph>
-    « Initiale » ou « Perfectionnement », j'ai principalement formé dans la région PACA, Île-de-France, Pays-de-la-Loire et Bretagne.
+    « Initiale » ou « Perfectionnement », j'ai principalement formé dans les régions PACA, Île-de-France, Pays-de-la-Loire et Bretagne.
 </Paragraph>
 
+@{
+    var reference = new Reference(UriProvider.Get(AbmUri.OpenStreetMap), UriProvider.Get(AbmUri.OpenDataCommonsODbL));
+    var viewBox = "382 -5 105 105";
+    var hour = " h";
+
+    IEnumerable<BubbleChartDetailModel> regions = [
+        new(Region.AuvergneRhoneAlpes.Description, 10, new(452, 58)),
+        new(Region.Normandie.Description, 18, new(421, 23)),
+        new(Region.Corse.Description, 20, new(482, 90)),
+        new(Region.GrandEst.Description, 72, new(460, 26)),
+        new(Region.HautsDeFrance.Description, 158, new(438, 12)),
+        new(Region.NouvelleAquitaine.Description, 208, new(420, 62)),
+        new(Region.Bretagne.Description, 234, new(401, 31)),
+        new(Region.Occitanie.Description, 336, new(435, 76)),
+        new(Region.IleDeFrance.Description, 348, new(437, 26)),
+        new(Region.PaysDeLaLoire.Description, 421, new(414, 38)),
+        new(Region.ProvenceAlpesCoteDAzur.Description, 702, new(462, 76)),
+    ];
+
+    IEnumerable<BubbleChartDetailModel> departments = [
+        new(Department.Sarthe.Description, 2, new(421, 33)),
+        new(Department.Moselle.Description, 2, new(465, 22)),
+        new(Department.Aveyron.Description, 2, new(438, 70)),
+        new(Department.Drome.Description, 4, new(455, 66)),
+        new(Department.Aude.Description, 4, new(436, 81)),
+        new(Department.Dordogne.Description, 5, new(424, 62)),
+        new(Department.Correze.Description, 5, new(432, 60)),
+        new(Department.Mayenne.Description, 5, new(416, 32)),
+        new(Department.ValDOise.Description, 5, new(434, 22)),
+        new(Department.TarnEtGaronne.Description, 5, new(428, 72)),
+        new(Department.Lot.Description, 5, new(431, 66)),
+        new(Department.SeineMaritime.Description, 7, new(426, 16)),
+        new(Department.SeineSaintDenis.Description, 7, new(437, 24)),
+        new(Department.HautesAlpes.Description, 7, new(463, 66)),
+        new(Department.PasDeCalais.Description, 7, new(434, 7)),
+        new(Department.Gard.Description, 8, new(449, 72)),
+        new(Department.CorseDuSud.Description, 8, new(481, 92)),
+        new(Department.CharenteMaritime.Description, 9, new(414, 55)),
+        new(Department.Morbihan.Description, 12, new(401, 35)),
+        new(Department.BasRhin.Description, 12, new(471, 26)),
+        new(Department.PyreneesAtlantiques.Description, 13, new(413, 79)),
+        new(Department.MeurtheEtMoselle.Description, 14, new(462, 26)),
+        new(Department.HautesPyrenees.Description, 19, new(421, 82)),
+        new(Department.Vaucluse.Description, 21, new(456, 73)),
+        new(Department.DeuxSevres.Description, 21, new(418, 48)),
+        new(Department.CotesDArmor.Description, 21, new(400, 29)),
+        new(Department.Vendee.Description, 21, new(412, 47)),
+        new(Department.Finistere.Description, 24, new(391, 31)),
+        new(Department.Gironde.Description, 28, new(416, 63)),
+        new(Department.IlleEtVilaine.Description, 36, new(409, 31)),
+        new(Department.HauteGaronne.Description, 38, new(429, 77)),
+        new(Department.AlpesMaritimes.Description, 49, new(469, 73)),
+        new(Department.Var.Description, 49, new(463, 78)),
+        new(Department.Herault.Description, 52, new(444, 76)),
+        new(Department.Nord.Description, 55, new(441, 7)),
+        new(Department.MaineEtLoire.Description, 57, new(416, 39)),
+        new(Department.LoireAtlantique.Description, 81, new(409, 40)),
+        new(Department.Paris.Description, 126, new(436, 25)),
+        new(Department.BouchesDuRhone.Description, 152, new(455, 77)),
+    ];
+}
+
+<div class="wrap justify-evenly">
+    <Chart Reference=reference Model=@(new BubbleChartModel(
+        regions,
+        new("Proportion de formations réalisées selon les régions de France métropolitaine sur un total de plus de 3 300 heures de formation."),
+        Enum.GetValues<Region>()
+            .Where(r => (int)r > 6)
+            .Select(r => new Common.Models.Svg.Path(r.Get<PathAttribute>()?.Path ?? "", new(Color.Gray, Contour: Color.GrayDark))),
+        viewBox,
+        unit: hour,
+        transform: d => Math.Log(d / 6) * 2)) />
+
+    <Chart Reference=reference Model=@(new BubbleChartModel(
+        departments,
+        new("Proportion de formations réalisées selon les départements de France métropolitaine sur un total de plus de 3 300 heures de formation."),
+        Enum.GetValues<Department>()
+            .Where(r => (int)r < 971)
+            .Select(r => new Common.Models.Svg.Path(r.Get<PathAttribute>()?.Path ?? "", new(Color.Gray, Contour: Color.GrayDark))),
+        viewBox,
+        unit: hour,
+        transform: d => Math.Log((1 + d) / 1.5) * 1.5)) />
+</div>
+
 <Paragraph>
-    Je n'ai malheureusement jamais eu la chance de rencontrer nos clients ultra-marins sur les régions et départements d'Outre-mer.
+    Je n'ai malheureusement jamais eu la chance de rencontrer nos clients ultra-marins sur les régions et départements d'outre-mer.
 </Paragraph>
 
 <h3>La formation « Collective »</h3>
@@ -57,18 +144,20 @@
 </Paragraph>
 
 <div class="wrap justify-evenly">
-    <PieChart Caption="Proportion d'heures de formations en présentiel intra « Clients » et inter « Collective » sur un total de 1 760 heures de formation « Collective »."
-        Templates=@(new PieModel([
-        new("Intra", 1573, Color: Color.Primary),
-        new("Inter", 306, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [new("Intra", 1573, Color: Color.Primary), new("Inter", 306, Color: Color.Gray)],
+        new("Proportion d'heures de formations en présentiel intra « Clients » et inter « Collective » sur un total de 1 760 heures de formation « Collective ».",
+            Position.Bottom))) />
 
-    <PieChart Caption="Répartition des heures de formation inter « Collective » selon 5 villes de France."
-        Templates=@(new PieModel([
-        new("Aix-en-Provence", 126, Color: Color.Primary),
-        new("Bordeaux", 18, Color: Color.GrayDark),
-        new("Lille", 36, Color: Color.GrayLight),
-        new("Paris", 54, Color: Color.PrimaryDark),
-        new("Toulouse", 72, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [
+            new("Aix-en-Provence", 126, Color: Color.Primary),
+            new("Bordeaux", 18, Color: Color.GrayDark),
+            new("Lille", 36, Color: Color.GrayLight),
+            new("Paris", 54, Color: Color.PrimaryDark),
+            new("Toulouse", 72, Color: Color.Gray)
+        ],
+        new("Répartition des heures de formation inter « Collective » selon 5 villes de France.", Position.Bottom))) />
 </div>
 
 <h3>La formation « Perfectionnement »</h3>
@@ -83,15 +172,15 @@
 </Paragraph>
 
 <div class="wrap justify-evenly">
-    <PieChart Caption="Proportion d'heures de formation « Thématique définie » et « À la carte » sur un total de 1 100 heures de formation « Perfectionnement »."
-        Templates=@(new PieModel([
-        new("À la carte", 697, Color: Color.Primary),
-        new("Thématique définie", 362, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [new("À la carte", 697, Color: Color.Primary), new("Thématique définie", 362, Color: Color.Gray)],
+        new("Proportion d'heures de formation « Thématique définie » et « À la carte » sur un total de 1 100 heures de formation « Perfectionnement ».",
+            Position.Bottom))) />
 
-    <PieChart Caption="Proportion d'heures de formation réalisées en présentiel et à distance sur un total de 700 heures de formation « À la carte »."
-        Templates=@(new PieModel([
-        new("Présentiel", 1879, Color: Color.Primary),
-        new("Distanciel", 408, Color: Color.Gray)]).Slices) />
+    <Chart Model=@(new PieChartModel(
+        [new("Présentiel", 1879, Color: Color.Primary), new("Distanciel", 408, Color: Color.Gray)],
+        new("Proportion d'heures de formation réalisées en présentiel et à distance sur un total de 700 heures de formation « À la carte ».",
+            Position.Bottom))) />
 </div>
 
 <h3>La formation « Thématique Définie » en distanciel</h3>
@@ -107,7 +196,7 @@
 </Paragraph>
 
 @{
-    IEnumerable<BarModel> bars = [
+    IEnumerable<ChartDetailModel> bars = [
         new("DOM",
             47,
             "<b>La formation « DOM » :</b><br />La formation DOM était une formation libre totalement adaptée aux besoins spécifiques et à la situation géographique."),
@@ -158,10 +247,10 @@
     ];
 }
 
-<BarChart Class="my-5" Caption="Nombre d'heures de formation « Thématique Définie » en distanciel par thématique."
-    Description=@($"<i style=\"color: {Color.Danger.Var};\">Sélectionnez une formation sur le graphique pour voir sa description.</i>")
-    Templates=@bars Max=70 Ordinates=@([0, 20, 40, 60]) />
-
-@code {
-
-}
+<Chart Class="my-5" Model=@(new BarChartModel(
+    bars,
+    [0, 20, 40, 60],
+    new("Nombre d'heures de formation « Thématique Définie » en distanciel par thématique."),
+    new(Color.Gray, Color.Primary),
+    description: $"<i style=\"color: {Color.Danger.Var};\">Sélectionnez une formation sur le graphique pour voir sa description.</i>",
+    unit: hour)) />

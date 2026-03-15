@@ -1,0 +1,90 @@
+.common__chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.common__chart__content {
+  position: relative;
+}
+
+.common__chart figcaption.top {
+  margin-top: 0.5rem;
+}
+
+.common__chart__description {
+  margin-top: 0.5rem;
+}
+
+.common__chart__reference {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  text-align: left;
+  --fontsize: 0.8rem;
+  font-size: var(--fontsize);
+  margin-bottom: 0.75rem;
+  margin-left: 2rem;
+}
+
+.common__chart__legend {
+  text-align: left;
+  margin-left: 1rem;
+}
+
+.common__chart__legend p {
+  margin-block: 0.25rem;
+}
+
+.common__chart__legend p svg {
+  height: calc(var(--fontsize) * 0.8);
+  width: fit-content;
+  fill: attr(data-color type(<color>));
+}
+
+.common__chart .common__tooltip__text {
+  position: absolute;
+  background-color: var(--gray-dark);
+  border: 0.125rem solid var(--white);
+  color: var(--white);
+  text-align: center;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  white-space: nowrap;
+  transition: 250ms opacity 500ms ease-out;
+}
+
+.common__chart .common__tooltip__text[opaque] {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.common__piechart {
+  width: 28rem;
+}
+
+.common__piechart .common__chart__content svg {
+  width: 12rem;
+}
+
+.common__barchart > div, .common__barchart .common__chart__content {
+  width: 100%;
+  max-width: 48rem;
+}
+
+.common__barchart .common__chart__content svg {
+  height: auto;
+  width: 100%;
+}
+
+.common__barchart .common__chart__description {
+  width: 100%;
+}
+
+.common__bubblechart, .common__bubblechart .common__chart__content svg {
+  width: 28rem;
+}

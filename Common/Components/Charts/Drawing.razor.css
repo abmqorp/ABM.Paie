@@ -1,0 +1,52 @@
+.common__drawing {
+  --color: attr(data-color type(<color>));
+  --color-contour: attr(data-color-contour type(<color>));
+  fill: var(--color);
+  outline: none;
+}
+
+.common__drawing:not([focusable]) {
+  pointer-events: none;
+}
+
+.common__drawing[focusable] {
+  cursor: help;
+}
+
+.common__drawing[focusable]:hover, .common__drawing[focusable]:not([clicked]):focus {
+  fill: color(from var(--color) display-p3 calc(r - 0.15) calc(g - 0.15) calc(b - 0.15));
+}
+
+.common__piechart__detail {
+  stroke: var(--color-contour);
+  stroke-linecap: round;
+  stroke-width: 2%;
+}
+
+.common__barchart__detail {
+  stroke-width: 0;
+}
+
+.common__barchart__axis {
+  stroke: var(--color);
+  stroke-width: 0.33%;
+}
+
+.common__barchart__abscissa, .common__barchart__ordinate {
+  font-size: 0.033rem;
+}
+
+.common__bubblechart__detail {
+  stroke: var(--color-contour);
+  stroke-linecap: round;
+  stroke-width: 0.25%;
+}
+
+.common__bubblechart__detail[focusable] {
+  fill-opacity: 0.33;
+  stroke-width: 0.33%;
+}
+
+.common__drawing[focusable]:hover, .common__drawing[focusable]:not([clicked]):focus {
+  fill-opacity: 67;
+}

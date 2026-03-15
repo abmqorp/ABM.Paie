@@ -3,7 +3,7 @@
 @using Common.Models
 @inherits Base
 
-<ImageTemplate Class=@Class Label=@Model.Label Source=@Model.Source Scale=Model.Scale Property=Model.Property />
+<ImageTemplate Class=@_builder Label=@Model.Label Source=@Model.Source Scale=Model.Scale Property=Model.Property />
 
 @code {
     [Parameter, EditorRequired]

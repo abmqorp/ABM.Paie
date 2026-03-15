@@ -16,9 +16,9 @@ public abstract class TooltipBase<T> : Base
     [Parameter]
     public EventCallback<TipEventArgs<T>?> OnChanged { get; set; }
 
-    protected Point? Point { get; set; }
+    protected Vector? Vector { get; set; }
     protected string Style
-        => $"left: {Compute(Point?.X)}; top: {Compute(Point?.Y)}; transform: translate({Compute(Point?.X, 20, "-50%")}, {Compute(Point?.Y, 24, "-50%")});";
+        => $"left: {Compute(Vector?.X)}; top: {Compute(Vector?.Y)}; transform: translate({Compute(Vector?.X, 20, "-50%")}, {Compute(Vector?.Y, 24, "-50%")});";
 
     private void Activate() => OnActivated.InvokeAsync();
     protected virtual void Activate(MouseEventArgs _) => Activate();
@@ -36,13 +36,13 @@ public abstract class TooltipBase<T> : Base
 
     protected void Hide()
     {
-        Point = null;
+        Vector = null;
         Change(null);
     }
 
     protected void Update(MouseEventArgs args)
     {
-        Point = new(args.OffsetX, args.OffsetY);
+        Vector = new(args.OffsetX, args.OffsetY);
         Change(new(Model, Style));
     }
 

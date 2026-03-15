@@ -2,5 +2,8 @@
 
 public static class Constants
 {
-    public const int SecondsToMilliseconds = 1000;
+    public static class Time
+    {
+        public const int SecondsToMilliseconds = 1000;
+    }
 }

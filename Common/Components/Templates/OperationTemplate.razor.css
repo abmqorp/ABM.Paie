@@ -6,6 +6,10 @@
   font-size: var(--description__fontsize);
 }
 
+.common__operation.thin {
+  padding: 0;
+}
+
 .common__operation.h2, .common__operation.large {
   padding: 1rem;
 }

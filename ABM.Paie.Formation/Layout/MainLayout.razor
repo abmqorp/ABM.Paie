@@ -1,9 +1,10 @@
 ﻿@using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
 @using Common.Components
-@using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Models
 @using Common.Tools
+@using Common.Tools.Builders
 @inherits LayoutComponentBase
 @inject IConfiguration Configuration
 @inject IUriProvider UriProvider
@@ -15,31 +16,9 @@
 
     var formations = GetMenu([AbmUri.Formations, AbmUri.Catalogue, AbmUri.Perfectionnement]);
     var actualites = GetMenu([AbmUri.Actualites]);
-    var headerAbmPaie = GetMenu(
-        [
-            AbmUri.Abmpaie,
-            AbmUri.Organigramme,
-            AbmUri.Qualiopi,
-            AbmUri.Indicateurs,
-            AbmUri.Valeurs,
-        ]);
-    var experience = GetMenu(
-        [
-            AbmUri.Experience,
-            AbmUri.Cv,
-            AbmUri.Silae,
-            AbmUri.Chiffres,
-            AbmUri.RefAssistance,
-            AbmUri.RefHandicap,
-        ]);
-    var headerContact = GetMenu(
-        [
-            AbmUri.Contact,
-            AbmUri.Reserver,
-            AbmUri.Coordonnees,
-            AbmUri.PagesOfficielles,
-        ],
-        "filled");
+    var headerAbmPaie = GetMenu([AbmUri.Abmpaie, AbmUri.Organigramme, AbmUri.Qualiopi, AbmUri.Indicateurs, AbmUri.Valeurs]);
+    var experience = GetMenu([AbmUri.Experience, AbmUri.Cv, AbmUri.Silae, AbmUri.Chiffres, AbmUri.RefAssistance, AbmUri.RefHandicap]);
+    var headerContact = GetMenu([AbmUri.Contact, AbmUri.Reserver, AbmUri.Coordonnees, AbmUri.PagesOfficielles], "filled");
     var partenariats = GetMenu([AbmUri.Partenariats])
         .Append(UriProvider.Get(AbmUri.Facilae).ToBase())
         .Append(UriProvider.Get(AbmUri.Prismatik).ToBase())
@@ -49,25 +28,25 @@
 
     var footerAbmPaie = new OperationModel[]
     {
-            UriProvider.Get(AbmUri.Abmpaie),
-            UriProvider.Get(AbmUri.Organigramme),
-            UriProvider.Get(AbmUri.Indicateurs),
-            UriProvider.Get(AbmUri.Valeurs),
-            new(UriProvider.Get(AbmUri.Qualiopi), new(Class: "danger filled")),
+        UriProvider.Get(AbmUri.Abmpaie),
+        UriProvider.Get(AbmUri.Organigramme),
+        UriProvider.Get(AbmUri.Indicateurs),
+        UriProvider.Get(AbmUri.Valeurs),
+        new(UriProvider.Get(AbmUri.Qualiopi), new(Class: "danger filled")),
     };
     var footerExperience = new OperationModel[]
     {
-            UriProvider.Get(AbmUri.Experience),
-            UriProvider.Get(AbmUri.Cv),
-            UriProvider.Get(AbmUri.Silae),
-            UriProvider.Get(AbmUri.Chiffres),
-            new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
-            new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
+        UriProvider.Get(AbmUri.Experience),
+        UriProvider.Get(AbmUri.Cv),
+        UriProvider.Get(AbmUri.Silae),
+        UriProvider.Get(AbmUri.Chiffres),
+        new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
+        new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
     };
     var footerContact = new OperationModel[]
     {
         UriProvider.Get(AbmUri.Contact),
-        new(UriProvider.Get(AbmUri.RendezVous), new(IconPath.CalendarMonth, Class: "danger filled")),
+        new(UriProvider.Get(AbmUri.RendezVous), new(SvgIcon.CalendarMonth, Class: "danger filled")),
         UriProvider.Get(AbmMail.PaieFormation),
     };
 }
@@ -101,12 +80,12 @@
         <div>
             <DropDownMenu Operations=SetAsFooter(footerContact)>
                 <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
-                    <Icon Content=IconPath.Call />
-                    <Icon Content=IconPath.Sms />
+                    <Icon Content=SvgIcon.Call />
+                    <Icon Content=SvgIcon.Sms />
                     <Image Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
                     +33 7 48 10 65 39
                 </Paragraph>
-                <span Class="linkedin">
+                <span class="linkedin">
                     <Operation Model=linkedin />
                 </span>
             </DropDownMenu>

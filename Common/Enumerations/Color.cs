@@ -18,10 +18,10 @@ public enum Color
     Warning,
     [Description("success")]
     Success,
+    [Description("gray")]
+    Gray,
     [Description("gray-light")]
     GrayLight,
     [Description("gray-dark")]
     GrayDark,
-    [Description("gray")]
-    Gray,
 }

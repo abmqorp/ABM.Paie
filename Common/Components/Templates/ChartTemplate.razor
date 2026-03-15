@@ -1,0 +1,66 @@
+﻿@using Common.Components.Bases
+@using Common.Components.Charts
+@using Common.Enumerations
+@using Common.Extensions
+@using Common.Interfaces
+@using Common.Models
+@using Common.Models.General
+@inherits ChartBase<IDrawable>
+
+<figure class=@_builder.Add("common__chart mx-2")>
+    @if (Caption.Position is Position.Top)
+    {
+        <figcaption class="h4 top">@Caption.Text</figcaption>
+    }
+
+    <div class="wrap full-center">
+        <div class="common__chart__content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox=@ViewBox>
+                @foreach (var item in Templates)
+                {
+                    <ChartDetail Class=@item.Class Model=item OnActivated=@(() => Update(item)) OnChanged=SetTip />
+                }
+            </svg>
+            <div class="common__tooltip__text" opaque=@(Drawing is null) style=@Style>@Drawing?.Tip</div>
+
+            @if (!Reference.IsEmpty)
+            {
+                <div class="common__chart__reference column">
+                    @if (Reference.Attribution is UriModel attribution)
+                    {
+                        <span>Source de la carte : <Operation Model=attribution Class="thin" /></span>
+                    }
+                    @if (Reference.Licence is UriModel licence)
+                    {
+                        <span>Sous licence : <Operation Model=licence Class="thin" /></span>
+                    }
+                </div>
+            }
+        </div>
+
+        @if (Legends.Any())
+        {
+            <div class="common__chart__legend column">
+                @foreach (var legend in Legends)
+                {
+                    <p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 1" data-color=@legend.Key.Var><rect width="2", height="1" /></svg>
+                        @legend.Value
+                    </p>
+                }
+            </div>
+        }
+    </div>
+
+    @if ((SelectedItem?.Description ?? Description) is string description)
+    {
+        <div class="common__chart__description mx-3">
+            @(new MarkupString(description))
+        </div>
+    }
+
+    @if (Caption.Position is Position.Bottom)
+    {
+        <figcaption class="h4 bottom">@Caption.Text</figcaption>
+    }
+</figure>

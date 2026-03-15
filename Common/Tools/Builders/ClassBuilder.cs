@@ -1,4 +1,4 @@
-﻿namespace Common.Tools;
+﻿namespace Common.Tools.Builders;
 
 public sealed class ClassBuilder
 {

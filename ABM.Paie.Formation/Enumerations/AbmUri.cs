@@ -79,4 +79,8 @@ public enum AbmUri
     [Description("prismatik")]
     [Image(AbmImage.Prismatik)]
     Prismatik,
+    [Description("openstreetmap")]
+    OpenStreetMap,
+    [Description("opendatacommons-odbl")]
+    OpenDataCommonsODbL,
 }

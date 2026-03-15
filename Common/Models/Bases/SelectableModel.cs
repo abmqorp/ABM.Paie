@@ -1,8 +1,10 @@
-﻿namespace Common.Models.Bases;
+﻿using Common.Interfaces;
 
-public record SelectableModel(bool IsSelected)
+namespace Common.Models.Bases;
+
+public record SelectableModel(bool IsSelected) : ISelectable
 {
-    public bool IsSelected { get; set; } = IsSelected;
+    public bool IsSelected { get; private set; } = IsSelected;
 
-    public void Toggle() => IsSelected = !IsSelected;
+    public virtual void Toggle() => IsSelected = !IsSelected;
 }

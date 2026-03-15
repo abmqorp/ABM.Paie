@@ -1,5 +1,5 @@
 ﻿@using Common.Components.Bases
-@using Common.Enumerations
+@using Common.Enumerations.Svg
 @using Common.Models
 @inherits Base
 @inject NavigationManager NavigationManager
@@ -11,7 +11,7 @@
     {
         var hasLinks = Operations.Count() > 1;
 
-        if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = IconPath.ArrowDropDown }, Action = null };
+        if (IsDropDown && hasLinks) title = title with { Activator = title.Activator with { EndIcon = SvgIcon.ArrowDropDown }, Action = null };
         else if (!IsDropDown) _ = _builder.Add("block");
     
         <div class=@_builder>

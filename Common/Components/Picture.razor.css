@@ -1,9 +1,9 @@
-﻿.common__drawing {
+﻿.common__picture {
   height: fit-content;
   position: relative;
 }
 
-.common__drawing__signature {
+.common__picture__signature {
   & > .common__image {
     position: absolute;
     bottom: 0;

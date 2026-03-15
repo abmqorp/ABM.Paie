@@ -1,11 +1,11 @@
-﻿using Common.Enumerations;
+﻿using Common.Enumerations.Svg;
 using Common.Models.Bases;
-using Common.Tools;
+using Common.Tools.Builders;
 
 namespace Common.Models;
 
-public sealed record ActivatorModel(IconPath? StartIcon = default, IconPath? EndIcon = default, ClassBuilder? Class = default)
+public sealed record ActivatorModel(SvgIcon? StartIcon = default, SvgIcon? EndIcon = default, ClassBuilder? Class = default)
     : BaseModel(Class)
 {
-    public IconPath? EndIcon { get; set; } = EndIcon;
+    public SvgIcon? EndIcon { get; set; } = EndIcon;
 }
