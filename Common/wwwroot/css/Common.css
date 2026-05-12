@@ -264,6 +264,12 @@ ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  text-align: initial;
+
+  &.disc {
+    list-style-type: disc;
+    margin-left: 2rem;
+  }
 }
 
 figure {
@@ -355,4 +361,25 @@ a:hover, button:hover, a:focus, button:focus {
   font-family: 'Kaushan Script Regular';
   font-weight: bold;
   white-space: nowrap;
+}
+
+select {
+  margin: 0;
+  padding-block: 0.5rem;
+  padding-inline: 0.25rem 0;
+  font-size: inherit;
+  cursor: pointer;
+  color: var(--gray-dark);
+  border-radius: 0.5rem;
+  border: 0.0625rem solid var(--gray);
+  outline: none;
+
+  &:hover, &:focus {
+    background: linear-gradient(var(--hover--color), var(--hover--color)), linear-gradient(var(--filled--color), var(--filled--color));
+  }
+
+  option {
+    display: flex;
+    padding: 0.5rem;
+  }
 }

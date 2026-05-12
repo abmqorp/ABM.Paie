@@ -1,11 +1,11 @@
-﻿.common__quote {
+﻿.abm__quote {
     align-content: center;
     text-align: center;
     line-height: 1;
     width: stretch;
     padding: 0 0.5em;
-}
 
-span:first-child {
-    font-style: italic;
+  span:first-child {
+      font-style: italic;
+  }
 }

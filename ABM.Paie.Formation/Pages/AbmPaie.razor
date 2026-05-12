@@ -1,6 +1,7 @@
 ﻿@page "/abmpaie"
 @using ABM.Paie.Formation.Components
 @using ABM.Paie.Formation.Enumerations
+@using ABM.Paie.Formation.Models
 @using ABM.Paie.Formation.Resources
 @using ABM.Paie.Formation.Services
 @using Common.Components
@@ -9,7 +10,7 @@
 @using Common.Models
 @inject IUriProvider UriProvider
 
-<Section Model=@UriProvider.Get(AbmUri.Contact) />
+<Section Model=@UriProvider.Get(AbmUri.Abmpaie) />
 
 <Section Model=@UriProvider.Get(AbmUri.Organigramme) Level=SectionLevel.H2 />
 
@@ -74,6 +75,30 @@
     <PanelSet Class="grow mt-2" Templates=panels />
 </div>
 
+
+
+<Section Model=UriProvider.Get(AbmUri.Indicateurs) Level=SectionLevel.H2 />
+
+<div class="wrap justify-evenly">
+    <Satisfaction Class="mx-5" Model=_latestSatisfaction />
+    
+    <div class="mx-5">
+        <div class="full-center my-2">
+            <label for="satisfactions" class="me-2">Consulter les indicateurs de l'année :</label>
+            <select name="statisfactions" @onchange=SetSatisfaction>
+                @foreach (var index in Satisfactions.Archive.Select(s => s.Key))
+                {
+                    <option value=@index>@index</option>
+                }
+            </select>
+        </div>
+    
+        <Satisfaction Model=_selectedSatisfaction HasHeader=false />
+    </div>
+</div>
+
+
+
 <Section Model=UriProvider.Get(AbmUri.Valeurs) Level=SectionLevel.H2 />
 
 <Value Class="thin" Model=Values.Dictionary[Values.Key.Respect] Size="10" />
@@ -125,3 +150,16 @@
     Cela s'est traduit par ma volonté de retourner sur les bancs de l'université 
     en m'étant inscrite aux cursus universitaires pour découvrir de nouveaux logiciels de conception de digital formation.
 </Paragraph>
+
+@code {
+    private KeyValuePair<int, SatisfactionModel?> _latestSatisfaction => Satisfactions.Last;
+    private KeyValuePair<int, SatisfactionModel?> _selectedSatisfaction { get; set; } = Satisfactions.Archive.FirstOrDefault();
+
+    private void SetSatisfaction(ChangeEventArgs args)
+    {
+        if (int.TryParse(args.Value?.ToString(), out var index))
+        {
+            _selectedSatisfaction = new(index, Satisfactions.Dictionary[index]);
+        }
+    }
+}

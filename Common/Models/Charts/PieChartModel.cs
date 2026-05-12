@@ -19,18 +19,18 @@ public sealed record PieChartModel : ChartModel
         ViewBox = "-1 -1 2 2";
 
         var total = details.Sum(b => b.Count);
-        var cumPercent = -Quadrant;
+        var cumPercentage = -Quadrant;
         var drawings = new List<Drawing>();
 
         foreach (var detail in details)
         {
-            var start = Vector.Polar(1, cumPercent);
-            var percent = detail.Count * 100 / total;
-            cumPercent += percent;
-            var end = Vector.Polar(1, cumPercent);
+            var start = Vector.Polar(1, cumPercentage);
+            var percentage = detail.Count * 100 / total;
+            cumPercentage += percentage;
+            var end = Vector.Polar(1, cumPercentage);
             var path = new PathBuilder(new(detail.Color, Contour: Color.White), true, detail.IsSelected, multiplier)
                 .Move(start)
-                .Arc(Vector.Ones, percent > SemiCircle, end)
+                .Arc(Vector.Ones, percentage > SemiCircle, end)
                 .Line(Vector.Zeros)
                 .Close();
 

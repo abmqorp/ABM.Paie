@@ -1,0 +1,40 @@
+﻿@using ABM.Paie.Formation.Models
+@using Common.Components
+@using Common.Components.Bases
+@using Common.Enumerations.Svg
+@inherits Base
+
+<div class=@_builder.Add("abm__satisfaction")>
+    @if (HasHeader)
+    {
+        <Paragraph>ABM Paie en @Model.Key, c'est :</Paragraph>
+    }
+
+    @if (Model.Value is SatisfactionModel satisfaction)
+    {
+        <ul class="disc">
+            <li>
+                <span>@satisfaction.Percentage.ToString("0%")</span> de satisfaction
+                (@satisfaction.SurveyedCount avis)
+            </li>
+            <li><span>@satisfaction.HourCount</span> heures de formation dispensées</li>
+            <li><span>@satisfaction.TrainedCount</span> stagiaires ou apprentis</li>
+        </ul>
+    }
+    else
+    {
+        <div class="column full-center">
+            <Icon Class="h1" Content=SvgIcon.Calculate />
+            <Paragraph>
+                En cours de calcul...
+            </Paragraph>
+        </div>
+    }
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public KeyValuePair<int, SatisfactionModel?> Model { get; set; }
+    [Parameter]
+    public bool HasHeader { get; set; } = true;
+}

@@ -1,15 +1,15 @@
-.common__value {
+.abm__value {
   display: flex;
   justify-content: space-between;
   background: var(--primary);
+  
+  > div:has(.common__paragraph)
+  {
+    background: var(--white);
+    padding: 0.25rem 1.5rem;
+  }
 }
 
-.common__value > div:has(.common__paragraph)
-{
-  background: var(--white);
-  padding: 0.5rem 2rem;
-}
-
-.common__value.thin > div:has(.common__paragraph) {
+.abm__value.thin > div:has(.common__paragraph) {
   padding: 0 1rem;
 }

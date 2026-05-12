@@ -22,13 +22,24 @@
     <h1>Faire découvrir, progresser et se perfectionner</h1>
 
     <Paragraph Class="large mb-5">
-        Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN
-        via le logiciel MySilae.
+        Mon objectif est de faire monter en compétence vos gestionnaires de paie sur les domaines de la paie et de la DSN.
     </Paragraph>
 
     <Carousel Templates=quotes[0..6] Class="quote full-width">
         <Quote Model=context />
     </Carousel>
+
+
+
+    <Section Model=UriProvider.Get(AbmUri.Indicateurs) />
+
+    @{
+        var satisfaction = Satisfactions.Latest;
+    }
+
+    <Satisfaction Model=satisfaction />
+
+
 
     <Section Model=@UriProvider.Get(AbmUri.Valeurs) />
 
@@ -52,6 +63,8 @@
     <Carousel Templates=quotes[6..12] Class="quote full-width">
         <Quote Model=context />
     </Carousel>
+
+
 
     <Section Model=@UriProvider.Get(AbmUri.Actualites) />
 
@@ -84,6 +97,8 @@
         <Quote Model=context />
     </Carousel>
     
+
+
     <Section Model=@UriProvider.Get(AbmUri.Partenariats) />
     
     @{

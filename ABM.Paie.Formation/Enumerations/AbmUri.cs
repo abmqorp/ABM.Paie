@@ -30,7 +30,6 @@ public enum AbmUri
     [Parent(AbmUri.Abmpaie)]
     Valeurs,
     [Description("qualiopi")]
-    [Parent(AbmUri.Abmpaie)]
     Qualiopi,
     [Description("experience")]
     Experience,

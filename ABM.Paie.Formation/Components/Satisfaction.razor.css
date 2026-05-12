@@ -1,0 +1,24 @@
+﻿.abm__satisfaction {
+  text-align: left;
+  --filled--color: var(--gray-light);
+  background: var(--filled--color);
+  padding-block: 0.5rem 1rem;
+  padding-inline: 1rem;
+  border-radius: 1rem;
+
+  > .common__paragraph {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  li {
+    font-size: 1.25rem;
+    margin-top: 0.5rem;
+
+    span {
+      color: var(--primary);
+    }
+  }
+}
