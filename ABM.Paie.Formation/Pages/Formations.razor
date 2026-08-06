@@ -1,3 +1,14 @@
 ﻿@page "/formations"
+@using ABM.Paie.Formation.Dsn.Models
+@using ABM.Paie.Formation.Dsn.Resources
+
+<div>
+    <p>
+        @(new Declaration(Blocks.Neodes.Select(b
+            => new KeyValuePair<Dsn.Enums.Code, (Dsn.Enums.Nature, Dsn.Enums.Cardinality)>(b.Key, b.Value.First())).First()))
+        @(new Return(Blocks.Neores.Select(b
+            => new KeyValuePair<Dsn.Enums.Code, (Dsn.Enums.Trigger, Dsn.Enums.Cardinality)>(b.Key, b.Value.First())).First()))
+    </p>
+</div>
 
 @code { }

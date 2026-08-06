@@ -2,14 +2,9 @@
   display: flex;
   justify-content: space-between;
   background: var(--primary);
-  
-  > div:has(.common__paragraph)
-  {
-    background: var(--white);
-    padding: 0.25rem 1.5rem;
-  }
-}
 
-.abm__value.thin > div:has(.common__paragraph) {
-  padding: 0 1rem;
+  > div:has(.common__paragraph) {
+    background: var(--white);
+    padding: 0 1rem;
+  }
 }
