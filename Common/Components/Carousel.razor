@@ -2,8 +2,6 @@
 @using Common.Components.Bases
 @using Common.Enumerations.Svg
 @using Common.Extensions
-@using Common.Models
-@using Common.Tools
 @using Microsoft.AspNetCore.Components.Web
 @typeparam T
 @inherits Base
@@ -31,7 +29,7 @@
     [Parameter, EditorRequired]
     public RenderFragment<T?> ChildContent { get; set; }
     [Parameter]
-    public int? Interval { get; set; } = 10;
+    public TimeSpan? Interval { get; set; } = new(0, 0, 10);
     [Parameter]
     public int Batch { get; set; } = 1;
 
@@ -51,7 +49,7 @@
 
         if (Templates.Any() && !_isDisabled && Interval.HasValue)
         {
-            _timer = new(Interval.Value * Constants.Time.SecondsToMilliseconds);
+            _timer = new(Interval.Value);
             _timer.Elapsed += OnTimedEvent;
             _timer.AutoReset = true;
             _timer.Start();

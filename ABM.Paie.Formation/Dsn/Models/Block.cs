@@ -1,5 +1,5 @@
 ﻿using ABM.Paie.Formation.Dsn.Enums;
-using Common.Extensions;
+using Common.ExtensionsTemp;
 
 namespace ABM.Paie.Formation.Dsn.Models;
 

@@ -1,12 +1,11 @@
 ﻿@page "/experience"
 @using ABM.Paie.Formation.Enumerations
 @using ABM.Paie.Formation.Services
-@using Common.Attributes
 @using Common.Components
 @using Common.Components.Charts
 @using Common.Enumerations
 @using Common.Enumerations.Svg
-@using Common.Extensions
+@using Common.ExtensionsTemp
 @using Common.Models.Charts
 @using Common.Models.General
 @inject IUriProvider UriProvider
@@ -114,7 +113,7 @@
         new("Proportion de formations réalisées selon les régions de France métropolitaine sur un total de plus de 3 300 heures de formation."),
         Enum.GetValues<Region>()
             .Where(r => (int)r > 6)
-            .Select(r => new Common.Models.Svg.Path(r.Get<PathAttribute>()?.Path ?? "", new(Color.Gray, Contour: Color.GrayDark))),
+            .Select(r => new Common.Models.Svg.Path(r.Path, new(Color.Gray, Contour: Color.GrayDark))),
         viewBox,
         unit: hour,
         transform: d => Math.Log(d / 6) * 2)) />
@@ -124,7 +123,7 @@
         new("Proportion de formations réalisées selon les départements de France métropolitaine sur un total de plus de 3 300 heures de formation."),
         Enum.GetValues<Department>()
             .Where(r => (int)r < 971)
-            .Select(r => new Common.Models.Svg.Path(r.Get<PathAttribute>()?.Path ?? "", new(Color.Gray, Contour: Color.GrayDark))),
+            .Select(r => new Common.Models.Svg.Path(r.Path, new(Color.Gray, Contour: Color.GrayDark))),
         viewBox,
         unit: hour,
         transform: d => Math.Log((1 + d) / 1.5) * 1.5)) />

@@ -7,7 +7,7 @@ public sealed class NewsService : INewsService
 {
     private readonly IUriProvider _uriProvider;
 
-    public List<RecapModel> Recaps { get; }
+    public IEnumerable<RecapModel> Recaps { get; }
 
     public NewsService(IUriProvider uriProvider)
     {

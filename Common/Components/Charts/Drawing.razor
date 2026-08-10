@@ -17,11 +17,11 @@
 
         return Shape switch
         {
-            Path or PathBuilder => @<path class=@_builder @attributes="AdditionalAttributes" />,
-            Circle => @<circle class=@_builder @attributes="AdditionalAttributes" />,
-            Line => @<line class=@_builder @attributes="AdditionalAttributes" />,
-            Rect => @<rect class=@_builder @attributes="AdditionalAttributes" />,
-            Text text => @<text><text class=@_builder @attributes="AdditionalAttributes">@text.Content</text></text>,
+            Path or PathBuilder => @<path class=@_builder @attributes=AdditionalAttributes />,
+            Circle => @<circle class=@_builder @attributes=AdditionalAttributes />,
+            Line => @<line class=@_builder @attributes=AdditionalAttributes />,
+            Rect => @<rect class=@_builder @attributes=AdditionalAttributes />,
+            Text text => @<text><text class=@_builder @attributes=AdditionalAttributes>@text.Content</text></text>,
             _ => null,
         };
     }

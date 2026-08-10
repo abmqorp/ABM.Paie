@@ -1,14 +1,12 @@
-﻿@using System.ComponentModel
-@using Common.Attributes
-@using Common.Components.Bases
+﻿@using Common.Components.Bases
 @using Common.Enumerations.Svg
-@using Common.Extensions
+@using Common.ExtensionsTemp
 @inherits Base
 
 @if (Content is SvgIcon svg)
 {
     <svg class=@_builder.Add("common__icon") xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960">
-        <path d=@(svg.Get<PathAttribute>()?.Path) />
+        <path d=@svg.Path />
     </svg>
 }
 

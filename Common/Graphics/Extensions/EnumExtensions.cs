@@ -1,9 +1,8 @@
-﻿using Common.Attributes;
-using Common.Enumerations;
-using Common.Enumerations.Svg;
+﻿using Common.Extensions;
+using Common.Graphics.Enumerations;
 using System.ComponentModel;
 
-namespace Common.ExtensionsTemp;
+namespace Common.Graphics.Extensions;
 
 public static class EnumExtensions
 {
@@ -17,26 +16,11 @@ public static class EnumExtensions
 
         public string Description => value.Get<DescriptionAttribute>()?.Description ?? value.ToString();
 
-        private string GetPath() => value.Get<PathAttribute>()?.Path ?? value.ToString();
+        public string ToCamelCase() => value.ToString().ToCamelCase();
     }
 
     extension(Color value)
     {
         public string Var => $"var(--{value.Description})";
-    }
-
-    extension(SvgIcon value)
-    {
-        public string Path => value.GetPath();
-    }
-
-    extension(Region value)
-    {
-        public string Path => value.GetPath();
-    }
-
-    extension(Department value)
-    {
-        public string Path => value.GetPath();
     }
 }

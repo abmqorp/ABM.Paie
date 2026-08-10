@@ -1,7 +1,7 @@
 ﻿using ABM.Paie.Formation.Enumerations;
 using Common.Attributes;
 using Common.Enumerations.Svg;
-using Common.Extensions;
+using Common.ExtensionsTemp;
 using Common.Models;
 
 namespace ABM.Paie.Formation.Services;

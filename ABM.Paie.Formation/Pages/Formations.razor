@@ -1,14 +1,244 @@
 ﻿@page "/formations"
-@using ABM.Paie.Formation.Dsn.Models
-@using ABM.Paie.Formation.Dsn.Resources
+@using Common.Graphics.Enumerations
+@using Common.Graphics.Svg.Enumerations
+@using Common.Graphics.Svg.Extensions
+@using Common.Graphics.Svg.Models
+@using static Common.Graphics.Models.Property
 
-<div>
+<h2>Les déclarations sociales</h2>
+
+@{
+    var top = new List<(string Text, Icon Icon, Color? Color)>()
+    {
+        new("SALARIÉ", Icon.Person, null), new("DÉCLARANT", Icon.Domain, null),
+        new("DÉCLARATION", Icon.Computer, Color.Primary), new("RETOURS", Icon.Mail, null),
+    };
+
+    var svg = new Container(new(0, 0, 1000, 640), true) { Fill = Color.GrayDark }.Add(
+        new Group() { TextAnchor = Anchor.Middle, FontSize = new(9) }.AddRange(
+            top.Select((t, i) => 
+                new Container(ViewBox.Icon){ X = new(150 * i), Y = new(0), Width = new(15), Height = new(20), Fill = t.Color }.AddRange([
+                    new Text(t.Text, new(50, Unit.Percent), new(-82.5, Unit.Percent)),
+                    new Path(t.Icon) { Transform = new Transform().Scale(0.5).Translate(new(480, -560)) },
+                ])
+            )
+        )
+    ).Add(
+        new Group() { Stroke = Color.GrayDark }.AddRange(Enumerable.Range(1, 3)
+            .Select(r => new Line(new(150 * r), new(150 * r), new(80), new(592)))
+        )
+    ).Add(
+        new Group() { Fill = Color.White, FontSize = new(1.25) }.AddRange([
+            new Rect(new(600), new(32), new(35), new(9)) { Fill = Color.Primary, Opacity = new(0.75) },
+            new Rect(new(600), new(89.6), new(35), new(27)) { Fill = Color.Primary, Opacity = new(0.40) },
+            new Text("Dépôt de la DSN", new(650), new(134.4)),
+            new Container(ViewBox.Icon) { X = new(630), Y = new(131.2), Width = new(10), Height = new(10) }.Add(
+                new Path(Icon.Cancel) { Transform = new Transform().Scale(0.5) }
+            ),
+            new Text("Rejet", new(685), new(185.6)),
+            new Container(ViewBox.Icon) { X = new(630), Y = new(182.4), Width = new(10), Height = new(10) }.Add(
+                new Path(Icon.CheckCircle) { Transform = new Transform().Scale(0.5) }
+            ),
+            new Text("Acceptation", new(685), new(236.8)),
+            new Text("PLATEFORMES DE DÉPÔT", new(620), new(70.4)) { FontSize = new(1.5) },
+        ])
+    );
+}
+
+<Common.Graphics.Svg.Components.Container Model=svg />
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" fill="var(--gray-dark)">
+    <g text-anchor="middle" font-size="9rem">
+        <svg x="0" y="0" width="15%" height="20%" viewBox="0 -960 960 960">
+            <text x="50%" y="-82.5%">SALARIÉ</text>
+            <path d=@Icon.Person.Path transform="scale(0.50) translate(480, -560)" />
+        </svg>
+        <svg x="15%" y="0" width="15%" height="20%" viewBox="0 -960 960 960">
+            <text x="50%" y="-82.5%">DÉCLARANT</text>
+            <path d=@Icon.Domain.Path transform="scale(0.50) translate(480, -560)" />
+        </svg>
+        <svg x="30%" y="0" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--primary)">
+            <text x="50%" y="-82.5%">DÉCLARATION</text>
+            <path d=@Icon.Computer.Path transform="scale(0.50) translate(480, -560)" />
+        </svg>
+        <svg x="45%" y="0" width="15%" height="20%" viewBox="0 -960 960 960">
+            <text x="50%" y="-82.5%">RETOURS</text>
+            <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -560)" />
+        </svg>
+    </g>
+
+    <g stroke="var(--gray-dark)" stroke-width="1">
+        <line x1="15%" x2="15%" y1="12.5%" y2="92.5%" />
+        <line x1="30%" x2="30%" y1="12.5%" y2="92.5%" />
+        <line x1="45%" x2="45%" y1="12.5%" y2="92.5%" />
+    </g>
+    
+    <g fill="var(--white)" font-size="1.25rem">
+        <rect x="60%" y="5%" width="35%" height="9%" fill="var(--primary)" opacity="0.75" />
+        <rect x="60%" y="14%" width="35%" height="27%" fill="var(--primary)" opacity="0.40" />
+        <text x="65%" y="21%">Dépôt de la DSN</text>
+        <svg x="63%" y="20.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.Cancel.Path transform="scale(0.50)" />
+        </svg>
+        <text x="68.5%" y="29%">Rejet</text>
+        <svg x="63%" y="28.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.CheckCircle.Path transform="scale(0.50)" />
+        </svg>
+        <text x="68.5%" y="37%">Acceptation</text>
+        <text x="62%" y="11%" font-size="1.50rem">PLATEFORMES DE DÉPÔT</text>
+    </g>
+    <g fill="var(--white)">
+        <rect x="65%" y="43.5%" width="35%" height="47.5%" fill="var(--gray-dark)" opacity="0.40" />
+        <rect x="65%" y="91%" width="35%" height="9%" fill="var(--gray-dark)" opacity="0.75" />
+        <text x="70%" y="48.5%" font-size="1.25rem">Analyse - contrôles :</text>
+        <g font-size="0.80rem">
+            <text x="66%" y="53.5%">BLOQUANTS :</text>
+            <text x="78.25%" y="53.5%">NON BLOQUANTS :</text>
+            <text x="94%" y="53.5%">OK :</text>
+        </g>
+        <svg x="73.125%" y="44.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.Cancel.Path transform="scale(0.33)" />
+        </svg>
+        <svg x="88.75%" y="44.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.BuildCircle.Path transform="scale(0.33)" />
+        </svg>
+        <svg x="95%" y="44.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.CheckCircle.Path transform="scale(0.33)" />
+        </svg>
+
+        <svg x="68%" y="54.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.Cancel.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="73%" y="54.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.BuildCircle.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="68%" y="62.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.Cancel.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="73%" y="62.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.BuildCircle.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="78%" y="62.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.CheckCircle.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="68%" y="70.5%" width="10%" height="10%" viewBox="0 -960 960 960">
+            <path d=@Icon.BuildCircle.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="68%" y="78.5%" width="10%" height="10%" viewBox="0 -960 960 960" fill="var(--primary-dark)">
+            <path d=@Icon.BuildCircle.Path transform="scale(0.75)" />
+        </svg>
+        <svg x="73%" y="78.5%" width="10%" height="10%" viewBox="0 -960 960 960" fill="var(--primary-dark)">
+            <path d=@Icon.CheckCircle.Path transform="scale(0.75)" />
+        </svg>
+        <text x="80%" y="86%" fill="var(--primary-dark)" font-size="1.25rem">(si signalements)</text>
+        <text x="75%" y="97%" font-size="1.50rem">ORGANISMES</text>
+    </g>
+
+    <g stroke="var(--primary)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="63%" y1="20%" y2="20%" />
+        <line x1="61%" x2="63%" y1="18.75%" y2="20%" />
+        <line x1="61%" x2="63%" y1="21.25%" y2="20%" />
+    </g>
+    <svg x="30%" y="10%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--primary)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-47.5%" text-anchor="middle" font-size="8rem">DSN</text>
+        <path d=@Icon.Computer.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+
+    <g stroke="var(--danger)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="63%" y1="28%" y2="28%" />
+        <line x1="22.5%" x2="24.5%" y1="28%" y2="26.75%" />
+        <line x1="22.5%" x2="24.5%" y1="28%" y2="29.25%" />
+    </g>
+    <svg x="45%" y="18%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--danger)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">ARE</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+
+    <g stroke="var(--success)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="63%" y1="36%" y2="36%" />
+        <line x1="22.5%" x2="24.5%" y1="36%" y2="34.75%" />
+        <line x1="22.5%" x2="24.5%" y1="36%" y2="37.25%" />
+
+        <line x1="61.5%" x2="61.5%" y1="36%" y2="47.5%" />
+        <line x1="61.5%" x2="68%" y1="47.5%" y2="47.5%" />
+        <line x1="66%" x2="68%" y1="46.25%" y2="47.5%" />
+        <line x1="66%" x2="68%" y1="48.75%" y2="47.5%" />
+    </g>
+    <svg x="41.75%" y="26%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--success)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-15%" text-anchor="middle" font-size="8rem">CCO</text>
+        <path d=@Icon.License.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+    <svg x="48%" y="26%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--success)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">AEE</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+
+    <g stroke="var(--danger)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="68.5%" y1="61%" y2="61%" />
+        <line x1="22.5%" x2="24.5%" y1="61%" y2="59.75%" />
+        <line x1="22.5%" x2="24.5%" y1="61%" y2="62.25%" />
+    </g>
+    <svg x="45%" y="51%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--danger)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">BAN</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+
+    <g stroke="var(--gray-dark)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="68.5%" y1="69%" y2="69%" />
+        <line x1="22.5%" x2="24.5%" y1="69%" y2="67.75%" />
+        <line x1="22.5%" x2="24.5%" y1="69%" y2="70.25%" />
+    </g>
+    <svg x="45%" y="59%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--gray-dark)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">CRM</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+
+    <g stroke="var(--primary-dark)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="68.5%" y1="77%" y2="77%" />
+        <line x1="22.5%" x2="24.5%" y1="77%" y2="75.75%" />
+        <line x1="22.5%" x2="24.5%" y1="77%" y2="78.25%" />
+    </g>
+    <svg x="30%" y="67%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--primary-dark)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <path d=@Icon.Computer.Path transform="scale(0.50) translate(480, -480)" />
+        <path d=@Icon.ChangeCircle.Path transform="scale(0.25) translate(1440, -1560)" />
+    </svg>
+
+    <g stroke="var(--primary-dark)" stroke-width="5" stroke-linecap="round">
+        <line x1="22.5%" x2="68.5%" y1="85%" y2="85%" />
+        <line x1="22.5%" x2="24.5%" y1="85%" y2="83.75%" />
+        <line x1="22.5%" x2="24.5%" y1="85%" y2="86.25%" />
+    </g>
+    <svg x="45%" y="75%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--primary-dark)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">AER</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+    <g stroke="var(--primary-dark)" stroke-width="5" stroke-linecap="round">
+        <line x1="7.5%" x2="21.25%" y1="85%" y2="85%" />
+        <line x1="7.5%" x2="9.5%" y1="85%" y2="83.75%" />
+        <line x1="7.5%" x2="9.5%" y1="85%" y2="86.25%" />
+    </g>
+    <svg x="7.5%" y="75%" width="15%" height="20%" viewBox="0 -960 960 960" fill="var(--primary-dark)">
+        <rect x="240" y="-672" width="50%" height="40%" fill="var(--white)" />
+        <text x="50%" y="-38.5%" text-anchor="middle" font-size="8rem">AER</text>
+        <path d=@Icon.Mail.Path transform="scale(0.50) translate(480, -480)" />
+    </svg>
+</svg>
+
+@* <div>
     <p>
         @(new Declaration(Blocks.Neodes.Select(b
             => new KeyValuePair<Dsn.Enums.Code, (Dsn.Enums.Nature, Dsn.Enums.Cardinality)>(b.Key, b.Value.First())).First()))
         @(new Return(Blocks.Neores.Select(b
             => new KeyValuePair<Dsn.Enums.Code, (Dsn.Enums.Trigger, Dsn.Enums.Cardinality)>(b.Key, b.Value.First())).First()))
     </p>
-</div>
+</div> *@
 
 @code { }

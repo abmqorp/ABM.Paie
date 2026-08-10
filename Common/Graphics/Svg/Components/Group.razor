@@ -1,0 +1,10 @@
+﻿@inherits Shape
+
+<g @attributes=Model.Attributes>
+    @foreach (var shape in ((Models.Builder)Model).Shapes)
+    {
+        var parameters = new Dictionary<string, object>(shape.Attributes.Prepend(new(nameof(Model), shape)));
+        var bar = "bar";
+        <DynamicComponent Type=shape.Type Parameters=parameters />
+    }
+</g>
