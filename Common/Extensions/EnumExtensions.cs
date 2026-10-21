@@ -39,4 +39,9 @@ public static class EnumExtensions
     {
         public string Path => value.GetPath();
     }
+
+    extension(Keyboard value)
+    {
+        public string Key => value.Get<KeyAttribute>()?.Key ?? value.ToString();
+    }
 }

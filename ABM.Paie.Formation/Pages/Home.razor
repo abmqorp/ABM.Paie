@@ -101,10 +101,10 @@
     <Section Model=@UriProvider.Get(AbmUri.Partenariats) />
     
     @{
-        var partenariats = new (UriModel Model, string Class)[]
+        var partenariats = new (UriModel Model, string Class, string Description)[]
         {
-            new(UriProvider.Get(AbmUri.Facilae), "facilae"),
-            new(UriProvider.Get(AbmUri.Prismatik), "prismatik"),
+            new(UriProvider.Get(AbmUri.Facilae), "facilae", "« Facilite vos migrations et vos paramétrages dans Silae... »"),
+            new(UriProvider.Get(AbmUri.Prismatik), "prismatik", "« Chez Prismatik, nous créons des jeux sérieux physiques et sur-mesure »"),
         };
     }
     
@@ -115,7 +115,7 @@
             </Illustration>
             <Description>
                 <Paragraph Class="italic">
-                    @context.Model.Description
+                    @context.Description
                 </Paragraph>
             </Description>
             <Action>

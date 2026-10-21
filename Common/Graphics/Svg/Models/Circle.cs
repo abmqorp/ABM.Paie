@@ -11,5 +11,5 @@ namespace Common.Graphics.Svg.Models;
 public sealed class Circle(Cx cx, Cy cy, R r) : Shape
 {
     public override Type Type => typeof(Components.Circle);
-    public override Dictionary<string, object> Attributes => GetAttributes(cx, cy, r);
+    public override Dictionary<string, object?> Attributes => GetAttributes(cx, cy, r);
 }

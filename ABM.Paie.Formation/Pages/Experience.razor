@@ -6,13 +6,14 @@
 @using Common.Enumerations
 @using Common.Enumerations.Svg
 @using Common.ExtensionsTemp
+@using Common.Models
 @using Common.Models.Charts
 @using Common.Models.General
 @inject IUriProvider UriProvider
 
 <Section Model=UriProvider.Get(AbmUri.Experience) />
 
-<Section Model=UriProvider.Get(AbmUri.Chiffres) Level=SectionLevel.H2 />
+<Section Model=UriProvider.Get(AbmUri.ChiffresSilae) Level=SectionLevel.H2 />
 
 <Paragraph>
     Le nom et la description de ces formations sont indiqués de façon très globale, pour donner une idée du contenu. 
@@ -251,5 +252,79 @@
     [0, 20, 40, 60],
     new("Nombre d'heures de formation « Thématique Définie » en distanciel par thématique."),
     new(Color.Gray, Color.Primary),
-    description: $"<i style=\"color: {Color.Danger.Var};\">Sélectionnez une formation sur le graphique pour voir sa description.</i>",
+    description: $"<i class=\"danger\">Sélectionnez une formation sur le graphique pour voir sa description.</i>",
     unit: hour)) />
+
+
+
+<Section Model=UriProvider.Get(AbmUri.RefAssistance) Level=SectionLevel.H2 />
+
+<Paragraph>
+    Pour toutes demandes relatives à une assistance technique et/ou pédagogique, je suis à votre écoute à l'adresse :
+</Paragraph>
+<Operation Class="my-1 primary" Model=UriProvider.Get(AbmMail.Assistance) />
+
+@{
+    var diplomes = new List<UriModel>([
+        UriProvider.Get(AbmUri.Ipfa2027),
+        UriProvider.Get(AbmUri.Fipa2026),
+        UriProvider.Get(AbmUri.FipaAttestation),
+        UriProvider.Get(AbmUri.Cafel2025),
+        UriProvider.Get(AbmUri.CafelAttestation),
+    ]);
+
+    IEnumerable<TabModel> assistancePanels = [
+        new(
+            new UriModel("#assistance-diplomes", "Visualiser les programmes et attestations de fin de formation des diplômes suivis"),
+@<ul class="grow mx-2">
+@foreach (var diplome in diplomes) {
+<li><Operation Model=diplome /></li>
+}
+</ul>
+        ),
+    ];
+}
+
+<PanelSet Class="grow mt-3 mb-5" Templates=assistancePanels />
+
+
+
+<Section Model=UriProvider.Get(AbmUri.RefHandicap) Level=SectionLevel.H2 />
+
+<Paragraph>
+    Pour toutes demandes relatives à un handicap, je suis à votre écoute à l'adresse :
+</Paragraph>
+<Operation Class="my-1 primary" Model=UriProvider.Get(AbmMail.RefHandicap) />
+
+@{
+    var sensibilisationActions = new List<UriModel>([
+        UriProvider.Get(AbmUri.HandicapAttestationSensibilisation),
+        UriProvider.Get(AbmUri.HandicapDevenirReferent),
+        UriProvider.Get(AbmUri.HandicapTroublesCognitifs),
+        UriProvider.Get(AbmUri.HandicapRencontresRhfPaca),
+    ]);
+    
+    var professionnalisationActions = new List<UriModel>([
+        UriProvider.Get(AbmUri.HandicapSanteMentale),
+        UriProvider.Get(AbmUri.HandicapActivateurDialogueSocial),
+        UriProvider.Get(AbmUri.HandicapAideAst),
+        UriProvider.Get(AbmUri.HandicapAideStationAssise),
+    ]);
+
+    IEnumerable<TabModel> handicapPanels = [
+        new(
+            new UriModel("#handicap-actions-sensibilisation", "Visualiser mes attestations de suivis aux actions d'information et de sensibilisation"),
+@<ul class="grow mx-2">
+@foreach (var sensibilisationAction in sensibilisationActions) { <li><Operation Model=sensibilisationAction /></li> }
+</ul>
+        ),
+        new(
+            new UriModel("#handicap-actions-professionnalisation", "Visualiser mes attestations de présence aux actions de professionnalisation"),
+@<ul>
+@foreach (var professionnalisationAction in professionnalisationActions) { <li><Operation Model=professionnalisationAction /></li> }
+</ul>
+        ),
+    ];
+}
+
+<PanelSet Class="grow mt-3 mb-5" Templates=handicapPanels />

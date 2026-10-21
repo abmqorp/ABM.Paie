@@ -2,7 +2,7 @@
   color: inherit;
   font-size: var(--fontsize);
   display: flex;
-  align-items: end;
+  align-items: center;
 }
 
 .common__activator.large {
@@ -13,14 +13,23 @@
   font-size: 2.5rem;
 }
 
-svg + span {
+div:has(> svg) + div {
   margin-left: 0.25rem;
 }
 
-.common__activator:not(.full-width) > span:has(+ svg) {
+div + div:has(> svg) {
+  display: flex;
+  align-items: center;
+}
+
+.common__activator:not(.full-width) > div:has(+ div > svg) {
   margin-right: 0.25rem;
 }
 
-.common__activator.full-width > span:has(+ svg) {
+.common__activator.full-width > div:has(+ div > svg) {
   width: stretch;
+}
+
+div > span {
+  display: inline;
 }

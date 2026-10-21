@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Common.Components.Bases;
 
-public abstract class Base : ComponentBase
+public abstract class BaseTemp : ComponentBase
 {
     protected ClassBuilder _builder = new();
 

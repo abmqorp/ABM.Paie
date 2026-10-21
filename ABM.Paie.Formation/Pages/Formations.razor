@@ -1,7 +1,6 @@
 ﻿@page "/formations"
 @using Common.Graphics.Enumerations
 @using Common.Graphics.Svg.Enumerations
-@using Common.Graphics.Svg.Extensions
 @using Common.Graphics.Svg.Models
 @using static Common.Graphics.Models.Property
 
@@ -13,39 +12,161 @@
         new("SALARIÉ", Icon.Person, null), new("DÉCLARANT", Icon.Domain, null),
         new("DÉCLARATION", Icon.Computer, Color.Primary), new("RETOURS", Icon.Mail, null),
     };
-
-    var svg = new Container(new(0, 0, 1000, 640), true) { Fill = Color.GrayDark }.Add(
-        new Group() { TextAnchor = Anchor.Middle, FontSize = new(9) }.AddRange(
-            top.Select((t, i) => 
-                new Container(ViewBox.Icon){ X = new(150 * i), Y = new(0), Width = new(15), Height = new(20), Fill = t.Color }.AddRange([
-                    new Text(t.Text, new(50, Unit.Percent), new(-82.5, Unit.Percent)),
-                    new Path(t.Icon) { Transform = new Transform().Scale(0.5).Translate(new(480, -560)) },
-                ])
-            )
+    var topGroup = new Group() { TextAnchor = Anchor.Middle, FontSize = 9 }.AddRange(
+        top.Select((t, i) =>
+            new Container(ViewBox.Icon) { X = 150 * i, Y = 0, Width = 15, Height = 20, Fill = t.Color }.AddRange([
+                new Text(t.Text, 480, -792),
+                new Path(t.Icon) { Transform = new Scale(0.5).Translate(new(480, -560)) },
+            ])
         )
-    ).Add(
-        new Group() { Stroke = Color.GrayDark }.AddRange(Enumerable.Range(1, 3)
-            .Select(r => new Line(new(150 * r), new(150 * r), new(80), new(592)))
-        )
-    ).Add(
-        new Group() { Fill = Color.White, FontSize = new(1.25) }.AddRange([
-            new Rect(new(600), new(32), new(35), new(9)) { Fill = Color.Primary, Opacity = new(0.75) },
-            new Rect(new(600), new(89.6), new(35), new(27)) { Fill = Color.Primary, Opacity = new(0.40) },
-            new Text("Dépôt de la DSN", new(650), new(134.4)),
-            new Container(ViewBox.Icon) { X = new(630), Y = new(131.2), Width = new(10), Height = new(10) }.Add(
-                new Path(Icon.Cancel) { Transform = new Transform().Scale(0.5) }
-            ),
-            new Text("Rejet", new(685), new(185.6)),
-            new Container(ViewBox.Icon) { X = new(630), Y = new(182.4), Width = new(10), Height = new(10) }.Add(
-                new Path(Icon.CheckCircle) { Transform = new Transform().Scale(0.5) }
-            ),
-            new Text("Acceptation", new(685), new(236.8)),
-            new Text("PLATEFORMES DE DÉPÔT", new(620), new(70.4)) { FontSize = new(1.5) },
-        ])
     );
+
+    var axes = new Group() { Stroke = Color.GrayDark }.AddRange(
+        Enumerable.Range(1, 3).Select(r => new Line(150 * r, 150 * r, 80, 592))
+    );
+
+    var plateforms = new Group() { Fill = Color.White, FontSize = 1.25 }.AddRange([
+        new Rect(600, 32, 35, 9) { Fill = Color.Primary, Opacity = 0.75, Tooltip = @<div>toto</div> },
+        new Rect(600, 89.6, 35, 27) { Fill = Color.Primary, Opacity = 0.40 },
+        new Text("Dépôt de la DSN", 650, 134.4),
+        new Container(ViewBox.Icon) { X = 630, Y = 131.2, Width = 10, Height = 10 }.Add(
+            new Path(Icon.Cancel) { Transform = new Scale(0.5) }
+        ),
+        new Text("Rejet", 685, 185.6),
+        new Container(ViewBox.Icon) { X = 630, Y = 182.4, Width = 10, Height = 10 }.Add(
+            new Path(Icon.CheckCircle) { Transform = new Scale(0.5) }
+        ),
+        new Text("Acceptation", 685, 236.8),
+        new Text("PLATEFORMES DE DÉPÔT", 620, 70.4) { FontSize = 1.5 },
+    ]);
+
+    var controls = new List<(string Text, double XText, Icon Icon, double XIcon)>()
+    {
+        new("BLOQUANTS :", 660, Icon.Cancel, 731.25), new("NON BLOQUANTS :", 782.5, Icon.BuildCircle, 887.5), new("OK :", 940, Icon.CheckCircle, 950)
+    };
+    var analyses = new List<List<(Icon Icon, Color? Color)>>()
+    {
+        new([new(Icon.Cancel, null), new(Icon.BuildCircle, null)]),
+        new([new(Icon.Cancel, null), new(Icon.BuildCircle, null), new(Icon.CheckCircle, null)]),
+        new([new(Icon.BuildCircle, null)]),
+        new([new(Icon.BuildCircle, Color.PrimaryDark), new(Icon.CheckCircle, Color.PrimaryDark)]),
+    };
+    var organisms = new Group() { Fill = Color.White }.AddRange([
+        new Rect(650, 278.4, 35, 47.5) { Fill = Color.GrayDark, Opacity = 0.4 },
+        new Rect(650, 582.4, 35, 9) { Fill = Color.GrayDark, Opacity = 0.75 },
+        new Text("Analyse - contrôles :", 700, 310.4) { FontSize = 1.25 },
+        new Group() { FontSize = 0.8 }.AddRange(controls.Select(c => new Text(c.Text, new(c.XText), 342.4))),
+    ]).AddRange(
+        controls.Select(c => new Container(ViewBox.Icon) { X = new(c.XIcon), Y = 284.8, Width = 10, Height = 10 }.Add(
+            new Path(c.Icon) { Transform = new Scale(0.33) }
+        ))
+    ).AddRange(
+        analyses.SelectMany((a, i) => a.Select((c, j) => 
+            new Container(ViewBox.Icon) { X = 680 + 50 * j, Y = 348.8 + i * 51.2, Width = 10, Height = 10, Fill = c.Color }.Add(
+                new Path(c.Icon) { Transform = new Scale(0.75) })))
+    ).AddRange([
+        new Text("(si signalements)", 800, 550.4) { Fill = Color.PrimaryDark, FontSize = 1.25 },
+        new Text("ORGANISMES", 750, 620.8) { FontSize = 1.5 },
+    ]);
+
+    var svg = new Container(new(0, 0, 1000, 640), true) { Fill = Color.GrayDark }
+        .Add(topGroup).Add(axes).Add(plateforms).Add(organisms).AddRange([
+            new Group() { Stroke = Color.Primary, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 630, 128, 128), new Line(610, 630, 120, 128), new Line(610, 630, 136, 128)]
+            ),
+            new Container(ViewBox.Icon) { X = 300, Y = 64, Width = 15, Height = 20, Fill = Color.Primary }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("DSN", 480, -456) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Computer) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.Danger, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 630, 179.2, 179.2), new Line(225, 245, 179.2, 171.2), new Line(225, 245, 179.2, 187.2)]
+            ),
+            new Container(ViewBox.Icon) { X = 450, Y = 115.2, Width = 15, Height = 20, Fill = Color.Danger }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("ARE", 480, -369.6) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.Success, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange([
+                new Line(225, 630, 230.4, 230.4), new Line(225, 245, 230.4, 222.4), new Line(225, 245, 230.4, 238.4),
+                new Line(615, 615, 230.4, 304), new Line(615, 680, 304, 304), new Line(660, 680, 296, 304), new Line(660, 680, 312, 304),
+            ]),
+            new Container(ViewBox.Icon) { X = 417.5, Y = 166.4, Width = 15, Height = 20, Fill = Color.Success }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("CCO", 480, -144) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.License) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+            new Container(ViewBox.Icon) { X = 480, Y = 166.4, Width = 15, Height = 20, Fill = Color.Success }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("AEE", 480, -144) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.Danger, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 685, 390.4, 390.4), new Line(225, 245, 390.4, 382.4), new Line(225, 245, 390.4, 398.4)]
+            ),
+            new Container(ViewBox.Icon) { X = 450, Y = 326.4, Width = 15, Height = 20, Fill = Color.Danger }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("BAN", 480, -369.6) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.GrayDark, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 685, 441.6, 441.6), new Line(225, 245, 441.6, 433.6), new Line(225, 245, 441.6, 449.6)]
+            ),
+            new Container(ViewBox.Icon) { X = 450, Y = 377.6, Width = 15, Height = 20, Fill = Color.GrayDark }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("CRM", 480, -369.6) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.PrimaryDark, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 685, 492.8, 492.8), new Line(225, 245, 492.8, 484.8), new Line(225, 245, 492.8, 500.8)]
+            ),
+            new Container(ViewBox.Icon) { X = 300, Y = 428.8, Width = 15, Height = 20, Fill = Color.PrimaryDark }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Path(Icon.Computer) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+                new Path(Icon.ChangeCircle) { Transform = new Scale(0.25).Translate(new(1440, -1560)) },
+            ]),
+        ]).AddRange([
+            new Group() { Stroke = Color.PrimaryDark, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(225, 685, 544, 544), new Line(225, 245, 544, 536), new Line(225, 245, 544, 552)]
+            ),
+            new Container(ViewBox.Icon) { X = 450, Y = 480, Width = 15, Height = 20, Fill = Color.PrimaryDark }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("AER", 480, -369.6) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+            new Group() { Stroke = Color.PrimaryDark, StrokeWidth = new(5), StrokeLineCap = LineCap.Round }.AddRange(
+                [new Line(75, 212.5, 544, 544), new Line(75, 95, 544, 536), new Line(75, 95, 544, 552)]
+            ),
+            new Container(ViewBox.Icon) { X = 75, Y = 480, Width = 15, Height = 20, Fill = Color.PrimaryDark }.AddRange([
+                new Rect(240, -672, 50, 40) { Fill = Color.White },
+                new Text("AER", 480, -369.6) { TextAnchor = Anchor.Middle, FontSize = 8 },
+                new Path(Icon.Mail) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+            ]),
+        ]);
+
+    var dsnSub = new Container(ViewBox.Icon) { X = 300, Y = 428.8, Width = 15, Height = 20, Fill = Color.PrimaryDark }.AddRange([
+        new Rect(240, -672, 50, 40) { Fill = Color.White },
+        new Path(Icon.Computer) { Transform = new Scale(0.5).Translate(new(480, -480)) },
+        new Path(Icon.ChangeCircle) { Transform = new Scale(0.25).Translate(new(1440, -1560)) },
+    ]);
 }
 
-<Common.Graphics.Svg.Components.Container Model=svg />
+@* <Common.Graphics.Svg.Components.Container Model=svg /> *@
+
+<Common.Graphics.Svg.Components.Container Model=@(new Container(ViewBox.Icon) { X = 300, Y = 428.8, Width = 15, Height = 20, Fill = Color.PrimaryDark })>
+    <Common.Graphics.Svg.Components.Group Model=@(new Group()) Text="DSN de substitution" Position=Common.Tools.Tips.Position.Right>
+        <Common.Graphics.Svg.Components.Rect Model=@(new Rect(240, -672, 50, 40) { Fill = Color.White }) />
+        <Common.Graphics.Svg.Components.Path Model=@(new Path(Icon.Computer) { Transform = new Scale(0.5).Translate(new(480, -480)) }) />
+        <Common.Graphics.Svg.Components.Path Model=@(new Path(Icon.ChangeCircle) { Transform = new Scale(0.25).Translate(new(1440, -1560)) }) />
+    </Common.Graphics.Svg.Components.Group>
+</Common.Graphics.Svg.Components.Container>
+
+@* <Common.Graphics.Svg.Components.Container Model=dsnSub Text="DSN de substitution" Position=Common.Tools.Tips.Position.Bottom /> *@
 
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" fill="var(--gray-dark)">
     <g text-anchor="middle" font-size="9rem">

@@ -2,7 +2,7 @@
 @using Common.Components.Templates
 @using Common.Enumerations.Svg
 @using Common.Models
-@inherits Base
+@inherits BaseTemp
 
 @if (Model.Uri.IsExternal) Model.Activator.EndIcon = SvgIcon.OpenInNew;
 
@@ -21,7 +21,7 @@
         }
         else
         {
-            if (Model.Uri.Description is string description && !string.IsNullOrWhiteSpace(description))
+            if (Description is string description && !string.IsNullOrWhiteSpace(description))
             {
                 <span>@description</span>
             }
@@ -32,9 +32,11 @@
     }
 </OperationTemplate>
 
-@code {
+    @code {
     [Parameter, EditorRequired]
     public OperationModel Model { get; set; }
     [Parameter]
     public RenderFragment? ChildContent { get; set; }
+    [Parameter]
+    public string? Description { get; set; }
 }

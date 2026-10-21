@@ -122,14 +122,18 @@ body {
   flex-wrap: wrap;
 }
 
+/*#footer > div > div {
+  max-width: 20rem;
+}*/
+
 * {
   font-family: var(--fontfamily);
 }
 
-html {
+#view {
   color: var(--gray-dark);
-  max-width: 80rem;
   margin: auto;
+  max-width: 80rem;
 }
 
 h1, .h1 {

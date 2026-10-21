@@ -18,10 +18,10 @@ public sealed class NewsService : INewsService
 
     private List<RecapModel> Initialize()
     {
-        IEnumerable<NewsModel> absences = [
-            new("Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae selon les méthodes réelles ou moyennes en heures ou en calendaire.",
-                _uriProvider.Get(AbmUri.Perfectionnement)),
-        ];
+        //IEnumerable<NewsModel> absences = [
+        //    new("Cette formation pointue détaille toutes les subtilités du retrait des absences dans le logiciel MySilae selon les méthodes réelles ou moyennes en heures ou en calendaire.",
+        //        _uriProvider.Get(AbmUri.Perfectionnement)),
+        //];
 
         IEnumerable<NewsModel> certifications = [
             new("Obtention de la certification QUALIOPI (21 mars 2025).",
@@ -37,10 +37,10 @@ public sealed class NewsService : INewsService
         ];
 
         return [
-            new(new(2024, 12, 01),
-                "Absences en heures mensualisées",
-                _uriProvider.Get(AbmImage.Absences),
-                absences),
+            //new(new(2024, 12, 01),
+            //    "Absences en heures mensualisées",
+            //    _uriProvider.Get(AbmImage.Absences),
+            //    absences),
             new(new(2025, 04, 01),
                 "Nouvelles certifications",
                 _uriProvider.Get(AbmImage.Certifications),

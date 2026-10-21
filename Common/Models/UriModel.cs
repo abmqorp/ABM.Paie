@@ -1,13 +1,10 @@
-﻿using Common.Enumerations;
-
-namespace Common.Models;
+﻿namespace Common.Models;
 
 public record UriModel(
     string? Location = default,
     string? Content = default,
     string? Label = default,
     bool IsExternal = default,
-    string? Description = default,
     ImageModel? Image = default,
     UriModel? Parent = default)
 {

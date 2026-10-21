@@ -1,0 +1,10 @@
+﻿@foreach (var shape in Model.Shapes)
+{
+    var parameters = new Dictionary<string, object?>(shape.Attributes.Prepend(new(nameof(Model), shape)));
+    <DynamicComponent Type=shape.Type Parameters=parameters />
+}
+
+@code {
+    [Parameter, EditorRequired]
+    public Models.Builder Model { get; set; }
+}

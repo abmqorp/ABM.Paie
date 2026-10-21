@@ -28,5 +28,5 @@ public sealed class Rect(
     public Ry? Ry { get; set; }
 
     public override Type Type => typeof(Components.Rect);
-    public override Dictionary<string, object> Attributes => GetAttributes(Rx, Ry);
+    public override Dictionary<string, object?> Attributes => GetAttributes(Rx, Ry);
 }

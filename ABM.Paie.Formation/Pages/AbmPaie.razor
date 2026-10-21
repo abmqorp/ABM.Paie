@@ -49,7 +49,7 @@
     <Paragraph>
         Pour toutes demandes relatives à une assistance technique et/ou pédagogique, je suis à votre écoute à l'adresse :
     </Paragraph>
-    <Operation Class="my-1" Model=UriProvider.Get(AbmMail.Assistance) />
+    <Operation Class="my-1 primary" Model=@(UriProvider.Get(AbmMail.Assistance)) />
     <Operation Class="my-1" Model=UriProvider.Get(AbmUri.RefAssistance).ToDefaultOperation() />
 </div>
         ),
@@ -59,7 +59,7 @@
     <Paragraph>
         Pour toutes demandes relatives à un handicap, je suis à votre écoute à l'adresse :
     </Paragraph>
-    <Operation Class="my-1" Model=UriProvider.Get(AbmMail.RefHandicap) />
+    <Operation Class="my-1 primary" Model=UriProvider.Get(AbmMail.RefHandicap) />
     <Operation Class="my-1" Model=UriProvider.Get(AbmUri.RefHandicap).ToDefaultOperation() />
 </div>
         ),
@@ -72,7 +72,7 @@
         <span class="large name">Marine MARQUIS</span>
     </div>
 
-    <PanelSet Class="grow mt-2" Templates=panels />
+    <PanelSet Class="organigramme--panelset grow mt-2" Templates=panels AutoToggle=true />
 </div>
 
 

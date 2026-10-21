@@ -1,0 +1,61 @@
+﻿@using Microsoft.Extensions.Logging
+@using Microsoft.JSInterop
+@implements IAsyncDisposable
+@inject Service Tooltip
+@inject IJSRuntime JS
+@inject ILogger<Host> Logger
+
+@* The one and only tooltip popup div for the whole app. *@
+<div id="app-tooltip" role="tooltip" @ref="_tooltipEl"
+     class="app-tooltip @(Tooltip.Visible ? Show : "")">
+    @Tooltip.Content
+    <div class="app-tooltip-arrow" @ref="_arrowEl"></div>
+</div>
+
+@code {
+    private const string Show = "show";
+    private const string Hide = "hide";
+
+    private ElementReference _tooltipEl, _arrowEl;
+    private IJSObjectReference? _module;
+    private int _handledVersion = -1;
+
+    protected override void OnInitialized() => Tooltip.Changed += OnChanged;
+    private void OnChanged() => InvokeAsync(StateHasChanged);
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            try
+            {
+                _module = await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Common/js/tooltip.js");
+            }
+            catch (JSException ex)
+            {
+                Logger.LogError(ex, "Failed to load tooltip.js; tooltips will not be positioned.");
+                return;
+            }
+        }
+
+        if (_module is null || _handledVersion == Tooltip.Version) return;
+        _handledVersion = Tooltip.Version;
+
+        if (Tooltip.Visible)
+            await _module.InvokeVoidAsync(Show, Tooltip.Anchor, _tooltipEl, _arrowEl, Tooltip.Position.Property);
+        else
+            await _module.InvokeVoidAsync(Hide);
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        Tooltip.Changed -= OnChanged;
+        if (_module is null) return;
+        try
+        {
+            await _module.InvokeVoidAsync(Hide);
+            await _module.DisposeAsync();
+        }
+        catch (JSDisconnectedException) { }
+    }
+}

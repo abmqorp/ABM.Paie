@@ -10,12 +10,20 @@ public enum AbmUri
     Accueil,
     [Description("formations")]
     Formations,
+    [Description("babmpaie")]
+    Babmpaie,
     [Description("catalogue")]
     [Parent(AbmUri.Formations)]
     Catalogue,
-    [Description("perfectionnement")]
+    [Description("demande")]
     [Parent(AbmUri.Formations)]
-    Perfectionnement,
+    Demande,
+    [Description("init-bases-mysilae")]
+    InitBasesMySilae,
+    [Description("int-parametrage-dsn-btp")]
+    IntParametrageDsnBtp,
+    [Description("perf-cp-primes-mnp")]
+    PerfCpPrimesMnp,
     [Description("actualites")]
     Actualites,
     [Description("abmpaie")]
@@ -35,18 +43,41 @@ public enum AbmUri
     Experience,
     [Description("cv")]
     Cv,
-    [Description("silae")]
+    [Description("chiffres-silae")]
     [Parent(AbmUri.Experience)]
-    Silae,
-    [Description("chiffres")]
-    [Parent(AbmUri.Experience)]
-    Chiffres,
+    ChiffresSilae,
     [Description("ref-assistance")]
     [Parent(AbmUri.Experience)]
     RefAssistance,
     [Description("ref-handicap")]
     [Parent(AbmUri.Experience)]
     RefHandicap,
+    [Description("cafel-2025")]
+    Cafel2025,
+    [Description("cafel-attestation")]
+    CafelAttestation,
+    [Description("fipa-2026")]
+    Fipa2026,
+    [Description("fipa-attestation")]
+    FipaAttestation,
+    [Description("ipfa-2027")]
+    Ipfa2027,
+    [Description("handicap-activateur-dialogue-social")]
+    HandicapActivateurDialogueSocial,
+    [Description("handicap-aide-ast")]
+    HandicapAideAst,
+    [Description("handicap-aide-station-assise")]
+    HandicapAideStationAssise,
+    [Description("handicap-attestation-sensibilisation")]
+    HandicapAttestationSensibilisation,
+    [Description("handicap-devenir-referent")]
+    HandicapDevenirReferent,
+    [Description("handicap-rencontres-rhf-paca")]
+    HandicapRencontresRhfPaca,
+    [Description("handicap-sante-mentale")]
+    HandicapSanteMentale,
+    [Description("handicap-troubles-cognitifs")]
+    HandicapTroublesCognitifs,
     [Description("contact")]
     Contact,
     [Description("reserver")]

@@ -1,15 +1,14 @@
 ﻿@using Common.Components.Bases
-@using Common.Enumerations
 @using Common.Models
-@inherits Base
+@inherits BaseTemp
 
 <div class=@_builder.Add("common__activator", Model.Class)>
-    <Icon Content=Model.StartIcon />
+    <div><Icon Content=Model.StartIcon /></div>
     @if (ChildContent is not null)
     {
-        <span class="common__activator__content">@ChildContent</span>
+        <div class="common__activator__content">@ChildContent</div>
     }
-    <Icon Content=Model.EndIcon />
+    <div><Icon Content=Model.EndIcon /></div>
 </div>
 
 @code {

@@ -13,10 +13,10 @@
     var accueil = UriProvider.Get(AbmUri.Accueil);
     var linkedin = new OperationModel(UriProvider.Get(AbmUri.LinkedIn), new(Class: "white filled"));
 
-    var formations = GetMenu([AbmUri.Formations, AbmUri.Catalogue, AbmUri.Perfectionnement]);
+    var formations = GetMenu([AbmUri.Formations, AbmUri.Babmpaie, AbmUri.Catalogue, AbmUri.Demande]);
     var actualites = GetMenu([AbmUri.Actualites]);
     var headerAbmPaie = GetMenu([AbmUri.Abmpaie, AbmUri.Organigramme, AbmUri.Indicateurs, AbmUri.Valeurs, AbmUri.Qualiopi]);
-    var experience = GetMenu([AbmUri.Experience, AbmUri.Cv, AbmUri.Silae, AbmUri.Chiffres, AbmUri.RefAssistance, AbmUri.RefHandicap]);
+    var experience = GetMenu([AbmUri.Experience, AbmUri.Cv, AbmUri.ChiffresSilae, AbmUri.RefAssistance, AbmUri.RefHandicap]);
     var headerContact = GetMenu([AbmUri.Contact, AbmUri.Reserver, AbmUri.Coordonnees, AbmUri.PagesOfficielles], "filled");
     var partenariats = GetMenu([AbmUri.Partenariats])
         .Append(UriProvider.Get(AbmUri.Facilae).ToBase())
@@ -37,8 +37,7 @@
     {
         UriProvider.Get(AbmUri.Experience),
         UriProvider.Get(AbmUri.Cv),
-        UriProvider.Get(AbmUri.Silae),
-        UriProvider.Get(AbmUri.Chiffres),
+        UriProvider.Get(AbmUri.ChiffresSilae),
         new(UriProvider.Get(AbmUri.RefAssistance), new(Class: "danger filled")),
         new(UriProvider.Get(AbmUri.RefHandicap), new(Class: "danger filled")),
     };
@@ -49,52 +48,55 @@
         UriProvider.Get(AbmMail.PaieFormation),
     };
 }
-
-@if (_showBanner)
-{
-    <Image Class="banner" Model=UriProvider.Get(AbmImage.Banner) />
-}
-
-<NavBar Menus=headerMenus>
-    <Operation Model=accueil />
-</NavBar>
-
-@Body
-
-<div id="footer" class="wrap justify-center">
-    <div class="wrap">
+<div id="view">
+    @if (_showBanner)
+    {
+        <Image Class="banner" Model=UriProvider.Get(AbmImage.Banner) />
+    }
+    
+    <NavBar Menus=headerMenus>
+        <Operation Model=accueil />
+    </NavBar>
+    
+    @Body
+    
+    <div id="footer" class="wrap justify-center">
         <div>
-            <DropDownMenu Operations=@(SetAsFooter([accueil.ToBase()])) />
-            <DropDownMenu Operations=SetAsFooter(formations) />
-            <DropDownMenu Operations=SetAsFooter(actualites) />
+            <div>
+                <DropDownMenu Operations=@(SetAsFooter([accueil.ToBase()])) />
+                <DropDownMenu Operations=SetAsFooter(formations) />
+            </div>
+            <div>
+                <DropDownMenu Operations=SetAsFooter(actualites) />
+                <DropDownMenu Operations=SetAsFooter(footerAbmPaie) />
+            </div>
         </div>
         <div>
-            <DropDownMenu Operations=SetAsFooter(footerAbmPaie) />
+            <div>
+                <DropDownMenu Operations=SetAsFooter(footerExperience) />
+            </div>
+            <div>
+                <DropDownMenu Operations=SetAsFooter(footerContact)>
+                    <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
+                        <Icon Content=SvgIcon.Call />
+                        <Icon Content=SvgIcon.Sms />
+                        <Image Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
+                        +33 7 48 10 65 39
+                    </Paragraph>
+                    <span class="linkedin">
+                        <Operation Model=linkedin />
+                    </span>
+                </DropDownMenu>
+            </div>
         </div>
     </div>
-    <div>
-        <div>
-            <DropDownMenu Operations=SetAsFooter(footerExperience) />
-        </div>
-        <div>
-            <DropDownMenu Operations=SetAsFooter(footerContact)>
-                <Paragraph> @* aria-label="contacter ABM Paie par téléphone (appel, sms, WhatsApp)"> *@
-                    <Icon Content=SvgIcon.Call />
-                    <Icon Content=SvgIcon.Sms />
-                    <Image Class="inline mx-1" Model=UriProvider.Get(AbmImage.WhatsAppGlyph) />
-                    +33 7 48 10 65 39
-                </Paragraph>
-                <span class="linkedin">
-                    <Operation Model=linkedin />
-                </span>
-            </DropDownMenu>
-        </div>
+    
+    <div id="version" class="primary float-right mx-3 my-2">
+        <Paragraph>version : @Configuration["version"]</Paragraph>
     </div>
 </div>
 
-<div id="version" class="primary float-right mx-3 my-2">
-    <Paragraph>version : @Configuration["version"]</Paragraph>
-</div>
+<Common.Tools.Tips.Host />
 
 @code {
     private string? _accueilUri;

@@ -7,7 +7,7 @@ namespace Common.Components.Bases;
 
 public sealed record TipEventArgs<T>(T Model, string Style);
 public abstract class TooltipBase : TooltipBase<string>;
-public abstract class TooltipBase<T> : Base
+public abstract class TooltipBase<T> : BaseTemp
 {
     [Parameter, EditorRequired]
     public T Model { get; set; }

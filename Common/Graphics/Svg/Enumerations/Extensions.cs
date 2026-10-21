@@ -1,10 +1,9 @@
-﻿using Common.Graphics.Extensions;
+﻿using Common.Graphics.Enumerations;
 using Common.Graphics.Svg.Attributes;
-using Common.Graphics.Svg.Enumerations;
 
-namespace Common.Graphics.Svg.Extensions;
+namespace Common.Graphics.Svg.Enumerations;
 
-public static class EnumExtensions
+public static class Extensions
 {
     extension(Enum value)
     {

@@ -1,0 +1,30 @@
+.app-tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: max-content;
+  max-width: 300px;
+  z-index: 10000;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .15s, visibility .15s;
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: .85rem;
+}
+
+  .app-tooltip.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+.app-tooltip-arrow {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: rotate(45deg);
+}

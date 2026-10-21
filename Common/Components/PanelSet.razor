@@ -1,22 +1,21 @@
 ﻿@using Common.Components.Bases
 @using Common.Enumerations.Svg
 @using Common.Models
-@using Microsoft.AspNetCore.Components.Web
 @inherits SelectableBase<TabModel>
 
-<div class=@_builder.Add("common__panels column")>
+<div class=@_builder.Add("common__panelset column")>
     @foreach (var item in Templates)
     {
         var operation = item.Operation with {
             Uri = item.Operation.Uri with {Label = $"{(item.IsSelected ? "Réduire" : "Développer")} le contenu"},
-            Activator = new(EndIcon: SvgIcon.ArrowDropDownCircle, Class: "large filled full-width"),
-            Action = () => Update(item),
+            Activator = new(EndIcon: SvgIcon.ArrowDropDownCircle, Class: "common__panel__header large filled full-width"),
+            Action = () => Update(item, AutoToggle),
         };
-        <div class="column">
+        <div class="common__panel column">
             <Operation Model=operation />
             @if (item.Content is not null)
             {
-                <div class="m-3" hidden=@(item.IsSelected == false)>
+                <div class="common__panel__content m-3" hidden=@(item.IsSelected == false)>
                     @item.Content
                 </div>
             }
@@ -25,9 +24,12 @@
 </div>
 
 @code {
-    protected override void Update(TabModel model)
+    [Parameter]
+    public bool AutoToggle { get; set; }
+
+    protected override void Update(TabModel model, bool autoToggle)
     {
-        base.Update(model);
+        base.Update(model, autoToggle);
         StateHasChanged();
     }
 }

@@ -2,9 +2,9 @@
 using Common.Graphics.Enumerations;
 using System.ComponentModel;
 
-namespace Common.Graphics.Extensions;
+namespace Common.Graphics.Enumerations;
 
-public static class EnumExtensions
+public static class Extensions
 {
     extension(Enum value)
     {

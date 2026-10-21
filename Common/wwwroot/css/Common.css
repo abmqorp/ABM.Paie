@@ -330,6 +330,7 @@ a:hover, button:hover, a:focus, button:focus {
 
 .danger {
   --color: var(--danger);
+  color: var(--danger);
 }
 
 .white.filled {
@@ -383,3 +384,12 @@ select {
     padding: 0.5rem;
   }
 }
+
+.tooltip__trigger {
+  display: inline-block;
+}
+
+  .tooltip__trigger:focus-visible {
+    outline: 2px solid #0b5ed7;
+    outline-offset: 2px;
+  }
